@@ -1,0 +1,25 @@
+.btn-outline-primary:hover{
+    background-color: #fff !important;
+    color: #550B7C !important;
+    border: 1px solid #550B7C !important;
+    box-sizing: border-box !important;
+}
+.btn-outline-primary{
+    background-color: #550B7C !important;
+    color: #fff !important;
+    border: 1px solid #550B7C !important;
+}
+
+.search-btn{
+    height: 34px;
+    width: 34px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-input{
+    height: 34px;
+    width: 40vw !important;
+}
