@@ -1,3 +1,8 @@
+.sklara-logo{
+    width: 110px;
+    height: 38px;
+}
+
 .btn-outline-primary:hover{
     background-color: #fff !important;
     color: #550B7C !important;
@@ -23,3 +28,16 @@
     height: 34px;
     width: 40vw !important;
 }
+
+.language-logo{
+    width: 20px;
+}
+
+
+/* media query */
+@media screen and (max-width: 994px) {
+    .nav-div{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+  }
