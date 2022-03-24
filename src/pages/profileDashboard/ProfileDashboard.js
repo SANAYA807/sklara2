@@ -1,0 +1,61 @@
+import React from 'react'
+import Footer from '../../components/footer/Footer'
+import Navbar from '../../components/navbar/Navbar'
+import './pdash.css'
+import ProfStatsDonut from './ProfStatsDonut'
+
+const ProfileDashboard = () => {
+    return (<>
+    <Navbar/>
+        <div className='container-fluid px-5 py-3'>
+        <div className='row justify-content-center px-5'>
+            <div className='col-md-4 shadow p-2 profD-card text-center profD-rad'>
+                <img src={'./assets/model.jpg'} className="profile-dp center"/>
+            <h4 className='text-light fw-normal my-3'>Marcus Portsmith</h4>
+            <p className='text-light mb-0'>Senior Project Manager</p>
+            <p className='text-light fw-light mb-4'>Bosch GMBH, Germany</p>
+            <h4 className='text-light'>Credit Balance : &euro; 200</h4>
+            <p className='text-light mb-3 fw-lighter'>Last login 2 hours ago</p>
+            </div>
+            <div className='col-md-8'>
+                <h2 className='display-4'>
+                Hello <span className='heading'> Marcus</span></h2>
+                <h4>Here is a summary of your activities at SKLARA</h4>
+            
+            <div className='w-100 card shadow p-2 profD-rad mt-5'>
+                <div className='d-flex justify-content-between profD-dash'>
+                    <div>
+            <h4 className='my-3 fw-light'>CPSA Foundation Training</h4>
+            <h5 className='fw-lighter'>Session 3 of 5 starting in 15 minutes.</h5>
+            </div>
+            <div>
+            <button className='btn shadow btn-primary text-light'>View</button>
+            </div>
+            </div>
+            </div>
+
+            <div className='w-100 card shadow p-2 profD-rad mt-5'>
+                <div className='d-flex justify-content-between profD-dash'>
+                    <div>
+            <h2 className='my-3 heading'>8</h2>
+            <h5 className='fw-lighter'>actions pending for you</h5>
+            </div>
+            <div>
+            <button className='btn shadow btn-primary text-light'>View</button>
+            </div>
+            </div>
+            </div>
+            
+            
+            </div>
+        </div>
+
+            
+        </div>
+        <ProfStatsDonut/>
+        <Footer/>
+        </>
+    )
+}
+
+export default ProfileDashboard
