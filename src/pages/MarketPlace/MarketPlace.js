@@ -1,7 +1,7 @@
 import React from 'react'
-import "./Search.css"
+import "./MarketPlace.css"
 
-export default function Search() {
+export default function MarketPlace() {
   const array = [1, 2, 3, 4, 5, 6, 7, 8]
   const arrayEvents = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   return (

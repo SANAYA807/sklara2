@@ -65,7 +65,7 @@ const Navbar = () => {
           <Link className="nav-link" to="/"><EventOutlinedIcon/> Learning Plan</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/"><ShopTwoOutlinedIcon/> Market Place</Link>
+          <Link className="nav-link" to="/market-place"><ShopTwoOutlinedIcon/> Market Place</Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/"><FilterCenterFocusOutlinedIcon/> Focus Area</Link>
