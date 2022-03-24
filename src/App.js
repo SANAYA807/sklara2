@@ -12,7 +12,6 @@ import ProfileDashboard from './pages/profileDashboard/ProfileDashboard';
 function App() {
   return (
     <Router>
-      <Navbar />
       <Routes>
         <Route exact path="/profile" element={<Profile />}></Route>
         <Route exact path="/market-place" element={<MarketPlace />}></Route>

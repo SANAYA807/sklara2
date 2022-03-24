@@ -29,7 +29,7 @@ const ProfStatsDonut = () => {
 
     return (
         <div className='container-fluid px-5'>
-            <h3 className='mx-5 mt-5'>Your Statistics</h3>
+            <h3 className='mx-5 mt-5 heading'>Your Statistics</h3>
             <div className='row justify-content-between mx-5'>
 
 <div className='col-md-5 shadow bg-light p-2'>

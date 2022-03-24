@@ -64,7 +64,7 @@ const DevProgress = () => {
         datasets: [
           {
             label: '',
-            data: [5,2,3,6,9,5,4,1,5,6,7,6],
+            data: [2,2,3,2,3,4,3,4,3,4,4,4],
             borderColor: 'red',
             backgroundColor: '#FF6384',
             yAxisID: 'y',
@@ -78,21 +78,21 @@ const DevProgress = () => {
           },
           {
             label: '',
-            data: [30,40,45,48,42,50,55,50,58,90,80,40],
+            data: [3,4,4,4,4,5,5,5,5,9,8,4],
             borderColor: 'gold',
             backgroundColor: '#FFCE56',
             yAxisID: 'y',
           },
           {
             label: '',
-            data: [70,60,50,30,40,40,40,50,30,70,40,45],
+            data: [7,6,5,3,4,4,4,5,3,7,4,4],
             borderColor: 'green',
             backgroundColor: '#4BC0C0',
             yAxisID: 'y',
           },
           {
             label: '',
-            data: [40,50,60,40,60,70,80,50,40,60,40,30],
+            data: [4,5,6,4,6,7,8,5,4,6,4,3],
             borderColor: 'purple',
             backgroundColor: '#7D2AE3',
             yAxisID: 'y',
@@ -101,7 +101,7 @@ const DevProgress = () => {
       };
 
     return (
-        <div className='container shadow p-3 my-4'>
+        <div className='container shadow bg-light p-3 my-4'>
             <div className='row justify-content-between'>
                 <div className='col'>
                     <h3 className='fw-light'>Development Progress</h3>

@@ -1,10 +1,15 @@
 import React from 'react'
+import Footer from '../../components/footer/Footer'
+import Navbar from '../../components/navbar/Navbar'
 import "./MarketPlace.css"
 
 export default function MarketPlace() {
+
   const array = [1, 2, 3, 4, 5, 6, 7, 8]
   const arrayEvents = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   return (
+    <>
+    <Navbar/>
     <div className='search-outer pt-3'>
       <div className='container-md'>
         <h1 className='mb-4'>Find the perfect <span className="change-color">trainer or coach</span></h1>
@@ -125,6 +130,8 @@ export default function MarketPlace() {
         </div>
       </div>
     </div>
+    <Footer/>
+    </>
   )
 }
 

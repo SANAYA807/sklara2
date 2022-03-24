@@ -2,6 +2,7 @@ import React from 'react'
 import Footer from '../../components/footer/Footer'
 import Navbar from '../../components/navbar/Navbar'
 import DevProgress from './DevProgress'
+import Feedback from './Feedback'
 import './pdash.css'
 import ProfStatsDonut from './ProfStatsDonut'
 
@@ -55,6 +56,7 @@ const ProfileDashboard = () => {
         </div>
         <ProfStatsDonut/>
         <DevProgress/>
+        <Feedback/>
         <Footer/>
         </>
     )
