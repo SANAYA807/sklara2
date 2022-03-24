@@ -31,7 +31,7 @@ const Navbar = () => {
           <Link className="nav-link" to="/"><EmailOutlinedIcon/></Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/"><AccountCircleOutlinedIcon/></Link>
+          <Link className="nav-link" to="/profile"><AccountCircleOutlinedIcon/></Link>
         </li>
         {/* <li className="nav-item dropdown">
           <Link className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
