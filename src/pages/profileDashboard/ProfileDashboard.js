@@ -1,6 +1,7 @@
 import React from 'react'
 import Footer from '../../components/footer/Footer'
 import Navbar from '../../components/navbar/Navbar'
+import DevProgress from './DevProgress'
 import './pdash.css'
 import ProfStatsDonut from './ProfStatsDonut'
 
@@ -9,15 +10,15 @@ const ProfileDashboard = () => {
     <Navbar/>
         <div className='container-fluid px-5 py-3'>
         <div className='row justify-content-center px-5'>
-            <div className='col-md-4 shadow p-2 profD-card text-center profD-rad'>
-                <img src={'./assets/model.jpg'} className="profile-dp center"/>
-            <h4 className='text-light fw-normal my-3'>Marcus Portsmith</h4>
-            <p className='text-light mb-0'>Senior Project Manager</p>
-            <p className='text-light fw-light mb-4'>Bosch GMBH, Germany</p>
-            <h4 className='text-light'>Credit Balance : &euro; 200</h4>
-            <p className='text-light mb-3 fw-lighter'>Last login 2 hours ago</p>
+            <div className='col-md-6 shadow p-2 text-center profD-rad bg-light pt-4'>
+                <img src={'./assets/model2.jpg'} className="profile-dp center"/>
+            <h4 className='fw-normal my-3'>Marcus Portsmith</h4>
+            <p className='mb-0'>Senior Project Manager</p>
+            <p className='fw-light mb-4'>Bosch GMBH, Germany</p>
+            <h4 className='heading'>Credit Balance : &euro; 200</h4>
+            <p className='mb-3 fw-lighter'>Last login 2 hours ago</p>
             </div>
-            <div className='col-md-8'>
+            <div className='col-md-6'>
                 <h2 className='display-4'>
                 Hello <span className='heading'> Marcus</span></h2>
                 <h4>Here is a summary of your activities at SKLARA</h4>
@@ -53,6 +54,7 @@ const ProfileDashboard = () => {
             
         </div>
         <ProfStatsDonut/>
+        <DevProgress/>
         <Footer/>
         </>
     )
