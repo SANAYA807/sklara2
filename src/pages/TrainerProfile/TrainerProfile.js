@@ -12,6 +12,7 @@ import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import EuroIcon from '@mui/icons-material/Euro';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import CameraIcon from '@mui/icons-material/Camera';
 import { Carousel } from 'react-bootstrap';
 import { useRef, useState } from 'react';
 
@@ -19,6 +20,8 @@ function TrainerProfile() {
 
 
   const arrayEvents = [1, 2, 3]
+  const arrayReviews = [1, 2, 3, 4]
+
   const ref = useRef(null);
 
   const onPrevClick = () => {
@@ -252,6 +255,41 @@ function TrainerProfile() {
                 </div>
               </div>
             })}
+            <h2 className='mb-3'>Trainee Reviews</h2>
+            {arrayReviews.map((element, i) => {
+              return <div key={i} className='col-lg-6 col-sm-12 mb-4'>
+                <div className="card shadow-sm">
+                  <div className="card-body">
+                    <div className='d-flex'>
+                      <div className='me-3 mt-3 m-3'>
+                        <CameraIcon style={{ "color": "#1cd8c9" }} />
+                      </div>
+                      <div>
+                        <h6 className="card-title m-0 mt-2 ">How to be a pro in using AI tools</h6>
+                        <div className='d-flex'>
+                          <img className="tp-small-flag me-1" src="images/flags/de.svg" alt="" />
+                          <img src="images/star.png" className='tp-star' alt='star' />
+                          <img src="images/star.png" className='tp-star' alt='star' />
+                          <img src="images/star.png" className='tp-star' alt='star' />
+                          <img src="images/star.png" className='tp-star' alt='star' />
+                          <img src="images/star.png" className='tp-star' alt='star' />
+                          <p className='mb-2 mx-1' style={{ "color": "#cccccc" }}><small>review from Germany</small></p>
+                        </div>
+                        <p>It was a great experience. Martin explained the basics very interestingly
+                          and the advanced stuff was approached with great examples.</p>
+                        <small className='text-muted'>
+                          <CalendarMonthIcon className='me-4' fontSize="10px" /><PeopleIcon fontSize="10px" />10 participants
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            })}
+            <small role="button" className='text-end'>View All</small>
+            <div className='mt-5 mb-4 text-center'>
+              <button className='btn tp-event-button p-2 mt-3'><small><ChatBubbleIcon fontSize='small' /> Contact Martin </small></button>
+            </div>
           </div>
         </div>
       </div >
