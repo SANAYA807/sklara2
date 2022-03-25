@@ -1,3 +1,17 @@
+
+@import url(./colors.css);
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1{
+  font-size: 2.6em;
+}
+
+
 .login{
   height: 100vh;
   overflow-y: hidden;
@@ -11,7 +25,7 @@
 }
 .login_text h1{
   margin-bottom: 5rem;
-  color: #0062e3;
+  color: var(--blue);
   font-family: "antoniah1-medium";
     font-size: 350%;
     font-weight: 800;
@@ -32,39 +46,39 @@ input {
   display: block;
   width: 100%;
   border: none;
-  border-bottom: 2px solid #80888f;
+  border-bottom: 2px solid var(--grey);
   border-radius: 0;
   line-height: normal;
   outline: none;
 }
 .label{
   text-align: left;
-  color: #0062e3;
+  color: var(--blue);
   font-weight: 500;
 }
-.login_button{
+.login_input button{
   margin-top: 1rem;
   width: 100%;
   height: 55px;
   border-radius: 2px;
   border: none;
   /* background-color: #0062e3; */
-  background-color: #550B7C;
-  color: #fff;
+  background-color:var(--purple);
+  color: var(--white);
 }
 .login_button:hover{
-  background-color: #8441AF;
+  background-color: var(--purple);
   transition: 0.5s ease-out;
 }
 .btn-primary{
-  background-color: #550B7C !important;
+  background-color: var(--purple) !important;
 }
 .btn-primary:hover{
-  background-color: #8441AF !important;
+  background-color: var(--purple) !important;
   transition: 0.5s ease-out;
 }
 .heading{
-  color:#1B1464 !important; 
+  color:var(--purple) !important; 
 }
 
 .center{

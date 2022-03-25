@@ -6,16 +6,16 @@ export const isAutheticated = () => {
     return true;
   }
   if (localStorage.getItem("auth")) {
-    return JSON.parse(localStorage.getItem("auth"));
+    return localStorage.getItem("auth")
   } else {
-    //console.log(JSON.parse(localStorage.getItem("auth")));
+    //console.log(JSON.parse(localStorage.getItem("auth"))); 
     return false;
   }
 };
 
 export const user = async () => {
   const { token } = JSON.parse(localStorage.getItem("auth"))
- try {
+  try {
 
     const response = await axios
       .get(`${API}/api/user`, {
@@ -24,7 +24,7 @@ export const user = async () => {
         },
       })
 
-    const userData= response.data.data
+    const userData = response.data.data
     return userData
   }
 
