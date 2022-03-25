@@ -33,6 +33,7 @@ const Login = () => {
     const [verified, setVerifed] = useState(false)
     const [next, setNext] = useState(false)
     const [validForm, setValidForm] = useState(false);
+    //console.log(token)
 
     const validateForm = () => {
         let valid = true;
@@ -69,10 +70,14 @@ const Login = () => {
 
     }, [errors, verified]);
 
+    useEffect(()=>{
+        if (token) {
+            navigate("/dashboard");
+        }
+       // console.log(token)
+    },[])
 
-    if (token) {
-        navigate("/");
-    }
+
 
     const handleNext = () => {
         if (next === false) {
@@ -114,8 +119,10 @@ const Login = () => {
         setUser({ ...user, [name]: value });
     };
 
+    
+
     //submit function
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
 
         if (!user.email || !user.password) {
@@ -126,47 +133,73 @@ const Login = () => {
         }
 
         setLoading(true);
-        axios
-            .post(`${API}/signin`, { ...user })
-            .then((response) => {
-                console.log(response)
-                if (response.data.status === 'failed') {
-                    setLoading(false);
-                    let message = response.data.message;
-                    swal({
-                        title: "Error",
-                        text: message,
-                        icon: "error",
-                        buttons: true,
-                        dangerMode: true,
-                    });
-                } else {
-                    setLoading(false)
-                    localStorage.setItem(
-                        "auth",
-                        JSON.stringify({
-                            user: user.email,
-                            token: response.data.token,
-                        })
-                    );
-                    //console.log(user);
-                    window.location.reload()
-                }
-                ////console.log("here the response",response);    
-            })
-            .catch((err) => {
-                setLoading(false);
-                let message = err.response?.data.message;
-                return swal({
+        let response = await axios.post(`${API}/signin`, { ...user })
+        if(response.data.status === "ok"){
+            setLoading(false)
+            localStorage.setItem(
+                "auth",
+                JSON.stringify({
+                    user: user.email,
+                    token: response.data.token,
+                })
+            );
+            setTimeout(window.location.reload(), 8000);
+            navigate('/dashboard')
+            
+            
+        }else{
+            setLoading(false);
+                let message = response.data.message;
+                swal({
                     title: "Error",
                     text: message,
                     icon: "error",
                     buttons: true,
                     dangerMode: true,
                 });
-                ////console.log(err.response);
-            });
-        // history.push("/");
+        }
+        //     .then((response) => {
+        //         // console.log(response)
+        //         // if (response) {
+        //             setLoading(false)
+        //             localStorage.setItem(
+        //                 "auth",
+        //                 JSON.stringify({
+        //                     user: user.email,
+        //                     token: response.data.token,
+        //                 })
+        //             );
+        //             //console.log(user);
+                   
+        //             navigate('/dashboard')
+        //             //window.location.reload()
+                   
+        //         // } else {
+        //         //     setLoading(false);
+        //         //     let message = response.data.message;
+        //         //     swal({
+        //         //         title: "Error",
+        //         //         text: message,
+        //         //         icon: "error",
+        //         //         buttons: true,
+        //         //         dangerMode: true,
+        //         //     });
+        //         // }
+        //         ////console.log("here the response",response);    
+        //     })
+        //     .catch((err) => {
+        //         setLoading(false);
+        //         let message = err.response?.data.message;
+        //         return swal({
+        //             title: "Error",
+        //             text: message,
+        //             icon: "error",
+        //             buttons: true,
+        //             dangerMode: true,
+        //         });
+        //         ////console.log(err.response);
+        //     });
+        // // history.push("/");
     };
 
     return (

@@ -16,8 +16,7 @@ export default function MarketPlace() {
   const arrayEvents = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   return (
     <>
-    <Navbar/>
-    <div className='mp-outer pt-3'>
+    <div className='search-outer pt-3'>
       <div className='container-md'>
         <h1 className='mb-4'>Find the perfect <span className="change-color">trainer or coach</span></h1>
         <div className="input-group mb-3 mp-input-div shadow-sm">
@@ -129,8 +128,6 @@ export default function MarketPlace() {
         </div>
       </div >
     </div>
-    <ContactFooter />
-    <Footer/>
     </>
   )
 }

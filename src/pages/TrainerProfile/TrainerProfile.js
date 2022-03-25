@@ -33,7 +33,7 @@ function TrainerProfile() {
 
   return (
     <>
-      <Navbar />
+   
       <div className='outer-tp pt-3'>
         <div className='container-md'>
           <h2>Profile of <span className='change-color'>Martin Krugger</span></h2>
@@ -294,7 +294,7 @@ function TrainerProfile() {
         </div>
       </div >
       <ContactFooter />
-      <Footer />
+
     </>
   );
 }
