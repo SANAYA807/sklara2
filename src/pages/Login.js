@@ -33,6 +33,7 @@ const Login = () => {
     const [verified, setVerifed] = useState(false)
     const [next, setNext] = useState(false)
     const [validForm, setValidForm] = useState(false);
+    //console.log(token)
 
     const validateForm = () => {
         let valid = true;
@@ -69,10 +70,14 @@ const Login = () => {
 
     }, [errors, verified]);
 
+    useEffect(()=>{
+        if (token) {
+            navigate("/dashboard");
+        }
+       // console.log(token)
+    },[])
 
-    if (token) {
-        navigate("/dashboard");
-    }
+
 
     const handleNext = () => {
         if (next === false) {
@@ -138,7 +143,7 @@ const Login = () => {
                     token: response.data.token,
                 })
             );
-            setTimeout(window.location.reload(), 4000);
+            setTimeout(window.location.reload(), 8000);
             navigate('/dashboard')
             
             

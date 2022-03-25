@@ -48,7 +48,7 @@ function App() {
 
       {!userdata ?
         <Routes>
-          <Route path='*' element={<Login />} />
+          <Route exact path='/' element={<Login />} />
         </Routes>
         :
         <>
