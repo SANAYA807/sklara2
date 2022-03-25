@@ -1,34 +1,34 @@
-.search-outer{
+.mp-outer{
   background-color: #f1f6f9;
 }
-.div-white-text-violet-bg{
+.mp-violet{
   background-color:#550b7c;
   color:white;
   border-radius: 2rem;
 }
-.search-input-div{
+.mp-input-div{
   width: 50vw !important;
 }
-.search-popular{
+.mp-popular{
   font-weight: 500;
   font-size: large;
   margin-right: 5px;
 }
-.search-icon{
+.mp-icon{
   background-color: #550b7c !important;
   cursor: pointer;
   color: white !important;
 }
-.search-icon:hover{
+.mp-icon:hover{
   background-color: #fff;
 }
-.search-top-company .first{
+.mp-top-company .first{
   font-size: x-large;
 }
-.search-com-image{
+.mp-com-image{
   height: 11rem;
 }
-.search-com-flag1{
+.mp-com-flag1{
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
@@ -38,7 +38,7 @@
   top: 10rem;
   z-index: 3;
 }
-.search-com-flag2{
+.mp-com-flag2{
   width: 3rem;
   height: 3rem;
   position: absolute;
@@ -47,24 +47,24 @@
   top: 10rem;
   z-index: 2;
 }
-.search-com-flag1 img{
+.mp-com-flag1 img{
   border-radius: 50%;
   border: 5px solid #fff;
 }
-.search-com-flag2 img{
+.mp-com-flag2 img{
   border-radius: 50%;
   border: 5px solid #fff;
 }
-.search-experience{
+.mp-experience{
   font-size: 15px;
   color: grey;
 }
-.search-event-button{
+.mp-event-button{
   background-color: #550b7c !important;
   cursor: pointer;
   color: white !important;
 }
-.search-event-button:hover{
+.mp-event-button:hover{
   color: black !important;
   background-color: #fff !important;
   border-color: #550b7c !important;

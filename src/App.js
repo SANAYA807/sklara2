@@ -13,6 +13,7 @@ import {isAutheticated} from './components/auth/authhelper';
 import axios from 'axios';
 import { API } from './API';
 import NotFound from './pages/notFound/NotFound';
+import TrainerProfile from './pages/TrainerProfile/TrainerProfile';
 
 function App() {
   const [userdata, setUserData] = useState(null)
@@ -59,12 +60,12 @@ function App() {
         <Route exact path="/market-place" element={<MarketPlace userdata={userdata}/>}></Route>
         
         <Route exact path="/dashboard" element={<ProfileDashboard userdata={userdata}/>} />
+        <Route exact path="/trainer_profile" element={<TrainerProfile />} />
         <Route exact path='*' element={<NotFound/>} />
         </Routes>
 <Footer/>
     </>
 }
-
     </Router>
 
   );

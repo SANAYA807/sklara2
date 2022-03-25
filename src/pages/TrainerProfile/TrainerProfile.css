@@ -1,0 +1,108 @@
+.outer-tp{
+  background-color: #f1f6f9;
+}
+.change-color{
+  background: -webkit-linear-gradient(#1B1464, #550B7C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* color: linear-gradient(to right, #1B1464, #550B7C ); */
+}
+.common-card{
+  margin-bottom: 2rem;
+}
+.common-card .card{
+  box-shadow: 1px 2px 4px rgb(0 0 0 / 20%);
+}
+.tp-image{
+  height: 12rem;
+}
+.tp-flag1{
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 50%;
+  position: absolute;
+  /* display: inline-flex; */
+  right: 3rem;
+  top: 11rem;
+  z-index: 3;
+}
+.tp-flag2{
+  width: 3.4rem;
+  height: 3.4rem;
+  position: absolute;
+  /* display: inline-flex; */
+  right: 2rem;
+  top: 11rem;
+  z-index: 2;
+}
+.tp-flag1 img{
+  border-radius: 50%;
+  border: 5px solid #fff;
+}
+.tp-flag2 img{
+  border-radius: 50%;
+  border: 5px solid #fff;
+}
+.tp-grey{
+  font-size: 15px;
+  color: grey;
+}
+.tp-yellow{
+  background-color: #ffc107;
+  border-radius: 1rem;
+  color: black !important;
+  font-weight: 500 !important;
+}
+.tp-light-blue{
+  background-color: #17a2b8;
+  border-radius: 1rem;
+  color: white !important;
+  font-weight: 500 !important;
+}
+.tp-green{
+  background-color: #28a745;
+  border-radius: 1rem;
+  color: white !important;
+  font-weight: 500 !important;
+}
+.tp-red{
+  background-color: #dc3545;
+  border-radius: 1rem;
+  color: white !important;
+  font-weight: 500 !important;
+}
+.tp-blue{
+  background-color: #007bff;
+  border-radius: 1rem;
+  color: white !important;
+  font-weight: 500 !important;
+}
+.tp-event-button{
+  background-color: #550b7c !important;
+  cursor: pointer;
+  color: white !important;
+}
+.tp-com-flag1{
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  position: absolute;
+  /* display: inline-flex; */
+  right: 2rem;
+  top: 10rem;
+  z-index: 3;
+}
+.tp-com-flag1 img{
+  border-radius: 50%;
+  border: 5px solid #fff;
+}
+.carousel-buttons{
+  border: 0px;
+  background-color: white;
+  border-radius: 50%;
+}
+.tp-star{
+  margin-top: 8px;
+  width: 10px;
+  height: 10px;
+}
