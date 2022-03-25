@@ -180,7 +180,7 @@ const Login = () => {
                         <div className="login_text">
                             <img src="" alt="" />
 
-                            <h1>Welcome Back</h1>
+                            <h1 className='heading'>Welcome Back</h1>
                         </div>
                         {next === false ?
 
@@ -206,7 +206,7 @@ const Login = () => {
                                         onExpired={() => changeVerified()}
                                     />
                                     <div>
-                                        <button className='back-btn btn badge badge-sm bg-primary' onClick={handleNext}>
+                                        <button className='back-btn btn badge badge-sm btn-primary' onClick={handleNext}>
                                             Back
                                         </button>
                                     </div>

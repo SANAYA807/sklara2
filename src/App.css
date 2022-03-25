@@ -48,6 +48,27 @@ input {
   height: 55px;
   border-radius: 2px;
   border: none;
-  background-color: #0062e3;
+  /* background-color: #0062e3; */
+  background-color: #550B7C;
   color: #fff;
+}
+.login_button:hover{
+  background-color: #8441AF;
+  transition: 0.5s ease-out;
+}
+.btn-primary{
+  background-color: #550B7C !important;
+}
+.btn-primary:hover{
+  background-color: #8441AF !important;
+  transition: 0.5s ease-out;
+}
+.heading{
+  color:#1B1464 !important; 
+}
+
+.center{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }

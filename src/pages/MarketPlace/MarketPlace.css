@@ -1,0 +1,71 @@
+.search-outer{
+  background-color: #f1f6f9;
+}
+.div-white-text-violet-bg{
+  background-color:#550b7c;
+  color:white;
+  border-radius: 2rem;
+}
+.search-input-div{
+  width: 50vw !important;
+}
+.search-popular{
+  font-weight: 500;
+  font-size: large;
+  margin-right: 5px;
+}
+.search-icon{
+  background-color: #550b7c !important;
+  cursor: pointer;
+  color: white !important;
+}
+.search-icon:hover{
+  background-color: #fff;
+}
+.search-top-company .first{
+  font-size: x-large;
+}
+.search-com-image{
+  height: 11rem;
+}
+.search-com-flag1{
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  position: absolute;
+  /* display: inline-flex; */
+  right: 3rem;
+  top: 10rem;
+  z-index: 3;
+}
+.search-com-flag2{
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  /* display: inline-flex; */
+  right: 2rem;
+  top: 10rem;
+  z-index: 2;
+}
+.search-com-flag1 img{
+  border-radius: 50%;
+  border: 5px solid #fff;
+}
+.search-com-flag2 img{
+  border-radius: 50%;
+  border: 5px solid #fff;
+}
+.search-experience{
+  font-size: 15px;
+  color: grey;
+}
+.search-event-button{
+  background-color: #550b7c !important;
+  cursor: pointer;
+  color: white !important;
+}
+.search-event-button:hover{
+  color: black !important;
+  background-color: #fff !important;
+  border-color: #550b7c !important;
+}
