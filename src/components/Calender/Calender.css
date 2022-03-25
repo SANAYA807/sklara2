@@ -64,12 +64,9 @@
     padding: 1em;
     border-bottom: 1px solid var(--lightGray);
     border-top: 3px solid var(--lightGray);
-    text-decoration: none !important;
 
   }
-  . abbr[title]{
-    text-decoration: none !important;
-  }
+  
   .react-calendar__month-view__weekNumbers .react-calendar__tile {
     display: flex;
     align-items: center;
