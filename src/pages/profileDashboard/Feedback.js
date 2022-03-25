@@ -43,7 +43,7 @@ const Feedback = () => {
             <div className='container'>
             <h2 className='mx-0 mt-5 heading'>Your Satisfactions & Feedback</h2>
             </div>
-            <div className='container p-3 bg-light shadow'>
+            <div className='container p-3 bg-white shadow'>
                 <div className='row justify-content-between'>
                     <div className='col-md-6'>
                     <h3 className='fw-light'>Average session rating</h3>

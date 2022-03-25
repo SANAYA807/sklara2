@@ -101,7 +101,7 @@ const DevProgress = () => {
       };
 
     return (
-        <div className='container shadow bg-light p-3 my-4'>
+        <div className='container shadow bg-white p-3 my-4 p-rad'>
             <div className='row justify-content-between'>
                 <div className='col'>
                     <h3 className='fw-light'>Development Progress</h3>

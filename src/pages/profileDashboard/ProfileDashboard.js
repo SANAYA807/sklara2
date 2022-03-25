@@ -10,8 +10,9 @@ const ProfileDashboard = () => {
     return (<>
     <Navbar/>
         <div className='container-fluid px-5 py-3'>
-        <div className='row justify-content-center px-5'>
-            <div className='col-md-6 shadow p-2 text-center profD-rad bg-light pt-4'>
+        <div className='row justify-content-between mx-5 mt-3'>
+            <div className='col-md-6'>
+                <div className=' shadow p-2 px-3 text-center profD-rad pt-4' style={{backgroundColor:"#fff"}}>
                 <img src={'./assets/model2.jpg'} className="profile-dp center"/>
             <h4 className='fw-normal my-3'>Marcus Portsmith</h4>
             <p className='mb-0'>Senior Project Manager</p>
@@ -19,12 +20,14 @@ const ProfileDashboard = () => {
             <h4 className='heading'>Credit Balance : &euro; 200</h4>
             <p className='mb-3 fw-lighter'>Last login 2 hours ago</p>
             </div>
+            </div>
             <div className='col-md-6'>
+                <div className=''>
                 <h2 className='display-4'>
                 Hello <span className='heading'> Marcus</span></h2>
                 <h4>Here is a summary of your activities at SKLARA</h4>
             
-            <div className='w-100 card shadow p-2 profD-rad mt-5'>
+            <div className='w-100 bg-white shadow p-2 profD-rad mt-5'>
                 <div className='d-flex justify-content-between profD-dash'>
                     <div>
             <h4 className='my-3 fw-light'>CPSA Foundation Training</h4>
@@ -36,7 +39,7 @@ const ProfileDashboard = () => {
             </div>
             </div>
 
-            <div className='w-100 card shadow p-2 profD-rad mt-5'>
+            <div className='w-100 bg-white shadow p-2 profD-rad mt-5'>
                 <div className='d-flex justify-content-between profD-dash'>
                     <div>
             <h2 className='my-3 heading'>8</h2>
@@ -48,7 +51,7 @@ const ProfileDashboard = () => {
             </div>
             </div>
             
-            
+            </div>
             </div>
         </div>
 

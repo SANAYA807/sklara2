@@ -17,7 +17,7 @@ import './navbar.css'
 const Navbar = () => {
     return (
       <>
-<nav className="navbar navbar-expand-lg navbar-light bg-light nav-div px-5">
+<nav className="navbar navbar-expand-lg navbar-light nav-div px-5" style={{backgroundColor:"#fff"}}>
   <div className="container-fluid">
     <Link className="navbar-brand" to="/dashboard"><img src={'./assets/sklaralogo.svg'} className="sklara-logo"/></Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ const Navbar = () => {
 
 {/* bottom navigation */}
 
-<nav className="navbar navbar-expand-lg navbar-light bg-light shadow nav-div px-5">
+<nav className="navbar navbar-expand-lg navbar-light shadow nav-div px-5"style={{backgroundColor:"#fff"}}>
   <div className="container-fluid">
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon" />
