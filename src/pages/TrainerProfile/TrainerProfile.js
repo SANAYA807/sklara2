@@ -225,7 +225,7 @@ function TrainerProfile() {
                   <img role="button" src="images/dummy/training02.jpg" className="card-img-top mp-com-image" alt="..." />
                   <div className="card-body">
                     <span className='tp-com-flag1'><img className="" src="images/flags/de.svg" alt="" /></span>
-                    <h2 className="card-title m-0 mt-2 mb-">Understanding Analytical Tools (Expert)</h2>
+                    <h6 className="card-title m-0 mt-2 mb-">Understanding Analytical Tools (Expert)</h6>
                     <p className='mb-2' style={{ "color": "#cccccc" }}><small>Senior Project Manager</small></p>
                     <div className='row mb-3'>
                       <div className='col-6'>
@@ -246,7 +246,7 @@ function TrainerProfile() {
                       <img src="images/star.png" className='tp-star' alt='star' />
                       <img src="images/star.png" className='tp-star' alt='star' />
                       <img src="images/star.png" className='tp-star' alt='star' />
-                      <small>(5)</small>
+                      <small className='mx-1'>(5)</small>
                     </div>
                   </div>
                 </div>

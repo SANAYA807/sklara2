@@ -102,6 +102,7 @@
   border-radius: 50%;
 }
 .tp-star{
+  margin-top: 8px;
   width: 10px;
   height: 10px;
 }
