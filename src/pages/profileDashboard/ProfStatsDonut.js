@@ -32,7 +32,8 @@ const ProfStatsDonut = () => {
             <h3 className='mx-5 mt-5 heading'>Your Statistics</h3>
             <div className='row justify-content-between mx-5'>
 
-<div className='col-md-5 shadow bg-light p-2'>
+<div className='col-md-6'>
+  <div className='shadow bg-white p-rad p-3' style={{height:"100%"}}>
     <div className='p-1'>
     <h4 className='fw-light mt-2'>Your Learnings</h4>
     <h5 className='fw-light'>Distribution of learning according to their state</h5>
@@ -78,9 +79,11 @@ const ProfStatsDonut = () => {
 </div>
 </div>
 </div>
+</div>
 {/* left div end */}
 
-<div className='col-md-5 bg-light shadow p-2 p-rad'>
+<div className='col-md-6'>
+<div className='shadow bg-white p-rad p-3'style={{height:"100%"}}>
 <div className='p-1'>
     <h4 className='fw-light mt-2'>Your focus areas</h4>
     <h5 className='fw-light'>Distribution of focus areas according to their states</h5>
@@ -178,7 +181,7 @@ const ProfStatsDonut = () => {
 
 
 </div>
-
+</div>
             </div>
             
         </div>

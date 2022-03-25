@@ -11,7 +11,6 @@ import PeopleIcon from '@mui/icons-material/People';
 const CoachProfile = () => {
     return (
         <div>
-            <Navbar />
             <div className='outer-profile pt-3'>
                 <div className='container-md'>
                     <h2 >Coach's Profile :: <span className='change-color'> Martin Krugger</span></h2>
@@ -171,8 +170,7 @@ const CoachProfile = () => {
                         <button type="button" className="btn mx-1 px-4">Call Us</button>
                     </div>
                 </div>
-            </div>
-            <Footer />
+            </div >
 
 
         </div>

@@ -44,33 +44,10 @@
   border: 5px solid #fff;
 }
 .profile-settings{
-  background-color: #550b7c;
+  background-color: #550b7c !important;
   position: absolute;
   right: -10px;
   top: 0%;
-  color: white;
-  padding: 1rem;
-}
-.profile-end-div{
-  height: 15rem;
-  position: relative;
-  background-color: #8441af;
-  margin-bottom: 5rem;
-}
-.inner-profile-end{
-  color: white;
-  position: absolute; /*Can also be `fixed`*/
-  left: 0;
-  right: 0;
-  top: 50%;
-  bottom: 0;
-  margin: auto;
-  transform: translateY(-50%);
-  /*Solves a problem in which the content is being cut when the div is smaller than its' wrapper:*/
-  max-width: 100%;
-  max-height: 100%;
-}
-.inner-profile-end button{
-  background: linear-gradient(to right, #d3d6d6 0%, #e8e9e9 100%);
-  color: #550b7c;
+  color: white !important;
+  padding: 12px !important;
 }

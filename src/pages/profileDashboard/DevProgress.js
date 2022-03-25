@@ -26,7 +26,7 @@ import {
   );
 
   const options = {
-    responsive: true,
+    // responsive: true,
     interaction: {
       mode: 'index',
       intersect: false,
@@ -101,7 +101,7 @@ const DevProgress = () => {
       };
 
     return (
-        <div className='container shadow bg-light p-3 my-4'>
+        <div className='container shadow bg-white p-3 my-4 p-rad'>
             <div className='row justify-content-between'>
                 <div className='col'>
                     <h3 className='fw-light'>Development Progress</h3>
@@ -138,7 +138,7 @@ const DevProgress = () => {
             </div>
 
             <div className='devprog-line-div center mt-4'>
-            <Line options={options} data={data}/>
+            <Line options={options} data={data} height={'50px'}/>
             </div>
             
         </div>
