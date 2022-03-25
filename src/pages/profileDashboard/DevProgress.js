@@ -26,7 +26,7 @@ import {
   );
 
   const options = {
-    responsive: true,
+    // responsive: true,
     interaction: {
       mode: 'index',
       intersect: false,
@@ -138,7 +138,7 @@ const DevProgress = () => {
             </div>
 
             <div className='devprog-line-div center mt-4'>
-            <Line options={options} data={data}/>
+            <Line options={options} data={data} height={'50px'}/>
             </div>
             
         </div>

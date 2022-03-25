@@ -3,12 +3,12 @@ import Footer from '../../components/footer/Footer'
 import Navbar from '../../components/navbar/Navbar'
 import DevProgress from './DevProgress'
 import Feedback from './Feedback'
+import MarketPlace from './MarketPlace'
 import './pdash.css'
 import ProfStatsDonut from './ProfStatsDonut'
 
 const ProfileDashboard = () => {
     return (<>
-    <Navbar/>
         <div className='container-fluid px-5 py-3'>
         <div className='row justify-content-between mx-5 mt-3'>
             <div className='col-md-6'>
@@ -60,7 +60,7 @@ const ProfileDashboard = () => {
         <ProfStatsDonut/>
         <DevProgress/>
         <Feedback/>
-        <Footer/>
+        <MarketPlace/>
         </>
     )
 }

@@ -6,7 +6,6 @@ import Navbar from '../../components/navbar/Navbar'
 const CoachProfile = () => {
     return (
         <div>
-            <Navbar />
             <div className='outer-profile pt-3'>
                 <div className='container-md'>
                     <h2 >Coach's Profile :: <span className='change-color'> Martin Krugger</span></h2>
@@ -176,7 +175,6 @@ const CoachProfile = () => {
                     </div>
                 </div>
             </div >
-            <Footer />
 
 
         </div>

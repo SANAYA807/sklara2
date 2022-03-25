@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import { Link } from 'react-router-dom'
 import SearchIcon from '@mui/icons-material/Search';
-import { Search } from '@mui/icons-material';
+import Search from '@mui/icons-material/Search';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
@@ -11,11 +11,15 @@ import ShopTwoOutlinedIcon from '@mui/icons-material/ShopTwoOutlined';
 import FilterCenterFocusOutlinedIcon from '@mui/icons-material/FilterCenterFocusOutlined';
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 import CastForEducationOutlinedIcon from '@mui/icons-material/CastForEducationOutlined';
+import SettingsIcon from '@mui/icons-material/Settings';
+import LogoutIcon from '@mui/icons-material/Logout';
+import {isAutheticated, signout } from '../auth/authhelper';
 
 import './navbar.css'
 
-const Navbar = () => {
-    return (
+const Navbar = ({userdata}) => {
+  //console.log(userdata)
+      return (
       <>
 <nav className="navbar navbar-expand-lg navbar-light nav-div px-5" style={{backgroundColor:"#fff"}}>
   <div className="container-fluid">
@@ -38,9 +42,20 @@ const Navbar = () => {
         <li className="nav-item">
           <Link className="nav-link" to="/"><EmailOutlinedIcon/></Link>
         </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/profile"><AccountCircleOutlinedIcon/></Link>
-        </li>
+
+        <div class="btn-group dropstart">
+  <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+  <AccountCircleOutlinedIcon/>
+  </button>
+  <ul class="dropdown-menu">
+<li><AccountCircleOutlinedIcon/> {userdata && userdata.firstName} </li>
+  <li><hr class="dropdown-divider"/></li>
+    <li><Link className="nav-link" to="/profile"><SettingsIcon/> My Profile</Link></li>
+    {isAutheticated() &&
+    <li><Link className="nav-link" to="/" onClick={signout}><LogoutIcon/> Logout</Link></li>
+    }
+    </ul>
+</div>
         </div>
       </ul>
      

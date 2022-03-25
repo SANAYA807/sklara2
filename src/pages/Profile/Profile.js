@@ -5,7 +5,6 @@ import './Profile.css';
 function Profile() {
   return (
     <>
-    <Navbar/>
     <div className='outer-profile pt-3'>
       <div className='container-md'>
         <h2 className='change-color'>My Profile</h2>
@@ -175,7 +174,6 @@ function Profile() {
         </div>
       </div>
     </div >
-    <Footer/>
     </>
   );
 }
