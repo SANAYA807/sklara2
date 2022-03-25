@@ -6,7 +6,7 @@ import Navbar from './components/navbar/Navbar';
 import Login from './pages/Login';
 import Profile from './pages/Profile/Profile';
 import MarketPlace from './pages/MarketPlace/MarketPlace';
-
+import './components/Calender/Calender.css'
 import ProfileDashboard from './pages/profileDashboard/ProfileDashboard';
 import CoachProfile from './pages/CoachProfile/CoachProfile';
 
