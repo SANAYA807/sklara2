@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import './components/Calender/Calender.css'
 import Footer from './components/footer/Footer';
 import Navbar from './components/navbar/Navbar';
 import Login from './pages/Login';
@@ -46,7 +47,7 @@ function App() {
   return (
     <Router>
 
-      {!userdata ?
+      {userdata ?
         <Routes>
           <Route path='*' element={<Login />} />
         </Routes>
@@ -55,7 +56,7 @@ function App() {
           <Navbar userdata={userdata} />
           <Routes>
             <Route exact path="/profile" element={<Profile userdata={userdata} />}></Route>
-            <Route exact path="/coachprofile" element={<CoachProfile />}></Route>
+            <Route exact path="/coachprofile" element={<CoachProfile userdata={userdata} />}></Route>
 
             <Route exact path="/market-place" element={<MarketPlace userdata={userdata} />}></Route>
 
