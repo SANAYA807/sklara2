@@ -1,14 +1,19 @@
-import React from 'react'
-import { Col, Row } from 'react-bootstrap'
-import Footer from '../../components/footer/Footer'
-import Navbar from '../../components/navbar/Navbar'
+import React, { useState } from 'react'
 import StarRoundedIcon from '@mui/icons-material/StarRounded';
 import ChatBubbleRoundedIcon from '@mui/icons-material/ChatBubbleRounded';
-import CalenderCard from '../../components/Calender/Calender';
 import HighlightIcon from '@mui/icons-material/Highlight';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import PeopleIcon from '@mui/icons-material/People';
+import Calendar from 'react-calendar';
+import Appointment from '../../components/Calender/Appointment';
+
 const CoachProfile = () => {
+
+    const [value, onChange] = useState(new Date());
+    const [toggle, setToggle] = useState(false)
+    const handleDayClick = (day, e) => {
+        setToggle(!toggle)
+    }
     return (
         <div>
             <div className='outer-profile pt-3'>
@@ -68,46 +73,41 @@ const CoachProfile = () => {
                                             <p className='m-0 p-0' style={{ "fontWeight": "500" }}>Germany</p>
                                         </div>
                                         <div className="mb-5">
-                                            <small className='text-muted m-0 p-0'>Works At</small>
-                                            <p className='m-0 p-0' style={{ "fontWeight": "500" }}>Bosch </p>
+                                            <small className='text-muted m-0 p-0'>Avg. Response Time</small>
+                                            <p className='m-0 p-0' style={{ "fontWeight": "500" }}>1 day</p>
                                         </div>
-                                        <div className="mb-2">
-                                            <small className='text-muted m-0 p-0'>Email Address</small>
-                                            <p className='m-0 p-0' style={{ "fontWeight": "500" }}>rebecca@somemail.com</p>
+                                        <div className="mb-5">
+                                            <small className='text-muted m-0 p-0'>Total Sessions</small>
+                                            <p className='m-0 p-0' style={{ "fontWeight": "500" }}>69</p>
                                         </div>
-
                                     </div>
                                     <div className='col-4'>
                                         <div className="mb-5">
                                             <small className='text-muted m-0 p-0'>Experience</small>
                                             <p className='m-0 p-0' style={{ "fontWeight": "500" }}>13 Years</p>
+                                        </div>
+                                        <div className="mb-5">
+                                            <small className='text-muted m-0 p-0'>Last Delivery</small>
+                                            <p className='m-0 p-0' style={{ "fontWeight": "500" }}>3 days ago</p>
+                                        </div>
+                                        <div className="mb-5">
+                                            <small className='text-muted m-0 p-0'>Total Participants</small>
+                                            <p className='m-0 p-0' style={{ "fontWeight": "500" }}>755</p>
+                                        </div>
+                                    </div>
+                                    <div className='col-4'>
+                                        <div className="mb-5">
+                                            <small className='text-muted m-0 p-0'>Trainer Since</small>
+                                            <p className='m-0 p-0' style={{ "fontWeight": "500" }}>2009</p>
                                         </div>
                                         <div className="mb-5">
                                             <small className='text-muted m-0 p-0'>Languages</small>
                                             <p className='m-0 p-0' style={{ "fontWeight": "500" }}>English, German</p>
                                         </div>
-                                        <div className="mb-2">
-                                            <small className='text-muted m-0 p-0'>Phone Number</small>
-                                            <p className='m-0 p-0' style={{ "fontWeight": "500" }}>+49 172 575 9260</p>
-                                        </div>
-                                    </div>
-                                    <div className='col-4'>
                                         <div className="mb-5">
-                                            <small className='text-muted m-0 p-0'>Experience</small>
-                                            <p className='m-0 p-0' style={{ "fontWeight": "500" }}>13 Years</p>
+                                            <small className='text-muted m-0 p-0'>Avg. Session Size</small>
+                                            <p className='m-0 p-0' style={{ "fontWeight": "500" }}>11 Participants</p>
                                         </div>
-
-                                        <div className="mb-5">
-                                            <small className='text-muted m-0 p-0'>Highest Qualification</small>
-                                            <p className='m-0 p-0' style={{ "fontWeight": "500" }}>Dr. Ing</p>
-                                        </div>
-                                        <div className="mb-2">
-                                            <small className='text-muted m-0 p-0'>Linked In Profile</small>
-                                            <div>
-                                                <a href='/' className='m-0 p-0' style={{ "fontWeight": "500", "textDecoration": "none" }}>Open Profile</a>
-                                            </div>
-                                        </div>
-
                                     </div>
                                     <div className="description">
                                         <p>Martin has corporate training experience of more than 13 years and overall experience of 25+ years. He has worked in Chemical and Fertilizer Industries for more than two decades and has excelled in leadership and mentorship positions. He has worked in Chemical and Fertilizer Industries for more than two decades and has excelled in leadership and mentorship positions.</p>
@@ -121,15 +121,20 @@ const CoachProfile = () => {
 
                         <div className='common-card'>
                             <div className="card">
-                                <div className="card-body">
+                                <div className="card-body row">
                                     <div className="col-lg-6 ">
-                                        <CalenderCard />
+                                        <Calendar onChange={onChange} value={value} className='mb-3 ml-0' next2Label={null} prev2Label={null} onClickDay={handleDayClick} />
                                         <div className='alignRight'><small className='text-muted '>Highlights indicate martin is busy on those dates</small></div>
                                         <h6 className='mb-0 mt-5'>Want a personalized training from Martin, for you or your team?</h6>
                                         <p><small className='text-muted '>You will have the opportunity to add your requirements in the following pages.</small></p>
                                         <button className='btn shadow btn-primary text-light coach-btn mt-0'> Request Booking</button>
 
                                     </div>
+                                    {toggle && <div className="col-lg-5 ">
+                                        <Appointment />
+
+                                    </div>}
+
                                 </div>
                             </div>
                         </div>
@@ -142,6 +147,7 @@ const CoachProfile = () => {
                                             <h6>How to be a pro using AI tools</h6>
                                             <span className='review-flag1'><img className="" src="	http://18.157.84.45/design/images/flags/de.svg" alt="" /></span>
                                             {[1, 1, 1, 1].map(item => <StarRoundedIcon fontSize='smaller' style={{ color: '#ffc100' }} />)}
+
                                             <small className='text-muted'>review from Germany</small>
 
                                             <p className='mt-4'> It was a great experience. Martin explained the basics very interestingly and the advanced stuff was approached with great examples.</p>
