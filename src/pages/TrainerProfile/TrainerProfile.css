@@ -98,6 +98,8 @@
 }
 .carousel-buttons{
   border: 0px;
+  height: 30px;
+  width: 30px;
   background-color: white;
   border-radius: 50%;
 }

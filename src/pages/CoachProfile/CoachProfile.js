@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Navbar from '../../components/navbar/Navbar'
 import StarRoundedIcon from '@mui/icons-material/StarRounded';
 import ChatBubbleRoundedIcon from '@mui/icons-material/ChatBubbleRounded';
 import HighlightIcon from '@mui/icons-material/Highlight';
@@ -24,7 +25,7 @@ const CoachProfile = () => {
                         <div className='col-lg-6 col-sm-12 common-card'>
                             <div className="card">
                                 <button type="button" className="btn profile-settings"><i class="fa-solid fa-gear"></i></button>
-                                <img src="	http://18.157.84.45/design/images/dummy/user2_big.jpg" className="card-img-top profile-image" alt="..." />
+                                <img src="http://18.157.84.45/design/images/dummy/user2_big.jpg" className="card-img-top profile-image" alt="..." />
                                 <div className="card-body">
                                     <span className='profile-flag1'><img className="" src="	http://18.157.84.45/design/images/flags/de.svg" alt="" /></span>
                                     <span className="profile-flag2"><img className="img-fluid" src="http://18.157.84.45/design/images/flags/en.svg" alt="" /></span>
@@ -34,27 +35,19 @@ const CoachProfile = () => {
                                     <StarRoundedIcon style={{ color: '#ffc100' }} />
                                     <span className='rating'> 4.9</span>
                                     <small className='inner-text'> (69)</small>
-                                    <div className='mt-4'>
-                                        <small className='text-muted m-0 p-0'>Industry Focus</small>
-                                        <br />
-                                        <div className="badges">
-                                            <h6 className=" badge bg-warning">Oil & Natural Gas</h6>
-                                            <h6 className="badge bg-info">Chemical Engineering</h6>
-                                            <h6 className="badge bg-success">Energy</h6>
-                                        </div>
+                                    <div>
+                                        <p className="tp-grey m-0"><small>Industry Focus</small></p>
+                                        <a href="/#"><span className="badge badge-pill tp-yellow">Chemical Engineering</span></a>&nbsp;
+                                        <a href="/#"><span className="badge badge-pill tp-blue">Oil & Natural Gas</span></a>&nbsp;
+                                        <a href="/#"><span className="badge badge-pill tp-green">Energy</span></a>&nbsp;
                                     </div>
-                                    <div className='mt-4'>
-                                        <small className='text-muted m-0 p-0'>Expertise</small>
-                                        <br />
-                                        <div className="badges">
-                                            <h6 className=" badge bg-warning">Oil & Natural Gas</h6>
-                                            <h6 className="badge bg-info">Chemical Engineering</h6>
-                                            <h6 className="badge bg-success">Energy</h6>
-                                            <h6 className="badge bg-danger">Leaderships</h6>
-                                            <h6 className="badge bg-primary">Energy</h6>
-
-
-                                        </div>
+                                    <div className='mt-3'>
+                                        <p className="tp-grey m-0"><small>Expertise</small></p>
+                                        <a href="/#"><span className="badge badge-pill tp-yellow">Start-Ups</span></a>&nbsp;
+                                        <a href="/#"><span className="badge badge-pill tp-light-blue">Oil & Natural Gas</span></a>&nbsp;
+                                        <a href="/#"><span className="badge badge-pill tp-green">Marketing & Sales</span></a>&nbsp;
+                                        <a href="/#"><span className="badge badge-pill tp-red">Leaderships</span></a>&nbsp;
+                                        <a href="/#"><span className="badge badge-pill tp-blue">Negotiations</span></a>&nbsp;
                                     </div>
                                     <div className="center">
                                         <button className='btn shadow btn-primary text-light coach-btn'> <ChatBubbleRoundedIcon fontSize='small' /> Contact martin</button>

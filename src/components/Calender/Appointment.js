@@ -19,22 +19,22 @@ const Appointment = () => {
                 </div>
             </div>
             <ul class="list-group list-group-horizontal-sm">
-                <li class="list-group-item">10:00</li>
+                <li class="list-group-item" style={{ marginLeft: '30px', bordeLeftWidth: '1px' }}>10:00</li>
                 <li class="list-group-item" style={{ marginLeft: '30px', bordeLeftWidth: '1px' }}>11:00</li>
                 <li class="list-group-item" style={{ marginLeft: '30px', bordeLeftWidth: '1px', backgroundColor: '#b7bbbb', color: '#8e9292' }}>12:00</li>
                 <li class="list-group-item" style={{ marginLeft: '30px', bordeLeftWidth: '1px' }}>13:00</li>
             </ul>
             <ul class="list-group list-group-horizontal-sm" style={{ marginTop: '10px' }}>
-                <li class="list-group-item">14:00</li>
+                <li class="list-group-item" style={{ marginLeft: '30px', bordeLeftWidth: '1px' }}>14:00</li>
                 <li class="list-group-item" style={{ marginLeft: '30px', bordeLeftWidth: '1px' }}>15:00</li>
                 <li class="list-group-item" style={{ marginLeft: '30px', bordeLeftWidth: '1px' }}>16:00</li>
                 <li class="list-group-item" style={{ marginLeft: '30px', bordeLeftWidth: '1px' }}>17:00</li>
             </ul>
             <ul class="list-group list-group-horizontal-sm" style={{ marginTop: '10px' }}>
-                <li class="list-group-item">18:00</li>
+                <li class="list-group-item" style={{ marginLeft: '30px', bordeLeftWidth: '1px' }}>18:00</li>
                 <li class="list-group-item" style={{ marginLeft: '30px', bordeLeftWidth: '1px' }}>19:00</li>
             </ul>
-            <button className=' btn shadow btn-primary text-light coach-btn mt-0 appointment_btn'>Book Appointment</button>
+            <button className='appointment_btn btn shadow btn-primary text-light coach-btn mt-0'>Book Appointment</button>
         </div>
     )
 }

@@ -15,12 +15,20 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import CameraIcon from '@mui/icons-material/Camera';
 import { Carousel } from 'react-bootstrap';
 import { useRef, useState } from 'react';
+import Calendar from 'react-calendar';
+import Appointment from '../../components/Calender/Appointment';
 
 function TrainerProfile() {
 
 
   const arrayEvents = [1, 2, 3]
   const arrayReviews = [1, 2, 3, 4]
+
+  const [value, onChange] = useState(new Date());
+  const [toggle, setToggle] = useState(false)
+  const handleDayClick = (day, e) => {
+    setToggle(!toggle)
+  }
 
   const ref = useRef(null);
 
@@ -69,7 +77,7 @@ function TrainerProfile() {
               </div>
             </div>
             <div className='col-lg-6 col-sm-12 common-card'>
-              <div className="card" style={{ "fontSize": "14px" }}>
+              <div className="card coach-card" style={{ "fontSize": "14px" }}>
                 <div className="card-body row mt-3">
                   <div className='col-4'>
                     <div className="mb-5">
@@ -113,31 +121,44 @@ function TrainerProfile() {
                       <p className='m-0 p-0' style={{ "fontWeight": "500" }}>11 Participants</p>
                     </div>
                   </div>
-                  <div className='px-3'>
-                    <hr className='text-muted' />
-                  </div>
-                  <div className='mb-5'><small>
-                    Martin has corporate training experience of more than 13 years and overall experience of 25+ years.
-                    He has worked in Chemical and Fertilizer Industries for more than two decades and has excelled in
-                    leadership and mentorship positions. He has worked in Chemical and Fertilizer Industries for more than
-                    two decades and has excelled in leadership and mentorship positions.</small>
+                  <div className="description">
+                    <p>Martin has corporate training experience of more than 13 years and overall experience of 25+ years. He has worked in Chemical and Fertilizer Industries for more than two decades and has excelled in leadership and mentorship positions. He has worked in Chemical and Fertilizer Industries for more than two decades and has excelled in leadership and mentorship positions.</p>
                   </div>
                 </div>
+
               </div>
             </div>
             <h2>Availbility Calendar of <span className='change-color'>Martin Krugger</span></h2>
-            <p className='text-muted'><small>Select a date to find available time slots</ small></p>
-            <br />
-            <div className='col-12 common-card'>
+            <p className='text-muted'><small>Select a date to find available time slots</small></p>
+            <div className='common-card'>
+              <div className="card">
+                <div className="card-body row">
+                  <div className="col-lg-6 ">
+                    <Calendar onChange={onChange} value={value} className='mb-3 ml-0' next2Label={null} prev2Label={null} onClickDay={handleDayClick} />
+                    <div className='alignRight'><small className='text-muted '>Highlights indicate martin is busy on those dates</small></div>
+                    <h6 className='mb-0 mt-5'>Want a personalized training from Martin, for you or your team?</h6>
+                    <p><small className='text-muted '>You will have the opportunity to add your requirements in the following pages.</small></p>
+                    <button className='btn shadow btn-primary text-light coach-btn mt-0'> Request Booking</button>
+
+                  </div>
+                  {toggle && <div className="col-lg-5 ">
+                    <Appointment />
+
+                  </div>}
+
+                </div>
+              </div>
+            </div>
+            {/* <div className='col-12 common-card'>
               <div className="card">
                 <div className="card-body">
                   <h3 className="card-title">Your <span className='change-color'>Reports</span></h3>
                   <p className='text-muted'><small>Only you and your HR Manager can see</ small></p>
                   {/* <Calandar /> */}
-                </div>
+            {/* </div>
                 <hr className='text-muted mb-5' />
               </div>
-            </div>
+            </div> */}
             <div className='d-flex justify-content-between'>
               <h2 className='mb-3'>Upcoming Events</h2>
               <div>
