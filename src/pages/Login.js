@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Row, Col, Container } from 'react-bootstrap'
+import { Row, Col, Container, FormControl } from 'react-bootstrap'
 import './login.css'
 import { API } from '../API'
 import { useNavigate } from 'react-router-dom'
@@ -8,6 +8,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import ReCAPTCHA from "react-google-recaptcha";
 import { isAutheticated } from '../components/auth/authhelper'
 import axios from 'axios'
+import { Button, Modal } from 'react-bootstrap'
 
 const Login = () => {
     const navigate = useNavigate();
@@ -34,6 +35,12 @@ const Login = () => {
     const [next, setNext] = useState(false)
     const [validForm, setValidForm] = useState(false);
     //console.log(token)
+    //for modal---------------------------
+    const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  //---------------------------------
 
     const validateForm = () => {
         let valid = true;
@@ -158,53 +165,49 @@ const Login = () => {
                     dangerMode: true,
                 });
         }
-        //     .then((response) => {
-        //         // console.log(response)
-        //         // if (response) {
-        //             setLoading(false)
-        //             localStorage.setItem(
-        //                 "auth",
-        //                 JSON.stringify({
-        //                     user: user.email,
-        //                     token: response.data.token,
-        //                 })
-        //             );
-        //             //console.log(user);
-                   
-        //             navigate('/dashboard')
-        //             //window.location.reload()
-                   
-        //         // } else {
-        //         //     setLoading(false);
-        //         //     let message = response.data.message;
-        //         //     swal({
-        //         //         title: "Error",
-        //         //         text: message,
-        //         //         icon: "error",
-        //         //         buttons: true,
-        //         //         dangerMode: true,
-        //         //     });
-        //         // }
-        //         ////console.log("here the response",response);    
-        //     })
-        //     .catch((err) => {
-        //         setLoading(false);
-        //         let message = err.response?.data.message;
-        //         return swal({
-        //             title: "Error",
-        //             text: message,
-        //             icon: "error",
-        //             buttons: true,
-        //             dangerMode: true,
-        //         });
-        //         ////console.log(err.response);
-        //     });
-        // // history.push("/");
+      
     };
 
-    return (
-        <div className='login'>
+    const ForgotMail = async() =>{
+let res = await axios.put(`${API}/generatePassword`,{email:user.email})
+if(res.data.status === 'ok'){
+    let message = res.data.message;
+                swal({
+                    title: "Success",
+                    text: message,
+                    icon: "success",
+                    buttons: true,
+                }).then(()=>{
+                    window.location.reload()
+                })
+}else{
+    swal("Oops!", "Something went wrong!", "error");
+    handleClose()
+}    
+}
 
+    return (
+        <>
+        <>
+         {/* modal start */}
+         <Modal show={show} onHide={handleClose} className="p-4">
+        <Modal.Header closeButton>
+          <Modal.Title>Password Reset Request</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Forgot your password? Don't worry, click 'Confirm' to reset your password</Modal.Body>
+        {/* <FormControl placeholder='Enter your registered email address'/> */}
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancle
+          </Button>
+          <Button variant="primary" onClick={ForgotMail}>
+            Confirm
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      {/* modal end */}
+        </>
+        <div className='login'>
             <Row>
                 <Col><div className="login_img"></div></Col>
                 <Col>
@@ -251,6 +254,10 @@ const Login = () => {
                                     <ClipLoader color="white" loading={loading} size={20} />
                                     {!loading && "Log In"}
                                 </button>
+                                <div className='center'>
+                                <h6 className="text-center my-4 text-secondary" onClick={()=>handleShow()} style={{cursor:"pointer"}}>Forgot paswrod ?</h6>
+
+                                </div>
                             </div>
                         }
                         {validForm}
@@ -259,8 +266,8 @@ const Login = () => {
 
                 </Col>
             </Row>
-
         </div>
+        </>
     )
 }
 

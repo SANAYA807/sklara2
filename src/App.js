@@ -15,6 +15,7 @@ import axios from 'axios';
 import { API } from './API';
 import NotFound from './pages/notFound/NotFound';
 import TrainerProfile from './pages/TrainerProfile/TrainerProfile';
+import ChangePassword from './pages/changePassword/ChangePassword';
 
 function App() {
   const [userdata, setUserData] = useState(null)
@@ -42,31 +43,25 @@ function App() {
       console.log(err);
     };
   }
-  //console.log(userdata)
+  console.log(userdata)
 
   return (
     <Router>
 
-      {userdata ?
-        <Routes>
-          <Route exact path='/' element={<Login />} />
-        </Routes>
-        :
-        <>
-          <Navbar userdata={userdata} />
+         {userdata && <Navbar userdata={userdata} />}
           <Routes>
-            <Route exact path="/profile" element={<Profile userdata={userdata} />}></Route>
-            <Route exact path="/coachprofile" element={<CoachProfile userdata={userdata} />}></Route>
-
-            <Route exact path="/market-place" element={<MarketPlace userdata={userdata} />}></Route>
-
-            <Route exact path="/dashboard" element={<ProfileDashboard userdata={userdata} />} />
-            <Route exact path="/trainer_profile" element={<TrainerProfile />} />
+          <Route exact path="/" element={<Login/>}></Route>
+          <Route exact path="/market-place" element={<MarketPlace userdata={userdata} />}></Route>
+            <Route exact path="/profile" element={<Profile userdata={userdata}/>}></Route>
+            <Route exact path="/coachprofile" element={<CoachProfile userdata={userdata}/>}></Route>
+            <Route exact path="/dashboard" element={<ProfileDashboard userdata={userdata}/>}></Route>
+            <Route exact path="/trainer_profile" element={<TrainerProfile userdata={userdata}/>}></Route>
+            <Route exact path='/changePassword' element={<ChangePassword userdata={userdata}/>}></Route>
+            
+            
             <Route exact path='*' element={<NotFound />} />
           </Routes>
-          <Footer />
-        </>
-      }
+         {userdata && <Footer />}
     </Router>
 
   );
