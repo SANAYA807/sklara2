@@ -16,6 +16,9 @@ import { API } from './API';
 import NotFound from './pages/notFound/NotFound';
 import TrainerProfile from './pages/TrainerProfile/TrainerProfile';
 import ChangePassword from './pages/changePassword/ChangePassword';
+import SPDashboard from './pages/SPDashboard';
+import { Dashboard } from '@mui/icons-material';
+import NewDashboard from './pages/NewDashboard/NewDashboard';
 
 function App() {
   const [userdata, setUserData] = useState(null)
@@ -48,20 +51,23 @@ function App() {
   return (
     <Router>
 
-         {userdata && <Navbar userdata={userdata} />}
-          <Routes>
-          <Route exact path="/" element={<Login/>}></Route>
-          <Route exact path="/market-place" element={<MarketPlace userdata={userdata} />}></Route>
-            <Route exact path="/profile" element={<Profile userdata={userdata}/>}></Route>
-            <Route exact path="/coachprofile" element={<CoachProfile userdata={userdata}/>}></Route>
-            <Route exact path="/dashboard" element={<ProfileDashboard userdata={userdata}/>}></Route>
-            <Route exact path="/trainer_profile" element={<TrainerProfile userdata={userdata}/>}></Route>
-            <Route exact path='/changePassword' element={<ChangePassword userdata={userdata}/>}></Route>
-            
-            
-            <Route exact path='*' element={<NotFound />} />
-          </Routes>
-         {userdata && <Footer />}
+      {userdata && <Navbar userdata={userdata} />}
+      <Routes>
+        <Route exact path="/" element={<Login />}></Route>
+        <Route exact path="/market-place" element={<MarketPlace userdata={userdata} />}></Route>
+        <Route exact path="/profile" element={<Profile userdata={userdata} />}></Route>
+        <Route exact path="/coachprofile" element={<CoachProfile userdata={userdata} />}></Route>
+        {/* <Route exact path="/dashboard" element={<ProfileDashboard userdata={userdata} />}></Route> */}
+        <Route exact path="/sp_dashboard" element={<SPDashboard userdata={userdata} />}></Route>
+        <Route exact path="/trainer_profile" element={<TrainerProfile userdata={userdata} />}></Route>
+        <Route exact path='/changePassword' element={<ChangePassword userdata={userdata} />}></Route>
+        <Route exact path='/dashboard' element={<NewDashboard userdata={userdata} />}></Route>
+
+
+
+        <Route exact path='*' element={<NotFound />} />
+      </Routes>
+      {userdata && <Footer />}
     </Router>
 
   );

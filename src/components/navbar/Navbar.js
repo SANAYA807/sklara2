@@ -29,21 +29,22 @@ const Navbar = ({ userdata }) => {
           </button>
           <div className="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
 
-            <form className="d-flex">
-              <input className="form-control search-input" type="search" placeholder="Search" aria-label="Search" />
-              <button className="btn btn-outline-primary search-btn" type="submit"><Search /></button>
+            <form className="d-flex search_bar">
+              <Search />
+              <input className="form-control search-input" type="search" placeholder={'Search'} aria-label="Search" />
+
             </form>
 
             <ul className="navbar-nav mb-2 mb-lg-0">
               <div className='d-flex'>
-                <li className="nav-item">
+                <li className="nav-item box">
                   <Link className="nav-link" to="/"><NotificationsOutlinedIcon /></Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item box">
                   <Link className="nav-link" to="/"><EmailOutlinedIcon /></Link>
                 </li>
 
-                <div class="btn-group dropstart">
+                <div class="btn-group dropstart box">
                   <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     <AccountCircleOutlinedIcon />
                   </button>
