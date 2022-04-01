@@ -169,14 +169,7 @@ function Profile({userdata}) {
           </div>
         </div>
       </div>
-      <div className='profile-end-div'>
-        <div className='inner-profile-end text-center'>
-          <h4>Do you need support in using the Talent Platform or Sklara Joyn?</h4>
-          <p>Feel free to contact our IT Support.</p>
-          <button type="button" className="btn mx-1 px-4">Email Us</button>
-          <button type="button" className="btn mx-1 px-4">Call Us</button>
-        </div>
-      </div>
+      <ContactFooter />
     {/* </div > */}
     <Footer/>
     </>

@@ -4,7 +4,7 @@
 .mp-violet{
   background-color:#550b7c;
   color:white;
-  border-radius: 2rem;
+  border-radius: 2rem !important;
 }
 .mp-input-div{
   width: 50vw !important;
@@ -20,10 +20,12 @@
   color: white !important;
 }
 .mp-icon:hover{
-  background-color: #fff;
+  color: black !important;
+  background-color: #fff !important;
+  border-color: #550b7c !important;
 }
-.mp-top-company .first{
-  font-size: x-large;
+.mp-top-company .mp-first{
+  font-size: 1.3rem;
 }
 .mp-com-image{
   height: 11rem;
