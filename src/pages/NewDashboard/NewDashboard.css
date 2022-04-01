@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
+
+.left_side{
+    border-right: 1px solid var(--lightGray);
+}
+.yellow{
+    color: var(--yellow);
+    font-size: 30px;
+    font-family: 'Inter',sans-serif;
+    margin-bottom: 2rem;
+}
+.round_btn{
+    border-radius: 50px !important;
+}
+.green{
+    background-color: 
+    #EBF8E7;
+}

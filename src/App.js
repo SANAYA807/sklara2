@@ -16,6 +16,9 @@ import { API } from './API';
 import NotFound from './pages/notFound/NotFound';
 import TrainerProfile from './pages/TrainerProfile/TrainerProfile';
 import ChangePassword from './pages/changePassword/ChangePassword';
+import SPDashboard from './pages/SPDashboard';
+import { Dashboard } from '@mui/icons-material';
+import NewDashboard from './pages/NewDashboard/NewDashboard';
 
 function App() {
   const [userdata, setUserData] = useState(null)
@@ -69,6 +72,7 @@ function App() {
             <Route exact path="/dashboard" element={userdata && userdata._id ?<ProfileDashboard userdata={userdata}/> : <Login/>}></Route>
             <Route exact path="/trainer_profile" element={userdata && userdata._id ?<TrainerProfile userdata={userdata}/> : <Login/>}></Route>
             <Route exact path='/changePassword' element={userdata && userdata._id ?<ChangePassword userdata={userdata}/> : <Login/>}></Route>
+            <Route exact path="/sp_dashboard" element={<SPDashboard userdata={userdata} />}></Route>
             <Route exact path='*' element={<NotFound userdata={userdata} />} />
           </Routes>
     </Router>
