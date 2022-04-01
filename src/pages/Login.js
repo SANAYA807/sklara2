@@ -77,12 +77,12 @@ const Login = () => {
 
     }, [errors, verified]);
 
-    useEffect(()=>{
-        if (token) {
-            navigate("/dashboard");
-        }
-       // console.log(token)
-    },[])
+    // useEffect(()=>{
+    //     if (token) {
+    //         navigate("/dashboard");
+    //     }
+    //    // console.log(token)
+    // },[])
 
 
 

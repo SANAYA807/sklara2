@@ -19,6 +19,7 @@ import ChangePassword from './pages/changePassword/ChangePassword';
 import SPDashboard from './pages/SPDashboard';
 import { Dashboard } from '@mui/icons-material';
 import NewDashboard from './pages/NewDashboard/NewDashboard';
+import AddSkill from './pages/supplier/AddSkill';
 
 function App() {
   const [userdata, setUserData] = useState(null)
@@ -37,6 +38,7 @@ function App() {
       setUserData(JSON.parse(localStorage.getItem("userData")).userData);
     }else{
       try {
+        console.log('requesting user data from server')
         const response = await axios.get(`${API}/api/user`, {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -60,19 +62,20 @@ function App() {
     }
    
   }
-  //console.log(userdata)
+  console.log(userdata)
 
   return (
     <Router>
           <Routes>
-          <Route exact path="/" element={<Login/>}></Route>
+          <Route exact path="/" element={userdata && userdata._id ? <ProfileDashboard/> :<Login/>}></Route>
           <Route exact path="/market-place" element={userdata && userdata._id ? <MarketPlace userdata={userdata}/> : <Login/>}></Route>
             <Route exact path="/profile" element={userdata && userdata._id ?<Profile userdata={userdata}/> : <Login/>}></Route>
             <Route exact path="/coachprofile" element={userdata && userdata._id ?<CoachProfile userdata={userdata}/> : <Login/>}></Route>
             <Route exact path="/dashboard" element={userdata && userdata._id ?<ProfileDashboard userdata={userdata}/> : <Login/>}></Route>
             <Route exact path="/trainer_profile" element={userdata && userdata._id ?<TrainerProfile userdata={userdata}/> : <Login/>}></Route>
             <Route exact path='/changePassword' element={userdata && userdata._id ?<ChangePassword userdata={userdata}/> : <Login/>}></Route>
-            <Route exact path="/sp_dashboard" element={<SPDashboard userdata={userdata} />}></Route>
+            <Route exact path="/sp_dashboard" element={userdata && userdata._id ?<SPDashboard userdata={userdata}/>:<Login/>}></Route>
+            <Route exact path="/add_skill" element={userdata && userdata._id ?<AddSkill userdata={userdata}/>:<Login/>}></Route>
             <Route exact path='*' element={<NotFound userdata={userdata} />} />
           </Routes>
     </Router>

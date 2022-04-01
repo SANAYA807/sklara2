@@ -6,11 +6,15 @@ import ProfStatsDonut from './profileDashboard/ProfStatsDonut'
 import StarRoundedIcon from '@mui/icons-material/StarRounded';
 import BarChart from '../components/Charts/BarChart'
 import LineChart from '../components/Charts/LineChart'
+import Navbar from '../components/navbar/Navbar'
+import Footer from '../components/footer/Footer'
 
 
-const SPDashboard = () => {
+const SPDashboard = ({userdata}) => {
     return (
-        <> <div className='container-fluid px-5 py-3'>
+        <>
+         <Navbar userdata={userdata}/>
+        <div className='container-fluid px-5 py-3'>
             <div className='row justify-content-between mx-5 mt-3'>
                 <div className='col-md-6'>
                     <div className=' shadow p-2 px-3 text-center profD-rad pt-4' style={{ backgroundColor: "#fff" }}>
@@ -69,6 +73,7 @@ const SPDashboard = () => {
             <LineChart />
             <Feedback heading='Your Session Feedback' />
             <MarketPlace />
+            <Footer/>
         </>
     )
 }
