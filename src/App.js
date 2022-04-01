@@ -28,40 +28,49 @@ function App() {
   }, []);
   //getting user profile
   const getUser = async () => {
-    try {
-      const response = await axios.get(`${API}/api/user`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      //console.log(response)
-
-      setUserData(response.data.data);
-
+    let existanceData = JSON.parse(localStorage.getItem("userData"));
+    if(existanceData){
+      // console.log(existanceData.userData)
+      setUserData(JSON.parse(localStorage.getItem("userData")).userData);
+    }else{
+      try {
+        const response = await axios.get(`${API}/api/user`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        //console.log(response)
+  
+        //setUserData(response.data.data);
+        localStorage.setItem(
+          "userData",
+          JSON.stringify({
+              userData:response.data.data 
+          })
+      );
+      setUserData(JSON.parse(localStorage.getItem("userData")).userData);
+  
+      }
+      catch (err) {
+        console.log(err);
+      };
     }
-    catch (err) {
-      console.log(err);
-    };
+   
   }
-  console.log(userdata)
+  //console.log(userdata)
 
   return (
     <Router>
-
-         {userdata && <Navbar userdata={userdata} />}
           <Routes>
           <Route exact path="/" element={<Login/>}></Route>
-          <Route exact path="/market-place" element={<MarketPlace userdata={userdata} />}></Route>
-            <Route exact path="/profile" element={<Profile userdata={userdata}/>}></Route>
-            <Route exact path="/coachprofile" element={<CoachProfile userdata={userdata}/>}></Route>
-            <Route exact path="/dashboard" element={<ProfileDashboard userdata={userdata}/>}></Route>
-            <Route exact path="/trainer_profile" element={<TrainerProfile userdata={userdata}/>}></Route>
-            <Route exact path='/changePassword' element={<ChangePassword userdata={userdata}/>}></Route>
-            
-            
-            <Route exact path='*' element={<NotFound />} />
+          <Route exact path="/market-place" element={userdata && userdata._id ? <MarketPlace userdata={userdata}/> : <Login/>}></Route>
+            <Route exact path="/profile" element={userdata && userdata._id ?<Profile userdata={userdata}/> : <Login/>}></Route>
+            <Route exact path="/coachprofile" element={userdata && userdata._id ?<CoachProfile userdata={userdata}/> : <Login/>}></Route>
+            <Route exact path="/dashboard" element={userdata && userdata._id ?<ProfileDashboard userdata={userdata}/> : <Login/>}></Route>
+            <Route exact path="/trainer_profile" element={userdata && userdata._id ?<TrainerProfile userdata={userdata}/> : <Login/>}></Route>
+            <Route exact path='/changePassword' element={userdata && userdata._id ?<ChangePassword userdata={userdata}/> : <Login/>}></Route>
+            <Route exact path='*' element={<NotFound userdata={userdata} />} />
           </Routes>
-         {userdata && <Footer />}
     </Router>
 
   );

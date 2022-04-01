@@ -7,8 +7,9 @@ import MarketPlace from './MarketPlace'
 import './pdash.css'
 import ProfStatsDonut from './ProfStatsDonut'
 
-const ProfileDashboard = () => {
+const ProfileDashboard = ({userdata}) => {
     return (<>
+    <Navbar userdata={userdata} />
         <div className='container-fluid px-5 py-3'>
         <div className='row justify-content-between mx-5 mt-3'>
             <div className='col-md-6'>
@@ -61,6 +62,7 @@ const ProfileDashboard = () => {
         <DevProgress/>
         <Feedback/>
         <MarketPlace/>
+        <Footer/>
         </>
     )
 }

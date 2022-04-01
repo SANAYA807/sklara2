@@ -16,6 +16,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { isAutheticated, signout } from '../auth/authhelper';
 
 import './navbar.css'
+import { Password } from '@mui/icons-material';
 
 const Navbar = ({ userdata }) => {
   //console.log(userdata)
@@ -54,6 +55,7 @@ const Navbar = ({ userdata }) => {
                     {isAutheticated() &&
                       <li><Link className="nav-link" to="/" onClick={signout}><LogoutIcon /> Logout</Link></li>
                     }
+                    <li><Link className="nav-link" to="/changePassword"><Password/> Change Password</Link></li>
                   </ul>
                 </div>
               </div>
@@ -80,7 +82,7 @@ const Navbar = ({ userdata }) => {
                   <Link className="nav-link" to="/"><EventOutlinedIcon /> Learning Plan</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/market_place"><ShopTwoOutlinedIcon /> Market Place</Link>
+                  <Link className="nav-link" to="/market-place"><ShopTwoOutlinedIcon /> Market Place</Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/"><FilterCenterFocusOutlinedIcon /> Focus Area</Link>

@@ -4,9 +4,10 @@ import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications';
 import './Profile.css';
 import ContactFooter from '../../components/ContactFooter/ContactFooter';
 
-function Profile() {
+function Profile({userdata}) {
   return (
     <>
+    <Navbar userdata={userdata} />
     <div className='outer-profile pt-3'>
       <div className='container-md'>
         <h2 className='change-color'>My Profile</h2>
@@ -177,6 +178,7 @@ function Profile() {
         </div>
       </div>
     {/* </div > */}
+    <Footer/>
     </>
   );
 }

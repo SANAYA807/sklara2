@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Navbar from '../../components/navbar/Navbar'
+import Footer from '../../components/footer/Footer';
 import StarRoundedIcon from '@mui/icons-material/StarRounded';
 import ChatBubbleRoundedIcon from '@mui/icons-material/ChatBubbleRounded';
 import HighlightIcon from '@mui/icons-material/Highlight';
@@ -8,7 +9,7 @@ import PeopleIcon from '@mui/icons-material/People';
 import Calendar from 'react-calendar';
 import Appointment from '../../components/Calender/Appointment';
 
-const CoachProfile = () => {
+const CoachProfile = ({userdata}) => {
 
     const [value, onChange] = useState(new Date());
     const [toggle, setToggle] = useState(false)
@@ -16,7 +17,8 @@ const CoachProfile = () => {
         setToggle(!toggle)
     }
     return (
-        <div>
+        <>
+        <Navbar userdata={userdata} />
             <div className='outer-profile pt-3'>
                 <div className='container-md'>
                     <h2 >Coach's Profile :: <span className='change-color'> Martin Krugger</span></h2>
@@ -171,8 +173,8 @@ const CoachProfile = () => {
                 </div>
             </div >
 
-
-        </div>
+<Footer/>
+        </>
     )
 }
 

@@ -18,7 +18,7 @@ import { useRef, useState } from 'react';
 import Calendar from 'react-calendar';
 import Appointment from '../../components/Calender/Appointment';
 
-function TrainerProfile() {
+function TrainerProfile({userdata}) {
 
 
   const arrayEvents = [1, 2, 3]
@@ -41,7 +41,7 @@ function TrainerProfile() {
 
   return (
     <>
-
+<Navbar userdata={userdata} />
       <div className='outer-tp pt-3'>
         <div className='container-md'>
           <h2>Profile of <span className='change-color'>Martin Krugger</span></h2>
@@ -315,7 +315,7 @@ function TrainerProfile() {
         </div>
       </div >
       <ContactFooter />
-
+<Footer/>
     </>
   );
 }

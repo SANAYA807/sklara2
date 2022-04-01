@@ -1,11 +1,13 @@
 import React,{useEffect,useState} from 'react'
 import swal from 'sweetalert';
 import axios from 'axios';
+import Navbar from '../../components/navbar/Navbar';
+import Footer from '../../components/footer/Footer';
 import { isAutheticated } from '../../components/auth/authhelper';
 import { useNavigate } from 'react-router-dom';
 import { API } from '../../API';
 
-const ChangePassword = () => {
+const ChangePassword = ({userdata}) => {
     const navigate = useNavigate()
     const [prevPass, setPrevPass] = useState("");
     const [newPass, setNewPass] = useState("");
@@ -60,6 +62,9 @@ const handleSubmit = async()=>{
 }
 
     return (
+        <>
+        <Navbar userdata={userdata} />
+        
         <div className='container my-5'>
             <h2 className='heading'>Password Change</h2>
 
@@ -83,6 +88,8 @@ const handleSubmit = async()=>{
             </div>
             
         </div>
+        <Footer/>
+        </>
     )
 }
 

@@ -40,6 +40,7 @@ export const user = async () => {
 
 export const signout = () => {
   localStorage.removeItem("auth");
+  localStorage.removeItem("userData");
   window.location.reload();
   return true;
 };
