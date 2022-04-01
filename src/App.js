@@ -33,10 +33,10 @@ function App() {
   //getting user profile
   const getUser = async () => {
     let existanceData = JSON.parse(localStorage.getItem("userData"));
-    if(existanceData){
+    if (existanceData) {
       // console.log(existanceData.userData)
       setUserData(JSON.parse(localStorage.getItem("userData")).userData);
-    }else{
+    } else {
       try {
         console.log('requesting user data from server')
         const response = await axios.get(`${API}/api/user`, {
@@ -45,22 +45,22 @@ function App() {
           },
         })
         //console.log(response)
-  
+
         //setUserData(response.data.data);
         localStorage.setItem(
           "userData",
           JSON.stringify({
-              userData:response.data.data 
+            userData: response.data.data
           })
-      );
-      setUserData(JSON.parse(localStorage.getItem("userData")).userData);
-  
+        );
+        setUserData(JSON.parse(localStorage.getItem("userData")).userData);
+
       }
       catch (err) {
         console.log(err);
       };
     }
-   
+
   }
   console.log(userdata)
 

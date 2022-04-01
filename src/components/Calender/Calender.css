@@ -5,8 +5,8 @@
     max-width: 100%;
     background: white;
     border-radius: 20px;
-    background-color: #ffffff;
-    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    background-color: transparent;
+    /* box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px; */
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.125em;
   }
@@ -64,10 +64,20 @@
   }
   .react-calendar__month-view__weekdays__weekday {
     padding: 1em;
-    border-bottom: 1px solid var(--lightGray);
-    border-top: 3px solid var(--lightGray);
+    /* border-bottom: 1px solid var(--lightGray); */
+    /* border-top: 3px solid var(--lightGray); */
 
   }
+  
+
+/* .react-calendar button{
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+  border-radius: 100%;
+  background-color: purple;
+  margin: 3px;
+} */
   
   .react-calendar__month-view__weekNumbers .react-calendar__tile {
     display: flex;
@@ -91,7 +101,7 @@
     max-width: 100%;  
     background: none;
     padding: 20px 6.6667px;
-    border-bottom: 1px solid var(--lightGray) !important;
+    /* border-bottom: 1px solid var(--lightGray) !important; */
     text-align: center;
     line-height: 16px;
   }

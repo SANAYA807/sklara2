@@ -12,6 +12,7 @@ const DognutChart = () => {
             {
                 label: 'Earnings in €',
                 data: [10, 5, 3],
+                // borderRadius: '20'
                 // backgroundColor: '#B5DAE9',
             },
         ],
@@ -41,6 +42,8 @@ const DognutChart = () => {
         },
     ];
     const options = {
+        responsive: true,
+        maintainAspectRatio: true,
         backgroundColor: ['#98C38B', '#BDD8B5', '#DFEEDB'],
         borderWidth: 0,
         borderJoinStyle: 'round',
@@ -56,18 +59,25 @@ const DognutChart = () => {
             }
         },
 
-        cutout: 90,
+        cutout: 100,
         elements: {
             arc: {
                 borderWidth: 0,
                 // borderRadius: 0,
             },
         },
+        layout: {
+            padding: {
+                top: 30,
+                bottom: 60
+            },
+            height: 400
+        },
 
     }
 
     return (
-        <div><Doughnut data={data} options={options} plugins={plugins} /></div>
+        <div><Doughnut data={data} options={options} plugins={plugins} height={764} width={764} /></div>
     )
 }
 
