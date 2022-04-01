@@ -1,6 +1,6 @@
 import React from 'react'
 import { Bar } from 'react-chartjs-2'
-const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+export const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 export const data = {
     labels,
@@ -20,7 +20,7 @@ const BarChart = () => {
         borderRadius: 10,
         responsive: true,
         maintainAspectRatio: true,
-        minBarLength: 10,
+        minBarLength: 5,
         layout: {
             padding: {
                 top: 30,

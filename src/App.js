@@ -32,10 +32,10 @@ function App() {
   //getting user profile
   const getUser = async () => {
     let existanceData = JSON.parse(localStorage.getItem("userData"));
-    if(existanceData){
+    if (existanceData) {
       // console.log(existanceData.userData)
       setUserData(JSON.parse(localStorage.getItem("userData")).userData);
-    }else{
+    } else {
       try {
         const response = await axios.get(`${API}/api/user`, {
           headers: {
@@ -43,38 +43,38 @@ function App() {
           },
         })
         //console.log(response)
-  
+
         //setUserData(response.data.data);
         localStorage.setItem(
           "userData",
           JSON.stringify({
-              userData:response.data.data 
+            userData: response.data.data
           })
-      );
-      setUserData(JSON.parse(localStorage.getItem("userData")).userData);
-  
+        );
+        setUserData(JSON.parse(localStorage.getItem("userData")).userData);
+
       }
       catch (err) {
         console.log(err);
       };
     }
-   
+
   }
   //console.log(userdata)
 
   return (
     <Router>
-          <Routes>
-          <Route exact path="/" element={<Login/>}></Route>
-          <Route exact path="/market-place" element={userdata && userdata._id ? <MarketPlace userdata={userdata}/> : <Login/>}></Route>
-            <Route exact path="/profile" element={userdata && userdata._id ?<Profile userdata={userdata}/> : <Login/>}></Route>
-            <Route exact path="/coachprofile" element={userdata && userdata._id ?<CoachProfile userdata={userdata}/> : <Login/>}></Route>
-            <Route exact path="/dashboard" element={userdata && userdata._id ?<ProfileDashboard userdata={userdata}/> : <Login/>}></Route>
-            <Route exact path="/trainer_profile" element={userdata && userdata._id ?<TrainerProfile userdata={userdata}/> : <Login/>}></Route>
-            <Route exact path='/changePassword' element={userdata && userdata._id ?<ChangePassword userdata={userdata}/> : <Login/>}></Route>
-            <Route exact path="/sp_dashboard" element={<SPDashboard userdata={userdata} />}></Route>
-            <Route exact path='*' element={<NotFound userdata={userdata} />} />
-          </Routes>
+      <Routes>
+        <Route exact path="/" element={<Login />}></Route>
+        <Route exact path="/market-place" element={userdata && userdata._id ? <MarketPlace userdata={userdata} /> : <Login />}></Route>
+        <Route exact path="/profile" element={userdata && userdata._id ? <Profile userdata={userdata} /> : <Login />}></Route>
+        <Route exact path="/coachprofile" element={userdata && userdata._id ? <CoachProfile userdata={userdata} /> : <Login />}></Route>
+        <Route exact path="/dashboard" element={userdata && userdata._id ? <><Navbar /><NewDashboard userdata={userdata} /><Footer /></> : <Login />}></Route>
+        <Route exact path="/trainer_profile" element={userdata && userdata._id ? <TrainerProfile userdata={userdata} /> : <Login />}></Route>
+        <Route exact path='/changePassword' element={userdata && userdata._id ? <ChangePassword userdata={userdata} /> : <Login />}></Route>
+        <Route exact path="/sp_dashboard" element={<SPDashboard userdata={userdata} />}></Route>
+        <Route exact path='*' element={<NotFound userdata={userdata} />} />
+      </Routes>
     </Router>
 
   );
