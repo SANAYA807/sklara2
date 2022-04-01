@@ -110,7 +110,7 @@ const NewDashboard = () => {
                             </div>
 
                         </div>
-                        <div className="shadow  p-4 mt-4  profD-rad pt-4 row" >
+                        <div className="shadow  p-4 mt-4  profD-rad pt-4 row" style={{ backgroundColor: '#F6EEFB' }}>
                             <h3>Satisfaction and Feedback</h3>
                             <div className="col-md-6">
                                 <h5>Average Session Rating</h5>
