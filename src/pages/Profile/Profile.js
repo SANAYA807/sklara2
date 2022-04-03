@@ -145,7 +145,7 @@ function Profile({userdata}) {
                 <hr className='text-muted mb-5' />
               </div>
             </div>
-            <div className='col-12 col-12 common-card'>
+            <div className='col-12 common-card'>
               <div className="card">
                 <div className="card-body">
                   <h3 className="card-title"><span className='change-color'>Login Activity</span></h3>

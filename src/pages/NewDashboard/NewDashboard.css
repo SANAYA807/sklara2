@@ -62,3 +62,23 @@ border: 1px solid var(--white);
 .ml{
     margin-left: -10px;
 }
+.statistics-dot{
+    /* position: absolute; */
+    width: 18px;
+    height: 18px;
+    margin-top: 10px;
+    margin-right: 7px;
+    border-radius: 50%;
+}
+.dashboard-card{
+    margin-bottom: 2rem;
+  }
+.dashboard-card .card{
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+.bg-pb-pink{
+    background-color: #C026B7 !important;
+}
+.bg-pb-light-blue{
+    background-color: #1CD8C9 !important;
+}
