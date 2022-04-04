@@ -17,7 +17,7 @@ import Feedback from '../profileDashboard/Feedback';
 import { CircularProgressbar, buildStyles, CircularProgressbarWithChildren } from 'react-circular-progressbar';
 import "react-circular-progressbar/dist/styles.css";
 
-const NewDashboard = () => {
+const SpDashboard = ({ userdata }) => {
     const labels = [1, 2, 3, 4, 5, 6]
     const arrayEvents = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -114,8 +114,8 @@ const NewDashboard = () => {
                     <div className="col-md-8 left_side py-3">
                         <div className="heading">
                             <p className='yellow mb-4'>👋 Hey Dibendooo</p>
-                            <h1 className='heading mb-3'>You’ve got 236,90 $ in Credit Balance</h1>
-                            <button className='btn btn-primary round_btn' >Request TopUp</button>
+                            <h1 className='heading mb-3'>Here is a summary of your activities</h1>
+                            {/* <button className='btn btn-primary round_btn' >Request TopUp</button> */}
                         </div>
                         <div className='time_spending '>
                             <div className='mt-4 d-flex justify-content-between align-items-center'>
@@ -526,4 +526,4 @@ const NewDashboard = () => {
     )
 }
 
-export default NewDashboard
+export default SpDashboard

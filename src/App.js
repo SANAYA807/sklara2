@@ -20,6 +20,8 @@ import SPDashboard from './pages/SPDashboard';
 import { Dashboard } from '@mui/icons-material';
 import NewDashboard from './pages/NewDashboard/NewDashboard';
 import AddSkill from './pages/supplier/AddSkill';
+import SpDashboard from './pages/NewDashboard/SP_dashboard';
+import ManageSkill from './pages/supplier/ManageSkill';
 
 function App() {
   const [userdata, setUserData] = useState(null)
@@ -66,18 +68,21 @@ function App() {
 
   return (
     <Router>
-          <Routes>
-          <Route exact path="/" element={userdata && userdata._id ? <ProfileDashboard/> :<Login/>}></Route>
-          <Route exact path="/market-place" element={userdata && userdata._id ? <MarketPlace userdata={userdata}/> : <Login/>}></Route>
-            <Route exact path="/profile" element={userdata && userdata._id ?<Profile userdata={userdata}/> : <Login/>}></Route>
-            <Route exact path="/coachprofile" element={userdata && userdata._id ?<CoachProfile userdata={userdata}/> : <Login/>}></Route>
-            <Route exact path="/dashboard" element={userdata && userdata._id ?<ProfileDashboard userdata={userdata}/> : <Login/>}></Route>
-            <Route exact path="/trainer_profile" element={userdata && userdata._id ?<TrainerProfile userdata={userdata}/> : <Login/>}></Route>
-            <Route exact path='/changePassword' element={userdata && userdata._id ?<ChangePassword userdata={userdata}/> : <Login/>}></Route>
-            <Route exact path="/sp_dashboard" element={userdata && userdata._id ?<SPDashboard userdata={userdata}/>:<Login/>}></Route>
-            <Route exact path="/add_skill" element={userdata && userdata._id ?<AddSkill userdata={userdata}/>:<Login/>}></Route>
-            <Route exact path='*' element={<NotFound userdata={userdata} />} />
-          </Routes>
+      <Routes>
+        <Route exact path="/" element={userdata && userdata._id ? <ProfileDashboard /> : <Login />}></Route>
+        <Route exact path="/market_place" element={userdata && userdata._id ? <MarketPlace userdata={userdata} /> : <Login />}></Route>
+        <Route exact path="/profile" element={userdata && userdata._id ? <Profile userdata={userdata} /> : <Login />}></Route>
+        <Route exact path="/coachprofile" element={userdata && userdata._id ? <CoachProfile userdata={userdata} /> : <Login />}></Route>
+        <Route exact path="/dashboard" element={userdata && userdata._id ? <ProfileDashboard userdata={userdata} /> : <Login />}></Route>
+        <Route exact path="/new_dashboard" element={userdata && userdata._id ? <><Navbar userdata={userdata} /> <NewDashboard userdata={userdata} /><Footer /> </> : <Login />}></Route>
+        <Route exact path="/trainer_profile" element={userdata && userdata._id ? <TrainerProfile userdata={userdata} /> : <Login />}></Route>
+        <Route exact path='/changePassword' element={userdata && userdata._id ? <ChangePassword userdata={userdata} /> : <Login />}></Route>
+        {/* <Route exact path="/sp_dashboard" element={userdata && userdata._id ? <SPDashboard userdata={userdata} /> : <Login />}></Route> */}
+        <Route exact path="/sp_dashboard" element={userdata && userdata._id ? <><Navbar userdata={userdata} /><SpDashboard userdata={userdata} /> <Footer /> </> : <Login />}></Route>
+        <Route exact path="/add_skill" element={userdata && userdata._id ? <AddSkill userdata={userdata} /> : <Login />}></Route>
+        <Route exact path="/manage_skill" element={userdata && userdata._id ? <ManageSkill userdata={userdata} /> : <Login />}></Route>
+        <Route exact path='*' element={<NotFound userdata={userdata} />} />
+      </Routes>
     </Router>
 
   );

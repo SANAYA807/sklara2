@@ -22,7 +22,7 @@ const Navbar = ({ userdata }) => {
   //console.log(userdata)
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light nav-div px-5" style={{ backgroundColor: "#fff" }}>
+      <nav className="navbar navbar-expand-lg navbar-light nav-div" style={{ backgroundColor: "#fff", padding: '1rem 4%' }}>
         <div className="container-fluid">
           <Link className="navbar-brand" to="/dashboard"><img src={'./assets/sklaralogo.svg'} className="sklara-logo" /></Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,9 +45,9 @@ const Navbar = ({ userdata }) => {
                   <Link className="nav-link" to="/"><EmailOutlinedIcon /></Link>
                 </li>
 
-                <div class="btn-group dropstart box">
+                <div class="btn-group dropafter box" style={{ width: '130px' }}>
                   <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <AccountCircleOutlinedIcon />
+                    <AccountCircleOutlinedIcon style={{ marginRight: '20px' }} /> {userdata && userdata.firstName}
                   </button>
                   <ul class="dropdown-menu">
                     <li><AccountCircleOutlinedIcon /> {userdata && userdata.firstName} </li>
@@ -56,7 +56,7 @@ const Navbar = ({ userdata }) => {
                     {isAutheticated() &&
                       <li><Link className="nav-link" to="/" onClick={signout}><LogoutIcon /> Logout</Link></li>
                     }
-                    <li><Link className="nav-link" to="/changePassword"><Password/> Change Password</Link></li>
+                    <li><Link className="nav-link" to="/changePassword"><Password /> Change Password</Link></li>
                   </ul>
                 </div>
               </div>
@@ -68,7 +68,7 @@ const Navbar = ({ userdata }) => {
 
       {/* bottom navigation */}
 
-      <nav className="navbar navbar-expand-lg navbar-light shadow nav-div px-5" style={{ backgroundColor: "#fff" }}>
+      <nav className="navbar navbar-expand-lg navbar-light  nav-div px-5" style={{ backgroundColor: "#fff", borderBottom: '1px solid lightGray' }}>
         <div className="container-fluid">
           {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon" />
@@ -83,10 +83,10 @@ const Navbar = ({ userdata }) => {
                   <Link className="nav-link" to="/"><EventOutlinedIcon /> Learning Plan</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/market-place"><ShopTwoOutlinedIcon /> Market Place</Link>
+                  <Link className="nav-link" to="/market_place"><ShopTwoOutlinedIcon /> Market Place</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/"><FilterCenterFocusOutlinedIcon /> Focus Area</Link>
+                  <Link className="nav-link" to="/add_skill"><FilterCenterFocusOutlinedIcon /> Focus Area</Link>
                 </li>
               </div>
             </ul>

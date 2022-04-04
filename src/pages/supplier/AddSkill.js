@@ -1,4 +1,4 @@
-import React,{useState,useEffect,useRef} from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import CameraIcon from '@mui/icons-material/Camera';
@@ -13,6 +13,7 @@ import { isAutheticated } from '../../components/auth/authhelper';
 import swal from 'sweetalert';
 import DonutChart from './DonutChart';
 import { Button,Modal,FormControl } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const AddSkill = ({userdata}) => {
     const {token} = isAutheticated();
@@ -60,6 +61,7 @@ const AddSkill = ({userdata}) => {
         } 
     }
 
+
     useEffect(()=>{
         handleSearch();
     },[searchTerm])
@@ -93,27 +95,27 @@ const AddSkill = ({userdata}) => {
             }
           })
           //console.log(res)
-          if(res.data.status === 'ok'){
-            localStorage.setItem(
-              "userData",
-              JSON.stringify({
-                  userData:res.data.data
-              }))
-              swal('Success','Skill added successfully','success').then(()=>{
-                window.location.reload()
-              })
-              
-          }
-        }catch(err){
-          console.log(err)
-          swal('Error',`${err.message}`,'error')
-        }
+      if (res.data.status === 'ok') {
+        localStorage.setItem(
+          "userData",
+          JSON.stringify({
+            userData: res.data.data
+          }))
+        swal('Success', 'Skill added successfully', 'success').then(() => {
+          window.location.reload()
+        })
 
-   }
+      }
+    } catch (err) {
+      console.log(err)
+      swal('Error', `${err.message}`, 'error')
+    }
 
-    return (
-        <>
-        <Navbar userdata={userdata}/>
+  }
+
+  return (
+    <>
+      <Navbar userdata={userdata} />
         <>
          {/*
          <Modal show={show} onHide={handleClose} className="p-4">
@@ -222,12 +224,13 @@ const AddSkill = ({userdata}) => {
              
             </Carousel>
 
-            <button className='btn btn-primary center my-5'>Manage Skills</button>
+            <Link to="/manage_skill" className='btn btn-primary center my-5'>Manage Skills</Link>
             
         </div>
-<Footer/>
-        </>
-    )
+
+      <Footer />
+    </>
+  )
 }
 
 export default AddSkill
