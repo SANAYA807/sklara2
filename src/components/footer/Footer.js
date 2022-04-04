@@ -13,35 +13,35 @@ const Footer = () => {
         <div className='container-fluid py-5 shadow px-5 footer-div'>
             <hr></hr>
             <div className='row justify-content-between'>
-                <div className='col-md-4'>
-                <img src={'./assets/sklaralogo.svg'} className="footerlogo"/>
+                <div className='col-md-4 center' style={{ justifyContent: 'flex-start' }}>
+                    <img src={'./assets/sklaralogo.svg'} className="footerlogo" />
                 </div>
                 <div className='col-md-4'>
-                <h6 className='text-secondary fw-light text-center'>© Copyright 2022 Sklara. All Rights Reserved</h6>
+                    <h6 className='text-secondary fw-light text-center'>© Copyright 2022 Sklara. All Rights Reserved</h6>
                 </div>
                 <div className='col-md-4'>
-                <div className='d-flex justify-content-end'>
-                    <div className='footer-icon text-center text-secondary mx-1'>
-                    <FacebookIcon sx={{fontSize:"20px"}}/>
+                    <div className='d-flex center' style={{ justifyContent: 'flex-end' }}>
+                        <div className='footer-icon text-center text-secondary mx-1'>
+                            <FacebookIcon sx={{ fontSize: "20px" }} />
+                        </div>
+                        <div className='footer-icon text-center text-secondary mx-1'>
+                            <TwitterIcon sx={{ fontSize: "20px" }} />
+                        </div>
+                        <div className='footer-icon text-center text-secondary mx-1'>
+                            <LinkedInIcon sx={{ fontSize: "20px" }} />
+                        </div>
+                        <div className='footer-icon text-center text-secondary mx-1'>
+                            <PinterestIcon sx={{ fontSize: "20px" }} />
+                        </div>
+                        <div className='footer-icon text-center text-secondary mx-1'>
+                            <InstagramIcon sx={{ fontSize: "20px" }} />
+                        </div>
+
                     </div>
-                    <div className='footer-icon text-center text-secondary mx-1'>
-                    <TwitterIcon sx={{fontSize:"20px"}}/>
-                    </div>
-                    <div className='footer-icon text-center text-secondary mx-1'>
-                    <LinkedInIcon sx={{fontSize:"20px"}}/>
-                    </div>
-                    <div className='footer-icon text-center text-secondary mx-1'>
-                    <PinterestIcon sx={{fontSize:"20px"}}/>
-                    </div>
-                    <div className='footer-icon text-center text-secondary mx-1'>
-                    <InstagramIcon sx={{fontSize:"20px"}}/>
-                    </div>
-                    
-                </div>
                 </div>
 
             </div>
-            
+
         </div>
     )
 }

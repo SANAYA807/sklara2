@@ -19,7 +19,7 @@ const BarChart = () => {
 
         borderRadius: 10,
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
         minBarLength: 5,
         layout: {
             padding: {
@@ -60,7 +60,7 @@ const BarChart = () => {
     };
     return (
         <div className="chart">
-            <Bar options={options} data={data} height='70%' />
+            <Bar options={options} data={data} height='200' width={'100%'} />
 
         </div>
     )

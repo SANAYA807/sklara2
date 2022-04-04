@@ -109,7 +109,7 @@ const NewDashboard = () => {
 
     return (
         <div className='container-fluid px-1 '>
-            <div className='row justify-content-between mx-5 '>
+            <div className='row justify-content-center section'>
                 <div className="row">
                     <div className="col-md-8 left_side py-3">
                         <div className="heading">
@@ -122,10 +122,13 @@ const NewDashboard = () => {
                                 <h3>Time Spendings</h3>
                                 <p className="text-muted">Month</p>
                             </div>
-                            <BarChart />
+                            <div style={{ height: '200px' }}>
+                                <BarChart />
+
+                            </div>
                         </div>
-                        <div className="row ">
-                            <div className="shadow p-4  profD-rad pt-4 col-md-6 green">
+                        <div className="row gx-0">
+                            <div className="shadow p-4 profD-rad pt-4 col-md-6 green">
                                 <h3>Statistics</h3>
                                 <div className="col-md-11 mt-0">
                                     <div className='center' style={{ width: 225, height: 225 }}>
@@ -180,7 +183,7 @@ const NewDashboard = () => {
                                     {/* <DognutChart /> */}
                                 </div>
                             </div>
-                            <div className=" col-md-6">
+                            <div className="col-md-6 col-sm-12">
                                 <div className='shadow p-4 mb-2 profD-rad pt-4 short_div short_div1'>
                                     <h3 className='mb-4'>Awards</h3>
                                     <div className="d-flex justify-content-between">
@@ -204,7 +207,7 @@ const NewDashboard = () => {
                             </div>
 
                         </div>
-                        <div className="shadow  p-4 mt-4  profD-rad pt-4 row" style={{ backgroundColor: '#F6EEFB' }}>
+                        <div className="shadow p-4 mt-5 row gx-1 profD-rad pt-4 " style={{ backgroundColor: '#F6EEFB' }}>
                             <h3>Satisfaction and Feedback</h3>
                             <div className="col-md-6">
                                 <h5>Average Session Rating</h5>
@@ -265,7 +268,7 @@ const NewDashboard = () => {
 
                             <p className="text-muted"><PersonAddAlt1Rounded style={{ marginRight: '5px' }} />2 skills needs to be added</p>
                         </div>
-                        <div className="right_card mt-5 ml-5">
+                        <div className="right_card mt-5 d-flex flex-column justify-content-center">
                             <Calendar prev2Label={null} next2Label={null} />
                             <div className='px-4'>
                                 <p style={{ color: '#F37658', fontSize: '20px', marginBottom: '-2px' }} >Today</p>
@@ -283,7 +286,7 @@ const NewDashboard = () => {
                             </div>
 
                             <div className='p-4'>
-                                <div className="d-flex">
+                                <div className="d-flex ">
                                     <AccessTimeRounded />
                                     <div>
                                         <h6 className='mb-0'>55 mins</h6>
@@ -301,7 +304,7 @@ const NewDashboard = () => {
                                 </div>
                                 <hr className='text-muted' />
                                 <div className='d-flex justify-content-between'>
-                                    <button className='btn py-3 btn-primary round_btn' style={{"padding": "0 2.4rem 0 2.4rem"}}>Join</button>
+                                    <button className='btn py-3 btn-primary round_btn' style={{ "padding": "0 10%" }}>Join</button>
                                     <button className='btn px-4 py-3 btn-light round_btn' style={{ backgroundColor: '#fff', border: '1px solid grey' }}>Reschedule</button>
                                 </div>
 
@@ -310,7 +313,7 @@ const NewDashboard = () => {
 
                         </div>
                     </div>
-                    <div className='row px-0 mt-3'>
+                    <div className='row px-0 mt-3 m-auto'>
                         <h4 className='fw-bold mb-4'>SKLARA Marketplace</h4>
                         <div className='col-lg-6 col-sm-12 dashboard-card'>
                             <div className='card'>
@@ -518,8 +521,8 @@ const NewDashboard = () => {
                     </div>
                 </div>
 
-            </div >
-        </div >
+            </div>
+        </div>
     )
 }
 
