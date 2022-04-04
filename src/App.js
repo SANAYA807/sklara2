@@ -68,10 +68,11 @@ function App() {
     <Router>
           <Routes>
           <Route exact path="/" element={userdata && userdata._id ? <ProfileDashboard/> :<Login/>}></Route>
-          <Route exact path="/market-place" element={userdata && userdata._id ? <MarketPlace userdata={userdata}/> : <Login/>}></Route>
+          <Route exact path="/market_place" element={userdata && userdata._id ? <MarketPlace userdata={userdata}/> : <Login/>}></Route>
             <Route exact path="/profile" element={userdata && userdata._id ?<Profile userdata={userdata}/> : <Login/>}></Route>
             <Route exact path="/coachprofile" element={userdata && userdata._id ?<CoachProfile userdata={userdata}/> : <Login/>}></Route>
             <Route exact path="/dashboard" element={userdata && userdata._id ?<ProfileDashboard userdata={userdata}/> : <Login/>}></Route>
+            <Route exact path="/new_dashboard" element={userdata && userdata._id ?<NewDashboard userdata={userdata}/> : <Login/>}></Route>
             <Route exact path="/trainer_profile" element={userdata && userdata._id ?<TrainerProfile userdata={userdata}/> : <Login/>}></Route>
             <Route exact path='/changePassword' element={userdata && userdata._id ?<ChangePassword userdata={userdata}/> : <Login/>}></Route>
             <Route exact path="/sp_dashboard" element={userdata && userdata._id ?<SPDashboard userdata={userdata}/>:<Login/>}></Route>
