@@ -95,9 +95,7 @@ border: 1px solid var(--white);
    .short_div1{
        margin-top: 30px;
    }
-   .short_div2{
-       /* margin-bottom: 50px; */
-   }
+   
    .short_div{
       width: 100%;
       margin-bottom: 10px !important;
