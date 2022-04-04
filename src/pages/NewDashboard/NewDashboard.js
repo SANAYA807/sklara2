@@ -12,7 +12,7 @@ import Calendar from 'react-calendar';
 import AccessTimeRoundedIcon from '@mui/icons-material/AccessTimeRounded';
 import ComputerRoundedIcon from '@mui/icons-material/ComputerRounded';
 import Feedback from '../profileDashboard/Feedback';
-import { CircularProgressbar } from 'react-circular-progressbar';
+import {CircularProgressbar} from 'react-circular-progressbar';
 
 const NewDashboard = () => {
     const labels = [1, 2, 3, 4, 5, 6]
