@@ -5,3 +5,46 @@
 .btn-search{
     border: 1px solid blue !important;
 }
+
+.donut-div{
+    width: 200px;
+    height: 200px;
+}
+
+.blank-donut{
+    position: relative;
+}
+.blank-donut-item{
+    position: absolute;
+    top:130px;
+    right:72px;
+}
+
+.blank-donut-item2{
+    position: absolute;
+    top:110px;
+    right:60px;
+}
+
+.circle{
+    width: 198px;
+    height: 198px;
+    border-radius: 50%;
+    border: 15px solid lightgray;
+}
+
+.circle2{
+    width: 198px;
+    height: 198px;
+    border-radius: 50%;
+    border: 15px solid lightslategray;
+}
+
+.donut-action-div{
+    position: absolute;
+}
+.donut-action-item:hover{
+    transform: scale(1.2);
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}

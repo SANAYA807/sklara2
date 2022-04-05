@@ -35,7 +35,7 @@ const DonutChart = ({value,color,rate}) => {
                 ctx.textBaseline = 'middle';
                 ctx.fillStyle = '#000';
 
-                let text = `${rate}/10`,
+                let text = rate ? `${rate}/10` : ' ',
                     textX = Math.round((width - ctx.measureText(text).width) / 1.98),
                     textY = height / 2.2;
 
@@ -45,11 +45,22 @@ const DonutChart = ({value,color,rate}) => {
         },
     ];
 
+    const options = {        
+      responsive: true,
+      maintainAspectRatio: true,
+      cutout: 80,
+      plugins: {
+        legend: {
+          display: false
+        }
+      }
+  };
+
 
     return (
 
                 <div className='center donut-div'>
-<Doughnut data={data} plugins={plugins}/>
+<Doughnut data={data} plugins={plugins} options={options}/>
 </div>
 
     )

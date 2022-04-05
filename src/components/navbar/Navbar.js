@@ -86,7 +86,7 @@ const Navbar = ({ userdata }) => {
                   <Link className="nav-link" to="/market_place"><ShopTwoOutlinedIcon /> Market Place</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/add_skill"><FilterCenterFocusOutlinedIcon /> Focus Area</Link>
+                  <Link className="nav-link" to="/focus_skill"><FilterCenterFocusOutlinedIcon /> Focus Area</Link>
                 </li>
               </div>
             </ul>
