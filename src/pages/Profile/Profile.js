@@ -6,6 +6,10 @@ import ContactFooter from '../../components/ContactFooter/ContactFooter';
 import { user } from '../../components/auth/authhelper';
 import { useEffect } from 'react';
 import formatDistance from 'date-fns/formatDistance'
+import PolarChart from '../../components/Charts/PolarChart';
+import {PolarAreaChart } from '../../components/Charts/PolarAreaChart';
+import DevProgress from '../profileDashboard/DevProgress';
+
 
 
 function Profile({userdata}) {
@@ -199,6 +203,14 @@ function getTimeFormat(dateStr) {
           </div>
         </div>
       </div>
+      {/* <div className='row'>
+        <PolarChart />
+        <div style={{width: '600px'}}>
+        <PolarAreaChart />
+        </div>
+        <DevProgress />
+      </div> */}
+      
       <ContactFooter />
     {/* </div > */}
     <Footer/>
