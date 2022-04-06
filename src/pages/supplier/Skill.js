@@ -28,6 +28,9 @@ const Skill = ({userdata}) => {
     const [utility,setUtility] = useState(1)
     const [priorityValue,setPriorityValue] = useState(1)
     const [skillValue, setSkillValue] = useState(1)
+    const [updateMode, setUpdateMode] = useState(false)
+    const [index, setIndex] = useState(null)
+
     // console.log(utility)
 
     const setToggle = () =>{
@@ -151,6 +154,58 @@ const confirmSelection = async()=>{
         }
     }
 
+  //editSkill
+  const editSkill = async(i) =>{
+    setStep(2);
+    setUpdateMode(true)
+    setIndex(i)
+    let s = userdata.skills[i].skill
+    let u = userdata.skills[i].utility
+    let p = userdata.skills[i].priorityValue
+    let v = userdata.skills[i].skillValue
+    setSkill(s)
+    setUtility(u)
+    setPriorityValue(p)
+    setSkillValue(v)
+}
+
+const confirmUpdate = async()=>{
+
+  const newData = userdata.skills
+  newData[index].utility = utility;
+  newData[index].priorityValue = priorityValue;
+  newData[index].skillValue = skillValue;
+
+  try{
+    let res = await axios.patch(`${API}/api/user/update`,{skills:newData},{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
+    //console.log(res)
+if (res.data.status === 'ok') {
+  localStorage.setItem(
+    "userData",
+    JSON.stringify({
+      userData: res.data.data
+    }))
+  swal('Success', 'Skill updated successfully', 'success').then(() => {
+    window.location.reload()
+  })
+
+}
+setSkill('')
+setColor('')
+setUtility(1)
+setPriorityValue(1)
+setSkillValue(1)
+} catch (err) {
+console.log(err)
+swal('Error', `${err.message}`, 'error')
+}
+
+}
+
     return (
         <>
         <Navbar userdata={userdata}/>
@@ -259,7 +314,12 @@ const confirmSelection = async()=>{
   </div>
   <div className='d-flex justify-content-between'>
 <button className='btn btn-primary' onClick={()=>setStep(2)}>Back</button>
+{updateMode ? 
+  <button className='btn btn-primary' disabled={!skillValue} onClick={confirmUpdate}>Update</button>
+:
 <button className='btn btn-primary' disabled={!skillValue} onClick={confirmSelection}>Confirm</button>
+}
+
      </div>
 </>
 }
@@ -274,7 +334,7 @@ const confirmSelection = async()=>{
                     <div className='mx-3 blank-donut'>
  <h5 className='center my-3' style={{color:item.color}}>{item.skill}</h5>
  {editMode &&
- <div className='d-flex donut-action-div'><Delete className='donut-action-item text-danger' onClick={()=>removeSkill(i)}/><CalculateIcon className='donut-action-item text-success'/></div>
+ <div className='d-flex donut-action-div'><Delete className='donut-action-item text-danger' onClick={()=>removeSkill(i)}/><CalculateIcon onClick={()=>editSkill(i)} className='donut-action-item text-success'/></div>
 }
  <DonutChart value={item.skillValue} color={item.color} rate={item.skillValue}/>
  </div>
