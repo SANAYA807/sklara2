@@ -11,6 +11,9 @@ import axios from 'axios';
 import { API } from '../../API';
 import { isAutheticated } from '../../components/auth/authhelper';
 import swal from 'sweetalert';
+import PolarChart from '../../components/Charts/PolarChart';
+import {PolarAreaChart } from '../../components/Charts/PolarAreaChart';
+import DevProgress from '../profileDashboard/DevProgress';
 
 
 
@@ -302,7 +305,14 @@ const confirmSelection = async()=>{
                 </div>
             </div>
             
-            
+      <div className='row'>
+        <PolarChart skills={userdata.skills}/>
+        <div style={{width: '500px'}}>
+        <PolarAreaChart skills={userdata.skills} />
+        </div>
+        <DevProgress skills={userdata.skills} />
+      </div>  
+
         </div>
         <Footer/>
         </>
