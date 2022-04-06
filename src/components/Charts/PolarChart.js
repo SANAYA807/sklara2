@@ -70,8 +70,8 @@ return (
     {/* <RadialBar label={{ position: 'insideStart', fill: '#8784d8' }} minAngle={30} dataKey="x" clockWise/>
 	<Legend iconSize={10} width={120} height={140} layout="vertical" verticalAlign="middle" wrapperStyle={style} /> */}
      <PolarAngleAxis type="number" domain={[0, 100]} dataKey={'x'} tick={false} />
-	
-     <RadialBar isAnimationActive={false} minAngle={15} label={{ position: "insideStart", fill: "#fff" }} background clockWise dataKey="x"/>
+	{/* add background after label as 'background' to show background */}
+     <RadialBar isAnimationActive={false} minAngle={15} label={{ position: "insideStart", fill: "#fff" }}  clockWise dataKey="x"/>
   </RadialBarChart>
 
 

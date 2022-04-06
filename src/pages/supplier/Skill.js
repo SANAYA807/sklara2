@@ -14,6 +14,7 @@ import swal from 'sweetalert';
 import PolarChart from '../../components/Charts/PolarChart';
 import {PolarAreaChart } from '../../components/Charts/PolarAreaChart';
 import DevProgress from '../profileDashboard/DevProgress';
+import CircleIcon from '@mui/icons-material/Circle';
 
 
 
@@ -220,7 +221,7 @@ swal('Error', `${err.message}`, 'error')
             </div>
             <div className='col-sm-2'>
                 <div className='d-flex'>
-                <Link to="/manage_skill" className='btn btn-primary'><StyleIcon/> Manage</Link>
+                <Link to="/manage_skill" className='btn btn-primary text-light'><StyleIcon/> Manage</Link>
                 </div>
             </div>
             </div>
@@ -334,7 +335,7 @@ swal('Error', `${err.message}`, 'error')
             <div className='card  my-4'>
                 <div className='d-flex justify-content-center overflow-auto py-5 w-100'>
                 {userdata.skills.length > 0 && userdata.skills.map((item,i)=>(
-                    <div className='mx-3 blank-donut'>
+                    <div className='mx-3 blank-donut main-donut'>
  <h5 className='center my-3' style={{color:item.color}}>{item.skill}</h5>
  {editMode &&
  <div className='d-flex donut-action-div'><Delete className='donut-action-item text-danger' onClick={()=>removeSkill(i)}/><CalculateIcon onClick={()=>editSkill(i)} className='donut-action-item text-success'/></div>
@@ -365,13 +366,54 @@ swal('Error', `${err.message}`, 'error')
                 </div>
             </div>
             
-      <div className='row'>
+      <div className='row justify-content-between mt-5'>
+        <div className='col-md-6'>
+          <h2 className=''>Your Skill <span className='heading'>Priorities Graph</span></h2>
+          <p className='fw-light text-secondary'>Based on your skill utility & urgency</p>
+          <div className='card px-3'>
         <PolarChart skills={userdata.skills}/>
-        <div style={{width: '500px'}}>
+        <div className='row'>
+          <hr></hr>
+          {userdata.skills.length > 0 && userdata.skills.map((item)=>(
+            <div className='col-md-4'>
+            <div className='d-flex'>
+            <CircleIcon style={{color:item.color}} />
+            <p className='fw-light'>{item.skill}</p>
+            </div>
+          </div>
+          ))}
+          <hr></hr>
+        </div>
+        </div>
+        </div>
+        <div className='col-md-6'>
+        <h2 className=''>Your Skill <span className='heading'>Levels Graph</span></h2>
+          <p className='fw-light text-secondary'>Based on your skill utility & urgency</p>
+        <div className='card px-3'>
+          <div className='p-5'>
         <PolarAreaChart skills={userdata.skills} />
         </div>
-        <DevProgress skills={userdata.skills} />
+        <div className='row'>
+          <hr></hr>
+          {userdata.skills.length > 0 && userdata.skills.map((item)=>(
+            <div className='col-md-4'>
+            <div className='d-flex'>
+            <CircleIcon style={{color:item.color}} />
+            <p className='fw-light'>{item.skill}</p>
+            </div>
+          </div>
+          ))}
+          <hr></hr>
+        </div>
+       </div>
+        </div>
+        
+        
       </div>  
+
+      <div className='row justify-content-center'>
+      <DevProgress skills={userdata.skills} />
+      </div>
 
         </div>
         <Footer/>

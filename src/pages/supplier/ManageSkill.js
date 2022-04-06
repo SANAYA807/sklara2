@@ -51,7 +51,7 @@ const removeSkill = async(i) =>{
             <div className='d-flex justify-content-between'>
             <h1 className='heading'>Manage Skills</h1>
 
-            {userdata.skills.length < 5 && <div><Link to="/focus_skill" className='btn btn-primary'>Add Skill</Link></div> }
+            {userdata.skills.length < 5 && <div><Link to="/focus_skill" className='btn btn-primary text-light'>Add Skill</Link></div> }
             </div>
             
             <hr></hr>

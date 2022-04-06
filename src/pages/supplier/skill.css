@@ -11,6 +11,17 @@
     height: 200px;
 }
 
+.donut-action-div{
+    opacity: 0;
+}
+
+.main-donut:hover .donut-action-div{
+    /* display: block; */
+    opacity: 1;
+    transition: 1s ease !important;
+    
+}
+
 .blank-donut{
     position: relative;
 }

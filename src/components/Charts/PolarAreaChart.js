@@ -34,6 +34,17 @@ export const data = {
   ],
 };
 
+const options = {        
+  responsive: true,
+  maintainAspectRatio: true,
+  // cutout: 80,
+  plugins: {
+    legend: {
+      display: false
+    }
+  }
+};
+
 export function PolarAreaChart({skills}) {
   const [label, setLabel] = useState()
   const [datas, setData] = useState()
@@ -70,5 +81,5 @@ export function PolarAreaChart({skills}) {
       ],
     };
 
-  return <PolarArea data={data} />;
+  return <PolarArea data={data} options={options}/>;
 }
