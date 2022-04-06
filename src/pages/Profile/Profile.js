@@ -4,37 +4,40 @@ import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications';
 import './Profile.css';
 import ContactFooter from '../../components/ContactFooter/ContactFooter';
 import { user } from '../../components/auth/authhelper';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import formatDistance from 'date-fns/formatDistance'
-import PolarChart from '../../components/Charts/PolarChart';
-import {PolarAreaChart } from '../../components/Charts/PolarAreaChart';
-import DevProgress from '../profileDashboard/DevProgress';
 
 
 
-function Profile({userdata}) {
+function Profile({ userdata }) {
   console.log(userdata)
-
+ const [profPic, setProfPic] = useState("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png")
   const LanguageArr = userdata.communicationLanguages;
 
-const formatDate = (dateString) => {
-  const options = { year: "numeric", month: "long", day: "numeric" }
-  return new Date(dateString).toLocaleDateString(undefined, options)
-}
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" }
+    return new Date(dateString).toLocaleDateString(undefined, options)
+  }
 
-const firstLogin = formatDate(userdata.firstLogin)
-const lastLogin = userdata.lastLogin && formatDate(userdata.lastLogin)
+  const firstLogin = formatDate(userdata.firstLogin)
+  const lastLogin = userdata.lastLogin && formatDate(userdata.lastLogin)
+
+useEffect(() => {
+  if(userdata.profilePicture){
+    setProfPic(userdata.profilePicture)
+  }
+}, [])
   
 
-function getTimeFormat(dateStr) {
+  function getTimeFormat(dateStr) {
 
-  const str = formatDistance(
+    const str = formatDistance(
       new Date(dateStr),
       new Date()
-  );
-  return <>{str}</>
-  
-}
+    );
+    return <>{str}</>
+
+  }
 
 
   return (
@@ -48,7 +51,7 @@ function getTimeFormat(dateStr) {
           <div className='col-lg-6 col-sm-12 common-card'>
             <div className="card">
               <button type="button" className="btn profile-settings"><i class="fa-solid fa-gear"></i></button>
-              <img src={userdata.profilePicture} className="card-img-top profile-image" alt="..." />
+              <img src={profPic} className="card-img-top profile-image" alt="..." />
               <div className="card-body">
                 <span className='profile-flag1'><img className="" src="	http://18.157.84.45/design/images/flags/de.svg" alt="" /></span>
                 <span className="profile-flag2"><img className="img-fluid" src="	http://18.157.84.45/design/images/flags/en.svg" alt="" /></span>
@@ -99,9 +102,11 @@ function getTimeFormat(dateStr) {
                     </div>
                     <div className="mb-4">
                       <small className='text-muted m-0 p-0'>Languages</small>
-                      <p className='m-0 p-0' style={{ "fontWeight": "500" }}>{LanguageArr.map((item, index)=> { return (
-                        <> {index!=0 ? `,${item}` : item  } </> 
-                        ) }) }</p>
+                      <p className='m-0 p-0' style={{ "fontWeight": "500" }}>{LanguageArr.map((item, index) => {
+                        return (
+                          <> {index != 0 ? `,${item}` : item} </>
+                        )
+                      })}</p>
                     </div>
                     <div className="mb-4">
                       <small className='text-muted m-0 p-0'>Phone Number</small>
@@ -203,17 +208,11 @@ function getTimeFormat(dateStr) {
           </div>
         </div>
       </div>
-      {/* <div className='row'>
-        <PolarChart />
-        <div style={{width: '600px'}}>
-        <PolarAreaChart />
-        </div>
-        <DevProgress />
-      </div> */}
+  
       
       <ContactFooter />
-    {/* </div > */}
-    <Footer/>
+      {/* </div > */}
+      <Footer />
     </>
   );
 }

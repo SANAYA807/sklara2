@@ -1,0 +1,137 @@
+/* 
+.fc .fc-button-group{
+    position: relative;
+    bottom: 100px !important;
+    right: 250px !important;
+    display: inline-flex;
+    vertical-align: middle;
+
+} */
+.fc{
+    padding-top: 80px;
+    overflow-y: hidden;
+}
+.fc-daygrid-event {
+    background: rgba(28, 216, 201, 0.1) !important;
+border-radius: 5px;
+min-width: 140px;
+height: 51px;
+}
+.fc-h-event .fc-event-main{
+    color: rgb(28, 216, 201) !important;
+
+}
+.fc-daygrid-event-dot{
+    display: none;
+}
+.fc-event-time,.fc-event-title{
+    color: rgba(85, 11, 124, 1);
+}
+.fc-v-event{
+    color: rgb(28, 216, 201) !important;
+    background: rgba(28, 216, 201, 0.1) !important;
+
+}
+.fc-v-event .fc-event-time,.fc-v-event .fc-event-title {
+    color: rgb(28, 216, 201) !important;
+
+}
+
+.fc-daygrid-dot-event{
+    background: rgba(85, 11, 124, 0.1) !important;
+border-radius: 5px;
+flex-direction: column-reverse;
+align-items: flex-start;
+font-size: 16px;
+padding: 2px 8px;
+}
+button[title='Previous month'],button[title='Next month']{
+    background-color: #fff !important;
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 100px !important;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    margin: 5px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+.fc .fc-today-button{
+    display: none !important;
+}
+
+/* .fc .fc-toolbar{
+} */
+.fc-col-header-cell{
+    background-color:  #F6EEFB;
+
+}
+a{
+    text-decoration: none !important;
+    color:#8C8C8C !important;
+}
+.fc .fc-col-header-cell-cushion {
+    font-weight: 400;
+}
+.fc .fc-daygrid-day-top{
+    padding-right: 10px;
+    padding-top: 5px;
+}
+thead{
+    height: 40px !important;
+    border: none;
+}
+.fc-theme-standard th{
+    border: none;
+    
+}
+.fc .fc-daygrid-body-unbalanced .fc-daygrid-day-events{
+    height: 1em;
+}
+.fc .fc-button {
+    background-color: transparent;
+    border: none;
+    color: var(--purple);
+
+}
+.fc .fc-button:hover{
+    background-color: transparent;
+    border: none;
+    color: var(--purple);
+}
+.fc .fc-button:focus{
+    background-color: transparent;
+    border: none;
+    color: var(--purple);
+}
+.fc .fc-button-group{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* width: 280px; */
+height: 40px;
+padding: 5px;
+/* background: #F6EEFB; */
+border-radius: 15px;
+
+}
+.fc-dayGridMonth-button, .fc-timeGridWeek-button,.fc-timeGridDay-button{
+    /* position: absolute !important; */
+    top: -4.4rem;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+background: #F6EEFB !important;
+text-transform: capitalize !important;
+    right: 21rem;
+}
+.fc .fc-button-primary:not(:disabled).fc-button-active{
+    height: 35px;
+    background-color: var(--purple) !important;
+    border-radius: 15px;
+    box-shadow: 0px 0px 16px rgba(85, 11, 124, 0.3);
+}
+.weather{
+    position: absolute;
+    right: 6%;
+}
