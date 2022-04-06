@@ -22,12 +22,13 @@ const Skill = ({userdata}) => {
     const [searchData, setSearchData] = useState([])
     const [blank,setBlank] = useState(false)
     const [rating, setRating] = useState(5)
-    const [step, setStep] = useState(2)
+    const [step, setStep] = useState(1)
     const [skill, setSkill] = useState('')
     const [color, setColor] = useState('')
-    const [utility,setUtility] = useState('')
-    const [priorityValue,setProrityValue] = useState('')
-    const [skillValue, setSkillValue] = useState('')
+    const [utility,setUtility] = useState(1)
+    const [priorityValue,setPriorityValue] = useState(1)
+    const [skillValue, setSkillValue] = useState(1)
+    // console.log(utility)
 
     const setToggle = () =>{
         if(editMode === false){
@@ -68,39 +69,52 @@ const Skill = ({userdata}) => {
      setColor(color)
 
      setStep(2)
-    //     const newData ={
-    //       skill:skill,
-    //       skillValue:rating,
-    //       priorityValue:1,
-    //       color:color,
-    //     }
-    //     // console.log(selectedItem)
-    //     const updatedData = userdata.skills
-    //     updatedData.push(newData)
-    //     try{
-    //       let res = await axios.patch(`${API}/api/user/update`,{skills:updatedData},{
-    //         headers:{
-    //           Authorization: `Bearer ${token}`
-    //         }
-    //       })
-    //       //console.log(res)
-    //   if (res.data.status === 'ok') {
-    //     localStorage.setItem(
-    //       "userData",
-    //       JSON.stringify({
-    //         userData: res.data.data
-    //       }))
-    //     swal('Success', 'Skill added successfully', 'success').then(() => {
-    //       window.location.reload()
-    //     })
-
-    //   }
-    // } catch (err) {
-    //   console.log(err)
-    //   swal('Error', `${err.message}`, 'error')
-    // }
+    
 
   }
+//confirm Selection
+const confirmSelection = async()=>{
+  if(!skill || !skillValue || !priorityValue || !color || !utility){
+    return swal('Error','Please select all fields','error')
+  }
+    const newData ={
+          skill:skill,
+          skillValue:skillValue,
+          priorityValue:priorityValue,
+          color:color,
+          utility:utility
+        }
+        // console.log(selectedItem)
+        const updatedData = userdata.skills
+        updatedData.push(newData)
+        try{
+          let res = await axios.patch(`${API}/api/user/update`,{skills:updatedData},{
+            headers:{
+              Authorization: `Bearer ${token}`
+            }
+          })
+          //console.log(res)
+      if (res.data.status === 'ok') {
+        localStorage.setItem(
+          "userData",
+          JSON.stringify({
+            userData: res.data.data
+          }))
+        swal('Success', 'Skill added successfully', 'success').then(() => {
+          window.location.reload()
+        })
+
+      }
+      setSkill('')
+      setColor('')
+      setUtility(1)
+      setPriorityValue(1)
+      setSkillValue(1)
+    } catch (err) {
+      console.log(err)
+      swal('Error', `${err.message}`, 'error')
+    }
+}
 
 //delete function
     const removeSkill = async(i) =>{
@@ -156,14 +170,15 @@ const Skill = ({userdata}) => {
             {/* for skill selection */}
 {editMode &&
 <>
-<div className='container center my-5'>
+<div className='container'>
+  {step === 1 &&
+  <>
+  <div className='container center my-5'>
     <div className='col-md-3 mb-5'>
         <h5 className='text-center'>Add any skill you'd like</h5>
         <input type="text" onChange={(e)=>setSearchTerm(e.target.value)} className='form-control skill-search' placeholder={`Search for skills`}/>
     </div>
 </div>
-<div className='container'>
-  {step === 1 &&
 <div className='row justify-content-center my-3'>
     {searchData.length > 0 && searchData.map((item, i)=>(
       <>
@@ -177,15 +192,76 @@ const Skill = ({userdata}) => {
    { searchData.length === 0 && searchTerm.length !== 0 &&  <h3 className='text-center text-danger my-5'>No matching value found</h3>}
    
    <div className='d-flex justify-content-end'>
-<button className='btn btn-primary'>Next</button>
+<button className='btn btn-primary' disabled={!skill && !color} onClick={()=>setStep(2)}>Next</button>
      </div>
 </div>
+</>
 }
 {step === 2 &&
+<>
   <div className='row justify-content-center my-3'>
-<label for="customRange3" class="form-label">Example range</label>
-<input type="range" class="form-range" min="0" max="4" step="1" id="customRange3"></input>
+    <h5 className='text-center my-5'>How import or critical is this Skill related to your career?</h5>
+    <div className='d-flex justify-content-between'>
+      <h6>Not so critical</h6>
+      <h6>Sometimes it's useful</h6>
+      <h6>Critical</h6>
+      <h6>Very critical</h6>    
+      </div>
+<input type="range" class="form-range" min="1" max="4" step="1" value={utility} onChange={(e)=>setUtility(e.target.value)} id="customRange3"></input>
   </div>
+
+  <div className='row justify-content-center my-5'>
+    <h5 className='text-center my-5'>How soon you want to start mastering this skill?</h5>
+    <div className='d-flex justify-content-between'>
+      <h6>As soon as<br></br>possible</h6>
+      <h6>In a few months</h6>
+      <h6>Whenever possible, with<br></br> no stress</h6>
+      <h6>No time limit</h6>    
+      </div>
+<input type="range" class="form-range" min="1" max="4" step="1" value={priorityValue} onChange={(e)=>setPriorityValue(e.target.value)} id="customRange3"></input>
+  </div>
+
+  <div className='d-flex justify-content-between'>
+<button className='btn btn-primary' onClick={()=>setStep(1)}>Back</button>
+<button className='btn btn-primary' disabled={!utility && !priorityValue} onClick={()=>setStep(3)}>Next</button>
+     </div>
+
+  </>
+}
+{step === 3 &&
+<>
+<div className='row justify-content-center my-3'>
+    <h3 className='text-center mt-5 mb-2'>It's Time to Rate Yourself on Your Skills!</h3>
+    <h5 className='text-center'>Rate your skills to find relevant learning content and to keep tracks of your progress.</h5>
+    <div className='card my-5 py-5'>
+
+<h1 className='text-center mb-5'>{skill}</h1>
+
+    <div className='d-flex justify-content-between'>
+      <h6>1</h6>
+      <h6>2</h6>
+      <h6>3</h6>
+      <h6>4</h6>
+      <h6>5</h6>
+      <h6>6</h6>
+      <h6>7</h6>
+      <h6>8</h6>
+      <h6>9</h6>
+      <h6>10</h6>
+  
+      </div>
+<input type="range" class="form-range" min="1" max="10" step="1" value={skillValue} onChange={(e)=>setSkillValue(e.target.value)} id="customRange3"></input>
+<div className='d-flex justify-content-between'>
+      <h6>BEGINNER</h6>
+      <h6>EXPERT</h6>
+      </div>
+  </div>
+  </div>
+  <div className='d-flex justify-content-between'>
+<button className='btn btn-primary' onClick={()=>setStep(2)}>Back</button>
+<button className='btn btn-primary' disabled={!skillValue} onClick={confirmSelection}>Confirm</button>
+     </div>
+</>
 }
 </div>
 </>
@@ -193,9 +269,9 @@ const Skill = ({userdata}) => {
 {/* skill selection ends */}
 
             <div className='card  my-4'>
-                <div className='skill-donut-div d-flex justify-content-center overflow-auto py-5'>
+                <div className='d-flex justify-content-center overflow-auto py-5 w-100'>
                 {userdata.skills.length > 0 && userdata.skills.map((item,i)=>(
-                    <div className='mx-3 black-donut'>
+                    <div className='mx-3 blank-donut'>
  <h5 className='center my-3' style={{color:item.color}}>{item.skill}</h5>
  {editMode &&
  <div className='d-flex donut-action-div'><Delete className='donut-action-item text-danger' onClick={()=>removeSkill(i)}/><CalculateIcon className='donut-action-item text-success'/></div>
