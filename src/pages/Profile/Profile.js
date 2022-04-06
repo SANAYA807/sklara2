@@ -5,63 +5,63 @@ import './Profile.css';
 import ContactFooter from '../../components/ContactFooter/ContactFooter';
 import { user } from '../../components/auth/authhelper';
 import { useEffect } from 'react';
-import formatDistance from 'date-fns/formatDistance'
+import { formatDistance } from 'date-fns'
 import PolarChart from '../../components/Charts/PolarChart';
-import {PolarAreaChart } from '../../components/Charts/PolarAreaChart';
+import { PolarAreaChart } from '../../components/Charts/PolarAreaChart';
 import DevProgress from '../profileDashboard/DevProgress';
 
 
 
-function Profile({userdata}) {
+function Profile({ userdata }) {
   console.log(userdata)
 
   const LanguageArr = userdata.communicationLanguages;
 
-const formatDate = (dateString) => {
-  const options = { year: "numeric", month: "long", day: "numeric" }
-  return new Date(dateString).toLocaleDateString(undefined, options)
-}
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" }
+    return new Date(dateString).toLocaleDateString(undefined, options)
+  }
 
-const firstLogin = formatDate(userdata.firstLogin)
-const lastLogin = userdata.lastLogin && formatDate(userdata.lastLogin)
-  
+  const firstLogin = formatDate(userdata.firstLogin)
+  const lastLogin = userdata.lastLogin && formatDate(userdata.lastLogin)
 
-function getTimeFormat(dateStr) {
 
-  const str = formatDistance(
+  function getTimeFormat(dateStr) {
+
+    const str = formatDistance(
       new Date(dateStr),
       new Date()
-  );
-  return <>{str}</>
-  
-}
+    );
+    return <>{str}</>
+
+  }
 
 
   return (
     <>
-    <Navbar userdata={userdata} />
-    <div className='outer-profile pt-3'>
-      <div className='container-md'>
-        <h2 className='change-color'>My Profile</h2>
-        <p className='text-muted'><small>Trainer & Coaches can see limited information about you </ small></p>
-        <div className='row'>
-          <div className='col-lg-6 col-sm-12 common-card'>
-            <div className="card">
-              <button type="button" className="btn profile-settings"><i class="fa-solid fa-gear"></i></button>
-              <img src={userdata.profilePicture} className="card-img-top profile-image" alt="..." />
-              <div className="card-body">
-                <span className='profile-flag1'><img className="" src="	http://18.157.84.45/design/images/flags/de.svg" alt="" /></span>
-                <span className="profile-flag2"><img className="img-fluid" src="	http://18.157.84.45/design/images/flags/en.svg" alt="" /></span>
-                <h4 className="card-title mb-5">{userdata.firstName} {userdata.lastName}</h4>
-                <p className='mb-5' style={{ "color": "#cccccc" }}><small>{userdata.UserRoleType}</small></p>
-                <hr className='text-muted' />
-                <div className='d-flex justify-content-between'>
-                  <small className='text-muted'>Platform Language</small>
-                  <small className='text-muted'>Default Platform Mode</small>
-                </div>
-                <div className='d-flex justify-content-between'>
-                  <p>{userdata.dashboardLanguage}</p>
-                  <p>Training</p>
+      <Navbar userdata={userdata} />
+      <div className='outer-profile pt-3'>
+        <div className='container-md'>
+          <h2 className='change-color'>My Profile</h2>
+          <p className='text-muted'><small>Trainer & Coaches can see limited information about you </ small></p>
+          <div className='row'>
+            <div className='col-lg-6 col-sm-12 common-card'>
+              <div className="card">
+                <button type="button" className="btn profile-settings"><i class="fa-solid fa-gear"></i></button>
+                <img src={userdata.profilePicture} className="card-img-top profile-image" alt="..." />
+                <div className="card-body">
+                  <span className='profile-flag1'><img className="" src="	http://18.157.84.45/design/images/flags/de.svg" alt="" /></span>
+                  <span className="profile-flag2"><img className="img-fluid" src="	http://18.157.84.45/design/images/flags/en.svg" alt="" /></span>
+                  <h4 className="card-title mb-5">{userdata.firstName} {userdata.lastName}</h4>
+                  <p className='mb-5' style={{ "color": "#cccccc" }}><small>{userdata.UserRoleType}</small></p>
+                  <hr className='text-muted' />
+                  <div className='d-flex justify-content-between'>
+                    <small className='text-muted'>Platform Language</small>
+                    <small className='text-muted'>Default Platform Mode</small>
+                  </div>
+                  <div className='d-flex justify-content-between'>
+                    <p>{userdata.dashboardLanguage}</p>
+                    <p>Training</p>
 
                   </div>
                 </div>
@@ -99,9 +99,11 @@ function getTimeFormat(dateStr) {
                     </div>
                     <div className="mb-4">
                       <small className='text-muted m-0 p-0'>Languages</small>
-                      <p className='m-0 p-0' style={{ "fontWeight": "500" }}>{LanguageArr.map((item, index)=> { return (
-                        <> {index!=0 ? `,${item}` : item  } </> 
-                        ) }) }</p>
+                      <p className='m-0 p-0' style={{ "fontWeight": "500" }}>{LanguageArr.map((item, index) => {
+                        return (
+                          <> {index != 0 ? `,${item}` : item} </>
+                        )
+                      })}</p>
                     </div>
                     <div className="mb-4">
                       <small className='text-muted m-0 p-0'>Phone Number</small>
@@ -210,10 +212,10 @@ function getTimeFormat(dateStr) {
         </div>
         <DevProgress />
       </div> */}
-      
+
       <ContactFooter />
-    {/* </div > */}
-    <Footer/>
+      {/* </div > */}
+      <Footer />
     </>
   );
 }
