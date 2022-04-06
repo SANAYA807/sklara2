@@ -16,8 +16,10 @@ import styled from "styled-components";
 import Feedback from '../profileDashboard/Feedback';
 import { CircularProgressbar, buildStyles, CircularProgressbarWithChildren } from 'react-circular-progressbar';
 import "react-circular-progressbar/dist/styles.css";
+import Navbar from '../../components/navbar/Navbar';
+import Footer from '../../components/footer/Footer';
 
-const NewDashboard = () => {
+const NewDashboard = ({userdata}) => {
     const labels = [1, 2, 3, 4, 5, 6]
     const arrayEvents = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -108,6 +110,8 @@ const NewDashboard = () => {
         `;
 
     return (
+        <>
+        <Navbar userdata={userdata}/>
         <div className='container-fluid px-1 '>
             <div className='row justify-content-center section'>
                 <div className="row">
@@ -523,6 +527,8 @@ const NewDashboard = () => {
 
             </div>
         </div>
+        <Footer/>
+        </>
     )
 }
 
