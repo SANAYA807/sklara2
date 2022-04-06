@@ -21,6 +21,7 @@ import { Dashboard } from '@mui/icons-material';
 import NewDashboard from './pages/NewDashboard/NewDashboard';
 import AddSkill from './pages/supplier/AddSkill';
 import SpDashboard from './pages/NewDashboard/SP_dashboard';
+import CalendarPage from './pages/Calender/CalendarPage';
 
 function App() {
   const [userdata, setUserData] = useState(null)
@@ -78,6 +79,7 @@ function App() {
         <Route exact path='/changePassword' element={userdata && userdata._id ? <ChangePassword userdata={userdata} /> : <Login />}></Route>
         {/* <Route exact path="/sp_dashboard" element={userdata && userdata._id ? <SPDashboard userdata={userdata} /> : <Login />}></Route> */}
         <Route exact path="/sp_dashboard" element={userdata && userdata._id ? <><Navbar userdata={userdata} /><SpDashboard userdata={userdata} /> <Footer /> </> : <Login />}></Route>
+        <Route exact path="/calendar" element={userdata && userdata._id ? <><Navbar userdata={userdata} /><CalendarPage userdata={userdata} /> <Footer /> </> : <Login />}></Route>
         <Route exact path="/add_skill" element={userdata && userdata._id ? <AddSkill userdata={userdata} /> : <Login />}></Route>
         <Route exact path='*' element={<NotFound userdata={userdata} />} />
       </Routes>
