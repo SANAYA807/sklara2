@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { RadialBarChart, RadialBar, Legend, PolarAngleAxis, LabelList } from 'recharts';
+import { RadialBarChart, RadialBar, Legend, PolarAngleAxis, LabelList,ResponsiveContainer } from 'recharts';
 
 
 const PolarChart = ({skills}) => {
@@ -64,16 +64,17 @@ const PolarChart = ({skills}) => {
 
 return (
     <>
- <RadialBarChart width={600} height={600} data={data} 
-    innerRadius="20%" outerRadius="70%" startAngle={90}
+ <RadialBarChart width={600} height={600} data={data}
+ barSize={20} 
+    innerRadius="50%" outerRadius="80%" startAngle={90}
     endAngle={-270}>
     {/* <RadialBar label={{ position: 'insideStart', fill: '#8784d8' }} minAngle={30} dataKey="x" clockWise/>
 	<Legend iconSize={10} width={120} height={140} layout="vertical" verticalAlign="middle" wrapperStyle={style} /> */}
-     <PolarAngleAxis type="number" domain={[0, 100]} dataKey={'x'} tick={false} />
+     <PolarAngleAxis type="number" domain={[0, 110]} dataKey={'x'} tick={false} />
 	{/* add background after label as 'background' to show background */}
-     <RadialBar isAnimationActive={false} minAngle={15} label={{ position: "insideStart", fill: "#fff" }}  clockWise dataKey="x"/>
+	{/* label={{ position: "insideLeft", fill: "#000" }} */}
+     <RadialBar isAnimationActive={true} minAngle={15}   clockWise dataKey="x"/>
   </RadialBarChart>
-
 
 </>
 );

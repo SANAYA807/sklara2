@@ -43,8 +43,8 @@ useEffect(() => {
   return (
     <>
     <Navbar userdata={userdata} />
-    <div className='outer-profile pt-3'>
-      <div className='container-md'>
+    <div className='outer-profile container-fluid main-div pt-3'>
+      <div className='container-fluid px-0'>
         <h2 className='change-color'>My Profile</h2>
         <p className='text-muted'><small>Trainer & Coaches can see limited information about you </ small></p>
         <div className='row'>

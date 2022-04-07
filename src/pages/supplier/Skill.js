@@ -213,18 +213,14 @@ swal('Error', `${err.message}`, 'error')
     return (
         <>
         <Navbar userdata={userdata}/>
-        <div className='container my-4'>
+
+        <div className='container-fluid main-div my-4'>
             <h1>Your Skill <span className='heading'>Focus Areas</span></h1>
-            <div className='row justify-content-between'>
-                <div className='col'>
             <h5>You can add at the most 5 skills to your portfolio</h5>
-            </div>
-            <div className='col-sm-2'>
-                <div className='d-flex'>
+                <div className='d-flex justify-content-end'>
                 <Link to="/manage_skill" className='btn btn-primary text-light'><StyleIcon/> Manage</Link>
                 </div>
-            </div>
-            </div>
+
 
             {/* for skill selection */}
 {editMode &&
@@ -332,11 +328,11 @@ swal('Error', `${err.message}`, 'error')
 }
 {/* skill selection ends */}
 
-            <div className='card  my-4'>
+            <div className='my-4'>
                 <div className='d-flex justify-content-center overflow-auto py-5 w-100'>
                 {userdata.skills.length > 0 && userdata.skills.map((item,i)=>(
-                    <div className='mx-3 blank-donut main-donut'>
- <h5 className='center my-3' style={{color:item.color}}>{item.skill}</h5>
+                    <div className='mx-3 blank-donut main-donut p-4'>
+ <h6 className='center my-3' style={{color:item.color}}>{item.skill}</h6>
  {editMode &&
  <div className='d-flex donut-action-div'><Delete className='donut-action-item text-danger' onClick={()=>removeSkill(i)}/><CalculateIcon onClick={()=>editSkill(i)} className='donut-action-item text-success'/></div>
 }
@@ -344,8 +340,8 @@ swal('Error', `${err.message}`, 'error')
  </div>
                 ))}
                 {userdata.skills.length <=4 &&
-                                    <div className='mx-3 blank-donut'>
-<h5 className='center my-3' style={{color:"#fff"}}>c</h5>
+<div className='mx-3 blank-donut p-4'>
+<h5 className='center my-3' style={{color:"#fff"}}>-</h5>
  {/* <DonutChart value={10} color='#BFBFBF'/> */}
  <div className='blank-donut-item2'>
 <Add sx={{ fontSize: 80 }} style={{color:"lightgreen", cursor:'pointer'}} onClick={setToggle}/>
@@ -354,8 +350,8 @@ swal('Error', `${err.message}`, 'error')
  </div>
 }
 {userdata.skills.length <4 &&
-<div className='mx-3 blank-donut'>
- <h5 className='center my-3' style={{color:"#fff"}}>c</h5>
+<div className='mx-3 blank-donut p-4'>
+ <h5 className='center my-3' style={{color:"#fff"}}>-</h5>
  <div className='blank-donut-item'>
 <SentimentVeryDissatisfiedIcon sx={{ fontSize: 50 }} style={{color:"#BFBFBF"}}/>
 </div>
@@ -370,8 +366,19 @@ swal('Error', `${err.message}`, 'error')
         <div className='col-md-6'>
           <h2 className=''>Your Skill <span className='heading'>Priorities Graph</span></h2>
           <p className='fw-light text-secondary'>Based on your skill utility & urgency</p>
-          <div className='card px-3'>
-        <PolarChart skills={userdata.skills}/>
+          <div className='card px-3'style={{height:'90%'}}>
+            <div className='skill-value'>
+              <div className='felx flex-column'>
+              {userdata.skills.length > 0 && userdata.skills.map((item)=>(
+                <h6 style={{color:item.color}} className="py-0 my-0">{item.priorityValue === 1 && '100'}
+                {item.priorityValue === 2 && '75'}
+                {item.priorityValue === 3 && '50'}
+                {item.priorityValue === 4 && '25'}
+                 %</h6>
+              ))}
+              </div>
+            </div>
+        <PolarChart skills={userdata.skills.reverse()}/>
         <div className='row'>
           <hr></hr>
           {userdata.skills.length > 0 && userdata.skills.map((item)=>(
