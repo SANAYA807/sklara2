@@ -366,7 +366,7 @@ swal('Error', `${err.message}`, 'error')
         <div className='col-md-6'>
           <h2 className=''>Your Skill <span className='heading'>Priorities Graph</span></h2>
           <p className='fw-light text-secondary'>Based on your skill utility & urgency</p>
-          <div className='card px-3'style={{height:'90%'}}>
+          <div className='card px-3 polar-div-in'>
             <div className='skill-value'>
               <div className='felx flex-column'>
               {userdata.skills.length > 0 && userdata.skills.map((item)=>(

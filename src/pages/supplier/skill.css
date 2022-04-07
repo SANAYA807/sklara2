@@ -36,11 +36,16 @@
     top:140px;
     right:97px;
 }
+.polar-div-in{
+    position: relative;
+}
+
 .skill-value{
     position: absolute;
-    margin-left: 39%;
+    margin-left: 40%;
     top:70px;
 }
+
 
 .blank-donut-item2{
     position: absolute;

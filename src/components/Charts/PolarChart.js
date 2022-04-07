@@ -64,7 +64,8 @@ const PolarChart = ({skills}) => {
 
 return (
     <>
- <RadialBarChart width={600} height={600} data={data}
+	<ResponsiveContainer height={600}>
+ <RadialBarChart data={data}
  barSize={20} 
     innerRadius="50%" outerRadius="80%" startAngle={90}
     endAngle={-270}>
@@ -75,7 +76,7 @@ return (
 	{/* label={{ position: "insideLeft", fill: "#000" }} */}
      <RadialBar isAnimationActive={true} minAngle={15}   clockWise dataKey="x"/>
   </RadialBarChart>
-
+  </ResponsiveContainer>
 </>
 );
 }
