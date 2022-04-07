@@ -18,7 +18,7 @@ export default function MarketPlace({ userdata }) {
     <>
       <Navbar userdata={userdata} />
       <div className='mp-outer pt-3'>
-        <div className='container-md'>
+        <div className='container'>
           <h1 className='mb-4'>Find the perfect <span className="change-color">trainer or coach</span></h1>
           <div className="input-group mb-3 mp-input-div shadow-sm">
             <input type="text" className="form-control" placeholder="Try 'Business Analysis'" aria-label="Recipient's username" aria-describedby="basic-addon2" />
@@ -31,7 +31,7 @@ export default function MarketPlace({ userdata }) {
               <span className='mp-popular'>Popular:</span>
               <a href="/#"><span className="badge badge-pill mp-violet">Business Analysis</span></a>&nbsp;
               <a href="/#"><span className="badge badge-pill mp-violet">AI in Business Decisions</span></a>&nbsp;
-              <a href="/#"><span className="badge badge-pill mp-violet">Sales & Marketing</span></a>&nbsp;<br />
+              <a href="/#"><span className="badge badge-pill mp-violet">Sales & Marketing</span></a>&nbsp;
               <a href="/#"><span className="badge badge-pill mp-violet">No Code App Development</span></a>
             </p>
           </div>

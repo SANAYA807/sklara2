@@ -24,6 +24,7 @@ import SpDashboard from './pages/NewDashboard/SP_dashboard';
 import CalendarPage from './pages/Calender/CalendarPage';
 import ManageSkill from './pages/supplier/ManageSkill';
 import Skill from './pages/supplier/Skill';
+import EmployeeList from './pages/Employee/EmployeeList';
 
 function App() {
   const [userdata, setUserData] = useState(null)

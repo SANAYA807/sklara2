@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import SearchIcon from '@mui/icons-material/Search';
 import Search from '@mui/icons-material/Search';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
@@ -19,6 +19,12 @@ import './navbar.css'
 import { Password } from '@mui/icons-material';
 
 const Navbar = ({ userdata }) => {
+  let location = useLocation();
+  const ActiveClr = (curr) => {
+    if (location.pathname === curr) {
+      return "active";
+    }
+  };
   //console.log(userdata)
   return (
     <>
@@ -76,16 +82,16 @@ const Navbar = ({ userdata }) => {
           <div className="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
             <ul className="navbar-nav mb-2 mb-lg-0">
               <div className='d-flex'>
-                <li className="nav-item">
+                <li className={`nav-item ${ActiveClr("/")}`}>
                   <Link className="nav-link" to="/"><HomeOutlinedIcon /> Home</Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item ">
                   <Link className="nav-link" to="/"><EventOutlinedIcon /> Learning Plan</Link>
                 </li>
-                <li className="nav-item">
+                <li className={`nav-item ${ActiveClr("/market_place")}`}>
                   <Link className="nav-link" to="/market_place"><ShopTwoOutlinedIcon /> Market Place</Link>
                 </li>
-                <li className="nav-item">
+                <li className={`nav-item ${ActiveClr("/focus_skill")}`}>
                   <Link className="nav-link" to="/focus_skill"><FilterCenterFocusOutlinedIcon /> Focus Area</Link>
                 </li>
               </div>
