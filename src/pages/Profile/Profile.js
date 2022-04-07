@@ -53,8 +53,17 @@ useEffect(() => {
               <button type="button" className="btn profile-settings"><i class="fa-solid fa-gear"></i></button>
               <img src={profPic} className="card-img-top profile-image" alt="..." />
               <div className="card-body">
-                <span className='profile-flag1'><img className="" src="	http://18.157.84.45/design/images/flags/de.svg" alt="" /></span>
-                <span className="profile-flag2"><img className="img-fluid" src="	http://18.157.84.45/design/images/flags/en.svg" alt="" /></span>
+                {userdata.communicationLanguages && userdata.communicationLanguages.map((item,i)=>{
+                return (
+                  <>
+                <span className='profile-flag1' style={{right: `${2*i}rem`}}><img className="img-fluid" src={`/images/flags/${item}.png`} alt="" /></span>
+
+                  </>
+                )
+                })}
+                {/* <span className='profile-flag1'><img className="img-fluid" src="/images/flags/French.png" alt="" /></span>
+
+                <span className="profile-flag1"><img className="img-fluid" src="/images/flags/English.png" alt="" /></span> */}
                 <h4 className="card-title mb-5">{userdata.firstName} {userdata.lastName}</h4>
                 <p className='mb-5' style={{ "color": "#cccccc" }}><small>{userdata.UserRoleType}</small></p>
                 <hr className='text-muted' />

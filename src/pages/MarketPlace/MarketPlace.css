@@ -1,3 +1,8 @@
+.container{
+
+  max-width: 1252px!important ;
+
+}
 .mp-outer{
   background-color: #f1f6f9;
 }

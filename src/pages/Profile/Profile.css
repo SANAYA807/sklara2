@@ -24,7 +24,7 @@
   border-radius: 50%;
   position: absolute;
   /* display: inline-flex; */
-  right: 3rem;
+  /* right: 3rem; */
   top: 11rem;
   z-index: 3;
 }
