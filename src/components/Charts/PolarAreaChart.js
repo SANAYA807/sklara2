@@ -49,7 +49,7 @@ export function PolarAreaChart({skills}) {
   const [label, setLabel] = useState()
   const [datas, setData] = useState()
   const [color, setColor] = useState()
-	console.log(skills, "skill")
+	//console.log(skills, "skill")
 
 	async function getSkill() {
 		
@@ -76,7 +76,7 @@ export function PolarAreaChart({skills}) {
           label: '# of Votes',
           data: datas,
           backgroundColor: color,
-          borderWidth: 2,
+          borderWidth: 5,
         },
       ],
     };
