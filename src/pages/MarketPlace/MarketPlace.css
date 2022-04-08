@@ -1,8 +1,8 @@
-.container{
+/* .container{
 
-  max-width: 1252px!important ;
+  max-width: 1424px!important ;
 
-}
+} */
 .mp-outer{
   background-color: #f1f6f9;
 }
@@ -34,6 +34,7 @@
 }
 .mp-com-image{
   height: 11rem;
+  object-fit: cover;
 }
 .mp-com-flag1{
   width: 3rem;
@@ -75,4 +76,62 @@
   color: black !important;
   background-color: #fff !important;
   border-color: #550b7c !important;
+}
+
+/* algolia search */
+
+#header {
+  height: 56px;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  display: flex;
+}
+#header img {
+  top: 9px;
+  left: 0;
+  float: left;
+  max-width: 23%;
+  max-height: 61%;
+}
+
+#header .ais-SearchBox{
+  width: 57rem;
+}
+
+#header .ais-SearchBox__wrapper input {
+  font-size: 1.2rem;
+  font-weight: 100;
+  width: 15rem;
+  margin-left: 4%;
+  padding: 10px 0 6px;
+  border: none;
+  border-bottom: 5px solid #eee;
+  box-shadow: none;
+}
+#header .ais-SearchBox__input:valid ~ .ais-SearchBox__reset{
+  margin-right: 25px;
+}
+#header .ais-SearchBox__submit {
+  top:inherit;
+  right: 0px;
+  left: inherit;
+}
+#header .ais-SearchBox__wrapper input, .ais-SearchBox__wrapper input:focus {
+  transition: border-color .3s ease-in;
+  outline: 0;
+}
+#header .ais-SearchBox__wrapper input:focus {
+  border-color: #ed5565;
+}
+#header .ais-SearchBox__wrapper input::-webkit-input-placeholder, .ais-SearchBox__wrapper input:-moz-placeholder, .ais-SearchBox__wrapper input:-moz-placeholder, .ais-SearchBox__wrapper input:-ms-input-placeholder {
+  font-weight: 100;
+  color: #999;
+}
+#header .ais-SearchBox-submitIcon {
+  height: 1.3rem;
+  width: 1.3rem;
+}
+#header .ais-SearchBox-resetIcon{
+  height: 1.3rem;
+  width: 1.3rem;
 }

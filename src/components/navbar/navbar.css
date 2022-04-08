@@ -27,7 +27,7 @@
 
 }
 .active{
-    border-bottom: #7a36b6 solid
+    border-bottom: #7a36b6 solid;
 }
 .box{
     background-color: var(--backgorundColor);
