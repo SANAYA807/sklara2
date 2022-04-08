@@ -3,6 +3,8 @@
   max-width: 1424px!important ;
 
 } */
+
+
 .mp-outer{
   background-color: #f1f6f9;
 }
@@ -134,4 +136,11 @@
 #header .ais-SearchBox-resetIcon{
   height: 1.3rem;
   width: 1.3rem;
+}
+
+
+.ais-Hits-item {
+  /* margin-bottom: 1em; */
+  width: calc(25% - 1rem);
+  display : inline-block
 }

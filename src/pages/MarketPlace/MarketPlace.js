@@ -19,9 +19,24 @@ export default function MarketPlace({ userdata }) {
   const array = [1, 2, 3, 4, 5, 6, 7, 8]
   const arrayEvents = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
-   const Hit = ({hit}) => {
-     console.log(hit, "Algolia Result")
-     return null
+  function Hit({hit}) { 
+     console.log(hit, "Algolia Result-------")
+     return(
+      <div className='col-lg-16 col-sm-28 mb-4'>
+      <div className="card shadow-sm me-1">
+        <img role="button" src={hit.profilePicture ?  hit.profilePicture : "images/dummy/user4_big.jpg"} className="card-img-top mp-com-image" alt="..." />
+        <div className="card-body">
+          <span className='mp-com-flag1'><img src="images/flags/de.svg" alt="" /></span>
+          <span className="mp-com-flag2"><img className="img-fluid" src="images/flags/en.svg" alt="" /></span>
+          <h5 className="card-title m-0">{hit.username}</h5>
+          <p className='mb-2' style={{ "color": "#cccccc" }}><small>Senior Project Manager</small></p>
+          <p className="mp-experience"><small>Experience of 26 years</small></p>
+          <p><img src="images/star.png" alt='star' /><span style={{ "color": "#1fd0b6" }}>5.0</span><small style={{ "color": "#cccccc" }}>(7)</small></p>
+        </div>
+
+      </div>
+    </div>
+     )
    }
    
    
@@ -32,6 +47,7 @@ export default function MarketPlace({ userdata }) {
       <Navbar userdata={userdata} />
       <div className='mp-outer container-fluid main-div pt-3'>
         <div className='container-fluid px-0'>
+
         <InstantSearch searchClient={searchClient} indexName="sklara_search">
 
           <h1 className='mb-4'>Find the perfect <span className="change-color">trainer or coach</span></h1>
@@ -43,6 +59,15 @@ export default function MarketPlace({ userdata }) {
               <span className="input-group-text mp-icon" id="basic-addon2"><i className="fa fa-search fa-sm py-1"></i></span>
             </div>
           </div>  */}
+           <div className='mb-5'>
+            <p align="left">
+              <span className='mp-popular'>Popular:</span>
+              <a href="/#"><span className="badge badge-pill mp-violet">Business Analysis</span></a>&nbsp;
+              <a href="/#"><span className="badge badge-pill mp-violet">AI in Business Decisions</span></a>&nbsp;
+              <a href="/#"><span className="badge badge-pill mp-violet">Sales & Marketing</span></a>&nbsp;
+              <a href="/#"><span className="badge badge-pill mp-violet">No Code App Development</span></a>
+            </p>
+          </div>
            <div id="header">
                   <SearchBox translations={{ placeholder:"Try 'Business Analysis'"}} />
             </div>
@@ -52,15 +77,7 @@ export default function MarketPlace({ userdata }) {
         </InstantSearch>  
 
 
-          <div className='mb-5'>
-            <p align="left">
-              <span className='mp-popular'>Popular:</span>
-              <a href="/#"><span className="badge badge-pill mp-violet">Business Analysis</span></a>&nbsp;
-              <a href="/#"><span className="badge badge-pill mp-violet">AI in Business Decisions</span></a>&nbsp;
-              <a href="/#"><span className="badge badge-pill mp-violet">Sales & Marketing</span></a>&nbsp;
-              <a href="/#"><span className="badge badge-pill mp-violet">No Code App Development</span></a>
-            </p>
-          </div>
+         
           <div className='mb-4'>
             <h3>Our Reccomendations</h3>
             <h5>based on your profile, preferences and activities</h5>
