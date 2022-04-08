@@ -127,7 +127,9 @@
     background: #a9d4ff;
   }
   .react-calendar__tile--active {
-    background: var(--purple);
+    background: #550B7C;
+    border-radius: 100%;
+    
     color: white;
   }
   .react-calendar__tile--active:enabled:hover,
@@ -137,4 +139,16 @@
   .react-calendar--selectRange .react-calendar__tile--hover {
     background-color: #e6e6e6;
   }
-  
+  .react-calendar__navigation__label__labelText, .react-calendar__navigation__label__labelText--from{
+    float: left;
+    font-family: 'Inter';
+  font-style: normal;
+font-weight: 900;
+font-size: 24px;
+text-shadow: 1px 0 var(--purple);
+letter-spacing:1px;
+margin-left: 15px;
+line-height: 29px;
+color: #1B1464;
+
+  }

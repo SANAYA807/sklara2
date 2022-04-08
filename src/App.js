@@ -24,6 +24,7 @@ import SpDashboard from './pages/NewDashboard/SP_dashboard';
 import CalendarPage from './pages/Calender/CalendarPage';
 import ManageSkill from './pages/supplier/ManageSkill';
 import Skill from './pages/supplier/Skill';
+import StepperForm from './pages/StepperForm/StepperForm';
 
 function App() {
   const [userdata, setUserData] = useState(null)
@@ -85,6 +86,8 @@ function App() {
         <Route exact path="/add_skill" element={userdata && userdata._id ? <AddSkill userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/manage_skill" element={userdata && userdata._id ? <ManageSkill userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/focus_skill" element={userdata && userdata._id ? <Skill userdata={userdata} /> : <Login />}></Route>
+        <Route exact path="/form" element={userdata && userdata._id ? <StepperForm userdata={userdata} /> : <Login />}></Route>
+
         <Route exact path='*' element={<NotFound userdata={userdata} />} />
       </Routes>
     </Router>

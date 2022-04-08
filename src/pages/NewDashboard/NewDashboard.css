@@ -3,6 +3,7 @@
 .left_side{
     border-right: 1px solid var(--lightGray);
     padding-right: 2rem !important;
+    font-family: 'Inter';
 }
 .section{
     margin: 0 3% !important;
@@ -10,8 +11,20 @@
 .yellow{
     color: var(--yellow);
     font-size: 30px;
-    font-family: 'Inter',sans-serif;
+    font-weight: 400;
+    font-family: 'Inter';
     margin-bottom: 2rem;
+}
+.card-title{
+    font-weight: 900;
+    font-family: 'Inter';
+}
+.heading h1{
+    font-family: 'Inter';
+    font-weight: 900;
+    text-shadow: 1px 0 var(--purple);
+    letter-spacing:1px;
+    font-size: 46px
 }
 .progress_bar{
     display: grid;
@@ -40,6 +53,23 @@
     width: 92%;
     float: right;
 }
+.time_spending h3{
+    font-weight: 700;
+}
+.short_div h3,.green h3{
+    font-family: 'Inter';
+    font-weight: 800;
+}
+.satisfaction h3{
+    font-family: 'Inter';
+    font-weight: 800;
+}
+.satisfaction .bold{
+    font-weight: 600;
+}
+.short_div h4{
+    font-weight: 600;
+}
 .short_div1{
     background-color:var(--shortDiv1);
 }
@@ -50,11 +80,19 @@
     padding: 30px;
     background-color: #F6F7F9;
     border-radius: 15px;
+    
 }
 .right_card .text-muted{
     font-size: 20px;
     line-height: 1;
 
+}
+.right_card h1{
+    font-family: 'Inter';
+    font-weight: 900;
+    text-shadow: 1px 0 #000;
+    font-size: 36px;
+    letter-spacing:1px;
 }
 .round_icon{
 height: 42px;

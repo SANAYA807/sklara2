@@ -99,7 +99,7 @@ function Profile({ userdata }) {
                     </div>
                     <div className="mb-4">
                       <small className='text-muted m-0 p-0'>Languages</small>
-                      <p className='m-0 p-0' style={{ "fontWeight": "500" }}>{LanguageArr.map((item, index) => {
+                      <p className='m-0 p-0' style={{ "fontWeight": "500" }}>{LanguageArr?.map((item, index) => {
                         return (
                           <> {index != 0 ? `,${item}` : item} </>
                         )

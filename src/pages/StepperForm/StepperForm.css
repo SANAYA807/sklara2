@@ -1,0 +1,18 @@
+.logo{
+    height: 45px;
+}
+.steps{
+    list-style: none;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding: 7px 15px;   
+    margin-right: 10px;
+    margin-top: 10px;
+    
+}
+.invitation{
+    background: #FFFFFF;
+box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
+border-radius: 20px;
+}
