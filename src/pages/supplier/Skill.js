@@ -11,6 +11,10 @@ import axios from 'axios';
 import { API } from '../../API';
 import { isAutheticated } from '../../components/auth/authhelper';
 import swal from 'sweetalert';
+import PolarChart from '../../components/Charts/PolarChart';
+import {PolarAreaChart } from '../../components/Charts/PolarAreaChart';
+import DevProgress from '../profileDashboard/DevProgress';
+import CircleIcon from '@mui/icons-material/Circle';
 
 
 
@@ -28,6 +32,9 @@ const Skill = ({userdata}) => {
     const [utility,setUtility] = useState(1)
     const [priorityValue,setPriorityValue] = useState(1)
     const [skillValue, setSkillValue] = useState(1)
+    const [updateMode, setUpdateMode] = useState(false)
+    const [index, setIndex] = useState(null)
+
     // console.log(utility)
 
     const setToggle = () =>{
@@ -151,21 +158,69 @@ const confirmSelection = async()=>{
         }
     }
 
+  //editSkill
+  const editSkill = async(i) =>{
+    setStep(2);
+    setUpdateMode(true)
+    setIndex(i)
+    let s = userdata.skills[i].skill
+    let u = userdata.skills[i].utility
+    let p = userdata.skills[i].priorityValue
+    let v = userdata.skills[i].skillValue
+    setSkill(s)
+    setUtility(u)
+    setPriorityValue(p)
+    setSkillValue(v)
+}
+
+const confirmUpdate = async()=>{
+
+  const newData = userdata.skills
+  newData[index].utility = utility;
+  newData[index].priorityValue = priorityValue;
+  newData[index].skillValue = skillValue;
+
+  try{
+    let res = await axios.patch(`${API}/api/user/update`,{skills:newData},{
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    })
+    //console.log(res)
+if (res.data.status === 'ok') {
+  localStorage.setItem(
+    "userData",
+    JSON.stringify({
+      userData: res.data.data
+    }))
+  swal('Success', 'Skill updated successfully', 'success').then(() => {
+    window.location.reload()
+  })
+
+}
+setSkill('')
+setColor('')
+setUtility(1)
+setPriorityValue(1)
+setSkillValue(1)
+} catch (err) {
+console.log(err)
+swal('Error', `${err.message}`, 'error')
+}
+
+}
+
     return (
         <>
         <Navbar userdata={userdata}/>
-        <div className='container my-4'>
+
+        <div className='container-fluid main-div my-4'>
             <h1>Your Skill <span className='heading'>Focus Areas</span></h1>
-            <div className='row justify-content-between'>
-                <div className='col'>
             <h5>You can add at the most 5 skills to your portfolio</h5>
-            </div>
-            <div className='col-sm-2'>
-                <div className='d-flex'>
-                <Link to="/manage_skill" className='btn btn-primary'><StyleIcon/> Manage</Link>
+                <div className='d-flex justify-content-end'>
+                <Link to="/manage_skill" className='btn btn-primary text-light'><StyleIcon/> Manage</Link>
                 </div>
-            </div>
-            </div>
+
 
             {/* for skill selection */}
 {editMode &&
@@ -259,7 +314,12 @@ const confirmSelection = async()=>{
   </div>
   <div className='d-flex justify-content-between'>
 <button className='btn btn-primary' onClick={()=>setStep(2)}>Back</button>
+{updateMode ? 
+  <button className='btn btn-primary' disabled={!skillValue} onClick={confirmUpdate}>Update</button>
+:
 <button className='btn btn-primary' disabled={!skillValue} onClick={confirmSelection}>Confirm</button>
+}
+
      </div>
 </>
 }
@@ -268,20 +328,20 @@ const confirmSelection = async()=>{
 }
 {/* skill selection ends */}
 
-            <div className='card  my-4'>
+            <div className='my-4'>
                 <div className='d-flex justify-content-center overflow-auto py-5 w-100'>
                 {userdata.skills.length > 0 && userdata.skills.map((item,i)=>(
-                    <div className='mx-3 blank-donut'>
- <h5 className='center my-3' style={{color:item.color}}>{item.skill}</h5>
+                    <div className='mx-3 blank-donut main-donut p-4'>
+ <h6 className='center my-3' style={{color:item.color}}>{item.skill}</h6>
  {editMode &&
- <div className='d-flex donut-action-div'><Delete className='donut-action-item text-danger' onClick={()=>removeSkill(i)}/><CalculateIcon className='donut-action-item text-success'/></div>
+ <div className='d-flex donut-action-div'><Delete className='donut-action-item text-danger' onClick={()=>removeSkill(i)}/><CalculateIcon onClick={()=>editSkill(i)} className='donut-action-item text-success'/></div>
 }
  <DonutChart value={item.skillValue} color={item.color} rate={item.skillValue}/>
  </div>
                 ))}
                 {userdata.skills.length <=4 &&
-                                    <div className='mx-3 blank-donut'>
-<h5 className='center my-3' style={{color:"#fff"}}>c</h5>
+<div className='mx-3 blank-donut p-4'>
+<h5 className='center my-3' style={{color:"#fff"}}>-</h5>
  {/* <DonutChart value={10} color='#BFBFBF'/> */}
  <div className='blank-donut-item2'>
 <Add sx={{ fontSize: 80 }} style={{color:"lightgreen", cursor:'pointer'}} onClick={setToggle}/>
@@ -290,8 +350,8 @@ const confirmSelection = async()=>{
  </div>
 }
 {userdata.skills.length <4 &&
-<div className='mx-3 blank-donut'>
- <h5 className='center my-3' style={{color:"#fff"}}>c</h5>
+<div className='mx-3 blank-donut p-4'>
+ <h5 className='center my-3' style={{color:"#fff"}}>-</h5>
  <div className='blank-donut-item'>
 <SentimentVeryDissatisfiedIcon sx={{ fontSize: 50 }} style={{color:"#BFBFBF"}}/>
 </div>
@@ -302,7 +362,66 @@ const confirmSelection = async()=>{
                 </div>
             </div>
             
-            
+      <div className='row justify-content-between mt-5'>
+        <div className='col-md-6'>
+          <h2 className=''>Your Skill <span className='heading'>Priorities Graph</span></h2>
+          <p className='fw-light text-secondary'>Based on your skill utility & urgency</p>
+          <div className='card px-3 polar-div-in'>
+            <div className='skill-value'>
+              <div className='felx flex-column'>
+              {userdata.skills.length > 0 && userdata.skills.map((item)=>(
+                <h6 style={{color:item.color}} className="py-0 my-0">{item.priorityValue === 1 && '100'}
+                {item.priorityValue === 2 && '75'}
+                {item.priorityValue === 3 && '50'}
+                {item.priorityValue === 4 && '25'}
+                 %</h6>
+              ))}
+              </div>
+            </div>
+        <PolarChart skills={userdata.skills.reverse()}/>
+        <div className='row'>
+          <hr></hr>
+          {userdata.skills.length > 0 && userdata.skills.map((item)=>(
+            <div className='col-md-4'>
+            <div className='d-flex'>
+            <CircleIcon style={{color:item.color}} />
+            <p className='fw-light'>{item.skill}</p>
+            </div>
+          </div>
+          ))}
+          <hr></hr>
+        </div>
+        </div>
+        </div>
+        <div className='col-md-6'>
+        <h2 className=''>Your Skill <span className='heading'>Levels Graph</span></h2>
+          <p className='fw-light text-secondary'>Based on your skill utility & urgency</p>
+        <div className='card px-3'>
+          <div className='p-5'>
+        <PolarAreaChart skills={userdata.skills} />
+        </div>
+        <div className='row'>
+          <hr></hr>
+          {userdata.skills.length > 0 && userdata.skills.map((item)=>(
+            <div className='col-md-4'>
+            <div className='d-flex'>
+            <CircleIcon style={{color:item.color}} />
+            <p className='fw-light'>{item.skill}</p>
+            </div>
+          </div>
+          ))}
+          <hr></hr>
+        </div>
+       </div>
+        </div>
+        
+        
+      </div>  
+
+      <div className='row justify-content-center'>
+      <DevProgress skills={userdata.skills} />
+      </div>
+
         </div>
         <Footer/>
         </>

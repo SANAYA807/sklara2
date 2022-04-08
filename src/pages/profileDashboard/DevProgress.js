@@ -137,7 +137,7 @@ const DevProgress = () => {
                 </div>
             </div>
 
-            <div className='devprog-line-div center mt-4'>
+            <div className='devprog-line-div overflow-auto center mt-4'>
             <Line options={options} data={data} height={'50px'}/>
             </div>
             

@@ -2,6 +2,11 @@
     border-radius: 30px !important;
 }
 
+.main-div{
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+}
+
 .btn-search{
     border: 1px solid blue !important;
 }
@@ -11,19 +16,41 @@
     height: 200px;
 }
 
+.donut-action-div{
+    opacity: 0;
+}
+
+.main-donut:hover .donut-action-div{
+    /* display: block; */
+    opacity: 1;
+    transition: 1s ease !important;
+    
+}
+
 .blank-donut{
     position: relative;
+    background-color: #F6F7F9;
 }
 .blank-donut-item{
     position: absolute;
-    top:130px;
-    right:72px;
+    top:140px;
+    right:97px;
 }
+.polar-div-in{
+    position: relative;
+}
+
+.skill-value{
+    position: absolute;
+    margin-left: 40%;
+    top:70px;
+}
+
 
 .blank-donut-item2{
     position: absolute;
-    top:110px;
-    right:60px;
+    top:130px;
+    right:84px;
 }
 
 .circle{

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -10,7 +10,12 @@ import { PolarArea } from 'react-chartjs-2';
 
 ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
 
+
+
 export const data = {
+
+
+  
   labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
   datasets: [
     {
@@ -29,6 +34,52 @@ export const data = {
   ],
 };
 
-export function PolarAreaChart() {
-  return <PolarArea data={data} />;
+const options = {        
+  responsive: true,
+  maintainAspectRatio: true,
+  // cutout: 80,
+  plugins: {
+    legend: {
+      display: false
+    }
+  }
+};
+
+export function PolarAreaChart({skills}) {
+  const [label, setLabel] = useState()
+  const [datas, setData] = useState()
+  const [color, setColor] = useState()
+	//console.log(skills, "skill")
+
+	async function getSkill() {
+		
+		let newArray = Object.values(skills);
+		const newArr1 = newArray.map((v) => (Math.floor((v.skillValue / 10) * 100)));
+		setData(newArr1);
+    const newArr2 = newArray.map((v) => (v.skill));
+		setLabel(newArr2);
+    const newArr3 = newArray.map((v) => (v.color));
+		setColor(newArr3);
+	  }
+	
+	  useEffect(() => {
+		getSkill();
+	  }, [skills])
+
+    const data = {
+
+
+  
+      labels: label,
+      datasets: [
+        {
+          label: '# of Votes',
+          data: datas,
+          backgroundColor: color,
+          borderWidth: 5,
+        },
+      ],
+    };
+
+  return <PolarArea data={data} options={options}/>;
 }
