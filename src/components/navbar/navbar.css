@@ -40,7 +40,6 @@
     background-color: var(--backgorundColor);
     border: none;
     display: flex;
-
     color: var(--lightGray);
     align-items: center;
     justify-content: center;
@@ -48,10 +47,18 @@
     width: 36vw !important;
 }
 
+
 .language-logo{
     width: 20px;
 }
 
+.dp-logo{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 5px;
+}
 
 /* media query */
 @media screen and (max-width: 994px) {
