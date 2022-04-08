@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Footer from '../../components/footer/Footer'
 import Navbar from '../../components/navbar/Navbar'
 import PeopleIcon from '@mui/icons-material/People';
@@ -9,23 +9,49 @@ import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import EuroIcon from '@mui/icons-material/Euro';
 import "./MarketPlace.css"
 import ContactFooter from '../../components/ContactFooter/ContactFooter';
+import { InstantSearch, SearchBox, Hits } from "react-instantsearch/dom";
+import algoliasearch from 'algoliasearch/lite';
+
 
 export default function MarketPlace({ userdata }) {
+  const searchClient = algoliasearch('2K13UYSXQ2', '8f12d53915b3f1fd369866d295ac2c40');
 
   const array = [1, 2, 3, 4, 5, 6, 7, 8]
   const arrayEvents = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+   const Hit = ({hit}) => {
+     console.log(hit, "Algolia Result")
+     return null
+   }
+   
+   
+       
+
   return (
     <>
       <Navbar userdata={userdata} />
       <div className='mp-outer container-fluid main-div pt-3'>
         <div className='container-fluid px-0'>
+        <InstantSearch searchClient={searchClient} indexName="sklara_search">
+
           <h1 className='mb-4'>Find the perfect <span className="change-color">trainer or coach</span></h1>
-          <div className="input-group mb-3 mp-input-div shadow-sm">
+          {/* <div className="input-group mb-3 mp-input-div shadow-sm">
+           
+
             <input type="text" className="form-control" placeholder="Try 'Business Analysis'" aria-label="Recipient's username" aria-describedby="basic-addon2" />
             <div className="input-group-append">
               <span className="input-group-text mp-icon" id="basic-addon2"><i className="fa fa-search fa-sm py-1"></i></span>
             </div>
+          </div>  */}
+           <div id="header">
+                  <SearchBox translations={{ placeholder:"Try 'Business Analysis'"}} />
+            </div>
+          <div className='row'>
+              <Hits hitComponent={Hit} />
           </div>
+        </InstantSearch>  
+
+
           <div className='mb-5'>
             <p align="left">
               <span className='mp-popular'>Popular:</span>
@@ -39,6 +65,9 @@ export default function MarketPlace({ userdata }) {
             <h3>Our Reccomendations</h3>
             <h5>based on your profile, preferences and activities</h5>
           </div>
+
+         
+
           <div key="companies">
             <div className='mp-top-company'>
               <p className='mp-first m-0'>Top Corporate Trainers</p>

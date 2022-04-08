@@ -269,7 +269,7 @@ const SpDashboard = ({ userdata }) => {
                             <p className="text-muted"><PersonAddAlt1Rounded style={{ marginRight: '5px' }} />2 skills needs to be added</p>
                         </div>
                         <div className="right_card mt-5 d-flex flex-column justify-content-center">
-                            <Calendar prev2Label={null} next2Label={null} />
+                            <Calendar prev2Label={null} next2Label={null} nextLabel={null} prevLabel={null} />
                             <div className='px-4'>
                                 <p style={{ color: '#F37658', fontSize: '20px', marginBottom: '-2px' }} >Today</p>
                                 <h2 className='heading'>Basic Marketing</h2>

@@ -40,13 +40,13 @@
     background-color: var(--backgorundColor);
     border: none;
     display: flex;
-
     color: var(--lightGray);
     align-items: center;
     justify-content: center;
     height: 34px;
     width: 36vw !important;
 }
+
 
 .language-logo{
     width: 20px;
