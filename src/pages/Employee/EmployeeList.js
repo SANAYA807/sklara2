@@ -1,94 +1,147 @@
-import React, { useState, forwardRef } from 'react';
-import './EmployeeList.css';
-import MaterialTable from 'material-table'
-import AddBoxIcon from '@material-ui/icons/AddBox';
-import ListIcon from '@material-ui/icons/List';
+import React, { useState, Fragment } from "react";
+import "./EmployeeList.css"
+import data from "./data.json";
+import ReadOnlyRow from "./ReadOnlyRow";
+import EditableRow from "./EditableRow";
+import Navbar from "../../components/navbar/Navbar";
+import { Link, useNavigate} from "react-router-dom";
 
 
-function EmployeeList() {
-  const [tableData, setTableData] = useState([
-    { name: "Raj", email: "Raj@gmail.com", phone: 7894561230, age: null, gender: "M", city: "Chennai", fee: 78456 },
-    { name: "Mohan", email: "mohan@gmail.com", phone: 7845621590, age: 35, gender: "M", city: "Delhi", fee: 456125 },
-    { name: "Sweety", email: "sweety@gmail.com", phone: 741852912, age: 17, gender: "F", city: "Noida", fee: 458796 },
-    { name: "Vikas", email: "vikas@gmail.com", phone: 9876543210, age: 20, gender: "M", city: "Mumbai", fee: 874569 },
-    { name: "Neha", email: "neha@gmail.com", phone: 7845621301, age: 25, gender: "F", city: "Patna", fee: 748521 },
-    { name: "Mohan", email: "mohan@gmail.com", phone: 7845621590, age: 35, gender: "M", city: "Delhi", fee: 456125 },
-    { name: "Sweety", email: "sweety@gmail.com", phone: 741852912, age: 17, gender: "F", city: "Noida", fee: 458796 },
-    { name: "Vikas", email: "vikas@gmail.com", phone: 9876543210, age: 20, gender: "M", city: "Mumbai", fee: 874569 },
-    { name: "Raj", email: "Raj@gmail.com", phone: 7894561230, age: null, gender: "M", city: "Chennai", fee: 78456 },
-    { name: "Mohan", email: "mohan@gmail.com", phone: 7845621590, age: 35, gender: "M", city: "Delhi", fee: 456125 },
-    { name: "Sweety", email: "sweety@gmail.com", phone: 741852912, age: 17, gender: "F", city: "Noida", fee: 458796 },
-    { name: "Vikas", email: "vikas@gmail.com", phone: 9876543210, age: 20, gender: "M", city: "Mumbai", fee: 874569 },
-  ])
-  const columns = [
-    { title: "Name", field: "name", sorting: false, filtering: false, cellStyle: { background:"#009688" }, headerStyle: { color: "#fff" } },
-    { title: "Email", field: "email", filterPlaceholder: "filter" },
-    { title: "Phone Number", field: "phone", align: "center", grouping: false },
-    {
-      title: "Age", field: "age", emptyValue: () => <em>null</em>,
-      render: (rowData) => <div style={{ background: rowData.age >= 18 ? "#008000aa" : "#f90000aa",borderRadius:"4px",paddingLeft:5 }}>{rowData.age >= 18 ? "18+" : "18-"}</div>,
-       searchable: false, export: false
-    },
-    { title: "Gender", field: "gender", lookup: { M: "Male", F: "Female" } },
-    { title: "City", field: "city",filterPlaceholder:"filter" },
-    { title: "School Fee", field: "fee", type: "currency", currencySetting: { currencyCode: "INR", minimumFractionDigits: 1 },
-    cellStyle: { background:"#009688" }, headerStyle: { color: "#fff" } },
-  ]
+const Employee = ({userdata}) => {
+    const navigate = useNavigate();
+  const [contacts, setContacts] = useState(data);
+
+  const [editFormData, setEditFormData] = useState({
+    fullName: "",
+    Business_Unit: "",
+    Role: "",
+    Last_Active: "",
+    HR: "",
+    email: "",
+  });
+
+  const [editContactId, setEditContactId] = useState(null);
+
+  function handleChange(value) {
+    navigate(value);
+  }
+
+ 
+
+  const handleEditFormChange = (event) => {
+    event.preventDefault();
+
+    const fieldName = event.target.getAttribute("name");
+    const fieldValue = event.target.value;
+
+    const newFormData = { ...editFormData };
+    newFormData[fieldName] = fieldValue;
+
+    setEditFormData(newFormData);
+  };
+
+  const handleCancelClick = () => {
+    setEditContactId(null);
+  };
+
+  const handleEditFormSubmit = (event) => {
+    event.preventDefault();
+
+    const editedContact = {
+      id: editContactId,
+      email: editFormData.email,
+      fullName: editFormData.fullName,
+      Business_Unit: editFormData.Business_Unit,
+      Role: editFormData.Role,
+      Last_Active: editFormData.Last_Active,
+      HR: editFormData.HR,
+    };
+
+    const newContacts = [...contacts];
+
+    const index = contacts.findIndex((contact) => contact.id === editContactId);
+
+    newContacts[index] = editedContact;
+
+    setContacts(newContacts);
+    setEditContactId(null);
+  };
+
+  const handleEditClick = (event, contact) => {
+    event.preventDefault();
+    setEditContactId(contact.id);
+
+    const formValues = {
+     fullName: contact.fullName,
+     email: contact.email,
+      Business_Unit: contact.Business_Unit,
+      Role: contact.Role,
+      Last_Active: contact.Last_Active,
+      HR: contact.HR,
+    };
+
+    setEditFormData(formValues);
+  };
+
   return (
-    <div className="EmployeeList">
-      <h1 align="center">React-EmployeeList</h1>
-      <h4 align='center'>Crash Course on Material Table </h4>
+      <>
+      <Navbar userdata={userdata} />
+      <div className='mp-outer pt-3'>
+        <div className='container'>
+        <div className='form-dec'>
+            <span className='form-color'>
+              Add New User  <select className='form-input' defaultValue={'DEFAULT'} name='role' onChange={event => handleChange(event.target.value)}>
+              <option value="DEFAULT" disabled hidden>Select</option>
+               <option value="/employee_list/Add">Single USer</option>
+              <option>Multiple USer</option>
+              
+          </select>   
+            </span>
+           
+        </div>
+        <div className="app-container">
+      <form onSubmit={handleEditFormSubmit}>
+        <table style={{width:'100%'}}>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Business Unit</th>
+              <th>Role</th>
+              <th>Last Active</th>
+              <th>HR</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {contacts.map((contact) => (
+              <Fragment>
+                {editContactId === contact.id ? (
+                  <EditableRow
+                    editFormData={editFormData}
+                    handleEditFormChange={handleEditFormChange}
+                    handleCancelClick={handleCancelClick}
 
-      <MaterialTable columns={columns} data={tableData}
-        editable={{
-          onRowAdd: (newRow) => new Promise((resolve, reject) => {
-            setTableData([...tableData, newRow])
+                  />
+                ) : (
+                  <ReadOnlyRow
+                    contact={contact}
+                    handleEditClick={handleEditClick}
+                    handleCancelClick={handleCancelClick}
 
-            setTimeout(() => resolve(), 500)
-          }),
-          onRowUpdate: (newRow, oldRow) => new Promise((resolve, reject) => {
-            const updatedData = [...tableData]
-            updatedData[oldRow.tableData.id] = newRow
-            setTableData(updatedData)
-            setTimeout(() => resolve(), 500)
-          }),
-          onRowDelete: (selectedRow) => new Promise((resolve, reject) => {
-            const updatedData = [...tableData]
-            updatedData.splice(selectedRow.tableData.id, 1)
-            setTableData(updatedData)
-            setTimeout(() => resolve(), 1000)
-
-          })
-        }}
-        actions={[
-          {
-            icon: ListIcon,
-            tooltip: "Click me",
-            onClick: (e, data) => console.log(data),
-            // isFreeAction:true
-          }
-        ]}
-        onSelectionChange={(selectedRows) => console.log(selectedRows)}
-        options={{
-          sorting: true, search: true,
-          searchFieldAlignment: "right", searchAutoFocus: true, searchFieldVariant: "standard",
-          filtering: true, paging: true, pageSizeOptions: [2, 5, 10, 20, 25, 50, 100], pageSize: 5,
-          paginationType: "stepped", showFirstLastPageButtons: false, paginationPosition: "both", exportButton: true,
-          exportAllData: true, exportFileName: "TableData", addRowPosition: "first", actionsColumnIndex: -1, selection: true,
-          showSelectAllCheckbox: false, showTextRowsSelected: false, selectionProps: rowData => ({
-            disabled: rowData.age == null,
-            // color:"primary"
-          }),
-          grouping: true, columnsButton: true,
-          rowStyle: (data, index) => index % 2 === 0 ? { background: "#f5f5f5" } : null,
-          headerStyle: { background: "#f44336",color:"#fff"}
-        }}
-        title="Student Information"
-        icons={{ Add: AddBoxIcon }}
-         />
-        <h2>hh</h2>
+                  />
+                )}
+              </Fragment>
+            ))}
+          </tbody>
+        </table>
+      </form>
+      </div>
+     
     </div>
+    </div>
+    </>
   );
-}
+};
 
-export default EmployeeList;
+export default Employee;

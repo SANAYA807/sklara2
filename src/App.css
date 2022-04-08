@@ -21,20 +21,28 @@ h1{
   overflow-x: hidden
 }
 .login_form{
-  max-width: 90%;
+  max-width: 80%;
   margin: auto;
-  padding: 8rem 10%;
+  /* padding: 4rem 10%; */
   text-align: center;
 }
+
+.certificates img{
+  height: 35px;
+  margin: 10px;
+}
 .login_text h1{
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
   color: var(--blue);
   font-family: "antoniah1-medium";
-    font-size: 350%;
+    font-size: 300%;
     font-weight: 800;
     line-height: 4.6666666667rem;
 }
+.login_text img{
+width: 200px;
 
+}
 .login_img{
   background: url(https://webmeup.com/upload/blog/lead-image-105.png);
   height: 100vh;
@@ -48,6 +56,7 @@ input {
   /* padding: 0.8333333333rem 0.8333333333rem 1.25rem 0; */
   display: block;
   width: 100%;
+  min-width: 400px;
   border: none;
   border-bottom: 2px solid var(--grey);
   border-radius: 0;
