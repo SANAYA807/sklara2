@@ -16,7 +16,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { isAutheticated, signout } from '../auth/authhelper';
 
 import './navbar.css'
-import { Password } from '@mui/icons-material';
+import { Password, People } from '@mui/icons-material';
 
 const Navbar = ({ userdata }) => {
   let location = useLocation();
@@ -53,7 +53,11 @@ const Navbar = ({ userdata }) => {
 
                 <div class="btn-group dropafter box" style={{ width: '130px' }}>
                   <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <AccountCircleOutlinedIcon style={{ marginRight: '20px' }} /> {userdata && userdata.firstName}
+                    {userdata && userdata.profilePicture ? <img src={userdata.profilePicture} className="dp-logo" alt='profile image'/>
+                  :  
+                  <AccountCircleOutlinedIcon style={{ marginRight: '20px' }} /> 
+                  }
+                    {userdata && userdata.firstName}
                   </button>
                   <ul class="dropdown-menu">
                     <li><AccountCircleOutlinedIcon /> {userdata && userdata.firstName} </li>
@@ -63,6 +67,10 @@ const Navbar = ({ userdata }) => {
                       <li><Link className="nav-link" to="/" onClick={signout}><LogoutIcon /> Logout</Link></li>
                     }
                     <li><Link className="nav-link" to="/changePassword"><Password /> Change Password</Link></li>
+
+                    {userdata && userdata.userType ==='hr'&&
+                    <li><Link className="nav-link" to="/employee_list"><People/> Your Employees</Link></li>
+                    }
                   </ul>
                 </div>
               </div>

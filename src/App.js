@@ -90,8 +90,8 @@ function App() {
         <Route exact path="/focus_skill" element={userdata && userdata._id ? <Skill userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/form" element={userdata && userdata._id ? <StepperForm userdata={userdata} /> : <Login />}></Route>
 
-        <Route exact path="/employee_list" element={userdata && userdata._id ? <EmployeeList userdata={userdata} /> : <Login />}></Route>
-        <Route exact path="/employee_list/Add" element={userdata && userdata._id ? <AddUser userdata={userdata} /> : <Login />}></Route>
+        <Route exact path="/employee_list" element={userdata && userdata._id && userdata.userType ==='hr' ? <EmployeeList userdata={userdata} /> : <Login />}></Route>
+        <Route exact path="/employee_list/Add" element={userdata && userdata._id && userdata.userType ==='hr' ? <AddUser userdata={userdata} /> : <Login />}></Route>
         <Route exact path='*' element={<NotFound userdata={userdata} />} />
       </Routes>
     </Router>

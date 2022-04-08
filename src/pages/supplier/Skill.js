@@ -118,8 +118,8 @@ const confirmSelection = async()=>{
       setPriorityValue(1)
       setSkillValue(1)
     } catch (err) {
-      console.log(err)
-      swal('Error', `${err.message}`, 'error')
+      console.log(err.message)
+      swal('Error', `${err.response.message}`, 'error')
     }
 }
 

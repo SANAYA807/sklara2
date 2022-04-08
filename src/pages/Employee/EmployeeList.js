@@ -99,7 +99,7 @@ const Employee = ({userdata}) => {
             </span>
            
         </div>
-        <div className="app-container">
+        <div className="app-container overflow-auto">
       <form onSubmit={handleEditFormSubmit}>
         <table style={{width:'100%'}}>
           <thead>
