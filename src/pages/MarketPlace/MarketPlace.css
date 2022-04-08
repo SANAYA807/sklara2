@@ -1,8 +1,8 @@
-.container{
+/* .container{
 
   max-width: 1252px!important ;
 
-}
+} */
 .mp-outer{
   background-color: #f1f6f9;
 }
@@ -34,6 +34,7 @@
 }
 .mp-com-image{
   height: 11rem;
+  object-fit: cover;
 }
 .mp-com-flag1{
   width: 3rem;
