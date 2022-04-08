@@ -38,9 +38,9 @@ const Login = () => {
     //for modal---------------------------
     const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  //---------------------------------
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    //---------------------------------
 
     const validateForm = () => {
         let valid = true;
@@ -126,10 +126,10 @@ const Login = () => {
         setUser({ ...user, [name]: value });
     };
 
-    
+
 
     //submit function
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (!user.email || !user.password) {
@@ -141,7 +141,7 @@ const Login = () => {
 
         setLoading(true);
         let response = await axios.post(`${API}/signin`, { ...user })
-        if(response.data.status === "ok"){
+        if (response.data.status === "ok") {
             setLoading(false)
             localStorage.setItem(
                 "auth",
@@ -152,73 +152,72 @@ const Login = () => {
             );
             setTimeout(window.location.reload(), 8000);
             navigate('/dashboard')
-            
-            
-        }else{
+
+
+        } else {
             setLoading(false);
-                let message = response.data.message;
-                swal({
-                    title: "Error",
-                    text: message,
-                    icon: "error",
-                    buttons: true,
-                    dangerMode: true,
-                });
+            let message = response.data.message;
+            swal({
+                title: "Error",
+                text: message,
+                icon: "error",
+                buttons: true,
+                dangerMode: true,
+            });
         }
-      
+
     };
 
-    const ForgotMail = async() =>{
-let res = await axios.put(`${API}/generatePassword`,{email:user.email})
-if(res.data.status === 'ok'){
-    let message = res.data.message;
-                swal({
-                    title: "Success",
-                    text: message,
-                    icon: "success",
-                    buttons: true,
-                }).then(()=>{
-                    window.location.reload()
-                })
-}else{
-    swal("Oops!", "Something went wrong!", "error");
-    handleClose()
-}    
-}
+    const ForgotMail = async () => {
+        let res = await axios.put(`${API}/generatePassword`, { email: user.email })
+        if (res.data.status === 'ok') {
+            let message = res.data.message;
+            swal({
+                title: "Success",
+                text: message,
+                icon: "success",
+                buttons: true,
+            }).then(() => {
+                window.location.reload()
+            })
+        } else {
+            swal("Oops!", "Something went wrong!", "error");
+            handleClose()
+        }
+    }
 
     return (
         <>
-        <>
-         {/* modal start */}
-         <Modal show={show} onHide={handleClose} className="p-4">
-        <Modal.Header closeButton>
-          <Modal.Title>Password Reset Request</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Forgot your password? Don't worry, click 'Confirm' to reset your password</Modal.Body>
-        {/* <FormControl placeholder='Enter your registered email address'/> */}
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cancle
-          </Button>
-          <Button variant="primary" onClick={ForgotMail}>
-            Confirm
-          </Button>
-        </Modal.Footer>
-      </Modal>
-      {/* modal end */}
-        </>
-        <div className='login'>
-            <Row>
-                <Col><div className="login_img"></div></Col>
-                <Col>
+            <>
+                {/* modal start */}
+                <Modal show={show} onHide={handleClose} className="p-4">
+                    <Modal.Header closeButton>
+                        <Modal.Title>Password Reset Request</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Forgot your password? Don't worry, click 'Confirm' to reset your password</Modal.Body>
+                    {/* <FormControl placeholder='Enter your registered email address'/> */}
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Cancle
+                        </Button>
+                        <Button variant="primary" onClick={ForgotMail}>
+                            Confirm
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+                {/* modal end */}
+            </>
+            <div className='login'>
+                <Row>
+                    <Col><div className="login_img"></div></Col>
+                    <Col className='d-flex'>
 
-                    <div className="login_form">
-                        <div className="login_text">
-                            <img src="" alt="" />
+                        <div className="login_form">
+                            <div className="login_text">
+                                <img src="./images/logo_sklara.svg" className='mb-5' />
+                                {/* <h1 className='heading'>Welcome Back</h1> */}
+                            </div>
 
-                            <h1 className='heading'>Welcome Back</h1>
-                        </div>
-                        {next === false ?
 
                             <div className="login_input">
                                 <p className="label">
@@ -226,47 +225,52 @@ if(res.data.status === 'ok'){
                                 </p>
                                 <input type="email" name="email" value={user.email} onChange={handleChange} />
                                 <p className='text-center py-2 text-danger'>{errors.emailError}</p>
-                                <button onClick={handleNext} disabled={errors.emailError.length > 0 || user.email.length <= 0} className='login_button'>Continue</button>
+                                {!next && <button onClick={handleNext} disabled={errors.emailError.length > 0 || user.email.length <= 0} className='login_button round_btn'>Continue</button>}
                             </div>
-                            :
-                            <div className="login_input">
-                                <p className="label">
-                                    Enter your password
-                                </p>
-                                <input type="password" name="password" value={user.password} onChange={handleChange} />
-                                <p className='text-center py-2 text-danger'>{errors.passwordError}</p>
-                                <div className='my-2 d-flex justify-content-between'>
-                                    <ReCAPTCHA
-                                        sitekey="6Lftc_4eAAAAAPIuX-wh98aCAIdczkob5lKGGboL"
-                                        onChange={() => setVerifed(true)}
-                                        onExpired={() => changeVerified()}
-                                    />
-                                    <div>
-                                        <button className='back-btn btn badge badge-sm btn-primary' onClick={handleNext}>
-                                            Back
-                                        </button>
+                            {next &&
+                                <div className="login_input">
+                                    <p className="label">
+                                        Enter your password
+                                    </p>
+                                    <input type="password" name="password" value={user.password} onChange={handleChange} />
+                                    <p className='text-center py-2 text-danger'>{errors.passwordError}</p>
+                                    <div className='my-2 d-flex justify-content-between'>
+                                        <ReCAPTCHA
+                                            sitekey="6Lftc_4eAAAAAPIuX-wh98aCAIdczkob5lKGGboL"
+                                            onChange={() => setVerifed(true)}
+                                            onExpired={() => changeVerified()}
+                                        />
+                                        <div>
+                                            <button className='back-btn btn badge badge-sm btn-primary round_btn' onClick={handleNext}>
+                                                Back
+                                            </button>
+                                        </div>
+                                    </div>
+
+
+
+                                    <button disabled={!validForm} onClick={handleSubmit} className='login_button round_btn'>
+                                        <ClipLoader color="white" loading={loading} size={20} />
+                                        {!loading && "Log In"}
+                                    </button>
+                                    <div className='center'>
+                                        <h6 className="text-center my-4 text-secondary" onClick={() => handleShow()} style={{ cursor: "pointer" }}>Forgot password ?</h6>
+
                                     </div>
                                 </div>
-
-
-
-                                <button disabled={!validForm} onClick={handleSubmit} className='login_button'>
-                                    <ClipLoader color="white" loading={loading} size={20} />
-                                    {!loading && "Log In"}
-                                </button>
-                                <div className='center'>
-                                <h6 className="text-center my-4 text-secondary" onClick={()=>handleShow()} style={{cursor:"pointer"}}>Forgot paswrod ?</h6>
-
-                                </div>
+                            }
+                            {validForm}
+                            <div className="certificates mt-4">
+                                <img src="https://images.ctfassets.net/o1axi9nqj5lp/3tnYgF3ZkYuiVlLoiUixqw/391c6baf92beb89bf52695faf4708951/ch_ssl_en.svg" alt="" />
+                                <img src="https://images.ctfassets.net/o1axi9nqj5lp/3kznp1j5tlVAGAcTQZYD6I/b4887ad02c5ea2113c3b779996a05102/ch_iso27001_en.png" alt="" />
+                                <img src="https://images.ctfassets.net/o1axi9nqj5lp/3KvT24iPYRHcCXZq10i3am/0e6d5d37b3edd3f8656f42cde7a894a2/tuv_en.svg" alt="" />
                             </div>
-                        }
-                        {validForm}
-                    </div>
+                        </div>
 
 
-                </Col>
-            </Row>
-        </div>
+                    </Col>
+                </Row>
+            </div>
         </>
     )
 }

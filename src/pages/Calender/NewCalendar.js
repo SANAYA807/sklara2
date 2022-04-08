@@ -14,7 +14,7 @@ function FullCalendarApp() {
     const temp = Math.round((1.8 * (weather.temp - 273) + 32) * 10) / 10
     const API_KEY = 'aad732ad4eaab3664f5ab09dc84aa55c'
     const ref = useRef()
-    const cityname = 'London'
+    const cityname = 'San Francisco'
 
     const events = [
         {

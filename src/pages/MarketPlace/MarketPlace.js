@@ -30,13 +30,9 @@ export default function MarketPlace({ userdata }) {
   return (
     <>
       <Navbar userdata={userdata} />
-      <div className='mp-outer pt-3'>
-        <div className='container'>
-
+      <div className='mp-outer container-fluid main-div pt-3'>
+        <div className='container-fluid px-0'>
         <InstantSearch searchClient={searchClient} indexName="sklara_search">
-        
-          
-                  
 
           <h1 className='mb-4'>Find the perfect <span className="change-color">trainer or coach</span></h1>
           {/* <div className="input-group mb-3 mp-input-div shadow-sm">
