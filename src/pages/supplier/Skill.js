@@ -15,6 +15,8 @@ import PolarChart from '../../components/Charts/PolarChart';
 import {PolarAreaChart } from '../../components/Charts/PolarAreaChart';
 import DevProgress from '../profileDashboard/DevProgress';
 import CircleIcon from '@mui/icons-material/Circle';
+import Modal from '@mui/material/Modal';
+import './skill.css'
 
 
 
@@ -34,6 +36,7 @@ const Skill = ({userdata}) => {
     const [skillValue, setSkillValue] = useState(1)
     const [updateMode, setUpdateMode] = useState(false)
     const [index, setIndex] = useState(null)
+    const [modalShow, setModalShow] = useState(false);
 
     // console.log(utility)
 
@@ -179,6 +182,7 @@ const confirmUpdate = async()=>{
   newData[index].utility = utility;
   newData[index].priorityValue = priorityValue;
   newData[index].skillValue = skillValue;
+  newData[index].updatedAt = Date.now();
 
   try{
     let res = await axios.patch(`${API}/api/user/update`,{skills:newData},{
@@ -210,6 +214,7 @@ swal('Error', `${err.message}`, 'error')
 
 }
 
+
     return (
         <>
         <Navbar userdata={userdata}/>
@@ -221,17 +226,25 @@ swal('Error', `${err.message}`, 'error')
                 <Link to="/manage_skill" className='btn btn-primary text-light'><StyleIcon/> Manage</Link>
                 </div>
 
+{/* Modal */}
 
             {/* for skill selection */}
-{editMode &&
-<>
-<div className='container'>
+<Modal
+        open={editMode}
+        onClose={()=>setEditMode(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <div className='container bg-light p-5 mt-5'>
+        <div className='d-flex justify-content-end mt-2'>
+  <button className='btn btn-secondary' onClick={()=>window.location.reload()}>Close</button>
+</div>
   {step === 1 &&
   <>
   <div className='container center my-5'>
-    <div className='col-md-3 mb-5'>
+    <div className='col-md-4 mb-5'>
         <h5 className='text-center'>Add any skill you'd like</h5>
-        <input type="text" onChange={(e)=>setSearchTerm(e.target.value)} className='form-control skill-search' placeholder={`Search for skills`}/>
+        <input type="text" value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)} className='form-control skill-search' placeholder={`Search for skills`}/>
     </div>
 </div>
 <div className='row justify-content-center my-3'>
@@ -324,14 +337,14 @@ swal('Error', `${err.message}`, 'error')
 </>
 }
 </div>
-</>
-}
+      </Modal>
+
 {/* skill selection ends */}
 
             <div className='my-4'>
                 <div className='d-flex justify-content-center overflow-auto py-5 w-100'>
                 {userdata.skills.length > 0 && userdata.skills.map((item,i)=>(
-                    <div className='mx-3 blank-donut main-donut p-4'>
+                    <div className='mx-3 blank-donut main-donut card px-3 p-4'>
  <h6 className='center my-3' style={{color:item.color}}>{item.skill}</h6>
  {editMode &&
  <div className='d-flex donut-action-div'><Delete className='donut-action-item text-danger' onClick={()=>removeSkill(i)}/><CalculateIcon onClick={()=>editSkill(i)} className='donut-action-item text-success'/></div>
@@ -340,23 +353,43 @@ swal('Error', `${err.message}`, 'error')
  </div>
                 ))}
                 {userdata.skills.length <=4 &&
-<div className='mx-3 blank-donut p-4'>
+<div className='mx-3 blank-donut card p-4'>
 <h5 className='center my-3' style={{color:"#fff"}}>-</h5>
  {/* <DonutChart value={10} color='#BFBFBF'/> */}
- <div className='blank-donut-item2'>
+ <div className='blank-div-items d-flex justify-content-center align-items-center center mt-5'>
+ <Add sx={{ fontSize: 50 }} style={{color:'lightgray', cursor:'pointer'}} onClick={setToggle}/>
+
+</div>
+<div style={{width:'180px'}} className="mt-4 text-center">
+  <h6 style={{color:"lightgray"}}>Click the add icon to add another focus skill</h6>
+</div>
+ {/* <div className='blank-donut-item2'>
 <Add sx={{ fontSize: 80 }} style={{color:"lightgreen", cursor:'pointer'}} onClick={setToggle}/>
 </div>
- <div className='circle2'></div>
+ <div className='circle2'></div> */}
  </div>
 }
-{userdata.skills.length <4 &&
-<div className='mx-3 blank-donut p-4'>
+
+{/* <div className='mx-3 blank-donut card p-4'>
  <h5 className='center my-3' style={{color:"#fff"}}>-</h5>
  <div className='blank-donut-item'>
 <SentimentVeryDissatisfiedIcon sx={{ fontSize: 50 }} style={{color:"#BFBFBF"}}/>
 </div>
  <div className='circle'></div>
+ </div> */}
+
+{userdata.skills.length <4 &&
+ <div className='mx-3 blank-donut card p-4'>
+<h5 className='center my-3' style={{color:"#fff"}}>-</h5>
+ <div className='blank-div-items d-flex justify-content-center align-items-center center mt-5'>
+ <Add sx={{ fontSize: 50 }} style={{color:'lightgray', cursor:'pointer'}} onClick={setToggle}/>
+
+</div>
+<div style={{width:'180px'}} className="mt-4 text-center">
+  <h6 style={{color:"lightgray"}}>Click the add icon to add another focus skill</h6>
+</div>
  </div>
+ 
 }
                     
                 </div>

@@ -170,6 +170,7 @@ const Login = () => {
 
     const ForgotMail = async () => {
         let res = await axios.put(`${API}/generatePassword`, { email: user.email })
+        console.log(res)
         if (res.data.status === 'ok') {
             let message = res.data.message;
             swal({
