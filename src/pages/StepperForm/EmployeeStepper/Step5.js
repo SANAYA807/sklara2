@@ -1,25 +1,30 @@
-import { FacebookRounded, Instagram, LinkedIn, Twitter } from '@mui/icons-material'
 import React from 'react'
 
 const Step5 = () => {
     return (
-        <div className="container px-5">
-            <div className='container px-5 d-flex align-items-center justify-content-around flex-wrap' style={{ width: '90%' }}>
-                <div className="border_input ">
-                    <label htmlFor="">LinkedIN <LinkedIn fontSize='small' color='primary' /></label>
-                    <input type="text" placeholder='link' />
-                </div>
-                <div className="border_input ">
-                    <label htmlFor="">Facebook <FacebookRounded fontSize='small' color='primary' /></label>
-                    <input type="text" placeholder='link' />
-                </div><div className="border_input ">
-                    <label htmlFor="">Instagram <i class="fa fa-instagram fa-lg"></i></label>
-                    <input type="text" placeholder='link' />
-                </div><div className="border_input ">
-                    <label htmlFor="">Twitter <Twitter fontSize='small' color='primary' /></label>
-                    <input type="text" placeholder='link' />
-                </div>
+        <div className="align-items-center">
+            <div className="border_input form_type">
+                <label htmlFor="">How do you wish to Pay?</label>
+                <select >
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
             </div>
+        
+            <div className="border_input form_type1">
+                <label htmlFor="">Do you want to activate the credit system?</label>
+                <select >
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            
         </div>
     )
 }

@@ -112,3 +112,12 @@
     background-clip: text;
     -webkit-background-clip: text;
 }
+.form_type{
+    width: 22rem;
+    margin: 2rem auto;
+}
+
+.form_type1{
+    width: 28rem;
+    margin: 2rem auto;
+}

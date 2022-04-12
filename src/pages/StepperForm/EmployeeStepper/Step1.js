@@ -6,39 +6,46 @@ import { TextField } from '@mui/material';
 const Step1 = () => {
     return (
         <div className='container-fluid'>
-            <div className="d-flex align-items-center justify-content-center flex-column mb-2">
-                <div className="round">
-                    <img src="" alt="" />
-                    <AddAPhotoOutlinedIcon fontSize='large' className='add_img' />
-
-                </div>
-                <h5 className="mt-2">Upload profile picture</h5>
-
-
-            </div>
+           
             <div className="d-flex align-items-center  flex-wrap">
                 <div className="border_input border_purple">
-                    <label htmlFor="">Name</label>
+                    <label htmlFor="">Company Name</label>
                     <input type="text" placeholder='Name' />
                 </div>
-                <div className="border_input ">
+                {/* <div className="border_input ">
                     <label htmlFor="">Date of Birth</label>
                     <input type="date" placeholder='Name' />
+                </div> */}
+                <div className="border_input ">
+                    <label htmlFor="">Address</label>
+                    <input type="text" placeholder='Address' />
                 </div>
-                <div className="border_input border_purple">
-                    <label htmlFor="">Company Name</label>
-                    <input type="text" placeholder='Company Name' />
+                <div className="border_input">
+                    <label htmlFor="">Company Size</label>
+                    <select >
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
                 </div>
                 <div className="border_input ">
-                    <label htmlFor="">Current Location</label>
-                    <input type="text" placeholder='Current Location' />
+                    <label htmlFor="">Company Branch</label>
+                    <select >
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    </select>                
                 </div>
-                <div className="border_input border_purple">
-                    <label htmlFor="">Email ID</label>
+                <div className="border_input">
+                    <label htmlFor="">Company Email ID</label>
                     <input type="email" placeholder='Email ID' />
                 </div>
                 <div className="border_input ">
-                    <label htmlFor="">Phone Number</label>
+                    <label htmlFor="">Company Phone Number</label>
                     <input type="text" placeholder='Number' />
                 </div>
             </div>
