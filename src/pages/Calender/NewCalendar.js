@@ -31,9 +31,10 @@ function FullCalendarApp() {
             title: 'event 2',
             start: '2022-04-16T13:00:00',
             end: '2022-04-16T18:00:00',
-            // display: 'background',
-            // backgroundColor: 'rgb(255,87,9)'
-
+            borderColor: "yellow",
+            backgroundColor: "yellow",
+            color:'yellow',
+            //display: "background",
         },
         {
             id: 3,

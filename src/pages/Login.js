@@ -241,11 +241,11 @@ const Login = () => {
                                             onChange={() => setVerifed(true)}
                                             onExpired={() => changeVerified()}
                                         />
-                                        <div>
+                                        {/* <div>
                                             <button className='back-btn btn badge badge-sm btn-primary round_btn' onClick={handleNext}>
                                                 Back
                                             </button>
-                                        </div>
+                                        </div> */}
                                     </div>
 
 
@@ -261,6 +261,7 @@ const Login = () => {
                                 </div>
                             }
                             {validForm}
+                            
                             <div className="certificates mt-4">
                                 <img src="https://images.ctfassets.net/o1axi9nqj5lp/3tnYgF3ZkYuiVlLoiUixqw/391c6baf92beb89bf52695faf4708951/ch_ssl_en.svg" alt="" />
                                 <img src="https://images.ctfassets.net/o1axi9nqj5lp/3kznp1j5tlVAGAcTQZYD6I/b4887ad02c5ea2113c3b779996a05102/ch_iso27001_en.png" alt="" />
