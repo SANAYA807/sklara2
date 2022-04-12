@@ -4,7 +4,7 @@ import numberToWords from 'number-to-words'
 
 
 
-const StepperForm = ({ getStep }) => {
+const StepperForm = ({ getStep, steps }) => {
     const [step, setstep] = useState(1)
 
     const toggleStep = (i) => {
@@ -13,7 +13,7 @@ const StepperForm = ({ getStep }) => {
     }
 
     return (
-        <div className='container-fluid py-3'>
+        <div className='container-fluid py-3 px-5'>
             <div> <img src="./images/logo_sklara.svg" alt="" className='logo' /></div>
             <div className="row mt-4">
                 <div className="col-md-5">
@@ -36,6 +36,7 @@ const StepperForm = ({ getStep }) => {
                 </div>
             </div>
             <hr />
+
         </div>
     )
 }
