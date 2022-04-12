@@ -109,6 +109,9 @@ const SpDashboard = ({ userdata }) => {
 
     return (
         <div className='container-fluid px-1 '>
+            <div className="bg-3"></div>
+            <div className="bg-4"></div>
+            <div className="bg-5"></div>
             <div className='row justify-content-center section'>
                 <div className="row">
                     <div className="col-md-8 left_side py-3">

@@ -12,6 +12,8 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 const CalendarPage = () => {
     return (
         <div>
+            <div className="bg-1"></div>
+            <div className="bg-2"></div>
             <div className='container-fluid px-1 '>
                 <div className='row justify-content-center section'>
                     <div className="row">
@@ -47,7 +49,7 @@ const CalendarPage = () => {
                                 </div>
                             </div>
                             <hr />
-                            <div className="mt-5 p-3" style={{ boxShadow: '0px 0px 15px rgba(0, 0, 0, 0.1)', borderRadius: '10px' }}>
+                            <div className="mt-5 p-3" style={{ boxShadow: '0px 0px 15px rgba(0, 0, 0, 0.1)', borderRadius: '10px', background: "#fff " }}>
                                 {/* <Calendar year="2020" month={1} /> */}
                                 <FullCalendarApp />
                             </div>

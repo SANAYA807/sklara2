@@ -20,20 +20,22 @@ function FullCalendarApp() {
     const events = [
         {
             id: 1,
-            title: 'event 1',
+            title: 'Visit Course',
             start: '2022-04-14T10:00:00',
-            end: '2022-04-15T12:00:00',
-            backgroundColor: 'rgb(255,87,7,0.1)'
-            , color: 'transparent'
+            end: '2022-04-14T12:00:00',
+            backgroundColor: ' rgba(28, 216, 201, 0.1)'
+            , textColor: '#1CD8C9',
+            color: 'transparent'
+
         },
         {
             id: 2,
-            title: 'event 2',
-            start: '2022-04-16T13:00:00',
-            end: '2022-04-16T18:00:00',
-            borderColor: "yellow",
-            backgroundColor: "yellow",
-            color:'yellow',
+            title: 'Design New Pages',
+            start: '2022-04-01T13:00:00',
+            end: '2022-04-01T18:00:00',
+            borderColor: "transparent",
+            backgroundColor: "rgba(254, 163, 30, 0.1)",
+            textColor: 'rgb(254, 163, 30)',
             //display: "background",
         },
         {
@@ -41,8 +43,9 @@ function FullCalendarApp() {
             title: 'event 3',
             start: '2022-06-17',
             end: '2022-06-22',
-            backgroundColor: 'rgb(255,55,30,0.1)',
+            backgroundColor: '#EEE7F2',
             color: 'transparent',
+            textColor: '#550B7C'
             // fontColor: 'red'
 
         },
@@ -52,12 +55,12 @@ function FullCalendarApp() {
     function refreshClock() {
         setTime(new Date());
     }
-    useEffect(() => {
-        const timerId = setInterval(refreshClock, 1000);
-        return function cleanup() {
-            clearInterval(timerId);
-        };
-    }, []);
+    // useEffect(() => {
+    //     const timerId = setInterval(refreshClock, 1000);
+    //     return function cleanup() {
+    //         clearInterval(timerId);
+    //     };
+    // }, []);
     useEffect(async () => {
         let res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=${API_KEY}`)
         if (res) {
@@ -98,8 +101,8 @@ function FullCalendarApp() {
                         meridiem: 'short'
                     }
                 }
+                eventDisplay='block'
                 events={events}
-            // eventBackgroundColor='red'
             // dateClick={(e) => alert(e.dateStr)}
             // eventClick={(e) => console.log(e.event.id)}
             />
