@@ -20,7 +20,7 @@ h1 {
 .login {
   height: 100vh;
   overflow-y: hidden;
-  overflow-x: hidden
+  overflow-x: hidden;
 }
 
 .login_form {
