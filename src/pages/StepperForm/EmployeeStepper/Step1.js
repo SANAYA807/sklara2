@@ -5,7 +5,7 @@ import { TextField } from '@mui/material';
 
 const Step1 = () => {
     return (
-        <div className='container-fluid'>
+        <div className='container-fluid px-5'>
             <div className="d-flex align-items-center justify-content-center flex-column mb-2">
                 <div className="round">
                     <img src="" alt="" />

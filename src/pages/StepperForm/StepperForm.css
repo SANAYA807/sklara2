@@ -24,6 +24,7 @@
     border: none;
     width: 100%;
     margin-left: 10px;
+    background-color: transparent;
 }
 
 .search-bar input:focus {

@@ -10,6 +10,7 @@
 body {
   background: #f9f9f9 !important;
   z-index: -10000;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -231,9 +232,9 @@ h1 {
 
 .bg-4 {
   position: absolute;
-  width: 423.29px;
+  width: 400px;
   height: 904.87px;
-  left: 1277.93px;
+  left: 1300px;
   top: 66.83px;
   z-index: -1;
   background: var(--bg1);
@@ -244,8 +245,8 @@ h1 {
 .bg-5 {
   position: absolute;
   width: 570.78px;
-  height: 1235.92px;
-  left: 999.17px;
+  height: 1000px;
+  left: 980px;
   top: 208.08px;
   z-index: -1;
   background: var(--bg2);
