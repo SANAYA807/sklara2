@@ -28,7 +28,7 @@ const Navbar = ({ userdata }) => {
   //console.log(userdata)
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light nav-div" style={{ backgroundColor: "#fff", padding: '1rem 4%' }}>
+      <nav className="navbar navbar-expand-lg navbar-light nav-div" style={{ backgroundColor: "transparent", padding: '1rem 4%' }}>
         <div className="container-fluid">
           <Link className="navbar-brand" to="/dashboard"><img src={'./assets/sklaralogo.svg'} className="sklara-logo" /></Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,10 +53,10 @@ const Navbar = ({ userdata }) => {
 
                 <div class="btn-group dropafter box" style={{ width: '130px' }}>
                   <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    {userdata && userdata.profilePicture ? <img src={userdata.profilePicture} className="dp-logo" alt='profile image'/>
-                  :  
-                  <AccountCircleOutlinedIcon style={{ marginRight: '20px' }} /> 
-                  }
+                    {userdata && userdata.profilePicture ? <img src={userdata.profilePicture} className="dp-logo" alt='profile image' />
+                      :
+                      <AccountCircleOutlinedIcon style={{ marginRight: '20px' }} />
+                    }
                     {userdata && userdata.firstName}
                   </button>
                   <ul class="dropdown-menu">
@@ -68,8 +68,8 @@ const Navbar = ({ userdata }) => {
                     }
                     <li><Link className="nav-link" to="/changePassword"><Password /> Change Password</Link></li>
 
-                    {userdata && userdata.userType ==='hr'&&
-                    <li><Link className="nav-link" to="/employee_list"><People/> Your Employees</Link></li>
+                    {userdata && userdata.userType === 'hr' &&
+                      <li><Link className="nav-link" to="/employee_list"><People /> Your Employees</Link></li>
                     }
                   </ul>
                 </div>
@@ -82,7 +82,7 @@ const Navbar = ({ userdata }) => {
 
       {/* bottom navigation */}
 
-      <nav className="navbar navbar-expand-lg navbar-light  nav-div px-5" style={{ backgroundColor: "#fff", borderBottom: '1px solid lightGray' }}>
+      <nav className="navbar navbar-expand-lg navbar-light  nav-div px-5" style={{ backgroundColor: "transparent", borderBottom: '1px solid lightGray' }}>
         <div className="container-fluid">
           {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon" />

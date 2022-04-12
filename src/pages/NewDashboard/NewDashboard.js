@@ -112,6 +112,9 @@ const NewDashboard = ({ userdata }) => {
 
     return (
         <>
+            <div className="bg-3"></div>
+            <div className="bg-4"></div>
+            <div className="bg-5"></div>
             <Navbar userdata={userdata} />
             <div className='container-fluid px-1 '>
                 <div className='row justify-content-center section'>

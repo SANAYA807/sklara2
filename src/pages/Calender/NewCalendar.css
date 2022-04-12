@@ -19,24 +19,25 @@
     height: 51px;
 }
 
-.fc-h-event .fc-event-main {
-    color: rgb(28, 216, 201) !important;
+.fc-h-event .fc-event-main-frame {
+    display: flex;
+    flex-direction: column-reverse !important;
 
 }
 
-.fc-daygrid-event-dot {
+/* .fc-daygrid-event-dot {
     position: absolute;
-    top:0;
+    top: 0;
     right: 0;
-    /* display: none; */
+    display: none;
     width: 100%;
     height: 100%;
     overflow: hidden;
     /* background-color: red; */
-    /* z-index: -1; */
-    /* border: none; */
+/* z-index: -1; */
+/* border: none; */
 
-}
+/* } */
 
 .fc-event-time,
 .fc-event-title {
@@ -44,8 +45,8 @@
 }
 
 .fc-v-event {
-    /* color: rgb(28, 216, 201) !important; */
-    /* background: rgba(28, 216, 201, 0.1) !important; */
+    color: rgb(28, 216, 201) !important;
+    background: rgba(28, 216, 201, 0.1) !important;
 
 }
 
@@ -55,16 +56,20 @@
 
 }
 
-.fc-daygrid-dot-event {
+.fc-daygrid-block-event {
     /* background: rgba(85, 11, 124, 0.1) !important; */
     border-radius: 5px;
     flex-direction: column-reverse;
     margin-left: 15px !important;
     margin-top: -6px !important;
     align-items: flex-start;
+    min-width: 140px;
+    width: fit-content;
+    height: auto !important;
     font-size: 16px;
-    padding: 2px 8px;
+    padding: 4px 8px;
 }
+
 
 button[title='Previous month'],
 button[title='Next month'] {
