@@ -93,8 +93,8 @@ const Navbar = ({ userdata }) => {
                 <li className={`nav-item ${ActiveClr("/")}`}>
                   <Link className="nav-link" to="/"><HomeOutlinedIcon /> Home</Link>
                 </li>
-                <li className="nav-item ">
-                  <Link className="nav-link" to="/"><EventOutlinedIcon /> Learning Plan</Link>
+                <li className={`nav-item ${ActiveClr("/calendar")}`}>
+                  <Link className="nav-link" to="/calendar"><EventOutlinedIcon /> Learning Plan</Link>
                 </li>
                 <li className={`nav-item ${ActiveClr("/market_place")}`}>
                   <Link className="nav-link" to="/market_place"><ShopTwoOutlinedIcon /> Market Place</Link>
