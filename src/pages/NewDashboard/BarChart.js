@@ -16,7 +16,7 @@ export const data = {
 const BarChart = () => {
 
     const options = {
-
+        barThickness: 40,
         borderRadius: 10,
         responsive: true,
         maintainAspectRatio: false,
@@ -33,15 +33,19 @@ const BarChart = () => {
                 grid: {
                     display: false,
                     borderColor: '#fff',
+                },
+                ticks: {
+                    color: ['#CCCCCC'],
                 }
             },
             yAxis: {
                 grid: {
                     borderDash: [4, 5],
-                    color: '#D5E5E5',
+                    color: '#CCCCCC',
                     borderColor: '#fff',
                 },
                 ticks: {
+                    color: ['#CCCCCC'],
                     // Include a dollar sign in the ticks
                     callback: function (value, index, ticks) {
                         return value + ' hr';
