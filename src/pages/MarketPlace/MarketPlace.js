@@ -29,8 +29,8 @@ export default function MarketPlace({ userdata }) {
       <div className="card shadow-sm me-1">
         <img role="button" src={hit.profilePicture ?  hit.profilePicture : "images/dummy/user4_big.jpg"} className="card-img-top mp-com-image" alt="..." />
         <div className="card-body">
-          <span className='mp-com-flag1'><img src="images/flags/de.svg" alt="" /></span>
-          <span className="mp-com-flag2"><img className="img-fluid" src="images/flags/en.svg" alt="" /></span>
+          <span className='mp-com-flag1'><img className='img-fluid' src="images/flags/French.png" alt="" /></span>
+          <span className="mp-com-flag2"><img className="img-fluid" src="images/flags/German.png" alt="" /></span>
           <h5 className="card-title m-0">{hit.username}</h5>
           <p className='mb-2' style={{ "color": "#cccccc" }}><small>Senior Project Manager</small></p>
           <p className="mp-experience"><small>Experience of 26 years</small></p>
