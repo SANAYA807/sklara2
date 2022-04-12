@@ -52,6 +52,13 @@
     width: 20px;
 }
 
+.dp-logo{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 5px;
+}
 
 /* media query */
 @media screen and (max-width: 994px) {

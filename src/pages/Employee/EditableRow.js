@@ -7,6 +7,7 @@ const EditableRow = ({
 }) => {
   console.log(editFormData)
   return (
+
     <tr>
       <td>
         <input
@@ -75,6 +76,7 @@ const EditableRow = ({
         </button>
       </td>
     </tr>
+
   );
 };
 
