@@ -76,6 +76,7 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={userdata && userdata._id ? <NewDashboard userdata={userdata} /> : <Login />}></Route>
+        <Route exact path="/api/signup/:signToken" element={userdata && userdata._id ? <NewDashboard userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/market_place" element={userdata && userdata._id ? <MarketPlace userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/profile" element={userdata && userdata._id ? <Profile userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/coachprofile" element={userdata && userdata._id ? <CoachProfile userdata={userdata} /> : <Login />}></Route>
@@ -90,8 +91,8 @@ function App() {
         <Route exact path="/manage_skill" element={userdata && userdata._id ? <ManageSkill userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/focus_skill" element={userdata && userdata._id ? <Skill userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/emp_form" element={userdata && userdata._id ? <EmployeeForm userdata={userdata} /> : <Login />}></Route>
-        <Route exact path="/employee_list" element={userdata && userdata._id ? <EmployeeList userdata={userdata} /> : <Login />}></Route>
-        <Route exact path="/employee_list/Add" element={userdata && userdata._id ? <AddUser userdata={userdata} /> : <Login />}></Route>
+        <Route exact path="/employee_list" element={userdata && userdata._id && userdata.userType === 'hr' ? <EmployeeList userdata={userdata} /> : <Login />}></Route>
+        <Route exact path="/employee_list/Add" element={userdata && userdata._id  && userdata.userType === 'hr' ? <AddUser userdata={userdata} /> : <Login />}></Route>
         <Route exact path='*' element={<NotFound userdata={userdata} />} />
       </Routes>
     </Router>

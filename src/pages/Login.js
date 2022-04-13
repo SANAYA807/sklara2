@@ -9,8 +9,31 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { isAutheticated } from '../components/auth/authhelper'
 import axios from 'axios'
 import { Button, Modal } from 'react-bootstrap'
+import { useParams } from 'react-router-dom'
 
 const Login = () => {
+    const {signToken} = useParams()
+
+const checkToken = async()=>{
+    if(signToken){
+        try{
+            let res = await axios.put(`${API}/api/user/sign/${signToken}`)
+            if(res.data.status === "ok"){
+                swal('Success','Account Activated Successfully, Login to continue','success')
+            }
+        }catch(err){
+            console.log(signToken)
+            return swal('Error',`${err.response.data.message}`,'error')
+        }
+        
+    }
+}
+
+useEffect(()=>{
+    checkToken()
+},[])
+    
+
     const navigate = useNavigate();
     const [user, setUser] = useState({
         email: "",
@@ -150,8 +173,9 @@ const Login = () => {
                     token: response.data.token,
                 })
             );
-            setTimeout(window.location.reload(), 8000);
             navigate('/dashboard')
+            setTimeout(window.location.reload(), 8000);
+            //navigate('/dashboard')
 
 
         } else {

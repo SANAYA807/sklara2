@@ -14,11 +14,13 @@ import CastForEducationOutlinedIcon from '@mui/icons-material/CastForEducationOu
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { isAutheticated, signout } from '../auth/authhelper';
+import { useNavigate } from 'react-router-dom';
 
 import './navbar.css'
 import { Password, People } from '@mui/icons-material';
 
 const Navbar = ({ userdata }) => {
+  const navigate = useNavigate()
   let location = useLocation();
   const ActiveClr = (curr) => {
     if (location.pathname === curr) {
@@ -26,6 +28,10 @@ const Navbar = ({ userdata }) => {
     }
   };
   //console.log(userdata)
+  const signOut = ()=>{
+navigate('/')
+signout()
+  }
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light nav-div" style={{ backgroundColor: "transparent", padding: '1rem 4%' }}>
@@ -64,7 +70,7 @@ const Navbar = ({ userdata }) => {
                     <li><hr class="dropdown-divider" /></li>
                     <li><Link className="nav-link" to="/profile"><SettingsIcon /> My Profile</Link></li>
                     {isAutheticated() &&
-                      <li><Link className="nav-link" to="/" onClick={signout}><LogoutIcon /> Logout</Link></li>
+                      <li><Link className="nav-link" to="/" onClick={signOut}><LogoutIcon /> Logout</Link></li>
                     }
                     <li><Link className="nav-link" to="/changePassword"><Password /> Change Password</Link></li>
 
