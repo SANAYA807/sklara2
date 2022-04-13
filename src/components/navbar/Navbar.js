@@ -57,7 +57,7 @@ signout()
                   <Link className="nav-link" to="/"><EmailOutlinedIcon /></Link>
                 </li>
 
-                <div class="btn-group dropafter box" style={{ width: '130px' }}>
+                <div class="btn-group dropafter box" style={{ width: '190px' }}>
                   <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     {userdata && userdata.profilePicture ? <img src={userdata.profilePicture} className="dp-logo" alt='profile image' />
                       :
@@ -66,14 +66,14 @@ signout()
                     {userdata && userdata.firstName}
                   </button>
                   <ul class="dropdown-menu">
-                    <li><AccountCircleOutlinedIcon /> {userdata && userdata.firstName} </li>
-                    <li><hr class="dropdown-divider" /></li>
+                    {/* <li><AccountCircleOutlinedIcon /> {userdata && userdata.firstName} </li> */}
                     <li><Link className="nav-link" to="/profile"><SettingsIcon /> My Profile</Link></li>
+                    <li><Link className="nav-link" to="/changePassword"><Password /> Change Password</Link></li>
+                    <li><hr class="dropdown-divider" /></li>
                     {isAutheticated() &&
                       <li><Link className="nav-link" to="/" onClick={signOut}><LogoutIcon /> Logout</Link></li>
                     }
-                    <li><Link className="nav-link" to="/changePassword"><Password /> Change Password</Link></li>
-
+                    <li><hr class="dropdown-divider" /></li>
                     {userdata && userdata.userType === 'hr' &&
                       <li><Link className="nav-link" to="/employee_list"><People /> Your Employees</Link></li>
                     }

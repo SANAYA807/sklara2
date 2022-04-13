@@ -4,7 +4,7 @@ import React from 'react'
 
 const Step3 = () => {
     return (
-        <div className='container-fluid'>
+        <div className='container-fluid px-5'>
             <div className="d-flex align-items-center justify-content-center flex-column mb-2">
                 <h5>Select the Skills you want to develop</h5>
                 <p className="text-muted">Now, choose some skills you would like to develop so we can better curate your learning experience</p>

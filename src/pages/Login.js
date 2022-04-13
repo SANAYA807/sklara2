@@ -10,6 +10,9 @@ import { isAutheticated } from '../components/auth/authhelper'
 import axios from 'axios'
 import { Button, Modal } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
+import { Alert, IconButton, Input, InputAdornment, Tooltip } from '@mui/material'
+import { Info, Visibility, VisibilityOff } from '@mui/icons-material'
+
 
 const Login = () => {
     const {signToken} = useParams()
@@ -38,6 +41,7 @@ useEffect(()=>{
     const [user, setUser] = useState({
         email: "",
         password: "",
+        showPassword: false
     });
 
     const [errors, setErrors] = useState({
@@ -54,13 +58,19 @@ useEffect(()=>{
 
     const [loading, setLoading] = useState(false);
     const { token } = isAutheticated();
-    const [verified, setVerifed] = useState(false)
+    // const [verified, setVerifed] = useState(false)
     const [next, setNext] = useState(false)
     const [validForm, setValidForm] = useState(false);
+    const [showToast, setToast] = useState(false)
     //console.log(token)
     //for modal---------------------------
     const [show, setShow] = useState(false);
-
+    const handleClickShowPassword = () => {
+        setUser({
+            ...user,
+            showPassword: !user.showPassword,
+        });
+    };
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     //---------------------------------
@@ -94,11 +104,11 @@ useEffect(()=>{
             setValidForm(false);
         }
 
-        if (!verified) {
-            setValidForm(false);
-        }
+        // if (!verified) {
+        //     setValidForm(false);
+        // }
 
-    }, [errors, verified]);
+    }, [errors]);
 
     // useEffect(()=>{
     //     if (token) {
@@ -117,12 +127,12 @@ useEffect(()=>{
         }
     }
 
-    function changeVerified() {
-        setVerifed(false);
-    }
+    // function changeVerified() {
+    //     setVerifed(false);
+    // }
 
     const handleChange = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
 
         const { name, value } = e.target;
 
@@ -158,9 +168,9 @@ useEffect(()=>{
         if (!user.email || !user.password) {
             return swal("Error!", "All fields are required", "error");
         }
-        if (!verified) {
-            return swal("Error!", "Please mark the captcha field", "error");
-        }
+        // if (!verified) {
+        //     return swal("Error!", "Please mark the captcha field", "error");
+        // }
 
         setLoading(true);
         let response = await axios.post(`${API}/signin`, { ...user })
@@ -248,44 +258,83 @@ useEffect(()=>{
                                 <p className="label">
                                     What is your email address?
                                 </p>
-                                <input type="email" name="email" value={user.email} onChange={handleChange} />
+                                <Input
+                                    id="standard-adornment-password"
+                                    type='email'
+                                    value={user.email}
+                                    fullWidth
+                                    placeholder='Enter Email'
+                                    name='email'
+                                    onChange={handleChange}
+                                    endAdornment={
+                                        <InputAdornment position="end">
+                                            <Tooltip title="On the next page you will be able to enter or reset your password" arrow placement='top'>
+                                                <Info fontSize='smaller' />
+                                            </Tooltip>
+                                        </InputAdornment>
+                                    }
+                                />
+
+                                {/* <input type="email" name="email" autoFocus value={user.email} onChange={handleChange} /> */}
                                 <p className='text-center py-2 text-danger'>{errors.emailError}</p>
-                                {!next && <button onClick={handleNext} disabled={errors.emailError.length > 0 || user.email.length <= 0} className='login_button round_btn'>Continue</button>}
+                                {!next && <button onClick={handleNext} disabled={errors.emailError || user.email === ''} className='login_button round_btn'>Continue</button>}
                             </div>
                             {next &&
                                 <div className="login_input">
                                     <p className="label">
                                         Enter your password
                                     </p>
-                                    <input type="password" name="password" value={user.password} onChange={handleChange} />
-                                    <p className='text-center py-2 text-danger'>{errors.passwordError}</p>
-                                    <div className='my-2 d-flex justify-content-between'>
-                                        <ReCAPTCHA
+                                    <Input
+                                        id="standard-adornment-password"
+                                        type={user.showPassword ? 'text' : 'password'}
+                                        value={user.password}
+                                        name='password'
+                                        fullWidth
+                                        placeholder='Enter Password'
+                                        onChange={handleChange}
+                                        endAdornment={
+                                            <InputAdornment position="end">
+                                                {/* <IconButton
+                                                    aria-label="toggle password visibility"
+                                                    
+                                                // onMouseDown={handleMouseDownPassword}
+                                                > */}
+                                                {user.showPassword ? <VisibilityOff onClick={handleClickShowPassword} /> : <Visibility onClick={handleClickShowPassword} />}
+                                                {/* </IconButton> */}
+                                            </InputAdornment>
+                                        }
+                                    />
+                                    {/* <input type="password" name="password" value={user.password} onChange={handleChange} /> */}
+                                    {errors.passwordError && <p className='text-center py-2 text-danger'>{errors.passwordError}</p>}
+                                    {/* <div className='my-2 d-flex justify-content-between'> */}
+                                    {/* <ReCAPTCHA
                                             sitekey="6Lftc_4eAAAAAPIuX-wh98aCAIdczkob5lKGGboL"
                                             onChange={() => setVerifed(true)}
                                             onExpired={() => changeVerified()}
-                                        />
-                                        {/* <div>
+                                        /> */}
+                                    {/* <div>
                                             <button className='back-btn btn badge badge-sm btn-primary round_btn' onClick={handleNext}>
                                                 Back
                                             </button>
                                         </div> */}
+                                    {/* </div> */}
+
+
+                                    {/* <div className=''> */}
+                                    <h6 className="mb-4 mt-2 label" onClick={() => handleShow()} style={{ cursor: "pointer", textAlign: 'left' }}>Forgot password ?</h6>
+                                    <div className='d-flex align-items-center' style={{ textAlign: 'left' }}>
+                                        <input type="checkbox" /> <span className='text-muted ms-1' style={{ fontSize: '12px' }}>Remember me</span>
                                     </div>
-
-
-
+                                    {/* </div> */}
                                     <button disabled={!validForm} onClick={handleSubmit} className='login_button round_btn'>
                                         <ClipLoader color="white" loading={loading} size={20} />
                                         {!loading && "Log In"}
                                     </button>
-                                    <div className='center'>
-                                        <h6 className="text-center my-4 text-secondary" onClick={() => handleShow()} style={{ cursor: "pointer" }}>Forgot password ?</h6>
 
-                                    </div>
                                 </div>
                             }
                             {validForm}
-                            
+
                             <div className="certificates mt-4">
                                 <img src="https://images.ctfassets.net/o1axi9nqj5lp/3tnYgF3ZkYuiVlLoiUixqw/391c6baf92beb89bf52695faf4708951/ch_ssl_en.svg" alt="" />
                                 <img src="https://images.ctfassets.net/o1axi9nqj5lp/3kznp1j5tlVAGAcTQZYD6I/b4887ad02c5ea2113c3b779996a05102/ch_iso27001_en.png" alt="" />

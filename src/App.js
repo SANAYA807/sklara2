@@ -81,11 +81,17 @@ function App() {
         <Route exact path="/profile" element={userdata && userdata._id ? <Profile userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/coachprofile" element={userdata && userdata._id ? <CoachProfile userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/old_dashboard" element={userdata && userdata._id ? <ProfileDashboard userdata={userdata} /> : <Login />}></Route>
+      
+        {userdata && userdata.userType === 'supplier' &&
+        <Route exact path="/dashboard" element={userdata && userdata._id ? <><Navbar userdata={userdata} /><SpDashboard userdata={userdata} /> <Footer /> </> : <Login />}></Route>
+        }
+        
         <Route exact path="/dashboard" element={userdata && userdata._id ? <NewDashboard userdata={userdata} /> : <Login />}></Route>
+
         <Route exact path="/trainer_profile" element={userdata && userdata._id ? <TrainerProfile userdata={userdata} /> : <Login />}></Route>
         <Route exact path='/changePassword' element={userdata && userdata._id ? <ChangePassword userdata={userdata} /> : <Login />}></Route>
         {/* <Route exact path="/sp_dashboard" element={userdata && userdata._id ? <SPDashboard userdata={userdata} /> : <Login />}></Route> */}
-        <Route exact path="/sp_dashboard" element={userdata && userdata._id ? <><Navbar userdata={userdata} /><SpDashboard userdata={userdata} /> <Footer /> </> : <Login />}></Route>
+        
         <Route exact path="/calendar" element={userdata && userdata._id ? <><Navbar userdata={userdata} /><CalendarPage userdata={userdata} /> <Footer /> </> : <Login />}></Route>
         <Route exact path="/add_skill" element={userdata && userdata._id ? <AddSkill userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/manage_skill" element={userdata && userdata._id ? <ManageSkill userdata={userdata} /> : <Login />}></Route>

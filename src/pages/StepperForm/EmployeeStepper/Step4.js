@@ -2,7 +2,7 @@ import React from 'react'
 
 const Step4 = () => {
     return (
-        <div className="d-flex align-items-center  flex-wrap">
+        <div className="d-flex align-items-center px-5 flex-wrap">
             <div className="border_input border_purple">
                 <label htmlFor="">Department</label>
                 <select >

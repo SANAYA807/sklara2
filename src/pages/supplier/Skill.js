@@ -65,6 +65,14 @@ const Skill = ({userdata}) => {
         handleSearch();
     },[searchTerm])
 
+    let arr = [];
+    let len = userdata && userdata.skills && userdata.skills.length || 0;
+    arr.length = 5-len;
+    for(let i = 0; i<=5-len-1; i++){
+      arr[i]=i
+    }
+    console.log(arr)
+   
 //select funtion
    const handleSelect = async(skill,color)=>{
      const exists = userdata.skills.find(item=>item.skill === skill)
@@ -352,10 +360,10 @@ swal('Error', `${err.message}`, 'error')
  <DonutChart value={item.skillValue} color={item.color} rate={item.skillValue}/>
  </div>
                 ))}
-                {userdata.skills.length <=4 &&
+                {/* {userdata.skills.length <=4 &&
 <div className='mx-3 blank-donut card p-4'>
 <h5 className='center my-3' style={{color:"#fff"}}>-</h5>
- {/* <DonutChart value={10} color='#BFBFBF'/> */}
+<DonutChart value={10} color='#BFBFBF'/>
  <div className='blank-div-items d-flex justify-content-center align-items-center center mt-5'>
  <Add sx={{ fontSize: 50 }} style={{color:'lightgray', cursor:'pointer'}} onClick={setToggle}/>
 
@@ -363,12 +371,12 @@ swal('Error', `${err.message}`, 'error')
 <div style={{width:'180px'}} className="mt-4 text-center">
   <h6 style={{color:"lightgray"}}>Click the add icon to add another focus skill</h6>
 </div>
- {/* <div className='blank-donut-item2'>
+<div className='blank-donut-item2'>
 <Add sx={{ fontSize: 80 }} style={{color:"lightgreen", cursor:'pointer'}} onClick={setToggle}/>
 </div>
- <div className='circle2'></div> */}
- </div>
-}
+ <div className='circle2'></div>
+</div>
+} */}
 
 {/* <div className='mx-3 blank-donut card p-4'>
  <h5 className='center my-3' style={{color:"#fff"}}>-</h5>
@@ -378,7 +386,7 @@ swal('Error', `${err.message}`, 'error')
  <div className='circle'></div>
  </div> */}
 
-{userdata.skills.length <4 &&
+{arr.length > 0 && arr.map(()=>(
  <div className='mx-3 blank-donut card p-4'>
 <h5 className='center my-3' style={{color:"#fff"}}>-</h5>
  <div className='blank-div-items d-flex justify-content-center align-items-center center mt-5'>
@@ -390,7 +398,7 @@ swal('Error', `${err.message}`, 'error')
 </div>
  </div>
  
-}
+))}
                     
                 </div>
             </div>
