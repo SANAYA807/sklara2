@@ -25,7 +25,7 @@ h1 {
 }
 
 .login_form {
-  max-width: 80%;
+  width: 55%;
   margin: auto;
   /* padding: 4rem 10%; */
   text-align: center;
@@ -57,12 +57,13 @@ h1 {
   background-size: cover;
 }
 
-.login_form input {
+/* .login_form input {
   color: #80888f;
-  font-size: 1.5rem;
-  font-weight: 500;
-  /* padding: 0.8333333333rem 0.8333333333rem 1.25rem 0; */
-  display: block;
+  font-size: 1rem; */
+/* font-weight: 500;
+  background-color: transparent; */
+/* padding: 0.8333333333rem 0.8333333333rem 1.25rem 0; */
+/* display: block;
   width: 100%;
   min-width: 400px;
   border: none;
@@ -70,6 +71,11 @@ h1 {
   border-radius: 0;
   line-height: normal;
   outline: none;
+} */
+button:disabled {
+  background-color: #cccccc !important;
+  color: #666666;
+  cursor: not-allowed;
 }
 
 .label {
@@ -251,4 +257,8 @@ h1 {
   z-index: -1;
   background: var(--bg2);
   filter: blur(100px);
+}
+
+.text-danger {
+  font-size: x-small;
 }
