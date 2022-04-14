@@ -15,6 +15,8 @@ import { Modal } from '@mui/material'
 
 const ManageSkill = ({userdata}) => {
 const {token} = isAutheticated()
+const [searchTerm,setSearchTerm] = useState('')
+const [searchData, setSearchData] = useState([])
 const [editMode, setEditMode] = useState(false)
 const [step, setStep] = useState(1)
 const [skill, setSkill] = useState('')
@@ -24,6 +26,7 @@ const [priorityValue,setPriorityValue] = useState(1)
 const [skillValue, setSkillValue] = useState(1)
 const [updateMode, setUpdateMode] = useState(false)
 const [index, setIndex] = useState(null)
+const [blank,setBlank] = useState(false)
 
 const setToggle = () =>{
   if(editMode === false){
@@ -32,6 +35,86 @@ const setToggle = () =>{
       setEditMode(false)
   }
 }
+
+//search function
+const handleSearch = async()=>{
+  let res = await axios.get(`${API}/api/focusSkills/search/${searchTerm}`);
+  if(res.data.status === 'ok'){
+      setSearchData(res.data.data)
+     // console.log('yes')
+      //console.log(res)
+      setBlank(false)
+  }else if(res.data.data.length === 0){
+      setBlank(true)
+  } 
+}
+
+useEffect(()=>{
+  handleSearch();
+},[searchTerm])
+
+//select funtion
+const handleSelect = async(skill,color)=>{
+  const exists = userdata.skills.find(item=>item.skill === skill)
+  if(exists){
+   return swal('Error','This skill is alreay present in your profile','error')
+  }else if(userdata.skills.length >=5){
+   return swal('Error','Already having 5 skills in your profile. Please remove one to add new skill','error')
+  }
+
+  //seting variables
+  setSkill(skill)
+  setColor(color)
+
+  setStep(2)
+ 
+
+}
+
+//confirm Selection
+const confirmSelection = async()=>{
+  if(!skill || !skillValue || !priorityValue || !color || !utility){
+    return swal('Error','Please select all fields','error')
+  }
+    const newData ={
+          skill:skill,
+          skillValue:skillValue,
+          priorityValue:priorityValue,
+          color:color,
+          utility:utility
+        }
+        // console.log(selectedItem)
+        const updatedData = userdata.skills
+        updatedData.push(newData)
+        try{
+          let res = await axios.patch(`${API}/api/user/update`,{skills:updatedData},{
+            headers:{
+              Authorization: `Bearer ${token}`
+            }
+          })
+          //console.log(res)
+      if (res.data.status === 'ok') {
+        localStorage.setItem(
+          "userData",
+          JSON.stringify({
+            userData: res.data.data
+          }))
+        swal('Success', 'Skill added successfully', 'success').then(() => {
+          window.location.reload()
+        })
+
+      }
+      setSkill('')
+      setColor('')
+      setUtility(1)
+      setPriorityValue(1)
+      setSkillValue(1)
+    } catch (err) {
+      console.log(err.message)
+      swal('Error', `${err.response.message}`, 'error')
+    }
+}
+
 
 
 let removedSkill = userdata.removedSkills ? userdata.removedSkills : [];
@@ -148,29 +231,82 @@ swal('Error', `${err.message}`, 'error')
         onClose={()=>setEditMode(false)}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        className='modal-scroll py-3'
       >
         <div className='container bg-light p-5 mt-5'>
         <div className='d-flex justify-content-end mt-2'>
   <button className='btn btn-secondary' onClick={()=>window.location.reload()}>Close</button>
 </div>
-  {/* {step === 1 &&
+{step === 1 &&
   <>
-  <div className='container center my-5'>
-    <div className='col-md-4 mb-5'>
+  <div className='row justify-content-center my-5'>
+  <div className='col-md-12'> 
+  <h5 className='text-center'>Select the Skills You Want to Develop</h5>
+  </div>
+  <div className='col-md-12'> 
+  <p className='text-center text-secondary'>Now, choose some skills you would like to develop so we can better curate your learning experience.</p>
+  </div> 
+    <div className='col-md-4 my-5'>
         <h5 className='text-center'>Add any skill you'd like</h5>
         <input type="text" value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)} className='form-control skill-search' placeholder={`Search for skills`}/>
+        <h5 className='text-center mt-4'>Top Skills</h5>
     </div>
+    {/* <div className='col-md-12'>
+      {topSkills.map((items)=>{
+
+        items.skills.map((itms)=>(
+          <div className='col-md-2 m-2'>
+        <button className='btn btn-rounded btn-outline-info' onClick={()=>handleSelect(itms.skill,itms.color)}>{itms.skill}</button>
+        </div>
+        ))
+
+      })}
+    </div> */}
+
 </div>
 <div className='row justify-content-center my-3'>
-    {searchData.length > 0 && searchData.map((item, i)=>(
+    {searchData.length > 0 ? searchData.map((item, i)=>(
       <>
 {item.skills && item.skills.map((itm)=>(
-<div className='col-md-2 m-2'>
+<div className='m-2' style={{width:'auto'}}>
         <button className='btn btn-rounded btn-outline-info' onClick={()=>handleSelect(itm.skill,itm.color)}>{itm.skill}</button>
         </div>
 ))}
 </>
-    ))}
+    )):
+  <>
+  <div className='m-2' style={{width:'auto'}}>
+        <button className='btn btn-rounded btn-outline-info'>Life Skills</button>
+        </div>
+  <div className='m-2' style={{width:'auto'}}>
+        <button className='btn btn-rounded btn-outline-info'>Communication Skills</button>
+        </div>
+  <div className='m-2' style={{width:'auto'}}>
+        <button className='btn btn-rounded btn-outline-info'>Creative Skills</button>
+        </div>
+  <div className='m-2' style={{width:'auto'}}>
+        <button className='btn btn-rounded btn-outline-info'>Communication Skills</button>
+        </div>
+  <div className='m-2' style={{width:'auto'}}>
+        <button className='btn btn-rounded btn-outline-info'>IT Skills</button>
+        </div>
+  <div className='m-2' style={{width:'auto'}}>
+        <button className='btn btn-rounded btn-outline-info'>Management Skills</button>
+        </div>
+  <div className='m-2' style={{width:'auto'}}>
+        <button className='btn btn-rounded btn-outline-info'>Adaptability Skills</button>
+        </div>
+  <div className='m-2' style={{width:'auto'}}>
+        <button className='btn btn-rounded btn-outline-info'>Agile Skills</button>
+        </div>
+  <div className='m-2' style={{width:'auto'}}>
+        <button className='btn btn-rounded btn-outline-info'>Teamwork Skills</button>
+        </div>
+  <div className='m-2' style={{width:'auto'}}>
+        <button className='btn btn-rounded btn-outline-info'>Recruitment Skills</button>
+        </div>
+  </>  
+    }
    { searchData.length === 0 && searchTerm.length !== 0 &&  <h3 className='text-center text-danger my-5'>No matching value found</h3>}
    
    <div className='d-flex justify-content-end'>
@@ -178,7 +314,7 @@ swal('Error', `${err.message}`, 'error')
      </div>
 </div>
 </>
-} */}
+}
 {step === 2 &&
 <>
   <div className='row justify-content-center my-3'>
@@ -241,8 +377,10 @@ swal('Error', `${err.message}`, 'error')
   </div>
   <div className='d-flex justify-content-between'>
 <button className='btn btn-primary' onClick={()=>setStep(2)}>Back</button>
-{updateMode &&
+{updateMode ? 
   <button className='btn btn-primary' disabled={!skillValue} onClick={confirmUpdate}>Update</button>
+:
+<button className='btn btn-primary' disabled={!skillValue} onClick={confirmSelection}>Confirm</button>
 }
 
      </div>
@@ -261,7 +399,7 @@ swal('Error', `${err.message}`, 'error')
             <p className='text-secondary'>You can add at the most 5 skills to your portfolio</p>
             </div>
             {userdata.skills.length < 5 && 
-            <div><Link to="/focus_skill" className='btn btn-primary text-light w-100'><Add/> Add Skills</Link>
+            <div><button onClick={setToggle} className='btn btn-primary text-light w-100'><Add/> Add Skills</button>
             <p className='text-secondary text-left'>You can add {5 - userdata.skills.length} more skill</p>
             </div> }
             
