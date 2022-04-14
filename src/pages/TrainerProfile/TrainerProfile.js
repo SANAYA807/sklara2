@@ -17,9 +17,15 @@ import { Carousel } from 'react-bootstrap';
 import { useRef, useState } from 'react';
 import Calendar from 'react-calendar';
 import Appointment from '../../components/Calender/Appointment';
+import { useLocation } from 'react-router-dom'
+
 
 function TrainerProfile({userdata}) {
+  const location = useLocation()
+  const { firstName, lastName, profilePicture } = location.state
 
+
+ console.log(location)
 
   const arrayEvents = [1, 2, 3]
   const arrayReviews = [1, 2, 3, 4]
@@ -42,18 +48,18 @@ function TrainerProfile({userdata}) {
   return (
     <>
 <Navbar userdata={userdata} />
-      <div className='outer-tp pt-3'>
-        <div className='container-md'>
-          <h2>Profile of <span className='change-color'>Martin Krugger</span></h2>
+      <div className='mp-outer container-fluid main-div pt-3'>
+        <div className='container-fluid px-0'>
+          <h2>Profile of <span className='change-color'>{firstName} {lastName}</span></h2>
           <p className='text-muted'><small>Trainer & Coaches can see limited information about you </small></p>
           <div className='row'>
             <div className='col-lg-6 col-sm-12 common-card'>
               <div className="card">
-                <img src="images/dummy/user2_big.jpg" className="card-img-top tp-image" alt="..." />
+                <img src={profilePicture} className="card-img-top tp-image profile-image" alt="..." />
                 <div className="card-body">
-                  <span className='tp-flag1'><img className="" src="images/flags/de.svg" alt="" /></span>
-                  <span className="tp-flag2"><img className="img-fluid" src="images/flags/en.svg" alt="" /></span>
-                  <h4 className="card-title">Martin Krugger</h4>
+                <span className='mp-com-flag1'><img className='img-fluid' src="images/flags/French.png" alt="" /></span>
+                <span className="mp-com-flag2"><img className="img-fluid" src="images/flags/German.png" alt="" /></span>
+                  <h4 className="card-title">{firstName} {lastName}</h4>
                   <p className='' style={{ "color": "#cccccc" }}><small>Start-Ups, Marketing & Sales, Leaderships, Negotiations</small></p>
                   <p><img src="images/star.png" alt='star' /><span style={{ "color": "#1fd0b6" }}>4.9</span><small style={{ "color": "#cccccc" }}>(69)</small></p>
                   <div>
@@ -71,7 +77,7 @@ function TrainerProfile({userdata}) {
                     <a href="/#"><span className="badge badge-pill tp-blue">Negotiations</span></a>&nbsp;
                   </div>
                   <div className='d-flex justify-content-center my-3'>
-                    <button className='btn tp-event-button mt-3'><small><ChatBubbleIcon fontSize='14px' /> Contact Martin </small></button>
+                    <button className='btn tp-event-button mt-3'><small><ChatBubbleIcon fontSize='14px' /> Contact {firstName} </small></button>
                   </div>
                 </div>
               </div>
@@ -122,21 +128,21 @@ function TrainerProfile({userdata}) {
                     </div>
                   </div>
                   <div className="description">
-                    <p>Martin has corporate training experience of more than 13 years and overall experience of 25+ years. He has worked in Chemical and Fertilizer Industries for more than two decades and has excelled in leadership and mentorship positions. He has worked in Chemical and Fertilizer Industries for more than two decades and has excelled in leadership and mentorship positions.</p>
+                    <p>{firstName} has corporate training experience of more than 13 years and overall experience of 25+ years. He has worked in Chemical and Fertilizer Industries for more than two decades and has excelled in leadership and mentorship positions. He has worked in Chemical and Fertilizer Industries for more than two decades and has excelled in leadership and mentorship positions.</p>
                   </div>
                 </div>
 
               </div>
             </div>
-            <h2>Availbility Calendar of <span className='change-color'>Martin Krugger</span></h2>
+            <h2>Availbility Calendar of <span className='change-color'>{firstName} {lastName}</span></h2>
             <p className='text-muted'><small>Select a date to find available time slots</small></p>
             <div className='common-card'>
               <div className="card">
                 <div className="card-body row">
                   <div className="col-lg-6 ">
                     <Calendar onChange={onChange} value={value} className='mb-3 ml-0' next2Label={null} prev2Label={null} onClickDay={handleDayClick} />
-                    <div className='alignRight'><small className='text-muted '>Highlights indicate martin is busy on those dates</small></div>
-                    <h6 className='mb-0 mt-5'>Want a personalized training from Martin, for you or your team?</h6>
+                    <div className='alignRight'><small className='text-muted '>Highlights indicate {firstName} is busy on those dates</small></div>
+                    <h6 className='mb-0 mt-5'>Want a personalized training from {firstName}, for you or your team?</h6>
                     <p><small className='text-muted '>You will have the opportunity to add your requirements in the following pages.</small></p>
                     <button className='btn shadow btn-primary text-light coach-btn mt-0'> Request Booking</button>
 
@@ -189,7 +195,7 @@ function TrainerProfile({userdata}) {
                           <p className='mb-2' style={{ "color": "#cccccc" }}><small>Senior Project Manager</small></p>
                           <div className='row mb-3'>
                             <div className='col-6'>
-                              <p className="tp-grey"><small>Martin Jenkins</small></p>
+                              <p className="tp-grey"><small>{firstName} Jenkins</small></p>
                               <small><CropLandscapeIcon fontSize="small" />6 sessions</small><br />
                               <small><CalendarMonthIcon fontSize="small" />  26 Jan, 2022</small>
                             </div>
@@ -221,7 +227,7 @@ function TrainerProfile({userdata}) {
                           <p className='mb-2' style={{ "color": "#cccccc" }}><small>Senior Project Manager</small></p>
                           <div className='row mb-3'>
                             <div className='col-6'>
-                              <p className="tp-grey"><small>Martin Jenkins</small></p>
+                              <p className="tp-grey"><small>{firstName} Jenkins</small></p>
                               <small><CropLandscapeIcon fontSize="small" />6 sessions</small><br />
                               <small><CalendarMonthIcon fontSize="small" />  26 Jan, 2022</small>
                             </div>
@@ -242,7 +248,7 @@ function TrainerProfile({userdata}) {
                 </div>
               </Carousel.Item>
             </Carousel>
-            <h2 className='mb-3'>Pass 3 Sessions & Feedback of Martin</h2>
+            <h2 className='mb-3'>Pass 3 Sessions & Feedback of {firstName}</h2>
             {arrayEvents.map((element, i) => {
               return <div key={i} className='col-lg-4 col-sm-12 mb-4'>
                 <div className="card shadow-sm">
@@ -253,7 +259,7 @@ function TrainerProfile({userdata}) {
                     <p className='mb-2' style={{ "color": "#cccccc" }}><small>Senior Project Manager</small></p>
                     <div className='row mb-3'>
                       <div className='col-6'>
-                        <p className="tp-grey"><small>Martin Jenkins</small></p>
+                        <p className="tp-grey"><small>{firstName} Jenkins</small></p>
                         <small><CalendarMonthIcon fontSize="small" />  26 Jan, 2022</small>
                       </div>
                       <div className='col-6'>
@@ -296,7 +302,7 @@ function TrainerProfile({userdata}) {
                           <img src="images/star.png" className='tp-star' alt='star' />
                           <p className='mb-2 mx-1' style={{ "color": "#cccccc" }}><small>review from Germany</small></p>
                         </div>
-                        <p>It was a great experience. Martin explained the basics very interestingly
+                        <p>It was a great experience. {firstName} explained the basics very interestingly
                           and the advanced stuff was approached with great examples.</p>
                         <small className='text-muted'>
                           <CalendarMonthIcon className='me-4' fontSize="10px" /><PeopleIcon fontSize="10px" />10 participants
@@ -309,7 +315,7 @@ function TrainerProfile({userdata}) {
             })}
             <small role="button" className='text-end'>View All</small>
             <div className='mt-5 mb-4 text-center'>
-              <button className='btn tp-event-button p-2 mt-3'><small><ChatBubbleIcon fontSize='small' /> Contact Martin </small></button>
+              <button className='btn tp-event-button p-2 mt-3'><small><ChatBubbleIcon fontSize='small' /> Contact {firstName} </small></button>
             </div>
           </div>
         </div>
