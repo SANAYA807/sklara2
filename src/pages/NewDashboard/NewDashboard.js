@@ -10,6 +10,8 @@ import {
     AccessTimeRounded, ErrorOutlineRounded, AssignmentOutlined, PersonAddAlt1Rounded,
     ComputerRounded, MoreVert, AutoAwesomeMosaic, CloseFullscreen, BorderInner, AccountTreeOutlined, Bento,
     Forum,
+    ArrowDownward,
+    KeyboardArrowDown,
 } from '@mui/icons-material';
 import Carousel from 'react-grid-carousel';
 import styled from "styled-components";
@@ -128,7 +130,10 @@ const NewDashboard = ({ userdata }) => {
                             <div className='time_spending '>
                                 <div className='mt-4 d-flex justify-content-between align-items-center'>
                                     <h3>Time Spendings</h3>
-                                    <p className="text-muted">Month</p>
+                                    <div>
+                                        <span className="text-muted">Month</span>
+                                        <button className='round_btn shadow_new text-muted btn-light btn p-0 ms-1'><KeyboardArrowDown /></button>
+                                    </div>
                                 </div>
                                 <div style={{ height: '200px' }}>
                                     <BarChart />
@@ -139,7 +144,7 @@ const NewDashboard = ({ userdata }) => {
                                 <div className="shadow p-4 profD-rad pt-4 col-md-6 green">
                                     <h3>Statistics</h3>
                                     <div className="col-md-11 mt-0">
-                                        <div className='center' style={{ width: 225, height: 225 }}>
+                                        <div className='center ms-5' style={{ width: 280, height: 280 }}>
                                             <CircularProgressbarWithChildren
                                                 value={75}
                                                 strokeWidth={15}
@@ -176,7 +181,7 @@ const NewDashboard = ({ userdata }) => {
                                                 />
                                             </CircularProgressbarWithChildren>
                                         </div>
-                                        <div className='d-flex justify-content-between mt-5'>
+                                        <div className='d-flex justify-content-between mt-4'>
                                             <div className='d-flex'><div className='statistics-dot' style={{ "backgroundColor": "#98C38B" }}></div>
                                                 <div><div>60%</div><small className='text-muted'>Completed</small></div>
                                             </div>
@@ -269,14 +274,14 @@ const NewDashboard = ({ userdata }) => {
                             </div>
                         </div>
                         <div className="col-md-4">
-                            <div className="right_card mt-5 ml-5">
-                                <h1>Action Recomended</h1>
+                            <div className="right_card mt-5 ml-5" >
+                                <h1 className='mb-4'>Action Recomended</h1>
                                 <p className="text-muted"><AssignmentOutlined style={{ marginRight: '5px' }} />3 assignment submission pending</p>
                                 <p className="text-muted"><ErrorOutlineRounded style={{ marginRight: '5px' }} />2 skills needs to be added</p>
 
                                 <p className="text-muted"><PersonAddAlt1Rounded style={{ marginRight: '5px' }} />2 skills needs to be added</p>
                             </div>
-                            <div className="right_card mt-5 d-flex flex-column justify-content-center">
+                            <div className="right_card mt-5 d-flex flex-column justify-content-center pb-5" >
                                 <Calendar prev2Label={null} next2Label={null} nextLabel={null} prevLabel={null} onChange={onChange} value={value} />
                                 <div className='px-4'>
                                     <p style={{ color: '#F37658', fontSize: '20px', marginBottom: '-2px' }} >Today</p>
@@ -310,8 +315,8 @@ const NewDashboard = ({ userdata }) => {
                                             <p className='text-muted' style={{ fontSize: '15px' }}>Course Online</p>
                                         </div>
                                     </div>
-                                    <hr className='text-muted' />
-                                    <div className='d-flex justify-content-between'>
+                                    <hr className='text-muted mb-4' />
+                                    <div className='d-flex justify-content-between pb-5'>
                                         <button className='btn py-3 btn-primary round_btn' style={{ "padding": "0 10%", fontWeight: '600' }}>Join</button>
                                         <button className='btn px-4 py-3 btn-light round_btn' style={{ backgroundColor: '#fff', border: '1px solid grey', fontWeight: '600' }}>Reschedule</button>
                                     </div>

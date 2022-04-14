@@ -59,9 +59,9 @@ const Navbar = ({ userdata }) => {
                     }
                     {userdata && userdata.firstName}
                   </button>
-                  <ul class="dropdown-menu">
-                    <li><AccountCircleOutlinedIcon /> {userdata && userdata.firstName} </li>
-                    <li><hr class="dropdown-divider" /></li>
+                  <ul class="dropdown-menu" style={{ width: '380px' }}>
+                    {/* <li><AccountCircleOutlinedIcon /> {userdata && userdata.firstName} </li>
+                    <li><hr class="dropdown-divider" /></li> */}
                     <li><Link className="nav-link" to="/profile"><SettingsIcon /> My Profile</Link></li>
                     {isAutheticated() &&
                       <li><Link className="nav-link" to="/" onClick={signout}><LogoutIcon /> Logout</Link></li>
