@@ -70,8 +70,8 @@ const EditableRow = ({
         ></input>
       </td>
       <td>
-        <button type="submit">Save</button>
-        <button type="button" onClick={handleCancelClick}>
+        <button className="btn btn-primary" type="submit">Save</button>
+        <button className="btn btn-secondary" type="button" onClick={handleCancelClick}>
           Cancel
         </button>
       </td>
