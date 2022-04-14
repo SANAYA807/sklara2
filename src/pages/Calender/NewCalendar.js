@@ -55,12 +55,12 @@ function FullCalendarApp() {
     function refreshClock() {
         setTime(new Date());
     }
-    // useEffect(() => {
-    //     const timerId = setInterval(refreshClock, 1000);
-    //     return function cleanup() {
-    //         clearInterval(timerId);
-    //     };
-    // }, []);
+    useEffect(() => {
+        const timerId = setInterval(refreshClock, 1000);
+        return function cleanup() {
+            clearInterval(timerId);
+        };
+    }, []);
     useEffect(async () => {
         let res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=${API_KEY}`)
         if (res) {

@@ -3,8 +3,8 @@ import React from "react";
 const ReadOnlyRow = ({ contact, handleEditClick, handleDeleteClick }) => {
   return (
     <tr>
-      <td>{contact.approved === true ? <span className="text-success">Yes</span> : <span className="text-danger">No</span>}</td>
-      <td>{contact.active === true ? <span className="text-success">Yes</span> : <span className="text-danger">No</span>}</td>
+      <td>{contact.approved === true ? <span className="text-success fw-bold h6">Yes</span> : <span className="text-danger fw-bold h6">No</span>}</td>
+      <td>{contact.active === true ? <span className="text-success fw-bold h6">Yes</span> : <span className="text-danger fw-bold h6">No</span>}</td>
       <td>{contact.fullName && contact.fullName}</td>
       <td>{contact.email}</td>
       <td>{contact.userType}</td>

@@ -9,11 +9,13 @@ import PendingActionsIcon from '@mui/icons-material/PendingActions';
 import SearchIcon from '@mui/icons-material/Search';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import { CircularProgressbar } from 'react-circular-progressbar';
+import { AccessTime, AssessmentOutlined, AssignmentOutlined } from '@mui/icons-material';
 const CalendarPage = () => {
     return (
         <div>
             <div className="bg-1"></div>
             <div className="bg-2"></div>
+            <div className="bg-6"></div>
             <div className='container-fluid px-1 '>
                 <div className='row justify-content-center section'>
                     <div className="row">
@@ -22,20 +24,42 @@ const CalendarPage = () => {
                                 <h4 className='heading mt-4 mb-0'>Upcoming Learnings</h4>
                                 <p className="text-muted mb-4">Session this month</p>
                             </div>
-                            {[1, 2, 3, 4].map(item => <div className='d-flex align-items-start justify-content-between list_card px-2 mb-3'>
-                                <div className='d-flex mt-3'>
+                            {[1, 2, 3, 4].map(item => <div className='d-flex align-items-start list_card px-2 py-3 mb-3'>
+                                <div className="col-md-1">
+                                    <div className='dot'></div>
+                                </div>
+                                <div className="col-md-10">
+
+                                    <div className="d-flex align-items-center justify-content-between mb-3">
+                                        <span className="text-muted d-flex align-items-center">
+                                            <CalendarTodayIcon fontSize='small' /> 13/2/2022
+                                        </span>
+                                        <span className="text-muted me-5 d-flex align-items-center"><AccessTime fontSize='small' /> 17:00 - 18:00</span>
+                                    </div>
+                                    <h6 className='heading'><img src="./images/Group 65.png" alt="" /> Lorem Ipsum</h6>
+                                    <p className="text-muted mb-0">
+                                        <AssignmentOutlined fontSize='small' /> Lorem ipsum dolor sit.
+                                    </p>
+                                </div>
+
+                                {/* <div className='d-flex mt-3'>
                                     <div className='dot'></div>
                                     <div >
-                                        <p className="text-muted">
-                                            10:00 - 11:00
-                                        </p>
+                                        <div className="d-flex align-items-center justify-content-between flex-1">
+                                            <p className="text-muted">
+                                                13/2/2022
+                                            </p>
+                                            <p className="text-muted">17:00 - 18:00</p>
+                                        </div>
                                         <h6>Lorem Ipsum</h6>
                                         <p className="text-muted">
                                             Lorem ipsum dolor sit.
                                         </p>
                                     </div>
+                                </div> */}
+                                <div className="col-md-1">
+                                    <MoreHorizIcon style={{ marginTop: '-5px' }} />
                                 </div>
-                                <MoreHorizIcon />
                             </div>
                             )}
 

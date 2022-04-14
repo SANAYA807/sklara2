@@ -28,9 +28,9 @@ const Navbar = ({ userdata }) => {
     }
   };
   //console.log(userdata)
-  const signOut = ()=>{
-navigate('/')
-signout()
+  const signOut = () => {
+    navigate('/')
+    signout()
   }
   return (
     <>
@@ -65,8 +65,9 @@ signout()
                     }
                     {userdata && userdata.firstName}
                   </button>
-                  <ul class="dropdown-menu">
-                    {/* <li><AccountCircleOutlinedIcon /> {userdata && userdata.firstName} </li> */}
+                  <ul class="dropdown-menu" style={{ width: '380px' }}>
+                    {/* <li><AccountCircleOutlinedIcon /> {userdata && userdata.firstName} </li>
+                    <li><hr class="dropdown-divider" /></li> */}
                     <li><Link className="nav-link" to="/profile"><SettingsIcon /> My Profile</Link></li>
                     <li><Link className="nav-link" to="/changePassword"><Password /> Change Password</Link></li>
                     <li><hr class="dropdown-divider" /></li>

@@ -7,7 +7,7 @@ export const data = {
     datasets: [
         {
             label: 'Earnings in €',
-            data: [3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 1],
+            data: [3, 1, 3.5, 2, 4, 2.1, 3, 1, 3.6, 2, 3, 1],
             backgroundColor: '#B5DAE9',
         },
     ],
@@ -28,28 +28,38 @@ const BarChart = () => {
             }
         },
         scales: {
+
             xAxis: {
                 display: true,
                 grid: {
                     display: false,
+                    drawBorder: false,
                     borderColor: '#fff',
                 },
                 ticks: {
                     color: ['#CCCCCC'],
-                }
+                },
+
+
             },
             yAxis: {
+
                 grid: {
+                    drawBorder: false,
                     borderDash: [4, 5],
                     color: '#CCCCCC',
                     borderColor: '#fff',
+
                 },
                 ticks: {
                     color: ['#CCCCCC'],
-                    // Include a dollar sign in the ticks
+                    // Include a hr sign in the ticks
                     callback: function (value, index, ticks) {
                         return value + ' hr';
-                    }
+                    },
+                    maxTicksLimit: 3
+                    ,
+                    tickMarkLength: 0
                 },
 
             }

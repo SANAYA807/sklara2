@@ -24,11 +24,11 @@
 .list_card {
     /* border: 1px solid var(--lightGray); */
     box-shadow: 0px 0px 20px #F6EEFB;
-    height: 80px;
+    /* height: 100px; */
     /* padding: 10px; */
     background-color: #fff;
     border-radius: 15px;
-    line-height: 0;
+    line-height: 1;
 }
 
 .dot {
@@ -50,4 +50,15 @@
     grid-gap: 0.5rem;
     margin-bottom: 0.5rem;
     align-items: center;
+}
+
+.bg-6 {
+    position: absolute;
+    width: 387px;
+    height: 560px;
+    left: 13px;
+    top: 275px;
+    z-index: -1;
+    background: #F1EFF8;
+    filter: blur(100px);
 }
