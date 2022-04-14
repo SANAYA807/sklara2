@@ -24,14 +24,14 @@ export default function MarketPlace({ userdata }) {
   function Hit({hit}) { 
      console.log(hit, "Algolia Result-------")
      return(
-       <Link to="/trainer_profile">
+       <Link to="/trainer_profile" state= { hit} >
       <div className='col-lg-28 col-sm-35 mb-4'>
       <div className="card shadow-sm me-1">
         <img role="button" src={hit.profilePicture ?  hit.profilePicture : "images/dummy/user4_big.jpg"} className="card-img-top mp-com-image" alt="..." />
         <div className="card-body">
           <span className='mp-com-flag1'><img className='img-fluid' src="images/flags/French.png" alt="" /></span>
           <span className="mp-com-flag2"><img className="img-fluid" src="images/flags/German.png" alt="" /></span>
-          <h5 className="card-title m-0">{hit.username}</h5>
+          <h5 className="card-title m-0" style={{color: 'black'}}>{hit.username}</h5>
           <p className='mb-2' style={{ "color": "#cccccc" }}><small>Senior Project Manager</small></p>
           <p className="mp-experience"><small>Experience of 26 years</small></p>
           <p><img src="images/star.png" alt='star' /><span style={{ "color": "#1fd0b6" }}>5.0</span><small style={{ "color": "#cccccc" }}>(7)</small></p>
@@ -65,7 +65,13 @@ export default function MarketPlace({ userdata }) {
 
           </div>  */}
           
-           <div className='mb-5'>
+           <div id="header" className="input-group mb-3 mp-input-div shadow-sm">
+                <div className="input-group-append shadow-sm">
+                  <SearchBox translations={{ placeholder:"Try 'Business Analysis'"}} />
+                 </div>
+            </div>
+         <div className='mb-5'>
+
             <p align="left">
               <span className='mp-popular'>Popular:</span>
               <a href="/#"><span style={{background: '#CC0000'}} className="badge badge-pill mp-violet">Business Analysis</span></a>&nbsp;
@@ -74,13 +80,6 @@ export default function MarketPlace({ userdata }) {
               <a href="/#"><span style={{background: "#CC6600"}} className="badge badge-pill mp-violet">No Code App Development</span></a>
             </p>
           </div>
-
-           <div id="header" className="input-group mb-3 mp-input-div shadow-sm">
-                <div className="input-group-append">
-                  <SearchBox translations={{ placeholder:"Try 'Business Analysis'"}} />
-                 </div>
-            </div>
-         
           <div className='mb-4'>
             <h3>Our Reccomendations</h3>
             <h5>based on your profile, preferences and activities</h5>
@@ -118,8 +117,8 @@ export default function MarketPlace({ userdata }) {
                   <div className="card shadow-sm me-1">
                     <img role="button" src="images/dummy/user4_big.jpg" className="card-img-top mp-com-image" alt="..." />
                     <div className="card-body">
-                      <span className='mp-com-flag1'><img className="" src="images/flags/de.svg" alt="" /></span>
-                      <span className="mp-com-flag2"><img className="img-fluid" src="images/flags/en.svg" alt="" /></span>
+                    <span className='mp-com-flag1'><img className='img-fluid' src="images/flags/French.png" alt="" /></span>
+                    <span className="mp-com-flag2"><img className="img-fluid" src="images/flags/German.png" alt="" /></span>
                       <h5 className="card-title m-0">Rebecca Finch</h5>
                       <p className='mb-2' style={{ "color": "#cccccc" }}><small>Senior Project Manager</small></p>
                       <p className="mp-experience"><small>Experience of 26 years</small></p>
@@ -143,8 +142,7 @@ export default function MarketPlace({ userdata }) {
                   <div className="card shadow-sm me-1">
                     <img role="button" src="images/dummy/user4_big.jpg" className="card-img-top mp-com-image" alt="..." />
                     <div className="card-body">
-                      <span className='mp-com-flag1'><img className="" src="images/flags/de.svg" alt="" /></span>
-                      <span className="mp-com-flag2"><img className="img-fluid" src="images/flags/en.svg" alt="" /></span>
+          <span className="mp-com-flag2"><img className="img-fluid" src="images/flags/German.png" alt="" /></span>
                       <h6 className="card-title m-0 mt-2">Understanding Analytical Tools (Expert)</h6>
                       <p className='mb-2' style={{ "color": "#cccccc" }}><small>Senior Project Manager</small></p>
                       <div className='row mb-3'>
@@ -172,7 +170,7 @@ export default function MarketPlace({ userdata }) {
           </div>
         </InstantSearch>  
         </div >
-        <ContactFooter />
+        {/* <ContactFooter /> */}
       </div>
       <Footer />
     </>

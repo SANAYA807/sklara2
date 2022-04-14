@@ -123,7 +123,7 @@ const NewDashboard = ({ userdata }) => {
                     <div className="row">
                         <div className="col-md-8 left_side py-3">
                             <div className="heading">
-                                <p className='yellow mb-4'>👋 Hey Dibendooo</p>
+                                <p className='yellow mb-4'>👋 Hey {userdata && userdata.firstName}</p>
                                 <h1 className='heading mb-3'>You’ve got 236,90 $ in Credit Balance</h1>
                                 <button className='btn btn-primary round_btn' >Request TopUp</button>
                             </div>

@@ -44,8 +44,10 @@ const handleSubmit = async()=>{
     }).then((res)=>{
         if(res.data.status === 'ok'){
             swal("Success", "Password updated successfully", 'success');
-            window.location.reload();
-            navigate('/')
+            setTimeout(navigate('/'),6000)
+            setTimeout(window.location.reload(),8000)
+            
+            
 
         }
     }).catch((err)=>{

@@ -9,7 +9,7 @@ import PendingActionsIcon from '@mui/icons-material/PendingActions';
 import SearchIcon from '@mui/icons-material/Search';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import { CircularProgressbar } from 'react-circular-progressbar';
-import { AccessTime } from '@mui/icons-material';
+import { AccessTime, AssessmentOutlined, AssignmentOutlined } from '@mui/icons-material';
 const CalendarPage = () => {
     return (
         <div>
@@ -36,9 +36,9 @@ const CalendarPage = () => {
                                         </span>
                                         <span className="text-muted me-5 d-flex align-items-center"><AccessTime fontSize='small' /> 17:00 - 18:00</span>
                                     </div>
-                                    <h6 className='heading'>Lorem Ipsum</h6>
+                                    <h6 className='heading'><img src="./images/Group 65.png" alt="" /> Lorem Ipsum</h6>
                                     <p className="text-muted mb-0">
-                                        Lorem ipsum dolor sit.
+                                        <AssignmentOutlined fontSize='small' /> Lorem ipsum dolor sit.
                                     </p>
                                 </div>
 
