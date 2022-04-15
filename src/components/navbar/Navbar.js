@@ -109,6 +109,9 @@ const Navbar = ({ userdata }) => {
                 <li className={`nav-item ${ActiveClr("/focus_skill")}`}>
                   <Link className="nav-link" to="/focus_skill"><FilterCenterFocusOutlinedIcon /> Focus Area</Link>
                 </li>
+                <li className={`nav-item ${ActiveClr("/EventManage")}`}>
+                  <Link className="nav-link" to="/EventManage"><FilterCenterFocusOutlinedIcon /> Manage</Link>
+                </li>
               </div>
             </ul>
           </div>
