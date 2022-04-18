@@ -11,7 +11,7 @@ import './manageskill.css';
 import { OverlayTrigger,Popover,Button } from 'react-bootstrap'
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Modal } from '@mui/material'
-
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 
 const ManageSkill = ({userdata}) => {
 const {token} = isAutheticated()
@@ -231,22 +231,22 @@ swal('Error', `${err.message}`, 'error')
         onClose={()=>setEditMode(false)}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-        className='modal-scroll py-3'
+        className='modal-scroll py-5 center'
       >
-        <div className='container bg-light p-5 mt-5'>
-        <div className='d-flex justify-content-end mt-2'>
-  <button className='btn btn-secondary' onClick={()=>window.location.reload()}>Close</button>
+        <div className='container bg-light p-4 px-5 mt-2 modal-inner'>
+        <div className='d-flex justify-content-end'>
+  <button className='btn btn-secondary btn-sm' onClick={()=>window.location.reload()}><CloseOutlinedIcon/></button>
 </div>
 {step === 1 &&
   <>
-  <div className='row justify-content-center my-5'>
+  <div className='row justify-content-center my-1'>
   <div className='col-md-12'> 
   <h5 className='text-center'>Select the Skills You Want to Develop</h5>
   </div>
   <div className='col-md-12'> 
   <p className='text-center text-secondary'>Now, choose some skills you would like to develop so we can better curate your learning experience.</p>
   </div> 
-    <div className='col-md-4 my-5'>
+    <div className='col-md-4 my-3'>
         <h5 className='text-center'>Add any skill you'd like</h5>
         <input type="text" value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)} className='form-control skill-search' placeholder={`Search for skills`}/>
         <h5 className='text-center mt-4'>Top Skills</h5>
@@ -264,11 +264,12 @@ swal('Error', `${err.message}`, 'error')
     </div> */}
 
 </div>
-<div className='row justify-content-center my-3'>
+<div className='container' style={{width:"80%"}}>
+<div className='row justify-content-center'>
     {searchData.length > 0 ? searchData.map((item, i)=>(
       <>
 {item.skills && item.skills.map((itm)=>(
-<div className='m-2' style={{width:'auto'}}>
+<div className='m-1' style={{width:'auto'}}>
         <button className='btn btn-rounded btn-outline-info' onClick={()=>handleSelect(itm.skill,itm.color)}>{itm.skill}</button>
         </div>
 ))}
@@ -312,6 +313,7 @@ swal('Error', `${err.message}`, 'error')
    <div className='d-flex justify-content-end'>
 <button className='btn btn-primary' disabled={!skill && !color} onClick={()=>setStep(2)}>Next</button>
      </div>
+</div>
 </div>
 </>
 }

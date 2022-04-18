@@ -183,6 +183,7 @@ useEffect(()=>{
                     token: response.data.token,
                 })
             );
+            
             navigate('/dashboard')
             setTimeout(window.location.reload(), 8000);
             //navigate('/dashboard')

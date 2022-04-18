@@ -18,7 +18,7 @@ import { isAutheticated, signout } from '../auth/authhelper';
 import { useNavigate } from 'react-router-dom';
 
 import './navbar.css'
-import { Password, People } from '@mui/icons-material';
+import { FolderCopyOutlined, ManageAccounts, Password, People } from '@mui/icons-material';
 
 const Navbar = ({ userdata }) => {
   const navigate = useNavigate()
@@ -110,9 +110,17 @@ const Navbar = ({ userdata }) => {
                 <li className={`nav-item ${ActiveClr("/focus_skill")}`}>
                   <Link className="nav-link" to="/focus_skill"><FilterCenterFocusOutlinedIcon /> Focus Area</Link>
                 </li>
+
+                {userdata && userdata.userType === 'hr' &&
+                <li className={`nav-item ${ActiveClr("/employee_list")}`}>
+                  <Link className="nav-link" to="/employee_list"><FolderCopyOutlined/> Manage</Link>
+                </li>
+                }
+                {userdata && userdata.userType === 'supplier' &&
                 <li className={`nav-item ${ActiveClr("/EventManage")}`}>
                   <Link className="nav-link" to="/EventManage"><FolderCopyIcon /> Manage</Link>
                 </li>
+                  }
               </div>
             </ul>
           </div>
