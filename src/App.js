@@ -28,6 +28,7 @@ import StepperForm from './pages/StepperForm/StepperForm';
 import EmployeeList from './pages/Employee/EmployeeList';
 import AddUser from './pages/Employee/AddUser';
 import EmployeeForm from './pages/StepperForm/EmployeeStepper/EmployeeForm';
+import YourEvent from './pages/Manage/YourEvent';
 
 function App() {
   const [userdata, setUserData] = useState(null)
@@ -97,6 +98,7 @@ function App() {
         <Route exact path="/manage_skill" element={userdata && userdata._id ? <ManageSkill userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/focus_skill" element={userdata && userdata._id ? <Skill userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/emp_form" element={userdata && userdata._id ? <EmployeeForm userdata={userdata} /> : <Login />}></Route>
+        <Route exact path="/EventManage" element={userdata && userdata._id ? <YourEvent userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/employee_list" element={userdata && userdata._id && userdata.userType === 'hr' ? <EmployeeList userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/employee_list/Add" element={userdata && userdata._id  && userdata.userType === 'hr' ? <AddUser userdata={userdata} /> : <Login />}></Route>
         <Route exact path='*' element={<NotFound userdata={userdata} />} />

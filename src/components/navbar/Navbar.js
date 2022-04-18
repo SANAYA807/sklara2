@@ -109,11 +109,17 @@ const Navbar = ({ userdata }) => {
                 <li className={`nav-item ${ActiveClr("/focus_skill")}`}>
                   <Link className="nav-link" to="/focus_skill"><FilterCenterFocusOutlinedIcon /> Focus Area</Link>
                 </li>
+
                 {userdata && userdata.userType === 'hr' &&
                 <li className={`nav-item ${ActiveClr("/employee_list")}`}>
                   <Link className="nav-link" to="/employee_list"><FolderCopyOutlined/> Manage</Link>
                 </li>
                 }
+                {userdata && userdata.userType === 'supplier' &&
+                <li className={`nav-item ${ActiveClr("/EventManage")}`}>
+                  <Link className="nav-link" to="/EventManage"><FilterCenterFocusOutlinedIcon /> Manage</Link>
+                </li>
+                  }
               </div>
             </ul>
           </div>

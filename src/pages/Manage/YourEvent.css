@@ -1,0 +1,81 @@
+.Manage{
+    max-width: 1503px;
+    text-align: center;
+}
+
+.Manage .box{
+    position: absolute;
+width: 286px;
+height: 61px;
+left: -26px;
+top: 320px;
+
+background: #F6EEFB;
+border-radius: 40px;
+}
+
+.Manage .left_nav{
+    border-right: 1px solid var(--lightGray);
+    font-family: 'Inter';
+    padding: 10px!important;
+}
+
+.Manage .side-nav{
+    border-radius: 40px!important;
+}
+.Manage .active{
+    background: #ecdef5!important;
+    color: #550B7C;  
+    font-weight: 600;
+
+}
+.Manage .border_input{
+    margin: 30px 8px;
+    min-width: 276px;
+    text-align: left;
+    width: 116px;
+}
+.Manage .nav-box{
+    text-align: left;
+}
+.Manage .nav-box > p{
+    margin-left: -10px;
+}
+.Manage .mp-input-div {
+    width: 28vw !important;
+}
+.Manage .border_input input, .border_input select {
+    width: 103%;
+    border: none;
+    background: white;
+    border-radius: 0;
+    line-height: normal;
+    outline: none;
+    border-bottom: 2px solid var(--grey);
+}
+.Manage .cat-box{
+ 
+width: 239px;
+height: 40px;
+background: #FFFFFF;
+box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+border-radius: 10px;
+min-width: 256px;
+}
+.Manage input.largeCheck{
+    /* width: 50px; */
+    transform: scale(1.8);
+}
+.Manage-right{
+    width: 1200px!important;
+}
+
+.list_card-1 {
+    /* border: 1px solid var(--lightGray); */
+    box-shadow: 0px 0px 20px #f6eefb;
+    /* height: 100px; */
+    /* padding: 10px; */
+    /* background-color: #fff; */
+    border-radius: 15px;
+    line-height: 1;
+}
