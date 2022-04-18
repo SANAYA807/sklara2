@@ -87,4 +87,6 @@
 }
 .modal-scroll{
     overflow-y: scroll !important; 
+    width: 80vw;
+    margin-bottom: 5px !important;
 }
