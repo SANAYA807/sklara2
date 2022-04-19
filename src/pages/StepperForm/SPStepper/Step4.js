@@ -1,8 +1,7 @@
-import React from 'react'
 import { FacebookRounded, Instagram, LinkedIn, Twitter } from '@mui/icons-material'
+import React from 'react'
 
-
-const Step5 = () => {
+const Step4 = () => {
     return (
         <div className="container px-5">
             <div className='container px-5 d-flex align-items-center justify-content-around flex-wrap' style={{ width: '90%' }}>
@@ -25,4 +24,4 @@ const Step5 = () => {
     )
 }
 
-export default Step5
+export default Step4

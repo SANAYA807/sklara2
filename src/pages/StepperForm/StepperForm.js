@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './StepperForm.css'
 import numberToWords from 'number-to-words'
+import { FiberManualRecord } from '@mui/icons-material'
 
 
 
@@ -29,8 +30,9 @@ const StepperForm = ({ getStep, steps }) => {
                             <p className='mb-0'>You were invited by</p>
                             <h6 className='mb-0'>Lorem</h6>
                             <p className="text-muted">23 mmin ago</p>
-
-                            <h6>Invitation will expire within 24 days</h6>
+                            <div className='d-flex' >
+                                <FiberManualRecord fontSize='small' style={{ color: 'green' }} /> <h6>Invitation will expire within 24 days</h6>
+                            </div>
                         </div>
                     </div>
                 </div>

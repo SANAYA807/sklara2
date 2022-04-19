@@ -23,11 +23,9 @@ const Step7 = () => {
             </div><div className="border_input ">
                 <label htmlFor="">Default mode</label>
                 <select >
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option>Training</option>
+                    <option>Coaching</option>
+
                 </select>
             </div></div>
     )

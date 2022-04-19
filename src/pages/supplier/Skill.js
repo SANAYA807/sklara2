@@ -16,12 +16,8 @@ import { PolarAreaChart } from '../../components/Charts/PolarAreaChart';
 import DevProgress from '../profileDashboard/DevProgress';
 import CircleIcon from '@mui/icons-material/Circle';
 import Modal from '@mui/material/Modal';
-<<<<<<< HEAD
 import { CircularProgressbar } from 'react-circular-progressbar'
-=======
-import {CircularProgressbar} from 'react-circular-progressbar'
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
->>>>>>> 72645a2768add9aab16ff1f0c01bd0cc7f29b6ed
 import './skill.css'
 
 
