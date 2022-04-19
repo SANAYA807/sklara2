@@ -231,12 +231,12 @@ const NewDashboard = ({ userdata }) => {
                                 </div>
 
                             </div>
-                            <div className="shadow p-4 mt-5 row gx-1 profD-rad pt-4 satisfaction" style={{ backgroundColor: '#F6EEFB' }}>
-                                <h3 className=''>Satisfaction and Feedback</h3>
+                            <div className="shadow py-4 mt-5 row gx-1 profD-rad pt-4 satisfaction" style={{ backgroundColor: '#F6EEFB' }}>
+                                <h3 className='px-4'>Satisfaction and Feedback</h3>
                                 <div className="col-md-6">
-                                    <h5 className='bold'>Average Session Rating</h5>
-                                    <p className="text-muted">Based on 36 ratings</p>
-                                    <div style={{ width: 250, height: 250 }}>
+                                    {/* <h5 className='bold'>Average Session Rating</h5> */}
+                                    <p className="text-muted px-4">Based on 36 ratings</p>
+                                    <div style={{ width: 280, height: 280, display: 'grid', placeItems: 'center', margin: 'auto' }}>
                                         <CircularProgressbar
                                             text="3.7/5"
                                             value={66}
@@ -262,23 +262,23 @@ const NewDashboard = ({ userdata }) => {
                                         {/* <CircularProgressbar value={66} /> */}
                                     </div>
                                 </div>
-                                <div className="col-md-6">
-                                    <h5 className='bold'>Questions on individual Level</h5>
+                                <div className="col-md-6 px-4">
+                                    <h5 className='bold' >Questions on individual Level</h5>
 
-                                    <div className='mt-3 mb-4'>
-                                        <h5>I felt heard, understood & respected</h5>
+                                    <div className='mt-3 mb-4' >
+                                        <h5 style={{ fontSize: '16px' }}>I felt heard, understood & respected</h5>
                                         <ProgressBar variant="success" now={3.5} max={5} />
                                     </div>
                                     <div className='mb-4'>
-                                        <h5>My trainer/coach brought me closer to my goal</h5>
+                                        <h5 style={{ fontSize: '16px' }}>My trainer/coach brought me closer to my goal</h5>
                                         <ProgressBar variant="primary" now={3} max={5} />
                                     </div>
                                     <div className='mb-4'>
-                                        <h5>I will recommend the trainer/coach to my colleagues</h5>
+                                        <h5 style={{ fontSize: '16px' }}>I will recommend the trainer/coach to my colleagues</h5>
                                         <ProgressBar variant="warning" now={4} max={5} />
                                     </div>
                                     <div className='mb-4'>
-                                        <h5>The technical quality of the video was good</h5>
+                                        <h5 style={{ fontSize: '16px' }}>The technical quality of the video was good</h5>
                                         <ProgressBar variant="danger" now={4.5} max={5} />
                                     </div>
                                 </div>
@@ -340,7 +340,7 @@ const NewDashboard = ({ userdata }) => {
                         <div className='row px-0 mt-3 m-auto'>
                             <h4 className='fw-bold mb-4'>SKLARA Marketplace</h4>
                             <div className='col-lg-6 col-sm-12 dashboard-card'>
-                                <div className='card'>
+                                <div className='card ' style={{ height: '100%' }}>
                                     <div className='card-body'>
                                         <div className='card-title d-flex justify-content-between'>
                                             <div>
@@ -353,35 +353,51 @@ const NewDashboard = ({ userdata }) => {
                                             <div className='d-flex mb-4'>
                                                 <AutoAwesomeMosaic className='mt-2' color='success' fontSize='large' />
                                                 <div className='w-100 px-4'>
-                                                    <h6>Business Analysis</h6>
+                                                    <div className="d-flex align-items-center justify-content-between mb-2">
+                                                        <h6>Business Analysis</h6>
+                                                        <button className='btn btn-primary px-3 round_btn'><small className='fw-bold'>62 events</small></button>
+                                                    </div>
                                                     <ProgressBar variant="success" now={5} max={5} />
                                                 </div>
                                             </div>
                                             <div className='d-flex mb-4'>
                                                 <CloseFullscreen className='mt-2' style={{ "color": "#C026B7" }} fontSize='large' />
                                                 <div className='w-100 px-4'>
-                                                    <h6>Social Media Marketing</h6>
+                                                    <div className="d-flex align-items-center justify-content-between mb-2">
+                                                        <h6>Social Media Marketing</h6>
+                                                        <button className='btn btn-primary px-3 round_btn'><small className='fw-bold'>62 events</small></button>
+                                                    </div>
                                                     <ProgressBar variant='pb-pink' now={5} max={5} />
                                                 </div>
                                             </div>
                                             <div className='d-flex mb-4'>
                                                 <BorderInner className='mt-2' color='primary' fontSize='large' />
                                                 <div className='w-100 px-4'>
-                                                    <h6>Artificial Intelligence</h6>
+                                                    <div className="d-flex align-items-center justify-content-between mb-2">
+                                                        <h6>Artificial Intelligence</h6>
+                                                        <button className='btn btn-primary px-3 round_btn'><small className='fw-bold'>62 events</small></button>
+                                                    </div>
                                                     <ProgressBar variant="primary" now={5} max={5} />
                                                 </div>
                                             </div>
                                             <div className='d-flex mb-4'>
                                                 <AccountTreeOutlined className='mt-2' style={{ "color": "#DC3545" }} fontSize='large' />
                                                 <div className='w-100 px-4'>
-                                                    <h6>Sales & Market</h6>
+                                                    <div className="d-flex align-items-center justify-content-between mb-2">
+                                                        <h6>Sales & Market</h6>
+                                                        <button className='btn btn-primary px-3 round_btn'><small className='fw-bold'>62 events</small></button>
+                                                    </div>
                                                     <ProgressBar variant="danger" now={5} max={5} />
                                                 </div>
                                             </div>
                                             <div className='d-flex mb-4'>
                                                 <Bento className='mt-2' style={{ "color": "#1CD8C9" }} fontSize='large' />
                                                 <div className='w-100 px-4'>
-                                                    <h6>Al in Buisness Decissions</h6>
+                                                    <div className="d-flex align-items-center justify-content-between mb-2">
+                                                        <h6>Al in Buisness Decissions</h6>
+
+                                                        <button className='btn btn-primary px-3 round_btn'><small className='fw-bold'>62 events</small></button>
+                                                    </div>
                                                     <ProgressBar variant="pb-light-blue" now={5} max={5} />
                                                 </div>
                                             </div>
@@ -400,54 +416,111 @@ const NewDashboard = ({ userdata }) => {
                                             <MoreVert />
                                         </div>
                                         <div>
-                                            <div className='d-flex mb-4'>
+                                            <div className='d-flex mb-3'>
                                                 <AutoAwesomeMosaic className='mt-2' color='success' fontSize='large' />
                                                 <div className='w-100 px-4 d-flex justify-content-between'>
                                                     <div>
                                                         <h6 className='m-0'>Buisness Analysis changes the...</h6>
                                                         <small className='text-muted'>Martin Krugger</small>
                                                     </div>
-                                                    <button className='btn btn-primary px-3 round_btn'><small className='fw-bold'>62 events</small></button>
+                                                    <div className='d-flex flex-column'>
+                                                        <div className='d-flex '>
+                                                            <div className="d-flex">
+                                                                <h1 className='m-0 p-0'>24</h1>
+                                                                <div>
+                                                                    <h5 className='m-0 p-0'> JAN </h5>
+                                                                    <h5 className='m-0 p--0'>2022</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <p className="text-muted m-0 p-0">5 sessions</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div className='d-flex mb-4'>
+                                            <div className='d-flex mb-3'>
                                                 <CloseFullscreen className='mt-2' style={{ "color": "#C026B7" }} fontSize='large' />
                                                 <div className='w-100 px-4 d-flex justify-content-between'>
                                                     <div>
                                                         <h6 className='m-0'>Social Media & business promition</h6>
                                                         <small className='text-muted'>Danny Rankins</small>
                                                     </div>
-                                                    <button className='btn btn-primary px-3 round_btn'><small className='fw-bold'>62 events</small></button>
+                                                    <div className='d-flex flex-column'>
+                                                        <div className='d-flex '>
+                                                            <div className="d-flex">
+                                                                <h1 className='m-0 p-0'>24</h1>
+                                                                <div>
+                                                                    <h5 className='m-0 p-0'> JAN </h5>
+                                                                    <h5 className='m-0 p--0'>2022</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <p className="text-muted m-0 p-0">5 sessions</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div className='d-flex mb-4'>
+                                            <div className='d-flex mb-3'>
                                                 <BorderInner className='mt-2' color='primary' fontSize='large' />
                                                 <div className='w-100 px-4 d-flex justify-content-between'>
                                                     <div>
                                                         <h6 className='m-0'>Implementing AI for management</h6>
                                                         <small className='text-muted'>Cameron Niaken</small>
                                                     </div>
-                                                    <button className='btn btn-primary px-3 round_btn'><small className='fw-bold'>62 events</small></button>
+                                                    <div className='d-flex flex-column'>
+                                                        <div className='d-flex '>
+                                                            <div className="d-flex">
+                                                                <h1 className='m-0 p-0'>24</h1>
+                                                                <div>
+                                                                    <h5 className='m-0 p-0'> JAN </h5>
+                                                                    <h5 className='m-0 p--0'>2022</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <p className="text-muted m-0 p-0">5 sessions</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div className='d-flex mb-4'>
+                                            <div className='d-flex mb-3'>
                                                 <AccountTreeOutlined className='mt-2' style={{ "color": "#DC3545" }} fontSize='large' />
                                                 <div className='w-100 px-4 d-flex justify-content-between'>
                                                     <div>
                                                         <h6 className='m-0'>Easiest techniques to boost...</h6>
                                                         <small className='text-muted'>Faith Sulinan</small>
                                                     </div>
-                                                    <button className='btn btn-primary px-3 round_btn'><small className='fw-bold'>62 events</small></button>
+                                                    <div className='d-flex flex-column'>
+                                                        <div className='d-flex '>
+                                                            <div className="d-flex">
+                                                                <h1 className='m-0 p-0'>24</h1>
+                                                                <div>
+                                                                    <h5 className='m-0 p-0'> JAN </h5>
+                                                                    <h5 className='m-0 p--0'>2022</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <p className="text-muted m-0 p-0">5 sessions</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div className='d-flex mb-4'>
+                                            <div className='d-flex mb-3'>
                                                 <Bento className='mt-2' style={{ "color": "#1CD8C9" }} fontSize='large' />
                                                 <div className='w-100 px-4 d-flex justify-content-between'>
                                                     <div>
                                                         <h6 className='m-0'>sourcing decisions to Algo...</h6>
                                                         <small className='text-muted'>Steve Mclnshaw</small>
                                                     </div>
-                                                    <button className='btn btn-primary px-3 round_btn'><small className='fw-bold'>62 events</small></button>
+                                                    <div className='d-flex flex-column'>
+                                                        <div className='d-flex '>
+                                                            <div className="d-flex">
+                                                                <h1 className='m-0 p-0'>24</h1>
+                                                                <div>
+                                                                    <h5 className='m-0 p-0'> JAN </h5>
+                                                                    <h5 className='m-0 p--0'>2022</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <p className="text-muted m-0 p-0">5 sessions</p>
+                                                    </div>
+
+
                                                 </div>
                                             </div>
                                         </div>

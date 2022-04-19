@@ -29,6 +29,9 @@ import EmployeeList from './pages/Employee/EmployeeList';
 import AddUser from './pages/Employee/AddUser';
 import EmployeeForm from './pages/StepperForm/EmployeeStepper/EmployeeForm';
 import YourEvent from './pages/Manage/YourEvent';
+import ManageForm from './pages/Manage/ManageForm';
+import HRForm from './pages/StepperForm/HrStepper/HrForm';
+import SPForm from './pages/StepperForm/SPStepper/SPForm';
 
 function App() {
   const [userdata, setUserData] = useState(null)
@@ -82,25 +85,29 @@ function App() {
         <Route exact path="/profile" element={userdata && userdata._id ? <Profile userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/coachprofile" element={userdata && userdata._id ? <CoachProfile userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/old_dashboard" element={userdata && userdata._id ? <ProfileDashboard userdata={userdata} /> : <Login />}></Route>
-      
+
         {userdata && userdata.userType === 'supplier' &&
-        <Route exact path="/dashboard" element={userdata && userdata._id ? <><Navbar userdata={userdata} /><SpDashboard userdata={userdata} /> <Footer /> </> : <Login />}></Route>
+          <Route exact path="/dashboard" element={userdata && userdata._id ? <><Navbar userdata={userdata} /><SpDashboard userdata={userdata} /> <Footer /> </> : <Login />}></Route>
         }
-        
+
         <Route exact path="/dashboard" element={userdata && userdata._id ? <NewDashboard userdata={userdata} /> : <Login />}></Route>
 
         <Route exact path="/trainer_profile" element={userdata && userdata._id ? <TrainerProfile userdata={userdata} /> : <Login />}></Route>
         <Route exact path='/changePassword' element={userdata && userdata._id ? <ChangePassword userdata={userdata} /> : <Login />}></Route>
         {/* <Route exact path="/sp_dashboard" element={userdata && userdata._id ? <SPDashboard userdata={userdata} /> : <Login />}></Route> */}
-        
+
         <Route exact path="/calendar" element={userdata && userdata._id ? <><Navbar userdata={userdata} /><CalendarPage userdata={userdata} /> <Footer /> </> : <Login />}></Route>
         <Route exact path="/add_skill" element={userdata && userdata._id ? <AddSkill userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/manage_skill" element={userdata && userdata._id ? <ManageSkill userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/focus_skill" element={userdata && userdata._id ? <Skill userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/emp_form" element={userdata && userdata._id ? <EmployeeForm userdata={userdata} /> : <Login />}></Route>
+        <Route exact path="/sp_form" element={userdata && userdata._id ? <SPForm userdata={userdata} /> : <Login />}></Route>
+        <Route exact path="/hr_form" element={userdata && userdata._id ? <HRForm userdata={userdata} /> : <Login />}></Route>
+
+        <Route exact path="/Manage_form" element={userdata && userdata._id ? <ManageForm userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/EventManage" element={userdata && userdata._id ? <YourEvent userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/employee_list" element={userdata && userdata._id && userdata.userType === 'hr' ? <EmployeeList userdata={userdata} /> : <Login />}></Route>
-        <Route exact path="/employee_list/Add" element={userdata && userdata._id  && userdata.userType === 'hr' ? <AddUser userdata={userdata} /> : <Login />}></Route>
+        <Route exact path="/employee_list/Add" element={userdata && userdata._id && userdata.userType === 'hr' ? <AddUser userdata={userdata} /> : <Login />}></Route>
         <Route exact path='*' element={<NotFound userdata={userdata} />} />
       </Routes>
     </Router>

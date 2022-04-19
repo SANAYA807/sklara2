@@ -7,7 +7,7 @@ import Step4 from './Step4'
 import Step5 from './Step5'
 import Step6 from './Step6'
 import Step7 from './Step7'
-const HRForm = () => {
+const SPForm = () => {
     const [step, setstep] = useState(1)
     const getStep = (item) => {
         setstep(item)
@@ -33,4 +33,4 @@ const HRForm = () => {
     )
 }
 
-export default HRForm
+export default SPForm

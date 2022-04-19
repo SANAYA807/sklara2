@@ -1,0 +1,46 @@
+.step3 .AccordionSection{
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: #fff;
+}
+
+.step3 .Contain1{
+  width: 100%;
+}
+
+.step3 .Wrap{
+  color: #550B7C;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  margin: 6px;
+  font-weight: 700!important;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1)
+}
+.step3 .Wrap span svg{
+  color: #550B7C!important;
+}
+.step3 .Dropdown{
+    width: 100%;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+}
+.step3 .break-box{
+  display: flex;
+  background: #8C8C8C;
+  height: 80px;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+}

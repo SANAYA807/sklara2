@@ -1,77 +1,26 @@
 import React from 'react'
 import Navbar from "../../components/navbar/Navbar"
-import { FolderCopyIcon ,AssignmentOutlined } from '@mui/icons-material';
-import FolderOpenIcon from '@mui/icons-material/FolderOpen';
-import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
-import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
-import ErrorIcon from '@mui/icons-material/Error';
-
 import "./YourEvent.css"
+import SideNav from '../../components/SideNav/SideNav';
+import AddIcon from '@mui/icons-material/Add';
+import {Link} from "react-router-dom"
+
 
 function YourEvent({userdata}) {
   return (
       <>
     <Navbar userdata={userdata} />
-    <div className="">
+    <div >
             <div className='container-fluid px-1 Manage'>
                 <div className='row justify-content-center'>
                     <div className="row">
-                        <div className="col-md-2 left_nav">
-                        <div className='d-flex align-items-start list_card-1 p-1 my-4 side-nav'>
-                               
-                                <div className="col-md-12 nav-box my-1">
-                                    {/* <h6 className='heading'><img src="./images/Group 65.png" alt="" /> Lorem Ipsum</h6> */}
-                                    <p className="text-muted px-3 mb-0">
-                                        <FolderOpenIcon fontSize='small' /> Open Request
-                                    </p>
-                                </div>
-                        </div>
-                        
-                        <div className='d-flex align-items-start list_card-1 p-1 my-4 side-nav'>
-                               
-                               <div className="col-md-12 nav-box my-1">
-                                   {/* <h6 className='heading'><img src="./images/Group 65.png" alt="" /> Lorem Ipsum</h6> */}
-                                   <p className="text-muted px-3 mb-0">
-                                       <FormatQuoteIcon fontSize='small' /> Your Quotes
-                                   </p>
-                               </div>
+                      <SideNav />
                        
-                       </div> 
-                       <div className='d-flex align-items-start list_card-1 p-1 my-4 side-nav active'>
-                               
-                               <div className="col-md-12 nav-box my-1">
-                                   {/* <h6 className='heading'><img src="./images/Group 65.png" alt="" /> Lorem Ipsum</h6> */}
-                                   <p className=" px-3 mb-0">
-                                       <AssignmentOutlined fontSize='small' /> Your Events
-                                   </p>
-                               </div>
-                       
-                       </div> 
-                       <div className='d-flex align-items-start list_card-1 p-1 my-4 side-nav'>
-                               
-                               <div className="col-md-12 nav-box my-1">
-                                   {/* <h6 className='heading'><img src="./images/Group 65.png" alt="" /> Lorem Ipsum</h6> */}
-                                   <p className="text-muted px-3 mb-0">
-                                       <ReceiptLongIcon fontSize='small' /> Bills
-                                   </p>
-                               </div>
-                        </div>
-                        <div className='d-flex align-items-start list_card-1 p-1 my-4 side-nav'>
-                               
-                               <div className="col-md-12 nav-box my-1">
-                                   {/* <h6 className='heading'><img src="./images/Group 65.png" alt="" /> Lorem Ipsum</h6> */}
-                                   <p className="text-muted px-3 mb-0">
-                                       <ErrorIcon fontSize='small' /> Legal Info
-                                   </p>
-                               </div>
-                        </div>
-                       
-                       </div>    
 
                       <div className='Manage-right' >
                        <div className="col-md-12 py-2 ps-2">
 
-                            <div className="d-flex align-items-center flex-wrap">
+                            <div style={{marginBottom: '-22px'}} className="d-flex align-items-center flex-wrap">
 
                                <div className="border_input cat-box">
                                     {/* <label htmlFor="">Company Size</label> */}
@@ -91,8 +40,8 @@ function YourEvent({userdata}) {
                                         </div>
 
                                 </div> 
-                                <div className='d-flex justify-content-end px-5' style={{marginLeft: '180px'}}>
-                                    <button className='btn px-3 py-2 btn-primary round_btn' style={{ backgroundColor: '#fff', border: '1px solid grey', color: 'white', width: '130px', fontWeight: '600' }}>New Event</button>
+                                <div className='d-flex justify-content-end px-5' style={{marginLeft: '97px'}}>
+                                    <Link to="/Manage_form"><button className='btn px-3 py-2 btn-primary round_btn' style={{ backgroundColor: '#fff', border: '1px solid grey', color: 'white', width: '157px', fontWeight: '600' }}><AddIcon /> New Event</button></Link>
                                 </div>
                             </div>
 

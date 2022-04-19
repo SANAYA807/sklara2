@@ -12,6 +12,7 @@ import FilterCenterFocusOutlinedIcon from '@mui/icons-material/FilterCenterFocus
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 import CastForEducationOutlinedIcon from '@mui/icons-material/CastForEducationOutlined';
 import SettingsIcon from '@mui/icons-material/Settings';
+import FolderCopyIcon from '@mui/icons-material/FolderCopy';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { isAutheticated, signout } from '../auth/authhelper';
 import { useNavigate } from 'react-router-dom';
@@ -117,7 +118,7 @@ const Navbar = ({ userdata }) => {
                 }
                 {userdata && userdata.userType === 'supplier' &&
                 <li className={`nav-item ${ActiveClr("/EventManage")}`}>
-                  <Link className="nav-link" to="/EventManage"><FilterCenterFocusOutlinedIcon /> Manage</Link>
+                  <Link className="nav-link" to="/EventManage"><FolderCopyIcon /> Manage</Link>
                 </li>
                   }
               </div>
