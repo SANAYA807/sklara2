@@ -6,6 +6,7 @@ import Step3 from './Step3'
 import Step4 from './Step4'
 import Step5 from './Step5'
 import Step6 from './Step6'
+import Step7 from './Step7'
 const EmployeeForm = () => {
     const [step, setstep] = useState(1)
     const getStep = (item) => {
@@ -21,6 +22,7 @@ const EmployeeForm = () => {
             {step === 4 && <Step4 />}
             {step === 5 && <Step5 />}
             {step === 6 && <Step6 />}
+            {step === 7 && <Step7 />}
 
             <div className='d-flex justify-content-end my-5 pt-5 px-5'>
                 <button className='btn px-3 py-2 btn-light round_btn' style={{ backgroundColor: '#fff', border: '1px solid grey', color: 'grey', width: '130px', fontWeight: '600' }}>Cancel</button>

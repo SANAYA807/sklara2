@@ -86,7 +86,8 @@ function FullCalendarApp() {
                 plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                 initialView="dayGridMonth"
                 headerToolbar={{
-                    center: 'dayGridMonth,timeGridWeek,timeGridDay',
+                    left: 'dayGridMonth,timeGridWeek,timeGridDay',
+                    center: 'title'
                 }}
                 // customButtons={{
                 //     new: {
@@ -94,6 +95,7 @@ function FullCalendarApp() {
                 //         click: () => alert('new event'),
                 //     },
                 // }}
+                allDaySlot={false}
                 eventTimeFormat={
                     {
                         hour: '2-digit',
