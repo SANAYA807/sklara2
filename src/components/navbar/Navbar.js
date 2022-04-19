@@ -123,8 +123,9 @@ const Navbar = ({ userdata }) => {
               </div>
             </ul>
           </div>
-          {/* <ul className="navbar-nav mb-2 mb-lg-0"> */}
-          {/* <div className='d-flex'>
+          {userdata && userdata.userType === 'supplier' &&
+          <ul className="navbar-nav mb-2 mb-lg-0">
+          <div className='d-flex'>
               <li className="nav-item dropdown">
                 <Link className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <SchoolOutlinedIcon style={{ color: 'green' }} /> Training Mode
@@ -145,7 +146,8 @@ const Navbar = ({ userdata }) => {
                 </ul>
               </li>
             </div>
-          </ul> */}
+          </ul>
+            }
         </div>
       </nav>
     </>
