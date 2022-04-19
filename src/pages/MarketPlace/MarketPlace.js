@@ -9,7 +9,7 @@ import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import EuroIcon from '@mui/icons-material/Euro';
 import "./MarketPlace.css"
 import ContactFooter from '../../components/ContactFooter/ContactFooter';
-import { InstantSearch, SearchBox, Hits, HitsPerPage } from "react-instantsearch/dom";
+import { InstantSearch, SearchBox, Hits, HitsPerPage, RefinementList } from "react-instantsearch/dom";
 import algoliasearch from 'algoliasearch/lite';
 import { Link } from 'react-router-dom';
 
@@ -31,7 +31,7 @@ export default function MarketPlace({ userdata }) {
         <div className="card-body">
           <span className='mp-com-flag1'><img className='img-fluid' src="images/flags/French.png" alt="" /></span>
           <span className="mp-com-flag2"><img className="img-fluid" src="images/flags/German.png" alt="" /></span>
-          <h5 className="card-title m-0" style={{color: 'black'}}>{hit.username}</h5>
+          <h5 className="card-title m-0" style={{color: 'black'}}>{hit.firstName} {hit.lastName}</h5>
           <p className='mb-2' style={{ "color": "#cccccc" }}><small>Senior Project Manager</small></p>
           <p className="mp-experience"><small>Experience of 26 years</small></p>
           <p><img src="images/star.png" alt='star' /><span style={{ "color": "#1fd0b6" }}>5.0</span><small style={{ "color": "#cccccc" }}>(7)</small></p>
@@ -64,6 +64,8 @@ export default function MarketPlace({ userdata }) {
             </div>
 
           </div>  */}
+
+          {/* <RefinementList attributeName="industries" /> */}
           
            <div id="header" className="input-group mb-3 mp-input-div shadow-sm">
                 <div className="input-group-append shadow-sm">
@@ -90,7 +92,6 @@ export default function MarketPlace({ userdata }) {
           <div key="companies">
             <div className='mp-top-company'>
               <p className='mp-first m-0'>Top Corporate Trainers</p>
-              <p className='text-secondary'>based on your preferences</p>
             </div>
             <div className='row'>
                 <Hits hitComponent={Hit} />

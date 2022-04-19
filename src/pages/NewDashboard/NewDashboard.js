@@ -1,6 +1,7 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState,useEffect } from 'react'
 import { ProgressBar } from 'react-bootstrap';
 import { Line } from 'react-chartjs-2';
+import { useNavigate } from 'react-router-dom';
 import BarChart from './BarChart';
 import DognutChart from './DognutChart';
 // import Award from '../../../public/images/Award.png'
@@ -20,8 +21,10 @@ import { CircularProgressbar, buildStyles, CircularProgressbarWithChildren } fro
 import "react-circular-progressbar/dist/styles.css";
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/Footer';
+import swal from 'sweetalert';
 
 const NewDashboard = ({ userdata }) => {
+    const navigate = useNavigate()
     const [value, onChange] = useState(new Date());
     const labels = [1, 2, 3, 4, 5, 6]
     const arrayEvents = [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -111,6 +114,14 @@ const NewDashboard = ({ userdata }) => {
         border-color: #333;
         }
         `;
+
+        useEffect(()=>{
+            if(userdata && userdata.profileCompleted === false){
+                swal('Alert','Your profile is not completed, Please complete your profile','warning').then(()=>{
+                    navigate('/profileSetup')
+                })
+            }
+        },[])
 
     return (
         <>

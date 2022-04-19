@@ -16,7 +16,12 @@ import { PolarAreaChart } from '../../components/Charts/PolarAreaChart';
 import DevProgress from '../profileDashboard/DevProgress';
 import CircleIcon from '@mui/icons-material/Circle';
 import Modal from '@mui/material/Modal';
+<<<<<<< HEAD
 import { CircularProgressbar } from 'react-circular-progressbar'
+=======
+import {CircularProgressbar} from 'react-circular-progressbar'
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+>>>>>>> 72645a2768add9aab16ff1f0c01bd0cc7f29b6ed
 import './skill.css'
 
 
@@ -256,23 +261,23 @@ const Skill = ({ userdata }) => {
           onClose={() => setEditMode(false)}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
-          className='modal-scroll py-3'
+          className='modal-scroll py-5 center'
 
         >
-          <div className='container bg-light p-5 mt-5'>
-            <div className='d-flex justify-content-end mt-2'>
-              <button className='btn btn-secondary' onClick={() => window.location.reload()}>Close</button>
+          <div className='container bg-light p-4 px-5 mt-2'>
+            <div className='d-flex justify-content-end'>
+              <button className='btn btn-secondary btn-sm' onClick={() => window.location.reload()}><CloseOutlinedIcon /></button>
             </div>
             {step === 1 &&
               <>
-                <div className='row justify-content-center my-5'>
+                <div className='row justify-content-center my-1'>
                   <div className='col-md-12'>
                     <h5 className='text-center'>Select the Skills You Want to Develop</h5>
                   </div>
                   <div className='col-md-12'>
                     <p className='text-center text-secondary'>Now, choose some skills you would like to develop so we can better curate your learning experience.</p>
                   </div>
-                  <div className='col-md-4 my-5'>
+                  <div className='col-md-4 my-3'>
                     <h5 className='text-center'>Add any skill you'd like</h5>
                     <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className='form-control skill-search' placeholder={`Search for skills`} />
                     <h5 className='text-center mt-4'>Top Skills</h5>

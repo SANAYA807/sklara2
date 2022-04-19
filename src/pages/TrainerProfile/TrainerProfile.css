@@ -1,8 +1,21 @@
 .outer-tp {
   background-color: #f1f6f9;
 }
+h2 {
+  font-family: 'Inter';
+  font-weight: 900 !important;
+  font-size: 36px;
+  letter-spacing: 1px;
+}
 
-.change-color {
+.coach-card small {
+  font-size: 14px;
+}
+.description{
+  font-size: 16px;
+}
+
+.change-color{
   background: -webkit-linear-gradient(#1B1464, #550B7C);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -138,4 +151,16 @@
   width: 13px;
   height: 13px;
   border-radius: 1rem;
+}
+
+.Avail-Calender .react-calendar__tile {
+  max-width: 100% !important;
+  /* margin: 6px 0 !important; */
+  padding: 18px 6.6667px !important;
+  text-align: center !important;
+  line-height: 14px !important;
+  /* margin-left: 5% !important; */
+}
+.Avail-Calender {
+  padding-bottom: 0!important;
 }
