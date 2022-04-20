@@ -7,7 +7,8 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 
-function Step2() {
+function Step2({eventTitle, setEventTitle, focusSkill, setFocusSkill, desc, setDesc, requirements, setRequirements,
+  contents, setContents,numOfSessions, setNumOfSessions, maxParticipants,setMaxParticipants,language, setLanguage}) {
   const [description, setDescription] = useState("");
 
   
@@ -32,7 +33,8 @@ function Step2() {
         <input
           style={{ boxShadow: "0px 0px 4px rgb(0 0 0 / 25%)" }}
           class="form-control search-input"
-          type="search"
+          type="text" value={eventTitle}
+          onChange={(e)=>setEventTitle(e.target.value)}
           placeholder="Creative Thinking for Beginers"
           aria-label="Search"
         />
@@ -90,10 +92,10 @@ function Step2() {
         </p>
         <CKEditor
           editor={ClassicEditor}
-          data={description}
+          data={desc}
           onChange={(event, editor) => {
             let data = editor.getData();
-            setDescription(data);
+            setDesc(data);
           }}
         />
       </div>
@@ -105,10 +107,10 @@ function Step2() {
         </p>
         <CKEditor
           editor={ClassicEditor}
-          data={description}
+          data={requirements}
           onChange={(event, editor) => {
             let data = editor.getData();
-            setDescription(data);
+            setRequirements(data);
           }}
         />
       </div>
@@ -119,10 +121,10 @@ function Step2() {
         </p>
         <CKEditor
           editor={ClassicEditor}
-          data={description}
+          data={contents}
           onChange={(event, editor) => {
             let data = editor.getData();
-            setDescription(data);
+            setContents(data);
           }}
         />
       </div>
@@ -131,26 +133,23 @@ function Step2() {
             
             <div className="input-group mx-4 mp-input-div shadow-sm d-flex flex-column">
             <p className="fw-bold">Enter the number of sessions</p>
-                <input style={{width:'300px'}} type="text"
-                className="form-control"
-                aria-label="Recipient's username"
-                aria-describedby="basic-addon2" />
+                <input style={{width:'300px'}} type="number" value={numOfSessions}
+               onChange={(e)=>setNumOfSessions(e.target.value)} className="form-control"
+                />
             </div>
 
             <div className="input-group mx-4 mp-input-div shadow-sm d-flex flex-column">
             <p className="fw-bold">Maximum participants</p>
-                <input style={{width:'300px'}} type="text"
-                className="form-control"
-                aria-label="Recipient's username"
-                aria-describedby="basic-addon2" />
+                <input style={{width:'300px'}} type="number" value={maxParticipants}
+              onChange={(e)=>setMaxParticipants(e.target.value)}  className="form-control"
+                />
             </div>
 
             <div className="input-group mx-4 mp-input-div shadow-sm d-flex flex-column">
             <p className="fw-bold">Language of Delivery</p>
-                <input style={{width:'300px'}} type="text"
-                className="form-control"
-                aria-label="Recipient's username"
-                aria-describedby="basic-addon2" />
+                <input style={{width:'300px'}} type="text" value={language}
+               onChange={(e)=>setLanguage(e.target.value)} className="form-control"
+                />
             </div>
       </div>
     </div>

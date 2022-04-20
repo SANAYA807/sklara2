@@ -1,12 +1,43 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import { Data } from './Data.js';
 import { IconContext } from 'react-icons';
 import { RiArrowUpSLine, RiArrowDownSLine } from 'react-icons/ri';
 import DropBox from './DropBox.js';
 
 
-function Step3() {
+function Step3({numOfSessions}) {
     const [clicked, setClicked] = useState(false);
+    //const [data, setData] = useState([])
+  let data = [];
+
+
+  for(let i = 1; i<= numOfSessions; i++){
+    // setData([...data,{question:`Session ${i}`,
+    // answer: `Answer ${i}`}])
+
+    // {session:`Session ${i}`,
+    // date:Date.now(),
+    // startTime:'',
+    // endTime:'',
+    // topicsCovered:'',
+    // answer: `Answer ${i}`}
+
+    data.push(
+      {sessionNum:i,
+        session:[
+            {
+                sessionName:'',
+                topicsCovered:'',
+                startTime:'',
+                endTime:'',
+                break:'',
+            }
+        ],
+    date:Date.now(),
+      }
+    )
+    console.log(i)
+  }
   
 
     const toggle = index => {
@@ -17,6 +48,7 @@ function Step3() {
   
       setClicked(index);
     };
+
   return (
     <div className='step3' style={{paddingLeft: '32px'}}>
             <p style={{marginBottom: '0px'}} className='fw-bold'>Creative Thinking for Beginers</p>
@@ -28,21 +60,22 @@ function Step3() {
             <IconContext.Provider value={{ color: '#00FFB9', size: '25px' }}>
                 <div className='AccordionSection'>
                     <div className='Contain1'>
-                    {Data.map((item, index) => {
+                    {data.length > 0 && data.map((item, index) => {
                         return (
                         <>
                             <div className='Wrap p-3' onClick={() => toggle(index)} key={index}>
-                            <h5 style={{width: "100%"}} >{item.question}</h5>
+                            <h5 style={{width: "100%"}} >Session {item.sessionNum}</h5>
                             <span>{clicked === index ? <RiArrowUpSLine /> : <RiArrowDownSLine />}</span>
                             </div>
                             {clicked === index ? (
                             <div className='Dropdown'>
-                                <DropBox />
+                                <DropBox data={item} key={index} />
                             </div>
                             ) : null}
                         </>
                         );
                     })}
+                    
                     </div>
                 </div>
                 </IconContext.Provider>

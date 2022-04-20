@@ -11,15 +11,55 @@ import {
   MuiPickersUtilsProvider,
 } from '@material-ui/pickers';
 import "./Step3.css"
+import { Modal } from "@mui/material";
 
-function DropBox() {
+function DropBox({data}) {
+    console.log(data)
     const [openModal, setOpenModal] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date())
     const handleChange = (date) => {
       setSelectedDate(date)
     }
+
+    const setInputs = (i)=>{
+        return 
+      }
+
   return (
       <>
+      <Modal
+          open={openModal}
+          onClose={() => setOpenModal(false)}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+          className='p-4 center'
+          style={{height:"60vh"}}>
+<div className='col-md-4 center p-4 card shadow-sm'>
+              <div className='mb-3'>
+                <label>Topic</label>
+                <input type="text" className='form-control'/>
+              </div>
+              <div className='mb-3'>
+                <label>Duration</label>
+                <div className='d-flex justify-content-between'>
+                <input type="text" className='form-control'/>
+                <input type="text" className='form-control'/>
+                </div>
+                <div className='d-flex justify-content-between'>
+                <p className="text-secondary">Hours</p>
+                <p className="text-secondary">Minutes</p>
+                </div>
+              </div>
+              <div className='mb-3'>
+                <label>Description</label>
+                <textarea type="text" className='form-control'/>
+              </div>
+  
+        </div>
+
+          </Modal>
+
+
         <div
         style={{ marginBottom: "-22px", justifyContent: 'space-between', width: '100%'}}
         className="d-flex align-items-center flex-wrap my-4"
@@ -51,9 +91,9 @@ function DropBox() {
         </div>
 
         {/* <div> */}
-            <div style={{width: '100%', height: '200px'}} className='row'>
+            <div style={{width: '100%', height: '200px',cursor:'pointer'}} className='row' onClick={() => setOpenModal(true)}>
                 <div style={{background: '#DFEEDB'}} className='col-lg-3 col-sm-12 m-2 d-flex flex-column justify-content-center'>
-                    <p onClick={() => setOpenModal(true)}><QueryBuilderIcon />Click to add time</p>
+                    <p><QueryBuilderIcon />Click to add time</p>
                     <p><TimerIcon /></p>
                 </div>
                 <div style={{background: '#17A2B8'}} className='col-lg-8 col-sm-12 m-2 p-4'>
@@ -63,7 +103,7 @@ function DropBox() {
 
             <div className="break-box my-3" >Break +</div>
 
-            <div style={{width: '100%', height: '200px'}} className='row'>
+            <div style={{width: '100%', height: '200px',cursor:'pointer'}} className='row' onClick={() => setOpenModal(true)}>
                 <div style={{background: '#FBDCAD'}} className='col-lg-3 col-sm-12 mb-4 m-2 d-flex flex-column justify-content-center'>
                     <p><QueryBuilderIcon />Click to add time</p>
                     <p><TimerIcon /></p>

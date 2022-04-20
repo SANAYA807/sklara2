@@ -31,16 +31,19 @@
     height: 700px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
+    padding-left: 20px;
+    padding-right: 10px;
   
 }
 .step3 .break-box{
+  margin-left: 0;
   display: flex;
   background: #8C8C8C;
   height: 80px;
   justify-content: center;
-  width: 100%;
+  width: 93%;
   align-items: center;
   text-align: center;
 }

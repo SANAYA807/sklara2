@@ -2,7 +2,7 @@ import React from 'react'
 import CreateIcon from '@mui/icons-material/Create';
 
 
-function Step1() {
+function Step1({eventType, setEventType, eventTitle, setEventTitle}) {
   return (
     <div style={{paddingLeft: '32px'}}>
         <p style={{marginBottom: '0px'}} className='fw-bold'>Design your off-sheld offering or personalized trainning or coaching series. </p>
