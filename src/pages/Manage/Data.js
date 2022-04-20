@@ -1,14 +1,26 @@
 export const Data = [
     {
-      question: 'What do you call a dog magician?',
-      answer: 'A labracadabrador.'
+      question: "Session 1",
+       answer: 'A labracadabrador.'
     },
     {
-      question: 'What do you call a funny mountain?',
+      question: 'Session 2',
       answer: 'Hill-arious.'
     },
     {
-      question: 'What did the astronaut say when he crashed into the moon?',
+      question: 'Session 3',
+      answer: 'I Apollo-gize.'
+    },
+    {
+      question: 'Session 4',
+      answer: 'I Apollo-gize.'
+    },
+    {
+      question: 'Session 5',
+      answer: 'I Apollo-gize.'
+    },
+    {
+      question: 'Session 6',
       answer: 'I Apollo-gize.'
     }
   ];

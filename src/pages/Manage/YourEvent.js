@@ -3,6 +3,8 @@ import Navbar from "../../components/navbar/Navbar"
 import "./YourEvent.css"
 import SideNav from '../../components/SideNav/SideNav';
 import AddIcon from '@mui/icons-material/Add';
+import {Link} from "react-router-dom"
+import Footer from '../../components/footer/Footer';
 
 
 function YourEvent({userdata}) {
@@ -40,7 +42,7 @@ function YourEvent({userdata}) {
 
                                 </div> 
                                 <div className='d-flex justify-content-end px-5' style={{marginLeft: '97px'}}>
-                                    <button className='btn px-3 py-2 btn-primary round_btn' style={{ backgroundColor: '#fff', border: '1px solid grey', color: 'white', width: '157px', fontWeight: '600' }}><AddIcon /> New Event</button>
+                                    <Link to="/Manage_form"><button className='btn px-3 py-2 btn-primary round_btn' style={{ backgroundColor: '#fff', border: '1px solid grey', color: 'white', width: '157px', fontWeight: '600' }}><AddIcon /> New Event</button></Link>
                                 </div>
                             </div>
 
@@ -119,6 +121,7 @@ function YourEvent({userdata}) {
             </div>   
 
     </div>
+    <Footer/>
     </>
   )
 }

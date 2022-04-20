@@ -135,6 +135,18 @@ tr {
     height: 220px;
 }
 
+.Manage .form_bar {
+    background-color: var(--white);
+    display: flex;
+    color: var(--lightGray);
+    align-items: left;
+    justify-content: left;
+    margin: 6px 0;
+    height: 54px;
+    width: 15vw !important;
+    border-radius: 10px;
+}
+
 .Manage .step2 .mp-input-div {
     width: 19vw !important;
 }
