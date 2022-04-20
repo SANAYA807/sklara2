@@ -16,6 +16,7 @@ import FolderCopyIcon from '@mui/icons-material/FolderCopy';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { isAutheticated, signout } from '../auth/authhelper';
 import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 
 import './navbar.css'
 import { FolderCopyOutlined, ManageAccounts, Password, People } from '@mui/icons-material';
@@ -33,6 +34,19 @@ const Navbar = ({ userdata }) => {
     navigate('/')
     signout()
   }
+
+  const modeChanger = (mode)=>{
+    userdata.mode = mode
+    localStorage.setItem(
+      "userData",
+      JSON.stringify({
+        userData: userdata
+      }))
+    swal('Success', 'Mode changed successfully', 'success').then(() => {
+      window.location.reload()
+    })
+  }
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light nav-div" style={{ backgroundColor: "transparent", padding: '1rem 4%' }}>
@@ -124,15 +138,16 @@ const Navbar = ({ userdata }) => {
               </div>
             </ul>
           </div>
-          {/* <ul className="navbar-nav mb-2 mb-lg-0"> */}
-          {/* <div className='d-flex'>
+          {userdata && userdata._id &&
+          <ul className="navbar-nav mb-2 mb-lg-0">
+          <div className='d-flex'>
               <li className="nav-item dropdown">
                 <Link className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <SchoolOutlinedIcon style={{ color: 'green' }} /> Training Mode
+                  <SchoolOutlinedIcon style={{ color: 'green' }} /> {userdata.mode === 'training' ? 'Training Mode' : 'Coaching Mode'}
                 </Link>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><Link className="dropdown-item" to="/">
-                    <CastForEducationOutlinedIcon style={{ color: "blue" }} /> Coaching Mode</Link></li>
+                  <li onClick={()=>modeChanger(userdata.mode === 'training' ?'coaching' : 'training')}><Link className="dropdown-item" to="/">
+                    <CastForEducationOutlinedIcon style={{ color: "blue" }} /> {userdata.mode === 'training' ?'Coaching Mode' : 'Training Mode'}</Link></li>
                 </ul>
               </li>
 
@@ -146,7 +161,8 @@ const Navbar = ({ userdata }) => {
                 </ul>
               </li>
             </div>
-          </ul> */}
+          </ul>
+            }
         </div>
       </nav>
     </>

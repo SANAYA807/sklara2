@@ -4,6 +4,7 @@ import "./YourEvent.css"
 import SideNav from '../../components/SideNav/SideNav';
 import AddIcon from '@mui/icons-material/Add';
 import {Link} from "react-router-dom"
+import Footer from '../../components/footer/Footer';
 
 
 function YourEvent({userdata}) {
@@ -120,6 +121,7 @@ function YourEvent({userdata}) {
             </div>   
 
     </div>
+    <Footer/>
     </>
   )
 }

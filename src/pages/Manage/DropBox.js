@@ -45,6 +45,39 @@ function DropBox() {
 
   return (
       <>
+      <Modal
+          open={openModal}
+          onClose={() => setOpenModal(false)}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+          className='p-4 center'
+          style={{height:"60vh"}}>
+<div className='col-md-4 center p-4 card shadow-sm'>
+              <div className='mb-3'>
+                <label>Topic</label>
+                <input type="text" className='form-control'/>
+              </div>
+              <div className='mb-3'>
+                <label>Duration</label>
+                <div className='d-flex justify-content-between'>
+                <input type="text" className='form-control'/>
+                <input type="text" className='form-control'/>
+                </div>
+                <div className='d-flex justify-content-between'>
+                <p className="text-secondary">Hours</p>
+                <p className="text-secondary">Minutes</p>
+                </div>
+              </div>
+              <div className='mb-3'>
+                <label>Description</label>
+                <textarea type="text" className='form-control'/>
+              </div>
+  
+        </div>
+
+          </Modal>
+
+
         <div
         style={{ marginBottom: "-22px", justifyContent: 'space-between', width: '100%'}}
         className="d-flex align-items-center flex-wrap my-4"

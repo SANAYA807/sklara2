@@ -32,6 +32,7 @@ import YourEvent from './pages/Manage/YourEvent';
 import ManageForm from './pages/Manage/ManageForm';
 import HRForm from './pages/StepperForm/HrStepper/HrForm';
 import SPForm from './pages/StepperForm/SPStepper/SPForm';
+import Performance from './pages/PerformancePage/Performance';
 
 function App() {
   const [userdata, setUserData] = useState(null)
@@ -103,7 +104,7 @@ function App() {
         <Route exact path="/emp_form" element={userdata && userdata._id ? <EmployeeForm userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/sp_form" element={userdata && userdata._id ? <SPForm userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/hr_form" element={userdata && userdata._id ? <HRForm userdata={userdata} /> : <Login />}></Route>
-
+        <Route exact path="/performance" element={userdata && userdata._id ? <><Navbar userdata={userdata} /><Performance userdata={userdata} /><Footer /> </> : <Login />}></Route>
         <Route exact path="/Manage_form" element={userdata && userdata._id ? <ManageForm userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/EventManage" element={userdata && userdata._id ? <YourEvent userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/employee_list" element={userdata && userdata._id && userdata.userType === 'hr' ? <EmployeeList userdata={userdata} /> : <Login />}></Route>
