@@ -28,7 +28,7 @@ function ManageForm({ userdata }) {
               >
                 <ManageStepper getStep={getStep} steps={step} />
                 {step === 1 && <Step1 />}
-                {step === 2 && <Step2/>}
+                {step === 2 && <Step2 />}
                 {step === 3 && <Step3 />}
                 {step === 4 && <Step4 />}
                             
