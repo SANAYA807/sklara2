@@ -33,9 +33,11 @@ ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
 
 
 
-const options = {        
+
+const options = {
   responsive: true,
   maintainAspectRatio: true,
+  opacity: 0.5,
   // cutout: 80,
   scales: {
     r: {
@@ -53,41 +55,55 @@ const options = {
       display: false
     },
   },
- 
+
 };
 
-export function PolarAreaChart({skills}) {
+export function PolarAreaChart({ skills }) {
   const [label, setLabel] = useState()
   const [datas, setData] = useState()
   const [color, setColor] = useState()
-	//console.log(skills, "skill")
+  //console.log(skills, "skill")
 
-	async function getSkill() {
-		
-		let newArray = Object.values(skills);
-		const newArr1 = newArray.map((v) => (Math.floor((v.skillValue / 10) * 100)));
-		setData(newArr1);
+  function hexToRgbA(hex) {
+    var c;
+    if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+      c = hex.substring(1).split('');
+      if (c.length == 3) {
+        c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+      }
+      c = '0x' + c.join('');
+      return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',0.5)';
+    }
+    throw new Error('Bad Hex');
+  }
+
+
+  async function getSkill() {
+
+    let newArray = Object.values(skills);
+    const newArr1 = newArray.map((v) => (Math.floor((v.skillValue / 10) * 100)));
+    setData(newArr1);
     const newArr2 = newArray.map((v) => (v.skill));
-		setLabel(newArr2);
-    const newArr3 = newArray.map((v) => (v.color));
-		setColor(newArr3);
-	  }
-	
-	  useEffect(() => {
-		getSkill();
-	  }, [skills])
+    setLabel(newArr2);
+    const newArr3 = newArray.map((v) => hexToRgbA(v.color));
+    setColor(newArr3);
+  }
 
-    const data = {
-      labels: label,
-      datasets: [
-        {
-          label: '# of Votes',
-          data: datas,
-          backgroundColor: color,
-          borderWidth: 5,
-        },
-      ],
-    };
+  useEffect(() => {
+    getSkill();
+  }, [skills])
 
-  return <PolarArea data={data} options={options}/>;
+  const data = {
+    labels: label,
+    datasets: [
+      {
+        label: '# of Votes',
+        data: datas,
+        backgroundColor: color,
+        borderWidth: 5,
+      },
+    ],
+  };
+
+  return <PolarArea data={data} options={options} />;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './StepperForm.css'
 import numberToWords from 'number-to-words'
 import { FiberManualRecord } from '@mui/icons-material'
@@ -9,9 +9,14 @@ const StepperForm = ({ getStep, steps }) => {
     const [step, setstep] = useState(1)
 
     const toggleStep = (i) => {
+
         setstep(i)
         getStep(i)
     }
+    useEffect(() => {
+        toggleStep(steps)
+    }, [steps])
+
 
     return (
         <div className='container-fluid py-3 px-5'>

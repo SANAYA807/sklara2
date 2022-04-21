@@ -11,13 +11,13 @@ const DognutChart = () => {
         datasets: [
             {
                 label: 'Earnings in €',
-                data: [10, 5, 3],
+                data: [10, 5, 3, 5],
                 // borderRadius: '20'
                 // backgroundColor: '#B5DAE9',
             },
         ],
     };
-    const per = [10, 5, 3]
+    const per = [10, 5, 3, 5]
     const plugins = [
 
         {
@@ -33,8 +33,8 @@ const DognutChart = () => {
                 ctx.fillStyle = '#98C38B';
 
                 var text = '09 Courses',
-                    textX = Math.round((width - ctx.measureText(text).width) / 1.98),
-                    textY = height / 2.2;
+                    textX = Math.round((width - ctx.measureText(text).width) / 2),
+                    textY = height / 2;
 
                 ctx.fillText(text, textX, textY);
                 ctx.save();
@@ -43,15 +43,17 @@ const DognutChart = () => {
     ];
     const options = {
         responsive: true,
-        maintainAspectRatio: true,
-        backgroundColor: ['#98C38B', '#BDD8B5', '#DFEEDB'],
+        maintainAspectRatio: false,
+        backgroundColor: ['#98C38B', '#BDD8B5', '#DFEEDB', 'green'],
         borderWidth: 0,
         borderJoinStyle: 'round',
         // borderRadius: [10, 20, 30]
         plugins: {
             legend: {
+                display: false,
                 position: 'bottom',
                 labels: {
+
                     usePointStyle: true,
                     padding: 30,
 
@@ -59,25 +61,25 @@ const DognutChart = () => {
             }
         },
 
-        cutout: 100,
+        // cutout: 150,
         elements: {
             arc: {
-                borderWidth: 0,
+                borderWidth: 1,
                 // borderRadius: 0,
             },
         },
-        layout: {
-            padding: {
-                top: 30,
-                bottom: 60
-            },
-            height: 400
-        },
+        // layout: {
+        //     padding: {
+        //         top: 30,
+        //         bottom: 60
+        //     },
+        //     // height: 200
+        // },
 
     }
 
     return (
-        <div><Doughnut data={data} options={options} plugins={plugins} height={764} width={764} /></div>
+        <div><Doughnut data={data} options={options} plugins={plugins} height={400} width={400} /></div>
     )
 }
 

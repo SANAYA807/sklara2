@@ -40,10 +40,47 @@
 .step3 .break-box{
   margin-left: 0;
   display: flex;
-  background: #8C8C8C;
   height: 80px;
-  justify-content: center;
-  width: 93%;
+  justify-content: end;
+  width: 98%;
   align-items: center;
   text-align: center;
 }
+.step3 .break-box > div{
+    width: 97%;
+    background: #8C8C8C;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+.Dropdown .dot-Pointer {
+   width: 31px;
+height: 190px;
+padding: 0px;
+display: flex;
+    align-items: center;
+ }
+
+ .Dropdown .dot-Pointer .dot-Point{
+   border: 3px solid #550B7C;
+   border-radius: 39px;
+   height: 75px;
+ } 
+
+ .Dropdown .dot-Pointer .dot-Point svg{
+   width: 31px;
+ }
+
+ .Dropdown .hover-editor{
+   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+   border-radius: 20px;
+   background: #E6D9EF;   
+  } 
+  
+
+  .Dropdown .hover-indicate {
+    box-shadow: inset 0px 0px 0px 7px rgba(230,217,239,1);
+  }
