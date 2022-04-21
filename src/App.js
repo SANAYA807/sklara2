@@ -33,6 +33,7 @@ import ManageForm from './pages/Manage/ManageForm';
 import HRForm from './pages/StepperForm/HrStepper/HrForm';
 import SPForm from './pages/StepperForm/SPStepper/SPForm';
 import Performance from './pages/PerformancePage/Performance';
+import Assignment from './pages/Manage/Assignment';
 
 function App() {
   const [userdata, setUserData] = useState(null)
@@ -107,6 +108,7 @@ function App() {
         <Route exact path="/performance" element={userdata && userdata._id ? <><Navbar userdata={userdata} /><Performance userdata={userdata} /><Footer /> </> : <Login />}></Route>
         <Route exact path="/Manage_form" element={userdata && userdata._id ? <ManageForm userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/EventManage" element={userdata && userdata._id ? <YourEvent userdata={userdata} /> : <Login />}></Route>
+        <Route exact path="/Assignment" element={userdata && userdata._id ? <Assignment userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/employee_list" element={userdata && userdata._id && userdata.userType === 'hr' ? <EmployeeList userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/employee_list/Add" element={userdata && userdata._id && userdata.userType === 'hr' ? <AddUser userdata={userdata} /> : <Login />}></Route>
         <Route exact path='*' element={<NotFound userdata={userdata} />} />

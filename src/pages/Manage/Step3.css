@@ -28,11 +28,12 @@
 }
 .step3 .Dropdown{
     width: 100%;
-    height: 700px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: auto;
+    min-height: 700px;
   
 }
 .step3 .break-box{
@@ -80,5 +81,14 @@ display: flex;
   
 
   .Dropdown .hover-indicate {
-    box-shadow: inset 0px 0px 0px 7px rgba(230,217,239,1);
+    box-shadow: inset 0px 0px 0px 9px rgba(230,217,239,1);
   }
+  .Dropdown .hover-editor > div{
+    cursor: pointer;
+  }
+
+  .Dropdown .BreakcloseBtn{
+   position: relative;
+    top: -23px;
+    right: -583px;
+ } 

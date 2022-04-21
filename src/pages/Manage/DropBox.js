@@ -6,6 +6,8 @@ import QueryBuilderIcon from '@mui/icons-material/QueryBuilder';
 import TimerIcon from '@mui/icons-material/Timer';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { HiDotsVertical } from "react-icons/hi";
+import CancelIcon from '@mui/icons-material/Cancel';
+
 
 import {
   DatePicker,
@@ -15,14 +17,38 @@ import {
 } from '@material-ui/pickers';
 import "./Step3.css"
 import Modal from './Modal.js';
+import { Groups } from "@mui/icons-material";
+import TextField from '@mui/material/TextField';
+
 
 
 function DropBox() {
-    const group = [];
+    const [session , setSession] = useState(["row", "break", "row"])
     const [openPointer, setopenPointer] = useState(-1);
+    const [value, setValue] = useState(0);
     const [openEditor, setopenEditor] = useState(false);
+    const [indexs, setIndexs] = useState(-1);
     const [openModal, setOpenModal] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date())
+
+    const handleModelEvent = (index) => {
+        setIndexs(index)
+        setOpenModal(true)
+      }
+
+      const handleOpenEditor = (index, open) => {
+        setIndexs(index)
+        setopenEditor(open)
+      }
+
+   const deleteBreak = (index) => {
+    const reducedArr = [...session];
+
+    reducedArr.splice(index, 1);
+
+    setSession([...reducedArr])
+   }
+
     const handleChange = (date) => {
       setSelectedDate(date)
     }
@@ -32,54 +58,31 @@ function DropBox() {
    }
    
    const hideHoveredHandler=()=>{
-        setopenPointer(-1)
+        // setopenPointer(-1)
    }
 
-    group.push( <div style={{width: '98%', height: '200px'}} className='row' onMouseEnter={()=>showHoveredHandler(0)} onMouseLeave={()=>hideHoveredHandler(-1)} >
-    <div className="dot-Pointer" style={{width: '45px'}} onClick={()=>setopenEditor(!openEditor)} >{openPointer ===0 && <div className="dot-Point" ><HiDotsVertical color="#550B7C" size={70} /></div>}</div>
-    <div className='row hover-indicate modalButton p-0' style={{width: '71rem'}} onClick={() => setOpenModal(true)}>
-        <div style={{background: '#DFEEDB', width: '333px'}} className=' m-1 d-flex flex-column justify-content-center'>
-            <p><QueryBuilderIcon />Click to add time</p>
-            <p><TimerIcon /></p>
-            <Modal open={openModal} onClose={() => setOpenModal(false)} />
-        </div>
-        <div style={{background: '#17A2B8', width: '787px'}} className='m-1 p-4'>
-            What’s Covered:
-        </div>
-    </div>
-</div>)
+   const AddRow = (index) => {
+       console.log(index, "ssfdsssddd")
+    setSession([...session.slice(0, index+1), "row", ...session.slice(index+1)])
+      console.log(session)
+   }
 
-    group.push(<div className="break-box my-3" > <div>Break +</div> </div>)
+   const addBreak = (index) => {
+    setSession([...session.slice(0, index+1), "break", ...session.slice(index+1)])
+    console.log(session)
+ }
 
-    group.push(<div style={{width: '98%', height: '200px'}} className='row' onMouseEnter={()=>showHoveredHandler(2)} onMouseLeave={()=>hideHoveredHandler(-1)} >
-    <div className="dot-Pointer" style={{width: '45px'}} onClick={()=>setopenEditor(!openEditor)} >{openPointer ===2 && <div className="dot-Point" ><HiDotsVertical color="#550B7C" size={70} /></div>}</div>
-    <div className='row hover-indicate modalButton p-0' style={{width: '71rem'}} onClick={() => setOpenModal(true)}>
-        <div style={{background: '#FBDCAD', width: '333px'}} className=' m-1 d-flex flex-column justify-content-center'>
-            <p><QueryBuilderIcon />Click to add time</p>
-            <p><TimerIcon /></p>
-        </div>
-        <div style={{background: '#C026B7', width: '787px'}} className='m-1 p-4'>
-            What’s Covered:
-        </div>
-    </div>
-</div>)
-    // useEffect(() => {
-    //     const checkIfClickedOutside = e => {
-    //       // If the menu is open and the clicked target is not within the menu,
-    //       // then close the menu
-    //       if (isMenuOpen && ref.current && !ref.current.contains(e.target)) {
-    //         setIsMenuOpen(false)
-    //       }
-    //     }
-    
-    //     document.addEventListener("mousedown", checkIfClickedOutside)
-    
-    //     return () => {
-    //       // Cleanup the event listener
-    //       document.removeEventListener("mousedown", checkIfClickedOutside)
-    //     }
-    //   }, [openModal])
+   const deleteRow = (index) => {
 
+    const reducedArr = [...session];
+
+    reducedArr.splice(index, 1);
+
+    setSession([...reducedArr])
+
+  }
+
+  console.log(session)
   return (
       <>
     <div
@@ -105,6 +108,34 @@ function DropBox() {
                 </MuiPickersUtilsProvider>
             </div>
 
+            <div style={{ marginRight: "10px" }} className="d-flex flex-column">
+                {/* <p style={{marginBottom: '0px'}} className='fw-bold'>Start With</p> */}
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <TimePicker
+                    label="Start With"
+                    value={value}
+                    onChange={(newValue) => {
+                    setValue(newValue);
+                    }}
+                    renderInput={(params) => <TextField {...params} />}
+                />
+                </MuiPickersUtilsProvider>
+            </div>
+
+            <div style={{ marginRight: "10px" }} className="d-flex flex-column">
+                {/* <p style={{marginBottom: '0px'}} className='fw-bold'>End With</p> */}
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <TimePicker
+                    label="End With"
+                    value={value}
+                    onChange={(newValue) => {
+                    setValue(newValue);
+                    }}
+                    renderInput={(params) => <TextField {...params} />}
+                />
+                </MuiPickersUtilsProvider>
+            </div>
+
             <div className="d-flex flex-column">
                 <div className='d-flex justify-content-end px-5' style={{marginLeft: '97px'}}>
                     <button className='btn px-3 py-2 btn-primary round_btn' style={{ backgroundColor: '#fff', border: '1px solid grey', color: 'white', width: '162px', fontWeight: '600' }}><AddIcon /> New Activity</button>
@@ -112,25 +143,43 @@ function DropBox() {
             </div>
         </div>
 
-            {openEditor &&
-                <div style={{width: '320px', height: '60px'}} className='row editor-show'>
-                    <div className='row hover-editor' style={{width: '73rem'}}>
-                        <div style={{background: '#E6D9EF', width: '90px', height: '50px'}} className='m-1 p-0 d-flex justify-content-center align-items-center small'>
-                            Add Row  
-                        </div>
-                        <div style={{background: '#E6D9EF', width: '91px', height: '50px', borderLeft: '3px solid white', borderRight: '3px solid white'}} className='m-1 p-0 d-flex justify-content-center align-items-center small'>
-                            Delete Row
-                        </div>
-                        <div style={{background: '#E6D9EF', width: '90px', height: '50px'}} className='m-1 p-0 d-flex justify-content-center align-items-center small'>
-                            Add Break
-                        </div>
-                    </div>
-                </div>
-            }
+            
             
            
-            {group.map(
-            (component, index) => React.cloneElement(component, { key: index })
+            {session && session.map((item, index) => {
+                if (item== "break") {
+                    return <div key={index} className="break-box my-2" > <div> <p className='BreakcloseBtn' onClick={()=>deleteBreak(index)}> <CancelIcon /> </p> Break +</div> </div>
+                }
+                return <>
+                    {indexs== index && openEditor &&
+                    <div style={{width: '320px', height: '60px'}} className='row editor-show'>
+                        <div className='row hover-editor' style={{width: '73rem'}}>
+                            <div onClick={()=>AddRow(indexs)} style={{background: '#E6D9EF', width: '90px', height: '50px'}} className='m-1 p-0 d-flex justify-content-center align-items-center small'>
+                                Add Row  
+                            </div>
+                            <div onClick={()=>deleteRow(indexs)} style={{background: '#E6D9EF', width: '91px', height: '50px', borderLeft: '3px solid white', borderRight: '3px solid white'}} className='m-1 p-0 d-flex justify-content-center align-items-center small'>
+                                Delete Row
+                            </div>
+                            <div onClick={()=>addBreak(indexs)} style={{background: '#E6D9EF', width: '90px', height: '50px'}} className='m-1 p-0 d-flex justify-content-center align-items-center small'>
+                                Add Break
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div key={index} style={{width: '98%', height: '200px'}} className='row my-2' onMouseEnter={()=>showHoveredHandler(index)} onMouseLeave={()=>hideHoveredHandler(-1)} >
+                 <div className="dot-Pointer" style={{width: '45px'}} onClick={()=>handleOpenEditor(index, !openEditor)} >{openPointer ===index && <div className="dot-Point" ><HiDotsVertical color="#550B7C" size={70} /></div>}</div>
+                 <div className={`row ${openPointer==index ? "hover-indicate" : ""} modalButton p-0`} style={{width: '71rem'}} onClick={()=>  handleModelEvent(index)}>
+                     <div style={{background: '#DFEEDB', width: '333px'}} className=' m-1 d-flex flex-column justify-content-center'>
+                         <p><QueryBuilderIcon />Click to add time</p>
+                         <p><TimerIcon /></p>
+            {indexs===index && <Modal open={openModal} onClose={() => setOpenModal(false)} />}                     </div>
+                     <div style={{background: '#17A2B8', width: '787px'}} className='m-1 p-4'>
+                         What’s Covered:
+                     </div>
+                 </div>
+              </div>
+              </>
+              }
             )}
 
 
