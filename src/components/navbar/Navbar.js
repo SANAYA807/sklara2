@@ -17,6 +17,15 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { isAutheticated, signout } from '../auth/authhelper';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
+import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
+import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import ForumIcon from '@mui/icons-material/Forum';
+import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
+
 
 import './navbar.css'
 import { FolderCopyOutlined, ManageAccounts, Password, People } from '@mui/icons-material';
@@ -65,33 +74,50 @@ const Navbar = ({ userdata }) => {
 
             <ul className="navbar-nav mb-2 mb-lg-0">
               <div className='d-flex'>
-                <li className="nav-item box">
-                  <Link className="nav-link" to="/"><NotificationsOutlinedIcon /></Link>
+              <li className="nav-item box shadow-sm py-0">
+                  <Link className="nav-link" to="/"><ForumIcon style={{fontSize:'30px'}} /></Link>
                 </li>
-                <li className="nav-item box">
-                  <Link className="nav-link" to="/"><EmailOutlinedIcon /></Link>
+                <li className="nav-item box mx-3 shadow-sm py-0">
+                  <Link className="nav-link" to="/"><NotificationsIcon style={{fontSize:'30px'}} /></Link>
                 </li>
-
-                <div class="btn-group dropafter box" style={{ width: '190px' }}>
-                  <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    {userdata && userdata.profilePicture ? <img src={userdata.profilePicture} className="dp-logo" alt='profile image' />
+                <div class="btn-group dropafter box shadow-sm py-0" style={{ width: '190px' }}>
+                  <button type="button" className="btn dropdown-toggle d-flex justify-content-between align-items-center py-1" data-bs-toggle="dropdown" aria-expanded="false">
+                   
+                    {userdata && userdata.profilePicture ? 
+                    <img src={userdata.profilePicture} className="dp-logo" alt='profile image' />
                       :
-                      <AccountCircleOutlinedIcon style={{ marginRight: '20px' }} />
+                      <AccountCircleOutlinedIcon style={{ marginRight: '20px',fontSize:"30px"}} />
                     }
-                    {userdata && userdata.firstName}
+                    <>
+                    
+                    {userdata && <h6 className='fw-bold py-0 mb-0 mt-1'>{userdata.firstName} <KeyboardArrowDownRoundedIcon style={{color:"#8C8C8C"}} className='down-icon'/></h6>}
+                    
+                    
+                   </>
                   </button>
-                  <ul class="dropdown-menu" style={{ width: '380px' }}>
+                  <ul class="dropdown-menu" style={{ width: '220px' }}>
                     {/* <li><AccountCircleOutlinedIcon /> {userdata && userdata.firstName} </li>
                     <li><hr class="dropdown-divider" /></li> */}
+                    <li><Link className="nav-link" to="/"><PersonAddAltOutlinedIcon /> Learning Dashboard</Link></li>
                     <li><Link className="nav-link" to="/profile"><SettingsIcon /> My Profile</Link></li>
-                    <li><Link className="nav-link" to="/changePassword"><Password /> Change Password</Link></li>
+                    <li onClick={()=>modeChanger(userdata.mode === 'training' ?'coaching' : 'training')}><Link className="nav-link" to="">
+                    <VisibilityIcon/> {userdata.mode === 'training' ? 'Switch to Training' : 'Switch to Coaching'}  
+                    </Link></li>
+                    <li><Link className="nav-link" to="/"><ContentCopyOutlinedIcon /> Booking Requests</Link></li>
                     <li><hr class="dropdown-divider" /></li>
-                    {isAutheticated() &&
-                      <li><Link className="nav-link" to="/" onClick={signOut}><LogoutIcon /> Logout</Link></li>
-                    }
-                    <li><hr class="dropdown-divider" /></li>
+                    <li><Link className="nav-link" to="/"><TranslateOutlinedIcon /> Change Language</Link></li>
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option value="english">English</option>
+                    <option value="german">German</option>
+                    </select>
+                   
                     {userdata && userdata.userType === 'hr' &&
                       <li><Link className="nav-link" to="/employee_list"><People /> Your Employees</Link></li>
+                    }
+                    <li><Link className="nav-link" to="/changePassword"><Password /> Change Password</Link></li>
+                     <li><hr class="dropdown-divider" /></li>
+                    {isAutheticated() &&
+                      <li><Link className="nav-link" to="/" onClick={signOut}><LogoutIcon /> Logout</Link></li>
                     }
                   </ul>
                 </div>
@@ -138,7 +164,7 @@ const Navbar = ({ userdata }) => {
               </div>
             </ul>
           </div>
-          {userdata && userdata._id &&
+          {/*userdata && userdata._id &&
           <ul className="navbar-nav mb-2 mb-lg-0">
           <div className='d-flex'>
               <li className="nav-item dropdown">
@@ -162,7 +188,7 @@ const Navbar = ({ userdata }) => {
               </li>
             </div>
           </ul>
-            }
+                */}
         </div>
       </nav>
     </>
