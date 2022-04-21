@@ -18,7 +18,8 @@ import Modal from './Modal.js';
 
 
 function DropBox() {
-    const [openPointer, setopenPointer] = useState(false);
+    const group = [];
+    const [openPointer, setopenPointer] = useState(-1);
     const [openEditor, setopenEditor] = useState(false);
     const [openModal, setOpenModal] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date())
@@ -26,6 +27,42 @@ function DropBox() {
       setSelectedDate(date)
     }
 
+    const showHoveredHandler = (i)=>{
+        setopenPointer(i);
+   }
+   
+   const hideHoveredHandler=()=>{
+        setopenPointer(-1)
+   }
+
+    group.push( <div style={{width: '98%', height: '200px'}} className='row' onMouseEnter={()=>showHoveredHandler(0)} onMouseLeave={()=>hideHoveredHandler(-1)} >
+    <div className="dot-Pointer" style={{width: '45px'}} onClick={()=>setopenEditor(!openEditor)} >{openPointer ===0 && <div className="dot-Point" ><HiDotsVertical color="#550B7C" size={70} /></div>}</div>
+    <div className='row hover-indicate modalButton p-0' style={{width: '71rem'}} onClick={() => setOpenModal(true)}>
+        <div style={{background: '#DFEEDB', width: '333px'}} className=' m-1 d-flex flex-column justify-content-center'>
+            <p><QueryBuilderIcon />Click to add time</p>
+            <p><TimerIcon /></p>
+            <Modal open={openModal} onClose={() => setOpenModal(false)} />
+        </div>
+        <div style={{background: '#17A2B8', width: '787px'}} className='m-1 p-4'>
+            What’s Covered:
+        </div>
+    </div>
+</div>)
+
+    group.push(<div className="break-box my-3" > <div>Break +</div> </div>)
+
+    group.push(<div style={{width: '98%', height: '200px'}} className='row' onMouseEnter={()=>showHoveredHandler(2)} onMouseLeave={()=>hideHoveredHandler(-1)} >
+    <div className="dot-Pointer" style={{width: '45px'}} onClick={()=>setopenEditor(!openEditor)} >{openPointer ===2 && <div className="dot-Point" ><HiDotsVertical color="#550B7C" size={70} /></div>}</div>
+    <div className='row hover-indicate modalButton p-0' style={{width: '71rem'}} onClick={() => setOpenModal(true)}>
+        <div style={{background: '#FBDCAD', width: '333px'}} className=' m-1 d-flex flex-column justify-content-center'>
+            <p><QueryBuilderIcon />Click to add time</p>
+            <p><TimerIcon /></p>
+        </div>
+        <div style={{background: '#C026B7', width: '787px'}} className='m-1 p-4'>
+            What’s Covered:
+        </div>
+    </div>
+</div>)
     // useEffect(() => {
     //     const checkIfClickedOutside = e => {
     //       // If the menu is open and the clicked target is not within the menu,
@@ -45,40 +82,7 @@ function DropBox() {
 
   return (
       <>
-      <Modal
-          open={openModal}
-          onClose={() => setOpenModal(false)}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-          className='p-4 center'
-          style={{height:"60vh"}}>
-<div className='col-md-4 center p-4 card shadow-sm'>
-              <div className='mb-3'>
-                <label>Topic</label>
-                <input type="text" className='form-control'/>
-              </div>
-              <div className='mb-3'>
-                <label>Duration</label>
-                <div className='d-flex justify-content-between'>
-                <input type="text" className='form-control'/>
-                <input type="text" className='form-control'/>
-                </div>
-                <div className='d-flex justify-content-between'>
-                <p className="text-secondary">Hours</p>
-                <p className="text-secondary">Minutes</p>
-                </div>
-              </div>
-              <div className='mb-3'>
-                <label>Description</label>
-                <textarea type="text" className='form-control'/>
-              </div>
-  
-        </div>
-
-          </Modal>
-
-
-        <div
+    <div
         style={{ marginBottom: "-22px", justifyContent: 'space-between', width: '100%'}}
         className="d-flex align-items-center flex-wrap my-4"
         >
@@ -124,34 +128,13 @@ function DropBox() {
                 </div>
             }
             
-            <div style={{width: '98%', height: '200px'}} className='row' onMouseEnter={()=>setopenPointer(true)} onMouseLeave={()=>setopenPointer(false)} >
-                <div className="dot-Pointer" style={{width: '45px'}} onClick={()=>setopenEditor(!openEditor)} >{openPointer && <div className="dot-Point" ><HiDotsVertical color="#550B7C" size={70} /></div>}</div>
-                <div className='row hover-indicate modalButton p-0' style={{width: '71rem'}} onClick={() => setOpenModal(true)}>
-                    <div style={{background: '#DFEEDB', width: '333px'}} className=' m-1 d-flex flex-column justify-content-center'>
-                        <p><QueryBuilderIcon />Click to add time</p>
-                        <p><TimerIcon /></p>
-                        <Modal open={openModal} onClose={() => setOpenModal(false)} />
-                    </div>
-                    <div style={{background: '#17A2B8', width: '787px'}} className='m-1 p-4'>
-                        What’s Covered:
-                    </div>
-                </div>
-            </div>
+           
+            {group.map(
+            (component, index) => React.cloneElement(component, { key: index })
+            )}
 
-            <div className="break-box my-3" > <div>Break +</div> </div>
 
-            <div style={{width: '98%', height: '200px'}} className='row' onMouseEnter={()=>setopenPointer(true)} onMouseLeave={()=>setopenPointer(false)} >
-                <div className="dot-Pointer" style={{width: '45px'}} onClick={()=>setopenEditor(!openEditor)} >{openPointer && <div className="dot-Point" ><HiDotsVertical color="#550B7C" size={70} /></div>}</div>
-                <div className='row hover-indicate modalButton p-0' style={{width: '71rem'}} onClick={() => setOpenModal(true)}>
-                    <div style={{background: '#FBDCAD', width: '333px'}} className=' m-1 d-flex flex-column justify-content-center'>
-                        <p><QueryBuilderIcon />Click to add time</p>
-                        <p><TimerIcon /></p>
-                    </div>
-                    <div style={{background: '#C026B7', width: '787px'}} className='m-1 p-4'>
-                        What’s Covered:
-                    </div>
-                </div>
-            </div>
+            
 
 
     </>
