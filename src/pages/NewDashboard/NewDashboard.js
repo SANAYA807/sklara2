@@ -1,4 +1,4 @@
-import React, { useRef, useState,useEffect } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { ProgressBar } from 'react-bootstrap';
 import { Line } from 'react-chartjs-2';
 import { useNavigate } from 'react-router-dom';
@@ -115,13 +115,13 @@ const NewDashboard = ({ userdata }) => {
         }
         `;
 
-        useEffect(()=>{
-            if(userdata && userdata.profileCompleted === false){
-                swal('Alert','Your profile is not completed, Please complete your profile','warning').then(()=>{
-                    // navigate('/profileSetup')
-                })
-            }
-        },[])
+    useEffect(() => {
+        if (userdata && userdata.profileCompleted === false) {
+            swal('Alert', 'Your profile is not completed, Please complete your profile', 'warning').then(() => {
+                // navigate('/profileSetup')
+            })
+        }
+    }, [])
 
     return (
         <>
@@ -285,14 +285,14 @@ const NewDashboard = ({ userdata }) => {
                             </div>
                         </div>
                         <div className="col-md-4">
-                            <div className="right_card mt-5 ml-5" >
+                            <div className="right_card  ml-5" >
                                 <h1 className='mb-4'>Action Recomended</h1>
                                 <p className="text-muted"><AssignmentOutlined style={{ marginRight: '5px' }} />3 assignment submission pending</p>
                                 <p className="text-muted"><ErrorOutlineRounded style={{ marginRight: '5px' }} />2 skills needs to be added</p>
 
                                 <p className="text-muted"><PersonAddAlt1Rounded style={{ marginRight: '5px' }} />2 skills needs to be added</p>
                             </div>
-                            <div className="right_card mt-5 d-flex flex-column justify-content-center pb-5" >
+                            <div className="right_card  d-flex flex-column justify-content-center"  >
                                 <Calendar prev2Label={null} next2Label={null} nextLabel={null} prevLabel={null} onChange={onChange} value={value} />
                                 <div className='px-4'>
                                     <p style={{ color: '#F37658', fontSize: '20px', marginBottom: '-2px' }} >Today</p>
