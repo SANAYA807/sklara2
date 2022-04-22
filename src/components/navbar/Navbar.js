@@ -41,7 +41,7 @@ const Navbar = ({ userdata }) => {
     signout()
   }
 
-  const modeChanger = (mode)=>{
+  const modeChanger = (mode) => {
     userdata.mode = mode
     localStorage.setItem(
       "userData",
@@ -80,35 +80,35 @@ const Navbar = ({ userdata }) => {
 
                 <div class="btn-group dropafter box" style={{ width: '190px' }}>
                   <button type="button" className="btn dropdown-toggle d-flex justify-content-between align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
-                   
-                    {userdata && userdata.profilePicture ? 
-                    <img src={userdata.profilePicture} className="dp-logo" alt='profile image' />
+
+                    {userdata && userdata.profilePicture ?
+                      <img src={userdata.profilePicture} className="dp-logo" alt='profile image' />
                       :
-                      <AccountCircleOutlinedIcon style={{ marginRight: '20px',fontSize:"30px"}} />
+                      <AccountCircleOutlinedIcon style={{ marginRight: '20px', fontSize: "30px" }} />
                     }
                     <>
-                    {userdata && userdata.firstName}
-                    <KeyboardArrowDownOutlinedIcon/>
-                   </>
+                      {userdata && userdata.firstName}
+                      <KeyboardArrowDownOutlinedIcon />
+                    </>
                   </button>
                   <ul class="dropdown-menu" style={{ width: '220px' }}>
                     {/* <li><AccountCircleOutlinedIcon /> {userdata && userdata.firstName} </li>
                     <li><hr class="dropdown-divider" /></li> */}
                     <li><Link className="nav-link" to="/"><PersonAddAltOutlinedIcon /> Learning Dashboard</Link></li>
                     <li><Link className="nav-link" to="/profile"><SettingsIcon /> My Profile</Link></li>
-                    <li onClick={()=>modeChanger(userdata.mode === 'training' ?'coaching' : 'training')}><Link className="nav-link" to="">
-                    <VisibilityIcon/> {userdata.mode === 'training' ? 'Switch to Training' : 'Switch to Coaching'}  
+                    <li onClick={() => modeChanger(userdata.mode === 'training' ? 'coaching' : 'training')}><Link className="nav-link" to="">
+                      <VisibilityIcon /> {userdata.mode === 'training' ? 'Switch to Training' : 'Switch to Coaching'}
                     </Link></li>
                     <li><Link className="nav-link" to="/"><ContentCopyOutlinedIcon /> Booking Requests</Link></li>
                     <li><Link className="nav-link" to="/"><TranslateOutlinedIcon /> Language</Link></li>
 
                     <li><Link className="nav-link" to="/changePassword"><Password /> Change Password</Link></li>
-                   
+
                     <li><hr class="dropdown-divider" /></li>
                     {userdata && userdata.userType === 'hr' &&
                       <li><Link className="nav-link" to="/employee_list"><People /> Your Employees</Link></li>
                     }
-                     <li><hr class="dropdown-divider" /></li>
+                    <li><hr class="dropdown-divider" /></li>
                     {isAutheticated() &&
                       <li><Link className="nav-link" to="/" onClick={signOut}><LogoutIcon /> Logout</Link></li>
                     }
@@ -145,15 +145,20 @@ const Navbar = ({ userdata }) => {
                 </li>
 
                 {userdata && userdata.userType === 'hr' &&
-                <li className={`nav-item ${ActiveClr("/employee_list")}`}>
-                  <Link className="nav-link" to="/employee_list"><FolderCopyOutlined/> Manage</Link>
-                </li>
+                  <li className={`nav-item ${ActiveClr("/employee_list")}`}>
+                    <Link className="nav-link" to="/employee_list"><FolderCopyOutlined /> Manage</Link>
+                  </li>
+                }
+                {userdata && userdata.userType === 'hr' &&
+                  <li className={`nav-item ${ActiveClr("/performance")}`}>
+                    <Link className="nav-link" to="/performance"><FolderCopyOutlined /> Performance</Link>
+                  </li>
                 }
                 {userdata && userdata.userType === 'supplier' &&
-                <li className={`nav-item ${ActiveClr("/EventManage")}`}>
-                  <Link className="nav-link" to="/EventManage"><FolderCopyIcon /> Manage</Link>
-                </li>
-                  }
+                  <li className={`nav-item ${ActiveClr("/EventManage")}`}>
+                    <Link className="nav-link" to="/EventManage"><FolderCopyIcon /> Manage</Link>
+                  </li>
+                }
               </div>
             </ul>
           </div>
