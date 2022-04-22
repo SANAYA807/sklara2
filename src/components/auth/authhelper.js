@@ -11,7 +11,11 @@ export const isAutheticated = () => {
   }
   if (localStorage.getItem("auth")) {
     return JSON.parse(localStorage.getItem("auth"));
+<<<<<<< HEAD
     // return localStorage.getItem("auth");
+=======
+    //return localStorage.getItem("auth");
+>>>>>>> 595401bf4dca7d3aa63c2f35bfea7d3e9748dcc0
 
   } else {
     return false;
