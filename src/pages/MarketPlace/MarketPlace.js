@@ -13,7 +13,6 @@ import { InstantSearch, SearchBox, Hits, HitsPerPage, RefinementList } from "rea
 import algoliasearch from 'algoliasearch/lite';
 import { Link } from 'react-router-dom';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
-import ToggleButton from 'react-toggle-button'
 import ToggleSwitch from './ToggleSwitch';
 import { AiFillCloseCircle} from "react-icons/ai";
 
