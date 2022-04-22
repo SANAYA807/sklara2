@@ -72,7 +72,11 @@
 
 
 button[title='Previous month'],
-button[title='Next month'] {
+button[title='Next month'],
+button[title='Previous week'],
+button[title='Next week'],
+button[title='Previous day'],
+button[title='Next day'] {
     background-color: #fff !important;
     width: 30px !important;
     height: 30px !important;
@@ -213,10 +217,10 @@ td[role='presentation'] {}
     outline: 0 !important;
     border: 0 !important;
     box-shadow: 0px 0px 16px rgba(85, 11, 124, 0.3) !important;
+
     height: 33px;
-    background-color: var(--purple) !important;
+    /* background-color: var(--purple) !important; */
     border-radius: 15px;
-    box-shadow: 0px 0px 16px rgba(85, 11, 124, 0.3);
 }
 
 /* .fc .fc-button-primary:not(:disabled).fc-button-active::after {
