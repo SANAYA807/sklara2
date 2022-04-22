@@ -74,41 +74,26 @@ const Navbar = ({ userdata }) => {
 
             <ul className="navbar-nav mb-2 mb-lg-0">
               <div className='d-flex'>
-              <li className="nav-item box shadow-sm py-0">
-                  <Link className="nav-link" to="/"><ForumIcon style={{fontSize:'30px'}} /></Link>
+                <li className="nav-item box shadow-sm py-0">
+                  <Link className="nav-link" to="/"><ForumIcon style={{ fontSize: '30px' }} /></Link>
                 </li>
                 <li className="nav-item box mx-3 shadow-sm py-0">
-                  <Link className="nav-link" to="/"><NotificationsIcon style={{fontSize:'30px'}} /></Link>
+                  <Link className="nav-link" to="/"><NotificationsIcon style={{ fontSize: '30px' }} /></Link>
                 </li>
-<<<<<<< HEAD
-
-                <div class="btn-group dropafter box" style={{ width: '190px' }}>
-                  <button type="button" className="btn dropdown-toggle d-flex justify-content-between align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="btn-group dropafter box shadow-sm py-0" style={{ width: '190px' }}>
+                  <button type="button" className="btn dropdown-toggle d-flex justify-content-between align-items-center py-1" data-bs-toggle="dropdown" aria-expanded="false">
 
                     {userdata && userdata.profilePicture ?
                       <img src={userdata.profilePicture} className="dp-logo" alt='profile image' />
-=======
-                <div class="btn-group dropafter box shadow-sm py-0" style={{ width: '190px' }}>
-                  <button type="button" className="btn dropdown-toggle d-flex justify-content-between align-items-center py-1" data-bs-toggle="dropdown" aria-expanded="false">
-                   
-                    {userdata && userdata.profilePicture ? 
-                    <img src={userdata.profilePicture} className="dp-logo" alt='profile image' />
->>>>>>> 595401bf4dca7d3aa63c2f35bfea7d3e9748dcc0
                       :
                       <AccountCircleOutlinedIcon style={{ marginRight: '20px', fontSize: "30px" }} />
                     }
                     <>
-<<<<<<< HEAD
-                      {userdata && userdata.firstName}
-                      <KeyboardArrowDownOutlinedIcon />
+
+                      {userdata && <h6 className='fw-bold py-0 mb-0 mt-1'>{userdata.firstName} <KeyboardArrowDownRoundedIcon style={{ color: "#8C8C8C" }} className='down-icon' /></h6>}
+
+
                     </>
-=======
-                    
-                    {userdata && <h6 className='fw-bold py-0 mb-0 mt-1'>{userdata.firstName} <KeyboardArrowDownRoundedIcon style={{color:"#8C8C8C"}} className='down-icon'/></h6>}
-                    
-                    
-                   </>
->>>>>>> 595401bf4dca7d3aa63c2f35bfea7d3e9748dcc0
                   </button>
                   <ul class="dropdown-menu" style={{ width: '220px' }}>
                     {/* <li><AccountCircleOutlinedIcon /> {userdata && userdata.firstName} </li>
@@ -119,29 +104,18 @@ const Navbar = ({ userdata }) => {
                       <VisibilityIcon /> {userdata.mode === 'training' ? 'Switch to Training' : 'Switch to Coaching'}
                     </Link></li>
                     <li><Link className="nav-link" to="/"><ContentCopyOutlinedIcon /> Booking Requests</Link></li>
-<<<<<<< HEAD
-                    <li><Link className="nav-link" to="/"><TranslateOutlinedIcon /> Language</Link></li>
-
-                    <li><Link className="nav-link" to="/changePassword"><Password /> Change Password</Link></li>
-
-=======
->>>>>>> 595401bf4dca7d3aa63c2f35bfea7d3e9748dcc0
                     <li><hr class="dropdown-divider" /></li>
                     <li><Link className="nav-link" to="/"><TranslateOutlinedIcon /> Change Language</Link></li>
                     <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option value="english">English</option>
-                    <option value="german">German</option>
+                      <option value="english">English</option>
+                      <option value="german">German</option>
                     </select>
-                   
+
                     {userdata && userdata.userType === 'hr' &&
                       <li><Link className="nav-link" to="/employee_list"><People /> Your Employees</Link></li>
                     }
-<<<<<<< HEAD
-                    <li><hr class="dropdown-divider" /></li>
-=======
                     <li><Link className="nav-link" to="/changePassword"><Password /> Change Password</Link></li>
-                     <li><hr class="dropdown-divider" /></li>
->>>>>>> 595401bf4dca7d3aa63c2f35bfea7d3e9748dcc0
+                    <li><hr class="dropdown-divider" /></li>
                     {isAutheticated() &&
                       <li><Link className="nav-link" to="/" onClick={signOut}><LogoutIcon /> Logout</Link></li>
                     }
