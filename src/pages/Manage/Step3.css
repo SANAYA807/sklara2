@@ -61,16 +61,20 @@ height: 190px;
 padding: 0px;
 display: flex;
     align-items: center;
+    justify-content: center;
  }
 
  .Dropdown .dot-Pointer .dot-Point{
-   border: 3px solid #550B7C;
+   border: 4px solid #550B7C;
    border-radius: 39px;
    height: 75px;
+   display: flex;
+    align-items: center;
  } 
 
- .Dropdown .dot-Pointer .dot-Point svg{
-   width: 31px;
+ .Dropdown .dot-Pointer .dot-Point img{
+  filter: invert(9%) sepia(44%) saturate(7449%) hue-rotate(276deg) brightness(96%) contrast(105%) !important;
+   width: 16px;
  }
 
  .Dropdown .hover-editor{
@@ -92,3 +96,4 @@ display: flex;
     top: -23px;
     right: -583px;
  } 
+

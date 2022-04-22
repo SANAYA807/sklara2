@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from "react";
+import { Link } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 import Navbar from "../../components/navbar/Navbar";
 import SideNav from "../../components/SideNav/SideNav";
@@ -57,7 +58,7 @@ function ManageForm({ userdata }) {
                 {step===4 && <div className='d-flex justify-content-end my-2 pt-2 px-5'>
                     <button className='btn px-3 py-2 btn-primary round_btn' onClick={() => setstep(prev => prev - 1)} style={{ "padding": "0 20px", fontWeight: '600', width: '130px', marginLeft: '20px' }}> Back</button>
                     <button className='btn px-3 py-2 btn-light round_btn' style={{ backgroundColor: '#fff', border: '1px solid grey', color: 'grey', width: '130px', fontWeight: '600', margin: '0 20px' }}>Save</button>
-                    <button className='btn px-3 py-2 btn-primary round_btn' onClick={() => setstep(prev => prev + 1)} style={{ "padding": "0 20px", fontWeight: '600', width: '130px'}}> Publish</button>
+                    <Link to="/Assignment" ><button className='btn px-3 py-2 btn-primary round_btn' onClick={() => setstep(prev => prev + 1)} style={{ "padding": "0 20px", fontWeight: '600', width: '130px'}}> Publish</button></Link>
                 </div>}
               </div>
             </div>
