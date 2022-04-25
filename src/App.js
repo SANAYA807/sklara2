@@ -30,6 +30,7 @@ import AddUser from './pages/Employee/AddUser';
 import EmployeeForm from './pages/StepperForm/EmployeeStepper/EmployeeForm';
 import YourEvent from './pages/Manage/YourEvent';
 import ManageForm from './pages/Manage/ManageForm';
+import QuizCreater from './pages/QuizCreater/step1'
 import HRForm from './pages/StepperForm/HrStepper/HrForm';
 import SPForm from './pages/StepperForm/SPStepper/SPForm';
 import Performance from './pages/PerformancePage/Performance';
@@ -107,6 +108,10 @@ function App() {
         <Route exact path="/hr_form" element={userdata && userdata._id ? <HRForm userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/performance" element={userdata && userdata._id ? <><Navbar userdata={userdata} /><Performance userdata={userdata} /><Footer /> </> : <Login />}></Route>
         <Route exact path="/Manage_form" element={userdata && userdata._id ? <ManageForm userdata={userdata} /> : <Login />}></Route>
+
+        {/* qqize creater */}
+        <Route exact path="/Quiz_Creater" element={userdata && userdata._id ? <QuizCreater userdata={userdata} /> : <Login />}></Route>
+        {/*  */}
         <Route exact path="/EventManage" element={userdata && userdata._id ? <YourEvent userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/Assignment" element={userdata && userdata._id ? <Assignment userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/employee_list" element={userdata && userdata._id && userdata.userType === 'hr' ? <EmployeeList userdata={userdata} /> : <Login />}></Route>
