@@ -9,13 +9,12 @@ import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import EuroIcon from '@mui/icons-material/Euro';
 import "./MarketPlace.css"
 import ContactFooter from '../../components/ContactFooter/ContactFooter';
-import { InstantSearch, SearchBox, Hits, HitsPerPage, RefinementList } from "react-instantsearch/dom";
+import { InstantSearch, SearchBox, Hits, HitsPerPage, RefinementList, Configure } from "react-instantsearch/dom";
 import algoliasearch from 'algoliasearch/lite';
 import { Link } from 'react-router-dom';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
 import ToggleSwitch from './ToggleSwitch';
 import { AiFillCloseCircle} from "react-icons/ai";
-
 
 
 
@@ -25,10 +24,12 @@ export default function MarketPlace({ userdata }) {
   const array = [1, 2, 3, 4, 5, 6, 7, 8]
   const arrayEvents = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   const [showAll, setShowAll] = useState(true);
-  const [toggle, setToggle] = useState(false);
+  const [focus, setFocus] = useState("");
+  const [lang, setLang] = useState("");
+
 
   function Hit({ hit }) {
-    console.log(hit, "Algolia Result-------")
+    // console.log(hit, "Algolia Result-------")
     return (
       <Link to="/trainer_profile" state={hit} >
         <div className='col-lg-28 col-sm-35 mb-1'>
@@ -71,8 +72,14 @@ export default function MarketPlace({ userdata }) {
 
           </div>  */}
 
-            {/* <RefinementList attributeName="industries" /> */}
-
+           
+           {/* {focus && <Configure
+              filters={`focusArea:${focus}`}
+              hitsPerPage={40}
+            />} */}
+           {lang && <Configure
+              filters={`trainingLanguages:${lang}`}
+            />}
             <div id="header" className="input-group mb-3 mp-input-div shadow-sm">
               <div className="input-group-append shadow-sm">
                 <SearchBox translations={{ placeholder: "Try 'Business Analysis'" }} onChange={(e) => setInput(e.target.value)} />
@@ -92,19 +99,20 @@ export default function MarketPlace({ userdata }) {
               <h3>Our Reccomendations</h3>
               {input === '' && <h5>based on your profile, preferences and activities</h5>}
             </div>
+            {/* <RefinementList attribute="trainingLanguages" /> */}
 
-          <div className="d-flex align-items-center flex-wrap" style={{ backgroundColor: "transparent", justifyContent: 'space-between' }}>
+          <div className="d-flex align-items-center flex-wrap" style={{ backgroundColor: "transparent", justifyContent: 'space-between', marginBottom: '25px' }}>
             <div className="d-flex align-items-center flex-wrap">
-              <div class="btn-group dropafter box shadow-sm py-0 mx-2" style={{ width: '130px' }}>
+              <div class="btn-group dropafter box shadow-sm py-0 mx-2" style={{ width: '145px' }}>
                   <button type="button" className="small btn dropdown-toggle d-flex justify-content-between align-items-center py-0" data-bs-toggle="dropdown" aria-expanded="false">
                   Focus Area  <KeyboardArrowDownRoundedIcon style={{color:"#8C8C8C"}} className='down-icon'/>
                   </button>
                   <ul class="dropdown-menu" style={{ width: '220px' }}>
                   
-                    <li>AI in Business Decisions</li>
-                    <li>Business Analysis</li>
-                    <li>Sales & Marketing</li>
-                    <li>No Code App Development</li>
+                    {/* <li> <input type="checkbox" checked={focus==="AI"} onChange={() => setFocus("AI")}/> AI in Business Decisions</li>
+                    <li> <input type="checkbox" checked={focus==="Business"} onChange={() => setFocus("Business")}/> Business Analysis</li>
+                    <li> <input type="checkbox" checked={focus==="Sales"} onChange={() => setFocus("Sales")}/> Sales & Marketing</li> */}
+                     <RefinementList attribute="focusArea" />
                    
                   </ul>
                 </div>
@@ -140,23 +148,24 @@ export default function MarketPlace({ userdata }) {
                   </button>
                   <ul class="dropdown-menu" style={{ width: '220px' }}>
                   
-                    <li>English</li>
-                    <li>German</li>
-                    <li>French</li>
-                    <li>Swiss</li>                   
+                    <li> <input type="checkbox" checked={lang===""} onChange={() => setLang("")}/> Any</li>
+                    <li> <input type="checkbox" checked={lang==="English"} onChange={() => setLang("English")}/> English</li>
+                    <li> <input type="checkbox" checked={lang==="German"} onChange={() => setLang("German")}/> German</li>
+                    <li> <input type="checkbox" checked={lang==="French"} onChange={() => setLang("French")}/> French</li>
+                                   
                   </ul>
                 </div>
             </div>
 
             <div className="d-flex align-items-center flex-wrap">
               <p style={{width: '64px', marginBottom: '0px'}}>Team</p>
-              <div style={{width: '90px'}}><ToggleSwitch label="Notifications" /></div>
+              <div style={{width: '90px', height: '50px'}}><ToggleSwitch label="Notifications" /></div>
               <p style={{width: '64px', marginBottom: '0px'}}>MySelf</p>
 
             </div>
           </div>
 
-      <div className="d-flex align-items-start list_card-1 p-1 my-3 ">
+      {/* <div className="d-flex align-items-start list_card-1 p-1 my-3 ">
         
         <div style={{ width: "5rem" }}
           className="filt">Filter : </div>
@@ -176,7 +185,7 @@ export default function MarketPlace({ userdata }) {
             Critical Thinking <AiFillCloseCircle fontSize="larger" />
           </p>
         </div>
-      </div>
+      </div> */}
 
 
             <div key="companies">
