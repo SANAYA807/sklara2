@@ -12,6 +12,11 @@ import ContactFooter from '../../components/ContactFooter/ContactFooter';
 import { InstantSearch, SearchBox, Hits, HitsPerPage, RefinementList } from "react-instantsearch/dom";
 import algoliasearch from 'algoliasearch/lite';
 import { Link } from 'react-router-dom';
+import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
+import ToggleSwitch from './ToggleSwitch';
+import { AiFillCloseCircle} from "react-icons/ai";
+
+
 
 
 export default function MarketPlace({ userdata }) {
@@ -20,12 +25,13 @@ export default function MarketPlace({ userdata }) {
   const array = [1, 2, 3, 4, 5, 6, 7, 8]
   const arrayEvents = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   const [showAll, setShowAll] = useState(true);
+  const [toggle, setToggle] = useState(false);
 
   function Hit({ hit }) {
     console.log(hit, "Algolia Result-------")
     return (
       <Link to="/trainer_profile" state={hit} >
-        <div className='col-lg-28 col-sm-35 mb-4'>
+        <div className='col-lg-28 col-sm-35 mb-1'>
           <div className="card shadow-sm me-1">
             <img role="button" src={hit.profilePicture ? hit.profilePicture : "images/dummy/user4_big.jpg"} className="card-img-top mp-com-image" alt="..." />
             <div className="card-body">
@@ -49,7 +55,7 @@ export default function MarketPlace({ userdata }) {
   return (
     <>
       <Navbar userdata={userdata} />
-      <div className='mp-outer container-fluid main-div pt-3'>
+      <div className='mp-outer container-fluid main-div pt-3 market-Place'>
         <div className='container-fluid px-0'>
 
 
@@ -87,6 +93,90 @@ export default function MarketPlace({ userdata }) {
               {input === '' && <h5>based on your profile, preferences and activities</h5>}
             </div>
 
+          <div className="d-flex align-items-center flex-wrap" style={{ backgroundColor: "transparent", justifyContent: 'space-between' }}>
+            <div className="d-flex align-items-center flex-wrap">
+              <div class="btn-group dropafter box shadow-sm py-0 mx-2" style={{ width: '130px' }}>
+                  <button type="button" className="small btn dropdown-toggle d-flex justify-content-between align-items-center py-0" data-bs-toggle="dropdown" aria-expanded="false">
+                  Focus Area  <KeyboardArrowDownRoundedIcon style={{color:"#8C8C8C"}} className='down-icon'/>
+                  </button>
+                  <ul class="dropdown-menu" style={{ width: '220px' }}>
+                  
+                    <li>AI in Business Decisions</li>
+                    <li>Business Analysis</li>
+                    <li>Sales & Marketing</li>
+                    <li>No Code App Development</li>
+                   
+                  </ul>
+                </div>
+                <div class="btn-group dropafter box shadow-sm py-0 mx-2" style={{ width: '130px' }}>
+                  <button type="button" className="small btn dropdown-toggle d-flex justify-content-between align-items-center py-0" data-bs-toggle="dropdown" aria-expanded="false">
+                   Urgency  <KeyboardArrowDownRoundedIcon style={{color:"#8C8C8C"}} className='down-icon'/>
+                  </button>
+                  <ul class="dropdown-menu" style={{ width: '220px' }}>
+                  
+                    <li>15 Days</li>
+                    <li>1 Month</li>
+                    <li>3 Months</li>
+                    <li>6 Months</li>
+                   
+                  </ul>
+                </div>
+                <div class="btn-group dropafter box shadow-sm py-0 mx-2" style={{ width: '130px' }}>
+                  <button type="button" className="small btn dropdown-toggle d-flex justify-content-between align-items-center py-0" data-bs-toggle="dropdown" aria-expanded="false">
+                   Types  <KeyboardArrowDownRoundedIcon style={{color:"#8C8C8C"}} className='down-icon'/>
+                  </button>
+                  <ul class="dropdown-menu" style={{ width: '220px' }}>
+                  
+                    <li>Personal Corporate Training</li>
+                    <li>Group Corporate Training</li>
+                    <li>Off-The-Shelf Events</li>
+                    <li>Business Coaching</li>
+                   
+                  </ul>
+                </div>
+                <div class="btn-group dropafter box shadow-sm py-0 mx-2" style={{ width: '130px' }}>
+                  <button type="button" className="small btn dropdown-toggle d-flex justify-content-between align-items-center py-0" data-bs-toggle="dropdown" aria-expanded="false">
+                   Language  <KeyboardArrowDownRoundedIcon style={{color:"#8C8C8C"}} className='down-icon'/>
+                  </button>
+                  <ul class="dropdown-menu" style={{ width: '220px' }}>
+                  
+                    <li>English</li>
+                    <li>German</li>
+                    <li>French</li>
+                    <li>Swiss</li>                   
+                  </ul>
+                </div>
+            </div>
+
+            <div className="d-flex align-items-center flex-wrap">
+              <p style={{width: '64px', marginBottom: '0px'}}>Team</p>
+              <div style={{width: '90px'}}><ToggleSwitch label="Notifications" /></div>
+              <p style={{width: '64px', marginBottom: '0px'}}>MySelf</p>
+
+            </div>
+          </div>
+
+      <div className="d-flex align-items-start list_card-1 p-1 my-3 ">
+        
+        <div style={{ width: "5rem" }}
+          className="filt">Filter : </div>
+        <div
+          style={{ width: "7rem" }}
+          className="col-md-12 nav-box m-2 skill-box"
+        >
+          <p className="py-1 mb-0 px-1 small badge">
+            Leadership <AiFillCloseCircle fontSize="larger" />
+          </p>
+        </div>
+        <div
+          style={{ width: "9rem" }}
+          className="col-md-12 nav-box m-2 skill-box"
+        >
+          <p className="py-1 mb-0 px-1 small badge">
+            Critical Thinking <AiFillCloseCircle fontSize="larger" />
+          </p>
+        </div>
+      </div>
 
 
             <div key="companies">

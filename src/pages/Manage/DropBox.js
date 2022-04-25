@@ -167,7 +167,7 @@ function DropBox() {
                     </div>
                 }
                 <div key={index} style={{width: '98%', height: '200px'}} className='row my-2' onMouseEnter={()=>showHoveredHandler(index)} onMouseLeave={()=>hideHoveredHandler(-1)} >
-                 <div className="dot-Pointer" style={{width: '45px'}} onClick={()=>handleOpenEditor(index, !openEditor)} >{openPointer ===index && <div className="dot-Point" ><HiDotsVertical color="#550B7C" size={70} /></div>}</div>
+                 <div className="dot-Pointer" style={{width: '45px'}} onClick={()=>handleOpenEditor(index, !openEditor)} >{openPointer ===index && <div className="dot-Point" ><img src="images/indicate.png" alt="image" /></div>}</div>
                  <div className={`row ${openPointer==index ? "hover-indicate" : ""} modalButton p-0`} style={{width: '71rem'}} onClick={()=>  handleModelEvent(index)}>
                      <div style={{background: '#DFEEDB', width: '333px'}} className=' m-1 d-flex flex-column justify-content-center'>
                          <p><QueryBuilderIcon />Click to add time</p>

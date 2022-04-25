@@ -51,7 +51,7 @@ function Step3({numOfSessions}) {
 
   return (
     <div className='step3' style={{paddingLeft: '32px'}}>
-            <p style={{marginBottom: '0px'}} className='fw-bold'>Creative Thinking for Beginers</p>
+            <p style={{marginBottom: '0px', fontSize: '24px'}} className='fw-bold'>Creative Thinking for Beginers</p>
             <p className='text-muted'>Save to edit and publish later or publish to reach out to your customers.</p>
 
             <p style={{marginBottom: '0px'}} className='fw-bold'>Enter your Session schedule and details</p>
@@ -64,7 +64,7 @@ function Step3({numOfSessions}) {
                         return (
                         <>
                             <div className='Wrap p-3' onClick={() => toggle(index)} key={index}>
-                            <h5 style={{width: "100%"}} >Session {item.sessionNum}</h5>
+                            <h5 className='fw-bold' style={{width: "100%"}} >Session {item.sessionNum}</h5>
                             <span>{clicked === index ? <RiArrowUpSLine /> : <RiArrowDownSLine />}</span>
                             </div>
                             {clicked === index ? (

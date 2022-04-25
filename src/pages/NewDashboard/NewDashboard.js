@@ -118,7 +118,7 @@ const NewDashboard = ({ userdata }) => {
     useEffect(() => {
         if (userdata && userdata.profileCompleted === false) {
             swal('Alert', 'Your profile is not completed, Please complete your profile', 'warning').then(() => {
-                // navigate('/profileSetup')
+                navigate('/profileSetup')
             })
         }
     }, [])
