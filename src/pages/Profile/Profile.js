@@ -11,7 +11,7 @@ import formatDistance from 'date-fns/formatDistance'
 
 function Profile({ userdata }) {
   console.log(userdata)
- const [profPic, setProfPic] = useState("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png")
+  const [profPic, setProfPic] = useState("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png")
   const LanguageArr = userdata.communicationLanguages;
 
   const formatDate = (dateString) => {
@@ -22,12 +22,12 @@ function Profile({ userdata }) {
   const firstLogin = formatDate(userdata.firstLogin)
   const lastLogin = userdata.lastLogin && formatDate(userdata.lastLogin)
 
-useEffect(() => {
-  if(userdata.profilePicture){
-    setProfPic(userdata.profilePicture)
-  }
-}, [])
-  
+  useEffect(() => {
+    if (userdata.profilePicture) {
+      setProfPic(userdata.profilePicture)
+    }
+  }, [])
+
 
   function getTimeFormat(dateStr) {
 
@@ -42,38 +42,38 @@ useEffect(() => {
 
   return (
     <>
-    <Navbar userdata={userdata} />
-    <div className='outer-profile container-fluid main-div pt-3'>
-      <div className='container-fluid px-0'>
-        <h2 className='change-color'>My Profile</h2>
-        <p className='text-muted'><small>Trainer & Coaches can see limited information about you </ small></p>
-        <div className='row'>
-          <div className='col-lg-6 col-sm-12 common-card'>
-            <div className="card">
-              <button type="button" className="btn profile-settings"><i class="fa-solid fa-gear"></i></button>
-              <img src={profPic} className="card-img-top profile-image" alt="..." />
-              <div className="card-body">
-                {userdata.communicationLanguages && userdata.communicationLanguages.map((item,i)=>{
-                return (
-                  <>
-                <span className='profile-flag1' style={{right: `${2*i}rem`}}><img className="img-fluid" src={`/images/flags/${item}.png`} alt="" /></span>
+      <Navbar userdata={userdata} />
+      <div className='outer-profile container-fluid main-div pt-3'>
+        <div className='container-fluid px-0'>
+          <h2 className='change-color'>My Profile</h2>
+          <p className='text-muted'><small>Trainer & Coaches can see limited information about you </ small></p>
+          <div className='row'>
+            <div className='col-lg-6 col-sm-12 common-card'>
+              <div className="card">
+                <button type="button" className="btn profile-settings"><i class="fa-solid fa-gear"></i></button>
+                <img src={profPic} className="card-img-top profile-image" alt="..." />
+                <div className="card-body">
+                  {userdata.communicationLanguages && userdata.communicationLanguages.map((item, i) => {
+                    return (
+                      <>
+                        <span className='profile-flag1' style={{ right: `${2 * i}rem` }}><img className="img-fluid" src={`/images/flags/${item}.png`} alt="" /></span>
 
-                  </>
-                )
-                })}
-                {/* <span className='profile-flag1'><img className="img-fluid" src="/images/flags/French.png" alt="" /></span>
+                      </>
+                    )
+                  })}
+                  {/* <span className='profile-flag1'><img className="img-fluid" src="/images/flags/French.png" alt="" /></span>
 
                 <span className="profile-flag1"><img className="img-fluid" src="/images/flags/English.png" alt="" /></span> */}
-                <h4 className="card-title mb-5">{userdata.firstName} {userdata.lastName}</h4>
-                <p className='mb-5' style={{ "color": "#cccccc" }}><small>{userdata.UserRoleType}</small></p>
-                <hr className='text-muted' />
-                <div className='d-flex justify-content-between'>
-                  <small className='text-muted'>Platform Language</small>
-                  <small className='text-muted'>Default Platform Mode</small>
-                </div>
-                <div className='d-flex justify-content-between'>
-                  <p>{userdata.dashboardLanguage}</p>
-                  <p>Training</p>
+                  <h4 className="card-title mb-5">{userdata.firstName} {userdata.lastName}</h4>
+                  <p className='mb-5' style={{ "color": "#cccccc" }}><small>{userdata.UserRoleType}</small></p>
+                  <hr className='text-muted' />
+                  <div className='d-flex justify-content-between'>
+                    <small className='text-muted'>Platform Language</small>
+                    <small className='text-muted'>Default Platform Mode</small>
+                  </div>
+                  <div className='d-flex justify-content-between'>
+                    <p>{userdata.dashboardLanguage}</p>
+                    <p>Training</p>
 
                   </div>
                 </div>
@@ -217,9 +217,9 @@ useEffect(() => {
           </div>
         </div>
       </div>
-  
-      
-      <ContactFooter />
+
+
+      {/* <ContactFooter /> */}
       {/* </div > */}
       <Footer />
     </>

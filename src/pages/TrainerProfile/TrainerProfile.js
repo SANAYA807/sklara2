@@ -20,12 +20,12 @@ import Appointment from '../../components/Calender/Appointment';
 import { useLocation } from 'react-router-dom'
 
 
-function TrainerProfile({userdata}) {
+function TrainerProfile({ userdata }) {
   const location = useLocation()
   const { firstName, lastName, profilePicture } = location.state
 
 
- console.log(location)
+  console.log(location)
 
   const arrayEvents = [1, 2, 3]
   const arrayReviews = [1, 2, 3, 4]
@@ -47,7 +47,7 @@ function TrainerProfile({userdata}) {
 
   return (
     <>
-<Navbar userdata={userdata} />
+      <Navbar userdata={userdata} />
       <div className='mp-outer container-fluid main-div pt-3'>
         <div className='container-fluid px-0'>
           <h2>Profile of <span className='change-color'>{firstName} {lastName}</span></h2>
@@ -57,8 +57,8 @@ function TrainerProfile({userdata}) {
               <div className="card">
                 <img src={profilePicture} className="card-img-top tp-image profile-image" alt="..." />
                 <div className="card-body">
-                <span className='mp-com-flag1'><img className='img-fluid' src="images/flags/French.png" alt="" /></span>
-                <span className="mp-com-flag2"><img className="img-fluid" src="images/flags/German.png" alt="" /></span>
+                  <span className='mp-com-flag1'><img className='img-fluid' src="images/flags/French.png" alt="" /></span>
+                  <span className="mp-com-flag2"><img className="img-fluid" src="images/flags/German.png" alt="" /></span>
                   <h4 className="card-title">{firstName} {lastName}</h4>
                   <p className='' style={{ "color": "#cccccc" }}><small>Start-Ups, Marketing & Sales, Leaderships, Negotiations</small></p>
                   <p><img src="images/star.png" alt='star' /><span style={{ "color": "#1fd0b6" }}>4.9</span><small style={{ "color": "#cccccc" }}>(69)</small></p>
@@ -139,7 +139,7 @@ function TrainerProfile({userdata}) {
             <div className='common-card'>
               <div className="card">
                 <div className="card-body row">
-                  <div className="col-lg-6 " style={{width: '45%'}}>
+                  <div className="col-lg-6 " style={{ width: '45%' }}>
                     <Calendar onChange={onChange} value={value} className='mb-3 ml-0 Avail-Calender' next2Label={null} prev2Label={null} onClickDay={handleDayClick} />
                     <div className='alignRight'><small className='text-muted '>Highlights indicate {firstName} is busy on those dates</small></div>
                     <h6 className='mb-0 mt-5'>Want a personalized training from {firstName}, for you or your team?</h6>
@@ -222,7 +222,7 @@ function TrainerProfile({userdata}) {
                       <div className="card shadow-sm">
                         <img role="button" src="images/dummy/training02.jpg" className="card-img-top mp-com-image" alt="..." />
                         <div className="card-body">
-                        <span className='mp-com-flag1'><img className='img-fluid' src="images/flags/French.png" alt="" /></span>
+                          <span className='mp-com-flag1'><img className='img-fluid' src="images/flags/French.png" alt="" /></span>
                           <h6 className="card-title m-0 mt-2">Understanding Analytical Tools (Expert)</h6>
                           <p className='mb-2' style={{ "color": "#cccccc" }}><small>Senior Project Manager</small></p>
                           <div className='row mb-3'>
@@ -254,7 +254,7 @@ function TrainerProfile({userdata}) {
                 <div className="card shadow-sm">
                   <img role="button" src="images/dummy/training02.jpg" className="card-img-top mp-com-image" alt="..." />
                   <div className="card-body">
-                  <span className='mp-com-flag1'><img className='img-fluid' src="images/flags/French.png" alt="" /></span>
+                    <span className='mp-com-flag1'><img className='img-fluid' src="images/flags/French.png" alt="" /></span>
                     <h6 className="card-title m-0 mt-2 mb-">Understanding Analytical Tools (Expert)</h6>
                     <p className='mb-2' style={{ "color": "#cccccc" }}><small>Senior Project Manager</small></p>
                     <div className='row mb-3'>
@@ -320,8 +320,8 @@ function TrainerProfile({userdata}) {
           </div>
         </div>
       </div >
-      <ContactFooter />
-<Footer/>
+      {/* <ContactFooter /> */}
+      <Footer />
     </>
   );
 }

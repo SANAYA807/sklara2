@@ -77,9 +77,26 @@
     display: none !important;
 }
 
-.down-icon{
+.down-icon {
     font-weight: 900 !important;
     font-size: 30px !important;
-    padding-top: 0px!important;
+    padding-top: 0px !important;
     margin-top: 0px !important;
+}
+
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active {
+    outline: 0px !important;
+    -webkit-appearance: none;
+    box-shadow: none !important;
 }

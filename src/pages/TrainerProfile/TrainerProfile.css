@@ -1,6 +1,7 @@
 .outer-tp {
   background-color: #f1f6f9;
 }
+
 h2 {
   font-family: 'Inter';
   font-weight: 900 !important;
@@ -11,11 +12,12 @@ h2 {
 .coach-card small {
   font-size: 14px;
 }
-.description{
+
+.description {
   font-size: 16px;
 }
 
-.change-color{
+.change-color {
   background: -webkit-linear-gradient(#1B1464, #550B7C);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -161,6 +163,7 @@ h2 {
   line-height: 14px !important;
   /* margin-left: 5% !important; */
 }
+
 .Avail-Calender {
-  padding-bottom: 0!important;
+  padding-bottom: 0 !important;
 }

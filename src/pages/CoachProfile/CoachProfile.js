@@ -9,7 +9,7 @@ import PeopleIcon from '@mui/icons-material/People';
 import Calendar from 'react-calendar';
 import Appointment from '../../components/Calender/Appointment';
 
-const CoachProfile = ({userdata}) => {
+const CoachProfile = ({ userdata }) => {
 
     const [value, onChange] = useState(new Date());
     const [toggle, setToggle] = useState(false)
@@ -18,7 +18,7 @@ const CoachProfile = ({userdata}) => {
     }
     return (
         <>
-        <Navbar userdata={userdata} />
+            <Navbar userdata={userdata} />
             <div className='outer-profile pt-3'>
                 <div className='container-md'>
                     <h2 >Coach's Profile :: <span className='change-color'> Martin Krugger</span></h2>
@@ -163,17 +163,17 @@ const CoachProfile = ({userdata}) => {
                     </div>
                 </div>
 
-                <div className='profile-end-div'>
+                {/* <div className='profile-end-div'>
                     <div className='inner-profile-end text-center'>
                         <h4>Do you need support in using the Talent Platform or Sklara Joyn?</h4>
                         <p>Feel free to contact our IT Support.</p>
                         <button type="button" className="btn mx-1 px-4">Email Us</button>
                         <button type="button" className="btn mx-1 px-4">Call Us</button>
                     </div>
-                </div>
+                </div> */}
             </div >
 
-<Footer/>
+            <Footer />
         </>
     )
 }

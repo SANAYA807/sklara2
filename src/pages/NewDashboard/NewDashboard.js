@@ -24,6 +24,7 @@ import Footer from '../../components/footer/Footer';
 import swal from 'sweetalert';
 
 const NewDashboard = ({ userdata }) => {
+    const [show, setShow] = useState(false)
     const navigate = useNavigate()
     const [value, onChange] = useState(new Date());
     const labels = [1, 2, 3, 4, 5, 6]
@@ -115,13 +116,17 @@ const NewDashboard = ({ userdata }) => {
         }
         `;
 
-    useEffect(() => {
-        if (userdata && userdata.profileCompleted === false) {
-            swal('Alert', 'Your profile is not completed, Please complete your profile', 'warning').then(() => {
-                navigate('/profileSetup')
-            })
-        }
-    }, [])
+    const showOpt = () => {
+        setShow(!show)
+    }
+
+    // useEffect(() => {
+    //     if (userdata && userdata.profileCompleted === false) {
+    //         swal('Alert', 'Your profile is not completed, Please complete your profile', 'warning').then(() => {
+    //             navigate('/profileSetup')
+    //         })
+    //     }
+    // }, [])
 
     return (
         <>
@@ -143,7 +148,8 @@ const NewDashboard = ({ userdata }) => {
                                     <h3>Time Spendings</h3>
                                     <div>
                                         <span className="text-muted">Month</span>
-                                        <button className='round_btn shadow_new text-muted btn-light btn p-0 ms-1'><KeyboardArrowDown /></button>
+                                        <button className='round_btn shadow_new text-muted btn-light btn p-0 ms-1' onClick={showOpt}><KeyboardArrowDown /></button>
+                                        {show && <li className="text-muted nav-link dropdown-menu">Week</li>}
                                     </div>
                                 </div>
                                 <div style={{ height: '200px' }}>
@@ -232,7 +238,7 @@ const NewDashboard = ({ userdata }) => {
 
                             </div>
                             <div className="shadow py-4 mt-5 row gx-1 profD-rad pt-4 satisfaction" style={{ backgroundColor: '#F6EEFB' }}>
-                                <h3 className='px-4'>Satisfaction and Feedback</h3>
+                                <h3 className='px-4 mb-0'>Satisfaction and Feedback</h3>
                                 <div className="col-md-6">
                                     {/* <h5 className='bold'>Average Session Rating</h5> */}
                                     <p className="text-muted px-4">Based on 36 ratings</p>
@@ -287,10 +293,10 @@ const NewDashboard = ({ userdata }) => {
                         <div className="col-md-4">
                             <div className="right_card  ml-5" >
                                 <h1 className='mb-4'>Action Recomended</h1>
-                                <p className="text-muted"><AssignmentOutlined style={{ marginRight: '5px' }} />3 assignment submission pending</p>
-                                <p className="text-muted"><ErrorOutlineRounded style={{ marginRight: '5px' }} />2 skills needs to be added</p>
+                                <p className="text-muted action"><AssignmentOutlined style={{ marginRight: '5px' }} />3 assignment submission pending</p>
+                                <p className="text-muted action"><ErrorOutlineRounded style={{ marginRight: '5px' }} />2 skills needs to be added</p>
 
-                                <p className="text-muted"><PersonAddAlt1Rounded style={{ marginRight: '5px' }} />2 skills needs to be added</p>
+                                <p className="text-muted action"><PersonAddAlt1Rounded style={{ marginRight: '5px' }} />2 skills needs to be added</p>
                             </div>
                             <div className="right_card  d-flex flex-column justify-content-center"  >
                                 <Calendar prev2Label={null} next2Label={null} nextLabel={null} prevLabel={null} onChange={onChange} value={value} />
@@ -355,7 +361,7 @@ const NewDashboard = ({ userdata }) => {
                                                 <div className='w-100 px-4'>
                                                     <div className="d-flex align-items-center justify-content-between mb-2">
                                                         <h6>Business Analysis</h6>
-                                                        <button className='btn btn-primary px-3 round_btn'><small className='fw-bold'>62 events</small></button>
+                                                        <button className='btn btn-primary px-3 py-0 round_btn event_btn '  ><small className='fw-bold'>62 events</small></button>
                                                     </div>
                                                     <ProgressBar variant="success" now={5} max={5} />
                                                 </div>
@@ -365,7 +371,7 @@ const NewDashboard = ({ userdata }) => {
                                                 <div className='w-100 px-4'>
                                                     <div className="d-flex align-items-center justify-content-between mb-2">
                                                         <h6>Social Media Marketing</h6>
-                                                        <button className='btn btn-primary px-3 round_btn'><small className='fw-bold'>62 events</small></button>
+                                                        <button className='btn btn-primary px-3 py-0 round_btn event_btn' ><small className='fw-bold'>621 events</small></button>
                                                     </div>
                                                     <ProgressBar variant='pb-pink' now={5} max={5} />
                                                 </div>
@@ -375,7 +381,7 @@ const NewDashboard = ({ userdata }) => {
                                                 <div className='w-100 px-4'>
                                                     <div className="d-flex align-items-center justify-content-between mb-2">
                                                         <h6>Artificial Intelligence</h6>
-                                                        <button className='btn btn-primary px-3 round_btn'><small className='fw-bold'>62 events</small></button>
+                                                        <button className='btn btn-primary px-3 py-0 round_btn event_btn' ><small className='fw-bold'>62 events</small></button>
                                                     </div>
                                                     <ProgressBar variant="primary" now={5} max={5} />
                                                 </div>
@@ -385,7 +391,7 @@ const NewDashboard = ({ userdata }) => {
                                                 <div className='w-100 px-4'>
                                                     <div className="d-flex align-items-center justify-content-between mb-2">
                                                         <h6>Sales & Market</h6>
-                                                        <button className='btn btn-primary px-3 round_btn'><small className='fw-bold'>62 events</small></button>
+                                                        <button className='btn btn-primary px-3 py-0 round_btn event_btn' ><small className='fw-bold'>62 events</small></button>
                                                     </div>
                                                     <ProgressBar variant="danger" now={5} max={5} />
                                                 </div>
@@ -396,7 +402,7 @@ const NewDashboard = ({ userdata }) => {
                                                     <div className="d-flex align-items-center justify-content-between mb-2">
                                                         <h6>Al in Buisness Decissions</h6>
 
-                                                        <button className='btn btn-primary px-3 round_btn'><small className='fw-bold'>62 events</small></button>
+                                                        <button className='btn btn-primary px-3 py-0 round_btn event_btn' ><small className='fw-bold'>62 events</small></button>
                                                     </div>
                                                     <ProgressBar variant="pb-light-blue" now={5} max={5} />
                                                 </div>
@@ -423,17 +429,17 @@ const NewDashboard = ({ userdata }) => {
                                                         <h6 className='m-0'>Buisness Analysis changes the...</h6>
                                                         <small className='text-muted'>Martin Krugger</small>
                                                     </div>
-                                                    <div className='d-flex flex-column'>
+                                                    <div className='d-flex flex-column align-items-center'>
                                                         <div className='d-flex '>
-                                                            <div className="d-flex">
+                                                            <div className="d-flex align-items-center mb-0">
                                                                 <h1 className='m-0 p-0'>24</h1>
                                                                 <div>
-                                                                    <h5 className='m-0 p-0'> JAN </h5>
-                                                                    <h5 className='m-0 p--0'>2022</h5>
+                                                                    <h6 className='m-0 p-0'> JAN </h6>
+                                                                    <h6 className='m-0 p-0'>2022</h6>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <p className="text-muted m-0 p-0">5 sessions</p>
+                                                        <p className="text-muted my-0 p-0">5 sessions</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -444,17 +450,17 @@ const NewDashboard = ({ userdata }) => {
                                                         <h6 className='m-0'>Social Media & business promition</h6>
                                                         <small className='text-muted'>Danny Rankins</small>
                                                     </div>
-                                                    <div className='d-flex flex-column'>
+                                                    <div className='d-flex flex-column align-items-center'>
                                                         <div className='d-flex '>
-                                                            <div className="d-flex">
+                                                            <div className="d-flex align-items-center mb-0">
                                                                 <h1 className='m-0 p-0'>24</h1>
                                                                 <div>
-                                                                    <h5 className='m-0 p-0'> JAN </h5>
-                                                                    <h5 className='m-0 p--0'>2022</h5>
+                                                                    <h6 className='m-0 p-0'> JAN </h6>
+                                                                    <h6 className='m-0 p-0'>2022</h6>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <p className="text-muted m-0 p-0">5 sessions</p>
+                                                        <p className="text-muted my-0 p-0">5 sessions</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -465,17 +471,17 @@ const NewDashboard = ({ userdata }) => {
                                                         <h6 className='m-0'>Implementing AI for management</h6>
                                                         <small className='text-muted'>Cameron Niaken</small>
                                                     </div>
-                                                    <div className='d-flex flex-column'>
+                                                    <div className='d-flex flex-column align-items-center'>
                                                         <div className='d-flex '>
-                                                            <div className="d-flex">
+                                                            <div className="d-flex align-items-center mb-0">
                                                                 <h1 className='m-0 p-0'>24</h1>
                                                                 <div>
-                                                                    <h5 className='m-0 p-0'> JAN </h5>
-                                                                    <h5 className='m-0 p--0'>2022</h5>
+                                                                    <h6 className='m-0 p-0'> JAN </h6>
+                                                                    <h6 className='m-0 p-0'>2022</h6>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <p className="text-muted m-0 p-0">5 sessions</p>
+                                                        <p className="text-muted my-0 p-0">5 sessions</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -486,17 +492,17 @@ const NewDashboard = ({ userdata }) => {
                                                         <h6 className='m-0'>Easiest techniques to boost...</h6>
                                                         <small className='text-muted'>Faith Sulinan</small>
                                                     </div>
-                                                    <div className='d-flex flex-column'>
+                                                    <div className='d-flex flex-column align-items-center'>
                                                         <div className='d-flex '>
-                                                            <div className="d-flex">
+                                                            <div className="d-flex align-items-center mb-0">
                                                                 <h1 className='m-0 p-0'>24</h1>
                                                                 <div>
-                                                                    <h5 className='m-0 p-0'> JAN </h5>
-                                                                    <h5 className='m-0 p--0'>2022</h5>
+                                                                    <h6 className='m-0 p-0'> JAN </h6>
+                                                                    <h6 className='m-0 p-0'>2022</h6>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <p className="text-muted m-0 p-0">5 sessions</p>
+                                                        <p className="text-muted my-0 p-0">5 sessions</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -507,17 +513,17 @@ const NewDashboard = ({ userdata }) => {
                                                         <h6 className='m-0'>sourcing decisions to Algo...</h6>
                                                         <small className='text-muted'>Steve Mclnshaw</small>
                                                     </div>
-                                                    <div className='d-flex flex-column'>
+                                                    <div className='d-flex flex-column align-items-center'>
                                                         <div className='d-flex '>
-                                                            <div className="d-flex">
+                                                            <div className="d-flex align-items-center mb-0">
                                                                 <h1 className='m-0 p-0'>24</h1>
                                                                 <div>
-                                                                    <h5 className='m-0 p-0'> JAN </h5>
-                                                                    <h5 className='m-0 p--0'>2022</h5>
+                                                                    <h6 className='m-0 p-0'> JAN </h6>
+                                                                    <h6 className='m-0 p-0'>2022</h6>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <p className="text-muted m-0 p-0">5 sessions</p>
+                                                        <p className="text-muted my-0 p-0">5 sessions</p>
                                                     </div>
 
 
