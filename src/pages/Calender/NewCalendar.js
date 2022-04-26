@@ -76,7 +76,7 @@ function FullCalendarApp() {
         <div className="App">
             <div className="d-flex align-items-start justify-content-end weather mt-2">
                 <div className="d-flex flex-column align-items-end">
-                    <h6 className="mb-0">{time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</h6>
+                    <h6 className="mb-0 font-weight-bold" style={{ fontWeight: '900' }}>{time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</h6>
                     <p className="text-muted">{temp} F in {cityname}</p>
                 </div>
                 <img src={`http://openweathermap.org/img/w/${weather.icon}.png`} alt="" srcset="" />

@@ -14,7 +14,7 @@ import algoliasearch from 'algoliasearch/lite';
 import { Link } from 'react-router-dom';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
 import ToggleSwitch from './ToggleSwitch';
-import { AiFillCloseCircle} from "react-icons/ai";
+import { AiFillCloseCircle } from "react-icons/ai";
 
 
 
@@ -72,12 +72,12 @@ export default function MarketPlace({ userdata }) {
 
           </div>  */}
 
-           
-           {/* {focus && <Configure
+
+            {/* {focus && <Configure
               filters={`focusArea:${focus}`}
               hitsPerPage={40}
             />} */}
-           {lang && <Configure
+            {lang && <Configure
               filters={`trainingLanguages:${lang}`}
             />}
             <div id="header" className="input-group mb-3 mp-input-div shadow-sm">
@@ -101,71 +101,71 @@ export default function MarketPlace({ userdata }) {
             </div>
             {/* <RefinementList attribute="trainingLanguages" /> */}
 
-          <div className="d-flex align-items-center flex-wrap" style={{ backgroundColor: "transparent", justifyContent: 'space-between', marginBottom: '25px' }}>
-            <div className="d-flex align-items-center flex-wrap">
-              <div class="btn-group dropafter box shadow-sm py-0 mx-2" style={{ width: '145px' }}>
+            <div className="d-flex align-items-center flex-wrap" style={{ backgroundColor: "transparent", justifyContent: 'space-between', marginBottom: '25px' }}>
+              <div className="d-flex align-items-center flex-wrap">
+                <div class="btn-group dropafter box shadow-sm py-0 mx-2" style={{ width: '145px' }}>
                   <button type="button" className="small btn dropdown-toggle d-flex justify-content-between align-items-center py-0" data-bs-toggle="dropdown" aria-expanded="false">
-                  Focus Area  <KeyboardArrowDownRoundedIcon style={{color:"#8C8C8C"}} className='down-icon'/>
+                    Focus Area  <KeyboardArrowDownRoundedIcon style={{ color: "#8C8C8C" }} className='down-icon' />
                   </button>
                   <ul class="dropdown-menu" style={{ width: '220px' }}>
-                  
+
                     {/* <li> <input type="checkbox" checked={focus==="AI"} onChange={() => setFocus("AI")}/> AI in Business Decisions</li>
                     <li> <input type="checkbox" checked={focus==="Business"} onChange={() => setFocus("Business")}/> Business Analysis</li>
                     <li> <input type="checkbox" checked={focus==="Sales"} onChange={() => setFocus("Sales")}/> Sales & Marketing</li> */}
-                     <RefinementList attribute="focusArea" />
-                   
+                    <RefinementList attribute="focusArea" />
+
                   </ul>
                 </div>
                 <div class="btn-group dropafter box shadow-sm py-0 mx-2" style={{ width: '130px' }}>
                   <button type="button" className="small btn dropdown-toggle d-flex justify-content-between align-items-center py-0" data-bs-toggle="dropdown" aria-expanded="false">
-                   Urgency  <KeyboardArrowDownRoundedIcon style={{color:"#8C8C8C"}} className='down-icon'/>
+                    Urgency  <KeyboardArrowDownRoundedIcon style={{ color: "#8C8C8C" }} className='down-icon' />
                   </button>
                   <ul class="dropdown-menu" style={{ width: '220px' }}>
-                  
+
                     <li>15 Days</li>
                     <li>1 Month</li>
                     <li>3 Months</li>
                     <li>6 Months</li>
-                   
+
                   </ul>
                 </div>
                 <div class="btn-group dropafter box shadow-sm py-0 mx-2" style={{ width: '130px' }}>
                   <button type="button" className="small btn dropdown-toggle d-flex justify-content-between align-items-center py-0" data-bs-toggle="dropdown" aria-expanded="false">
-                   Types  <KeyboardArrowDownRoundedIcon style={{color:"#8C8C8C"}} className='down-icon'/>
+                    Types  <KeyboardArrowDownRoundedIcon style={{ color: "#8C8C8C" }} className='down-icon' />
                   </button>
                   <ul class="dropdown-menu" style={{ width: '220px' }}>
-                  
+
                     <li>Personal Corporate Training</li>
                     <li>Group Corporate Training</li>
                     <li>Off-The-Shelf Events</li>
                     <li>Business Coaching</li>
-                   
+
                   </ul>
                 </div>
                 <div class="btn-group dropafter box shadow-sm py-0 mx-2" style={{ width: '130px' }}>
                   <button type="button" className="small btn dropdown-toggle d-flex justify-content-between align-items-center py-0" data-bs-toggle="dropdown" aria-expanded="false">
-                   Language  <KeyboardArrowDownRoundedIcon style={{color:"#8C8C8C"}} className='down-icon'/>
+                    Language  <KeyboardArrowDownRoundedIcon style={{ color: "#8C8C8C" }} className='down-icon' />
                   </button>
                   <ul class="dropdown-menu" style={{ width: '220px' }}>
-                  
-                    <li> <input type="checkbox" checked={lang===""} onChange={() => setLang("")}/> Any</li>
-                    <li> <input type="checkbox" checked={lang==="English"} onChange={() => setLang("English")}/> English</li>
-                    <li> <input type="checkbox" checked={lang==="German"} onChange={() => setLang("German")}/> German</li>
-                    <li> <input type="checkbox" checked={lang==="French"} onChange={() => setLang("French")}/> French</li>
-                                   
+
+                    <li> <input type="checkbox" checked={lang === ""} onChange={() => setLang("")} /> Any</li>
+                    <li> <input type="checkbox" checked={lang === "English"} onChange={() => setLang("English")} /> English</li>
+                    <li> <input type="checkbox" checked={lang === "German"} onChange={() => setLang("German")} /> German</li>
+                    <li> <input type="checkbox" checked={lang === "French"} onChange={() => setLang("French")} /> French</li>
+
                   </ul>
                 </div>
+              </div>
+
+              <div className="d-flex align-items-center flex-wrap">
+                <p style={{ width: '64px', marginBottom: '0px' }}>Team</p>
+                <div style={{ width: '90px', height: '50px' }}><ToggleSwitch label="Notifications" /></div>
+                <p style={{ width: '64px', marginBottom: '0px' }}>MySelf</p>
+
+              </div>
             </div>
 
-            <div className="d-flex align-items-center flex-wrap">
-              <p style={{width: '64px', marginBottom: '0px'}}>Team</p>
-              <div style={{width: '90px', height: '50px'}}><ToggleSwitch label="Notifications" /></div>
-              <p style={{width: '64px', marginBottom: '0px'}}>MySelf</p>
-
-            </div>
-          </div>
-
-      {/* <div className="d-flex align-items-start list_card-1 p-1 my-3 ">
+            {/* <div className="d-flex align-items-start list_card-1 p-1 my-3 ">
         
         <div style={{ width: "5rem" }}
           className="filt">Filter : </div>
@@ -270,7 +270,7 @@ export default function MarketPlace({ userdata }) {
             </div>
           </InstantSearch>
         </div >
-        {/* <ContactFooter /> */}
+        {/* < /> */}
       </div>
       <Footer />
     </>

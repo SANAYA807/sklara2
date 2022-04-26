@@ -7,6 +7,11 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
+import Flags from 'country-flag-icons/react/3x2'
+import PersonIcon from '@mui/icons-material/Person';
+import SwitchAccountIcon from '@mui/icons-material/SwitchAccount';
+import ReactCountryFlag from "react-country-flag"
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import ShopTwoOutlinedIcon from '@mui/icons-material/ShopTwoOutlined';
 import FilterCenterFocusOutlinedIcon from '@mui/icons-material/FilterCenterFocusOutlined';
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
@@ -29,6 +34,8 @@ import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownR
 
 import './navbar.css'
 import { FolderCopyOutlined, ManageAccounts, Password, People } from '@mui/icons-material';
+import { US } from 'country-flag-icons/string/3x2'
+
 
 const Navbar = ({ userdata }) => {
   const navigate = useNavigate()
@@ -38,6 +45,8 @@ const Navbar = ({ userdata }) => {
       return "active";
     }
   };
+  console.log(US)
+
   //console.log(userdata)
   const signOut = () => {
     navigate('/')
@@ -98,26 +107,27 @@ const Navbar = ({ userdata }) => {
                   <ul class="dropdown-menu" style={{ width: '220px' }}>
                     {/* <li><AccountCircleOutlinedIcon /> {userdata && userdata.firstName} </li>
                     <li><hr class="dropdown-divider" /></li> */}
-                    <li><Link className="nav-link" to="/"><PersonAddAltOutlinedIcon /> Learning Dashboard</Link></li>
-                    <li><Link className="nav-link" to="/profile"><SettingsIcon /> My Profile</Link></li>
+                    <li><Link className="nav-link" to="/"><DashboardIcon style={{ color: '#550b7c' }} /> Learning Dashboard</Link></li>
+                    <li><Link className="nav-link" to="/profile"><PersonIcon style={{ color: '#ffc100' }} /> My Profile</Link></li>
                     <li onClick={() => modeChanger(userdata.mode === 'training' ? 'coaching' : 'training')}><Link className="nav-link" to="">
-                      <VisibilityIcon /> {userdata.mode === 'training' ? 'Switch to Training' : 'Switch to Coaching'}
+                      <SwitchAccountIcon style={{ color: '#0062e3' }} /> {userdata.mode === 'training' ? 'Switch to Training' : 'Switch to Coaching'}
                     </Link></li>
-                    <li><Link className="nav-link" to="/"><ContentCopyOutlinedIcon /> Booking Requests</Link></li>
+                    <li><Link className="nav-link" to="/"><ContentCopyOutlinedIcon style={{ color: '#28a745' }} /> Booking Requests</Link></li>
                     <li><hr class="dropdown-divider" /></li>
-                    <li><Link className="nav-link" to="/"><TranslateOutlinedIcon /> Change Language</Link></li>
-                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    {/* <li><Link className="nav-link" to="/"><TranslateOutlinedIcon /> Change Language</Link></li> */}
+                    <li> <select class="form-select form-select-sm" aria-label=".form-select-sm example">
                       <option value="english">English</option>
                       <option value="german">German</option>
                     </select>
+                    </li>
 
                     {userdata && userdata.userType === 'hr' &&
                       <li><Link className="nav-link" to="/employee_list"><People /> Your Employees</Link></li>
                     }
-                    <li><Link className="nav-link" to="/changePassword"><Password /> Change Password</Link></li>
+                    {/* <li><Link className="nav-link" to="/changePassword"><Password /> Change Password</Link></li> */}
                     <li><hr class="dropdown-divider" /></li>
                     {isAutheticated() &&
-                      <li><Link className="nav-link" to="/" onClick={signOut}><LogoutIcon /> Logout</Link></li>
+                      <li><Link className="nav-link" to="/" onClick={signOut}><LogoutIcon style={{ color: '#F37658 ' }} /> Logout</Link></li>
                     }
                   </ul>
                 </div>
