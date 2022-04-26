@@ -4,7 +4,7 @@ import "./Model.css"
 const Modal = ({ open, onClose }) => {
   if (!open) return null;
   return (
-    <div onClick={onClose} className='overlay Modal-box'>
+    <div onClick={onClose} className='overlay Modal-box' style={{color: 'black'}}>
       <div
         onClick={(e) => {
           e.stopPropagation();

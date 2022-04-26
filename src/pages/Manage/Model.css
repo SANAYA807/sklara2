@@ -75,3 +75,21 @@
   .Modal-box .mp-input-div{
       width: 33vw !important;
   }
+  .Modal-box .modalTime{
+    top: 44%;
+    left: 62%;
+    height: 250px;
+  }
+
+  .Modal-box .MuiFormControl-marginNormal {
+    margin-top: 0px;
+    margin-bottom: 8px;
+  }
+
+  .Modal-box .MuiInput-root {
+    width: 27rem;
+  }
+
+  .Modal-box .Timer .MuiInput-root {
+    width: 12rem;
+  }

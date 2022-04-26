@@ -7,6 +7,7 @@ import TimerIcon from '@mui/icons-material/Timer';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { HiDotsVertical } from "react-icons/hi";
 import CancelIcon from '@mui/icons-material/Cancel';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 
 
 import {
@@ -19,6 +20,7 @@ import "./Step3.css"
 import Modal from './Modal.js';
 import { Groups } from "@mui/icons-material";
 import TextField from '@mui/material/TextField';
+import ModalTime from "./ModelTime";
 
 
 
@@ -30,6 +32,8 @@ function DropBox() {
     const [indexs, setIndexs] = useState(-1);
     const [openModal, setOpenModal] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date())
+    const [show, setShow] = useState(false);
+
 
     const handleModelEvent = (index) => {
         setIndexs(index)
@@ -90,8 +94,11 @@ function DropBox() {
         className="d-flex align-items-center flex-wrap my-4"
         >
             <div style={{ marginRight: "10px" }} className="d-flex flex-column">
-                <p style={{marginBottom: '0px'}} className='fw-bold'>Select a date for the session</p>
-                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <p style={{marginBottom: '0px'}}className='fw-bold'>Select a date for the session</p>
+                <div className="p-1" onClick={() => setShow(true)} style={{textAlign: 'end', border: '1px solid #cec0c0', borderRadius: '10px'}}><CalendarTodayIcon /></div>
+                <ModalTime show={show} onClose={() => setShow(false)} />
+
+                {/* <MuiPickersUtilsProvider>
                 <KeyboardDatePicker
                     disableToolbar
                     variant="inline"
@@ -105,11 +112,10 @@ function DropBox() {
                     }}
                     invalidDateMessage="Computer says no"
                 />
-                </MuiPickersUtilsProvider>
+                </MuiPickersUtilsProvider> */}
             </div>
 
-            <div style={{ marginRight: "10px" }} className="d-flex flex-column">
-                {/* <p style={{marginBottom: '0px'}} className='fw-bold'>Start With</p> */}
+            {/* <div style={{ marginRight: "10px" }} className="d-flex flex-column">
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <TimePicker
                     label="Start With"
@@ -123,7 +129,6 @@ function DropBox() {
             </div>
 
             <div style={{ marginRight: "10px" }} className="d-flex flex-column">
-                {/* <p style={{marginBottom: '0px'}} className='fw-bold'>End With</p> */}
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <TimePicker
                     label="End With"
@@ -134,7 +139,7 @@ function DropBox() {
                     renderInput={(params) => <TextField {...params} />}
                 />
                 </MuiPickersUtilsProvider>
-            </div>
+            </div> */}
 
             <div className="d-flex flex-column">
                 <div className='d-flex justify-content-end px-5' style={{marginLeft: '97px'}}>
@@ -148,7 +153,7 @@ function DropBox() {
            
             {session && session.map((item, index) => {
                 if (item== "break") {
-                    return <div key={index} className="break-box my-2" > <div> <p className='BreakcloseBtn' onClick={()=>deleteBreak(index)}> <CancelIcon /> </p> Break +</div> </div>
+                    return <div key={index} className="break-box my-2" > <div className="fw-bold" style={{color: 'white'}}> <p className='BreakcloseBtn' onClick={()=>deleteBreak(index)}> <CancelIcon /> </p> Break +</div> </div>
                 }
                 return <>
                     {indexs== index && openEditor &&
@@ -169,11 +174,11 @@ function DropBox() {
                 <div key={index} style={{width: '98%', height: '200px'}} className='row my-2' onMouseEnter={()=>showHoveredHandler(index)} onMouseLeave={()=>hideHoveredHandler(-1)} >
                  <div className="dot-Pointer" style={{width: '45px'}} onClick={()=>handleOpenEditor(index, !openEditor)} >{openPointer ===index && <div className="dot-Point" ><img src="images/indicate.png" alt="image" /></div>}</div>
                  <div className={`row ${openPointer==index ? "hover-indicate" : ""} modalButton p-0`} style={{width: '71rem'}} onClick={()=>  handleModelEvent(index)}>
-                     <div style={{background: '#DFEEDB', width: '333px'}} className=' m-1 d-flex flex-column justify-content-center'>
+                     <div style={{background: '#DFEEDB', width: '333px', color: '#28A745'}} className=' m-1 d-flex flex-column justify-content-center'>
                          <p><QueryBuilderIcon />Click to add time</p>
                          <p><TimerIcon /></p>
             {indexs===index && <Modal open={openModal} onClose={() => setOpenModal(false)} />}                     </div>
-                     <div style={{background: '#17A2B8', width: '787px'}} className='m-1 p-4'>
+                     <div style={{background: '#17A2B8', width: '787px', color: '#FFFFFF'}} className='m-1 p-4'>
                          What’s Covered:
                      </div>
                  </div>
