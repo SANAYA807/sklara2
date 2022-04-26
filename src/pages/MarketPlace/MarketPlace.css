@@ -242,3 +242,17 @@ transition: color .15s ease-in-out,background-color .15s ease-in-out,border-colo
     justify-content: center;
     align-items: center;
 }
+
+.market-Place .ais-RefinementList-list{
+  color: #8C8C8C;
+}
+
+.market-Place .ais-RefinementList-list .ais-RefinementList-item{
+  padding: .7rem 1rem;
+}
+.market-Place .ais-RefinementList-label .ais-RefinementList-labelText{
+  margin-left: 6px!important;
+}
+.market-Place .ais-RefinementList-label .ais-RefinementList-count{
+  display: none;
+}
