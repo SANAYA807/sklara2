@@ -78,7 +78,7 @@
   .Modal-box .modalTime{
     top: 44%;
     left: 62%;
-    height: 250px;
+    height: 177px;
   }
 
   .Modal-box .MuiFormControl-marginNormal {
@@ -93,3 +93,45 @@
   .Modal-box .Timer .MuiInput-root {
     width: 12rem;
   }
+
+  .Modal-box .modalTime .MuiFormControl-root{
+    margin-bottom: 0px;
+  }
+  .Modal-box .MuiPopover-paper{
+    top: 326px!important;
+  }
+
+   .MuiPickersDay-daySelected{
+    background-color: #550B7C!important;
+}
+ .MuiPickersDay-daySelected:hover {
+  background-color: #550B7C!important;
+}
+
+
+
+    .Modal-box .ant-picker {
+      border: 1px solid #CCCCCC;
+       border-radius: 10px;
+       padding: 11px !important;
+    }
+
+    .ant-picker-time-panel {
+      width: 164px;
+      min-width: auto;
+  }
+
+  .ant-picker-input > input{
+    width: 170px;
+  }
+
+  .ant-picker-ok, .ant-btn-sm{
+    background-color: #550B7C;
+    border-color: #550B7C;
+  }
+
+  .ant-btn-sm:hover{
+    background-color: #550B7C;
+    border-color: #550B7C;
+  }
+  
