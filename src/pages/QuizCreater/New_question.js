@@ -37,7 +37,7 @@ const New_question = (userdata) => {
 
                 <div className=' Addq_Date_marks'>
                     <div className='d-flex flex-row '>
-                        <input className=' ' style={{
+                        <input className='' style={{
                             width: "20px",
                             height: "30px"
                             , left: "10px",

@@ -236,7 +236,7 @@ function Assignment({ userdata }) {
                         className="form-control"
                       />
 
-                     <div><input className='largeCheck' type="checkbox" /> Enable</div>
+                     <div><input type="checkbox" className='largeCheck'/> Enable</div>
                     </div>
                    
                   </div>
