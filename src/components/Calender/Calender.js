@@ -7,7 +7,7 @@ const CalenderCard = () => {
 
 
     return (
-        <div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Appointment />
         </div>
     );

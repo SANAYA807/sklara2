@@ -15,6 +15,7 @@ function FullCalendarApp() {
     const temp = Math.round((1.8 * (weather.temp - 273) + 32) * 10) / 10
     const API_KEY = 'aad732ad4eaab3664f5ab09dc84aa55c'
     const ref = useRef()
+    const [title, setTitle] = useState('')
     const cityname = 'San Francisco'
 
     const events = [
@@ -67,7 +68,9 @@ function FullCalendarApp() {
             console.log(res.data);
             setWeather({ ...weather, temp: res.data.main.temp, icon: res.data.weather[0].icon })
         }
-        console.log(ref);
+
+        // setTitle(ref.current._calendarApi.currentDataManager.data.viewTitle)
+        // console.log(ref.current._calendarApi.currentDataManager.data.viewTitle);
 
 
     }, [])
@@ -81,13 +84,14 @@ function FullCalendarApp() {
                 </div>
                 <img src={`http://openweathermap.org/img/w/${weather.icon}.png`} alt="" srcset="" />
             </div>
+            <h1 className='cal_title'>{ref.current?._calendarApi && ref.current._calendarApi.currentDataManager.data.viewTitle}</h1>
             <FullCalendar
                 ref={ref}
                 plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                 initialView="dayGridMonth"
                 headerToolbar={{
                     left: 'dayGridMonth,timeGridWeek,timeGridDay',
-                    center: 'title'
+                    // center: 'title'
                 }}
                 // customButtons={{
                 //     new: {

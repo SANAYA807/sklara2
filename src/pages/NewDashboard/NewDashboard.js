@@ -160,8 +160,8 @@ const NewDashboard = ({ userdata }) => {
                             <div className="row gx-0">
                                 <div className="shadow p-4 profD-rad pt-4 col-md-6 green">
                                     <h3>Statistics</h3>
-                                    <div className="col-md-11 mt-0">
-                                        <div className='center ms-5' style={{ width: 280, height: 280 }}>
+                                    <div className="col-md-12 mt-0">
+                                        <div className='center m-auto progress_bar' style={{ width: 280, height: 280 }}>
                                             <CircularProgressbarWithChildren
                                                 value={75}
                                                 strokeWidth={15}
@@ -198,7 +198,7 @@ const NewDashboard = ({ userdata }) => {
                                                 />
                                             </CircularProgressbarWithChildren>
                                         </div>
-                                        <div className='d-flex justify-content-between mt-4'>
+                                        <div className='d-flex justify-content-between mt-4 flex-wrap'>
                                             <div className='d-flex'><div className='statistics-dot' style={{ "backgroundColor": "#98C38B" }}></div>
                                                 <div><div>60%</div><small className='text-muted'>Completed</small></div>
                                             </div>
