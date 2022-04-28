@@ -37,6 +37,9 @@ import HRForm from './pages/StepperForm/HrStepper/HrForm';
 import SPForm from './pages/StepperForm/SPStepper/SPForm';
 import Performance from './pages/PerformancePage/Performance';
 import Assignment from './pages/Manage/Assignment';
+import OpenRequest from './pages/YourRequest/OpenRequest';
+import BookingRequest from './pages/YourRequest/BookingRequest';
+import TrainerForm from './pages/TrainingRequest/TrainerForm';
 
 function App() {
   const [userdata, setUserData] = useState(null)
@@ -110,6 +113,9 @@ function App() {
         <Route exact path="/hr_form" element={userdata && userdata._id ? <HRForm userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/performance" element={userdata && userdata._id ? <><Navbar userdata={userdata} /><Performance userdata={userdata} /><Footer /> </> : <Login />}></Route>
         <Route exact path="/Manage_form" element={userdata && userdata._id ? <ManageForm userdata={userdata} /> : <Login />}></Route>
+        <Route exact path="/OpenRequest" element={userdata && userdata._id ? <OpenRequest userdata={userdata} /> : <Login />}></Route>
+        <Route exact path="/BookingRequest" element={userdata && userdata._id ? <BookingRequest userdata={userdata} /> : <Login />}></Route>
+        <Route exact path="/training_request_form" element={userdata && userdata._id ? <TrainerForm userdata={userdata} /> : <Login />}></Route>
 
         {/* quiz creater */}
         <Route exact path="/Quiz_Creater" element={userdata && userdata._id ? <QuizCreater userdata={userdata} /> : <Login />}></Route>
