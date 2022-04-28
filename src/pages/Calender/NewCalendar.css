@@ -25,6 +25,15 @@
 
 }
 
+.cal_title {
+    position: absolute;
+    top: 24.4rem;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    /* z-index: 100; */
+}
+
 /* .fc-daygrid-event-dot {
     position: absolute;
     top: 0;
@@ -99,12 +108,12 @@ button[title='Next day'] {
 
 }
 
-.fc .fc-toolbar-title {
+/* .fc .fc-toolbar-title {
     font-size: 1.75em;
     margin: 0;
     position: absolute;
     left: 37rem;
-}
+} */
 
 a {
     text-decoration: none !important;
@@ -208,6 +217,51 @@ td[role='presentation'] {}
     top: -4.4rem;
 }
 
+.fc thead th:first-child {
+    border-top-left-radius: 10px;
+
+}
+
+/* .fc thead[role:'presentation'] tr[role:'row']:first-child {
+    border-top-left-radius: 6px;
+} */
+.fc-theme-standard .fc-scrollgrid {
+    /* border: 1px solid #ddd; */
+    border-radius: 10px;
+    border: 1px solid var(--fc-border-color, #ddd);
+}
+
+.fc {
+    border-radius: 10px;
+}
+
+.fc thead th:last-child {
+    border-top-right-radius: 10px;
+}
+
+.fc tbody tr:last-child th:first-child {
+    border-bottom-left-radius: 10px;
+
+}
+
+.fc tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+.fc tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+button[title='Previous month']:hover,
+button[title='Next month']:hover,
+button[title='Previous week']:hover,
+button[title='Next week']:hover,
+button[title='Previous day']:hover,
+button[title='Next day'] :hover {
+    box-shadow: 0px 0px 16px rgba(85, 11, 124, 0.3) !important;
+
+}
+
 .fc-button-primary:focus,
 .fc-button-primary:active:focus,
 .fc-button-primary.active:focus,
@@ -236,4 +290,15 @@ td[role='presentation'] {}
 .weather {
     position: absolute;
     right: 6%;
+}
+
+@media (min-width:1800px) {
+    /* .fc .fc-toolbar-title {
+        font-size: 1.75em;
+        margin: 0;
+        /* position: relative; */
+    /* position: absolute;
+        left: 45.4rem; */
+    /* right: 19.6em; */
+    /* } */
 }

@@ -184,3 +184,18 @@
         justify-content: center !important;
     }
 }
+
+@media (min-width:1900px) {
+    .right_card {
+        margin-top: 39px !important;
+    }
+
+
+}
+
+@media (max-width:1000px) {
+    .progress_bar {
+        height: 180px !important;
+        width: 180px !important;
+    }
+}
