@@ -32,9 +32,17 @@ function TrainerProfile({ userdata }) {
 
   const [value, onChange] = useState(new Date());
   const [toggle, setToggle] = useState(false)
+  const calendarRef = useRef()
+  const [toggleDate, setToggleDate] = useState('')
   const handleDayClick = (day, e) => {
-    setToggle(!toggle)
+    if (toggleDate.toString().slice(0, 10) !== day.toString().slice(0, 10)) {
+      setToggle(true)
+      setToggleDate(day)
+    } else {
+      setToggle(!toggle)
+    }
   }
+
 
   const ref = useRef(null);
 
@@ -76,8 +84,11 @@ function TrainerProfile({ userdata }) {
                     <a href="/#"><span className="badge badge-pill tp-red">Leaderships</span></a>&nbsp;
                     <a href="/#"><span className="badge badge-pill tp-blue">Negotiations</span></a>&nbsp;
                   </div>
-                  <div className='d-flex justify-content-center my-3'>
-                    <button className='btn tp-event-button mt-3'><small><ChatBubbleIcon fontSize='14px' /> Contact {firstName} </small></button>
+                  <div className='d-flex justify-content-center align-items-center my-3 mx-5'>
+
+                    <button className='btn tp-event-button mt-3 m-2'><small><ChatBubbleIcon fontSize='14px' /> Contact {firstName} </small></button>
+                    <button className='btn  tp-event-button mt-3 m-2'> Request Booking</button>
+
                   </div>
                 </div>
               </div>
@@ -140,14 +151,14 @@ function TrainerProfile({ userdata }) {
               <div className="card">
                 <div className="card-body row">
                   <div className="col-lg-6 " style={{ width: '45%' }}>
-                    <Calendar onChange={onChange} value={value} className='mb-3 ml-0 Avail-Calender' next2Label={null} prev2Label={null} onClickDay={handleDayClick} />
+                    <Calendar onChange={onChange} value={value} ref={calendarRef} className='mb-3 ml-0 Avail-Calender' next2Label={null} prev2Label={null} onClickDay={handleDayClick} />
                     <div className='alignRight'><small className='text-muted '>Highlights indicate {firstName} is busy on those dates</small></div>
                     <h6 className='mb-0 mt-5'>Want a personalized training from {firstName}, for you or your team?</h6>
                     <p><small className='text-muted '>You will have the opportunity to add your requirements in the following pages.</small></p>
                     <button className='btn shadow btn-primary text-light coach-btn mt-0'> Request Booking</button>
 
                   </div>
-                  {toggle && <div className="col-lg-5 ">
+                  {toggle && <div className="col-lg-5 d-flex align-items-center justify-content-center">
                     <Appointment />
 
                   </div>}

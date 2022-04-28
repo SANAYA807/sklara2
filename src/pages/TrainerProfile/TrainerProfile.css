@@ -164,6 +164,38 @@ h2 {
   /* margin-left: 5% !important; */
 }
 
+.Avail-Calender .react-calendar__tile--active {
+  background: #550B7C;
+  border-radius: 100%;
+  flex: 0 0 8% !important;
+  margin-left: 5% !important;
+  position: relative;
+  right: 3%;
+  color: white;
+}
+
 .Avail-Calender {
   padding-bottom: 0 !important;
+}
+
+@media (min-width:1700px) {
+  .react-calendar__tile--active {
+    background: #550B7C;
+    border-radius: 100%;
+    flex: 0 0 7.5% !important;
+    margin-left: 5% !important;
+    position: relative;
+    right: 3%;
+    color: white;
+  }
+
+  .Avail-Calender .react-calendar__tile--active {
+    background: #550B7C;
+    border-radius: 100%;
+    flex: 0 0 6.5% !important;
+    margin-left: 5% !important;
+    position: relative;
+    right: 3%;
+    color: white;
+  }
 }

@@ -45,7 +45,7 @@ const Navbar = ({ userdata }) => {
       return "active";
     }
   };
-  console.log(US)
+  // console.log(US)
 
   //console.log(userdata)
   const signOut = () => {
