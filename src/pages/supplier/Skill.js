@@ -236,6 +236,18 @@ const Skill = ({ userdata }) => {
     }
 
   }
+  function hexToRgbA(hex) {
+    var c;
+    if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+      c = hex.substring(1).split('');
+      if (c.length == 3) {
+        c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+      }
+      c = '0x' + c.join('');
+      return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',0.5)';
+    }
+    throw new Error('Bad Hex');
+  }
 
 
   return (
@@ -243,7 +255,7 @@ const Skill = ({ userdata }) => {
       <Navbar userdata={userdata} />
 
       <div className='container-fluid main-div my-4'>
-        <h1>Your Skill <span className='heading'>Focus Areas</span></h1>
+        <h1>Your Skill <span className='change-color'>Focus Areas</span></h1>
         <h6 className='text-muted'>You can add at the most 5 skills to your portfolio</h6>
         <div className='d-flex justify-content-end'>
           <Link to="/manage_skill" className='btn btn-primary text-light'><StyleIcon /> Manage</Link>
@@ -441,7 +453,7 @@ const Skill = ({ userdata }) => {
                         strokeLinecap: "round",
                       },
                       trail: {
-                        stroke: '#D7C0E5',
+                        stroke: hexToRgbA(item.color),
                       },
                       text: {
                         fill: '#8441AF',
