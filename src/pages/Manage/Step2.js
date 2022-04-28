@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import CreateIcon from "@mui/icons-material/Create";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 // import ReactChipInput from "react-chip-input";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import axios from 'axios'
+import {API} from '../../API'
+import Modal from '@mui/material/Modal';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import swal from 'sweetalert'
+import './manage.css'
+
 
 ClassicEditor.defaultConfig = {
   toolbar: {
@@ -40,12 +47,81 @@ ClassicEditor.defaultConfig = {
   language: 'en'
 };
 
-function Step2({eventTitle, setEventTitle, focusSkill, setFocusSkill, desc, setDesc, requirements, setRequirements,
-  contents, setContents,numOfSessions, setNumOfSessions, maxParticipants,setMaxParticipants,language, setLanguage}) {
-  const [description, setDescription] = useState("");
-
+function Step2({setProceed, eventTitle, setEventTitle, focusSkill, setFocusSkill, description, setDesc, requirements, setRequirements,
+  contents, setContents,numOfSessions, setNumOfSessions, maxParticipants,setMaxParticipants,language, setLanguage,eventLanugage}) {
   
+    const [searchTerm, setSearchTerm] = useState('')
+    const [searchData, setSearchData] = useState([]) 
+    const [index, setIndex] = useState(null)
+    const [blank, setBlank] = useState(false)
+    const [editMode,setEditMode] = useState(false)
 
+  useEffect(()=>{
+    if(eventTitle.length > 0 && focusSkill.length > 0 && description.length > 0 &&
+      requirements.length > 0 && contents.length > 0 && language.length > 0){
+      setProceed(true)
+    }else{
+      setProceed(false)
+    }
+  },[eventTitle,focusSkill,description,requirements,contents,language])
+
+  const setToggle = () => {
+    if (editMode === false) {
+      setEditMode(true)
+    } else {
+      setEditMode(false)
+    }
+  }
+
+  const handleSearch = async () => {
+    let res = await axios.get(`${API}/api/focusSkills/search/${searchTerm}`);
+    if (res.data.status === 'ok') {
+      setSearchData(res.data.data)
+      // console.log('yes')
+      //console.log(res)
+      setBlank(false)
+    } else if (res.data.data.length === 0) {
+      setBlank(true)
+    }
+  }
+
+  useEffect(() => {
+    handleSearch();
+  }, [searchTerm])
+
+  //select funtion
+  const handleSelect = async (skill, color) => {
+    const exists = focusSkill.find(item => item.skill === skill)
+    if (exists) {
+      return swal('Error', 'This skill is alreay present in your profile', 'error')
+    } else if (focusSkill.length >= 5) {
+      return swal('Error', 'Already having 5 skills in your profile. Please remove one to add new skill', 'error')
+    }
+    swal('Success','Skill added successfully','success')
+
+    const newData = {
+      skill:skill,
+      color:color,
+    }
+    setFocusSkill([...focusSkill,newData])
+    console.log(focusSkill)
+  }
+  
+  //delete function
+  const removeSkill = async (i) => {
+    const confirm = window.confirm('Are you sure you want to delete this skill')
+    if (!confirm) {
+      return
+    }
+    if (i > -1) {
+     const newFocus =  focusSkill.splice(i, 1)
+     setFocusSkill([...focusSkill])
+    }
+  }
+
+  useEffect(()=>{
+    setFocusSkill(focusSkill)
+  },[removeSkill])
   // const [state, setstate] = useState({ tags:[]})
 
   // const addChip = (value) => {
@@ -61,6 +137,86 @@ function Step2({eventTitle, setEventTitle, focusSkill, setFocusSkill, desc, setD
 
   return (
     <div style={{paddingLeft: '32px'}} className="step2">
+
+        {/* for skill selection */}
+        <Modal
+          open={editMode}
+          onClose={() => setEditMode(false)}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+          className='modal-scroll py-5 center'
+
+        >
+          <div className='container bg-light p-4 px-5 mt-2'>
+            <div className='d-flex justify-content-end'>
+              <button className='btn btn-secondary btn-sm' onClick={() => setEditMode(false)}><CloseOutlinedIcon /></button>
+            </div>
+              <>
+                <div className='row justify-content-center my-1'>
+                  <div className='col-md-12'>
+                    <h5 className='text-center'>Select the Skills, suitable for Training</h5>
+                  </div>
+                  <div className='col-md-12'>
+                    <p className='text-center text-secondary'>Now, choose some skills you would like to add so we can better curate your events.</p>
+                  </div>
+                  <div className='col-md-4 my-3'>
+                    <h5 className='text-center'>Add any skill you'd like</h5>
+                    <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className='form-control skill-search' placeholder={`Search for skills`} />
+                    <h5 className='text-center mt-4'>Top Skills</h5>
+                  </div>
+
+                </div>
+                <div className='row justify-content-center my-3'>
+                  {searchData.length > 0 ? searchData.map((item, i) => (
+                    <>
+                      {item.skills && item.skills.map((itm) => (
+                        <div className='m-2' style={{ width: 'auto' }}>
+                          <button className='btn btn-rounded btn-outline-info' onClick={() => handleSelect(itm.skill, itm.color)}>{itm.skill}</button>
+                        </div>
+                      ))}
+                    </>
+                  )) :
+                    <>
+                      <div className='m-2' style={{ width: 'auto' }}>
+                        <button className='btn btn-rounded btn-outline-info'>Life Skills</button>
+                      </div>
+                      <div className='m-2' style={{ width: 'auto' }}>
+                        <button className='btn btn-rounded btn-outline-info'>Communication Skills</button>
+                      </div>
+                      <div className='m-2' style={{ width: 'auto' }}>
+                        <button className='btn btn-rounded btn-outline-info'>Creative Skills</button>
+                      </div>
+                      <div className='m-2' style={{ width: 'auto' }}>
+                        <button className='btn btn-rounded btn-outline-info'>Communication Skills</button>
+                      </div>
+                      <div className='m-2' style={{ width: 'auto' }}>
+                        <button className='btn btn-rounded btn-outline-info'>IT Skills</button>
+                      </div>
+                      <div className='m-2' style={{ width: 'auto' }}>
+                        <button className='btn btn-rounded btn-outline-info'>Management Skills</button>
+                      </div>
+                      <div className='m-2' style={{ width: 'auto' }}>
+                        <button className='btn btn-rounded btn-outline-info'>Adaptability Skills</button>
+                      </div>
+                      <div className='m-2' style={{ width: 'auto' }}>
+                        <button className='btn btn-rounded btn-outline-info'>Agile Skills</button>
+                      </div>
+                      <div className='m-2' style={{ width: 'auto' }}>
+                        <button className='btn btn-rounded btn-outline-info'>Teamwork Skills</button>
+                      </div>
+                      <div className='m-2' style={{ width: 'auto' }}>
+                        <button className='btn btn-rounded btn-outline-info'>Recruitment Skills</button>
+                      </div>
+                    </>
+                  }
+                  {searchData.length === 0 && searchTerm.length !== 0 && <h3 className='text-center text-danger my-5'>No matching value found</h3>}
+
+                </div>
+              </>
+          </div>
+        </Modal>
+
+
       <p className="fw-bold">What do you want to name this event?</p>
       <form class="d-flex edit_bar">
         <input
@@ -92,6 +248,7 @@ function Step2({eventTitle, setEventTitle, focusSkill, setFocusSkill, desc, setD
           type="search"
           placeholder="Search"
           aria-label="Search"
+          onClick={()=>setEditMode(true)}
         />
       </form>
       {/* <ReactChipInput
@@ -100,23 +257,18 @@ function Step2({eventTitle, setEventTitle, focusSkill, setFocusSkill, desc, setD
                 onSubmit={value =>addChip(value)}
                 onRemove={index => removeChip(index)}
         /> */}
-      <div className="d-flex align-items-start list_card-1 p-1 my-3 ">
+      <div className="d-flex align-items-start list_card-1 p-1 my-3" style={{overflowX:"scroll"}}>
+       {focusSkill.length > 0 && focusSkill.map((item,i)=>(
         <div
-          style={{ width: "8rem" }}
-          className="col-md-12 nav-box m-2 skill-box"
+          className="nav-box m-2 skill-box skillBtn"
+          onClick={()=>removeSkill(i)}
         >
           <p className="py-1 mb-0 px-1">
-            Leadership <DeleteOutlineIcon fontSize="small" />
+            {item.skill} <DeleteOutlineIcon fontSize="small" />
           </p>
         </div>
-        <div
-          style={{ width: "10rem" }}
-          className="col-md-12 nav-box m-2 skill-box"
-        >
-          <p className="py-1 mb-0 px-1">
-            Critical Thinking <DeleteOutlineIcon fontSize="small" />
-          </p>
-        </div>
+       ))}
+        
       </div>
       <div className="form-group">
         <label class="col-md-4 control-label fw-bold">Description</label>
@@ -127,7 +279,7 @@ function Step2({eventTitle, setEventTitle, focusSkill, setFocusSkill, desc, setD
           editor={ClassicEditor}
           removePlugins= 'toolbar'
           allowedContent= 'p h1 h2 strong em; a[!href]; img[!src,width,height];'
-          data={desc}
+          data={description}
           onChange={(event, editor) => {
             let data = editor.getData();
             setDesc(data);
@@ -182,9 +334,17 @@ function Step2({eventTitle, setEventTitle, focusSkill, setFocusSkill, desc, setD
 
             <div className="input-group mx-4 mp-input-div shadow-sm d-flex flex-column">
             <p className="fw-bold">Language of Delivery</p>
-                <input style={{width:'300px'}} type="text" value={language}
+                {/* <input style={{width:'300px'}} type="text" value={language}
                onChange={(e)=>setLanguage(e.target.value)} className="form-control"
-                />
+                /> */}
+   
+                <select className="form-control w-100" style={{borderBottom: 'none'}} onChange={(e)=>setLanguage(e.target.value)}>
+                    <option disabled>Select</option>
+                    {eventLanugage.map((item)=>(
+                      <option>{item}</option>
+                    ))}
+                </select>
+
             </div>
       </div>
     </div>

@@ -100,10 +100,7 @@ const Skill = ({ userdata }) => {
     //seting variables
     setSkill(skill)
     setColor(color)
-
     setStep(2)
-
-
   }
   //confirm Selection
   const confirmSelection = async () => {

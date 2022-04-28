@@ -5,12 +5,10 @@ import { RiArrowUpSLine, RiArrowDownSLine } from 'react-icons/ri';
 import DropBox from './DropBox.js';
 
 
-function Step3({numOfSessions}) {
+function Step3({numOfSessions,sessionDetails,setSessionDetails,setProceed}) {
     const [clicked, setClicked] = useState(false);
     //const [data, setData] = useState([])
   let data = [];
-
-
   for(let i = 1; i<= numOfSessions; i++){
     // setData([...data,{question:`Session ${i}`,
     // answer: `Answer ${i}`}])
@@ -28,6 +26,7 @@ function Step3({numOfSessions}) {
             {
                 sessionName:'',
                 topicsCovered:'',
+                learningObjective:'',
                 startTime:'',
                 endTime:'',
                 break:'',
@@ -39,6 +38,13 @@ function Step3({numOfSessions}) {
     console.log(i)
   }
   
+  useEffect(()=>{
+    if(sessionDetails.length > 0){
+      setProceed(true)
+    }else{
+      setProceed(false)
+    }
+  },[sessionDetails])
 
     const toggle = index => {
       if (clicked === index) {
