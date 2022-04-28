@@ -1,4 +1,4 @@
-.MuiStepConnector-root{
+.LinearStep .MuiStepConnector-root{
   display: none;
 }
 
@@ -6,11 +6,11 @@
     display: none !important;
   } */
 
-.MuiStepLabel-horizontal{
+.LinearStep .MuiStepLabel-horizontal{
     width: 350px;
     border: 1px solid;
 }
-.MuiTypography-caption{
+.LinearStep .MuiTypography-caption{
     display: block;
     position: absolute;
     top: 2px;
@@ -18,30 +18,30 @@
     left: 105px;
 }
 
-.MuiStepLabel-labelContainer {
+.LinearStep .MuiStepLabel-labelContainer {
     width: 100%;
     background: white !important;
 }
 
-.MuiStepLabel-horizontal{
+.LinearStep .MuiStepLabel-horizontal{
     background: #8441AF;
 }
 
-.MuiStepIcon-root{
+.LinearStep .MuiStepIcon-root{
     background: white !important;
 }
 
-.MuiStepIcon-completed {
+.LinearStep .MuiStepIcon-completed {
     background: white !important;
 }
 
-.MuiStepLabel-labelContainer{
+.LinearStep .MuiStepLabel-labelContainer{
     height: 51px;
     display: flex;
     padding-left: 10px;
 }
 
-.MuiStepLabel-iconContainer{
+.LinearStep .MuiStepLabel-iconContainer{
     height: 41px;
     display: flex;
     align-items: center;

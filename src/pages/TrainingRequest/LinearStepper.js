@@ -266,7 +266,7 @@ const LinearStepper = () => {
   //   console.log(data);
   // };
   return (
-    <div className="mp-outer container-fluid main-div pt-3">
+    <div className="mp-outer container-fluid main-div pt-3 LinearStep">
       <div className="col-lg-12 col-sm-12 common-card">
               <div className="card coach-card" style={{ fontSize: "14px" }}>
                 <div className="card-body row mt-3">
