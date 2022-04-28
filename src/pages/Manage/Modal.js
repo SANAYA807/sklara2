@@ -1,10 +1,12 @@
 import React from 'react';
 import "./Model.css"
+import CancelIcon from '@mui/icons-material/Cancel';
+
 
 const Modal = ({ open, onClose }) => {
   if (!open) return null;
   return (
-    <div onClick={onClose} className='overlay Modal-box'>
+    <div onClick={onClose} className='overlay Modal-box' style={{color: 'black'}}>
       <div
         onClick={(e) => {
           e.stopPropagation();
@@ -13,7 +15,7 @@ const Modal = ({ open, onClose }) => {
       >
         <div className='modalRight'>
           <p className='closeBtn' onClick={onClose}>
-            X
+            <CancelIcon style={{fontSize: '37px'}} />
           </p>
           <div className='content'>
               <div className="input-group mx-4 mp-input-div shadow-sm d-flex flex-column">

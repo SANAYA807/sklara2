@@ -21,6 +21,22 @@ function ManageForm({ userdata }) {
   const [maxParticipants,setMaxParticipants] = useState(1)
   const [language,setLanguage] = useState('')
 
+  const [sessionDetails,setSessionDetails] = useState([])
+
+  const [paymentMode, setPaymentMode] = useState('')
+  const [feesPerParticipants,setFeesPerParticipants] = useState('')
+  const [amount, setAmount] = useState('')
+  
+  const [assignmentType,setAssignmentType] = useState('')
+  const [assignmentName,setAssignmentName] = useState('')
+  const [assignmentDescription,setAssignmentDescriptionn] = useState('')
+
+  const [uploadedDocs,setUploadedDocs] = useState('')
+  const [uploadedDocsId,setUploadedDocsId] = useState('')
+
+  const [activationDate,setActivationDate] = useState('')
+  const [dueDate,setDueDate] = useState('')
+
   const [step, setstep] = useState(1);
   const getStep = (item) => {
     setstep(item);
@@ -46,8 +62,8 @@ function ManageForm({ userdata }) {
                 numOfSessions={numOfSessions} setNumOfSessions={setNumOfSessions} maxParticipants={maxParticipants}
                 setMaxParticipants={setMaxParticipants} language={language} setLanguage={setLanguage}
                 />}
-                {step === 3 && <Step3 numOfSessions={numOfSessions}/>}
-                {step === 4 && <Step4 />}
+                {step === 3 && <Step3 numOfSessions={numOfSessions} setSessionDetails={setSessionDetails}/>}
+                {step === 4 && <Step4 setFeesPerParticipants={setFeesPerParticipants} setPaymentMode={setPaymentMode} setAmount={setAmount} />}
                             
 
                {step!==4 && <div className='d-flex justify-content-end my-2 pt-2 px-5'>

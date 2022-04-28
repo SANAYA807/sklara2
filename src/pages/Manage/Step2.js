@@ -6,6 +6,39 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
+ClassicEditor.defaultConfig = {
+  toolbar: {
+    items: [
+      'heading',
+      '|',
+      'bold',
+      'italic',
+      'link',
+      '|',
+      'bulletedList',
+      'numberedList',
+      // '|',
+      // 'insertTable',
+      // '|',
+      // 'imageUpload',
+      // '|',
+      // 'undo',
+      // 'redo'
+    ]
+  },
+  image: {
+    toolbar: [
+      'imageStyle:full',
+      'imageStyle:side',
+      '|',
+      'imageTextAlternative'
+    ]
+  },
+  table: {
+    contentToolbar: [ 'tableColumn', 'tableRow', 'mergeTableCells' ]
+  },
+  language: 'en'
+};
 
 function Step2({eventTitle, setEventTitle, focusSkill, setFocusSkill, desc, setDesc, requirements, setRequirements,
   contents, setContents,numOfSessions, setNumOfSessions, maxParticipants,setMaxParticipants,language, setLanguage}) {
@@ -92,6 +125,8 @@ function Step2({eventTitle, setEventTitle, focusSkill, setFocusSkill, desc, setD
         </p>
         <CKEditor
           editor={ClassicEditor}
+          removePlugins= 'toolbar'
+          allowedContent= 'p h1 h2 strong em; a[!href]; img[!src,width,height];'
           data={desc}
           onChange={(event, editor) => {
             let data = editor.getData();
