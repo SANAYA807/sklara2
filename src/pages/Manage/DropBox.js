@@ -24,7 +24,7 @@ import ModalTime from "./ModelTime";
 
 
 
-function DropBox() {
+function DropBox({data,key}) {
     const [session , setSession] = useState(["row", "break", "row"])
     const [openPointer, setopenPointer] = useState(-1);
     const [value, setValue] = useState(0);
@@ -87,6 +87,12 @@ function DropBox() {
   }
 
   console.log(session)
+
+  const insertDate=(index,value)=>{
+    data[index].date = value;
+    console.log(data)
+  }
+
   return (
       <>
     <div

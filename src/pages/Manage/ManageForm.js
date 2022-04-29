@@ -65,7 +65,7 @@ function ManageForm({ userdata }) {
                 setMaxParticipants={setMaxParticipants} language={language} setLanguage={setLanguage}
                 />}
                 {step === 3 && <Step3 setProceed={setProceed} numOfSessions={numOfSessions} sessionDetails={setSessionDetails} setSessionDetails={setSessionDetails}/>}
-                {step === 4 && <Step4 setFeesPerParticipants={setFeesPerParticipants} setPaymentMode={setPaymentMode} setAmount={setAmount} />}
+                {step === 4 && <Step4 paymentOption={userdata && userdata.paymentMode} feesPerParticipants={feesPerParticipants} setFeesPerParticipants={setFeesPerParticipants} paymentMode={paymentMode}  setPaymentMode={setPaymentMode} amount={amount} setAmount={setAmount} />}
                             
 
                {step!==4 && <div className='d-flex justify-content-end my-2 pt-2 px-5'>
