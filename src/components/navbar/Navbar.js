@@ -34,7 +34,6 @@ import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownR
 
 import './navbar.css'
 import { FolderCopyOutlined, ManageAccounts, Password, People } from '@mui/icons-material';
-import { US } from 'country-flag-icons/string/3x2'
 
 
 const Navbar = ({ userdata }) => {
@@ -45,7 +44,6 @@ const Navbar = ({ userdata }) => {
       return "active";
     }
   };
-  // console.log(US)
 
   //console.log(userdata)
   const signOut = () => {
