@@ -155,8 +155,7 @@ function TrainerProfile({ userdata }) {
                     <div className='alignRight'><small className='text-muted '>Highlights indicate {firstName} is busy on those dates</small></div>
                     <h6 className='mb-0 mt-5'>Want a personalized training from {firstName}, for you or your team?</h6>
                     <p><small className='text-muted '>You will have the opportunity to add your requirements in the following pages.</small></p>
-                    {/* <Link to="/training_request_form"><button className='btn shadow btn-primary text-light coach-btn mt-0'> Request Booking</button></Link> */}
-                    <button className='btn shadow btn-primary text-light coach-btn mt-0'> Request Booking</button>
+                    <Link to="/training_request_form"><button className='btn shadow btn-primary text-light coach-btn mt-0'> Request Booking</button></Link>
                   </div>
                   {toggle && <div className="col-lg-5 d-flex align-items-center justify-content-center">
                     <Appointment />
