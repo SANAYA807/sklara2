@@ -339,7 +339,7 @@ function Step2({setProceed, eventTitle, setEventTitle, focusSkill, setFocusSkill
                 /> */}
    
                 <select className="form-control w-100" style={{borderBottom: 'none'}} onChange={(e)=>setLanguage(e.target.value)}>
-                    <option disabled>Select</option>
+                    <option disabled selected>Select</option>
                     {eventLanugage.map((item)=>(
                       <option>{item}</option>
                     ))}

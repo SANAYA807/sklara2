@@ -27,12 +27,14 @@ function Step3({numOfSessions,sessionDetails,setSessionDetails,setProceed}) {
                 sessionName:'',
                 topicsCovered:'',
                 learningObjective:'',
-                startTime:'',
-                endTime:'',
+                hours:'',
+                minutes:'',
                 break:'',
             }
         ],
     date:Date.now(),
+    startTime:'',
+    endTime:''
       }
     )
     console.log(i)

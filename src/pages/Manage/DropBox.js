@@ -103,7 +103,7 @@ function DropBox({data,key}) {
             <div style={{ marginRight: "10px" }} className="d-flex flex-column">
                 <p style={{marginBottom: '0px'}}className='fw-bold'>Select a date for the session</p>
                 <div className="p-1" onClick={() => setShow(true)} style={{textAlign: 'end', border: '1px solid #cec0c0', borderRadius: '10px'}}><CalendarTodayIcon /></div>
-                <ModalTime show={show} onClose={() => setShow(false)} />
+                <ModalTime data={data} show={show} onClose={() => setShow(false)} />
 
                 {/* <MuiPickersUtilsProvider>
                 <KeyboardDatePicker
@@ -184,9 +184,10 @@ function DropBox({data,key}) {
                      <div style={{background: '#DFEEDB', width: '333px', color: '#28A745'}} className=' m-1 d-flex flex-column justify-content-center'>
                          <p><QueryBuilderIcon />Click to add time</p>
                          <p><TimerIcon /></p>
-            {indexs===index && <Modal open={openModal} onClose={() => setOpenModal(false)} />}                     </div>
+            {indexs===index && <Modal open={openModal} onClose={() => setOpenModal(false)} data={data} />}                     </div>
                      <div style={{background: '#17A2B8', width: '787px', color: '#FFFFFF'}} className='m-1 p-4'>
                          What’s Covered:
+                         <p>{data.session[0].topicsCovered}</p>
                      </div>
                  </div>
               </div>
