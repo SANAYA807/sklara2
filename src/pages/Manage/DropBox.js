@@ -21,16 +21,19 @@ import Modal from './Modal.js';
 import { Groups } from "@mui/icons-material";
 import TextField from '@mui/material/TextField';
 import ModalTime from "./ModelTime";
+import BreakTimeModel from "./BreakTimeModel";
 
 
 
 function DropBox({data,key}) {
+  
     const [session , setSession] = useState(["row", "break", "row"])
     const [openPointer, setopenPointer] = useState(-1);
     const [value, setValue] = useState(0);
     const [openEditor, setopenEditor] = useState(false);
     const [indexs, setIndexs] = useState(-1);
     const [openModal, setOpenModal] = useState(false);
+    const [BreakModel, setBreakModel] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date())
     const [show, setShow] = useState(false);
 
@@ -43,6 +46,11 @@ function DropBox({data,key}) {
       const handleOpenEditor = (index, open) => {
         setIndexs(index)
         setopenEditor(open)
+      }
+
+      const OpenBreak = (index) => {
+         setIndexs(index)
+         setBreakModel(true)
       }
 
    const deleteBreak = (index) => {
@@ -92,7 +100,7 @@ function DropBox({data,key}) {
     data[index].date = value;
     console.log(data)
   }
-
+  console.log(data, "fgfgf")
 
   return (
       <>
@@ -104,49 +112,9 @@ function DropBox({data,key}) {
                 <p style={{marginBottom: '0px'}}className='fw-bold'>Select a date for the session</p>
                 <div className="p-1" onClick={() => setShow(true)} style={{textAlign: 'end', border: '1px solid #cec0c0', borderRadius: '10px'}}><CalendarTodayIcon /></div>
                 <ModalTime data={data} show={show} onClose={() => setShow(false)} />
-
-                {/* <MuiPickersUtilsProvider>
-                <KeyboardDatePicker
-                    disableToolbar
-                    variant="inline"
-                    format="MM/dd/yyyy"
-                    margin="normal"
-                    id="date-picker-inline"
-                    value={selectedDate}
-                    onChange={handleChange}
-                    KeyboardButtonProps={{
-                    "aria-label": "change date",
-                    }}
-                    invalidDateMessage="Computer says no"
-                />
-                </MuiPickersUtilsProvider> */}
             </div>
 
-            {/* <div style={{ marginRight: "10px" }} className="d-flex flex-column">
-                <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <TimePicker
-                    label="Start With"
-                    value={value}
-                    onChange={(newValue) => {
-                    setValue(newValue);
-                    }}
-                    renderInput={(params) => <TextField {...params} />}
-                />
-                </MuiPickersUtilsProvider>
-            </div>
 
-            <div style={{ marginRight: "10px" }} className="d-flex flex-column">
-                <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <TimePicker
-                    label="End With"
-                    value={value}
-                    onChange={(newValue) => {
-                    setValue(newValue);
-                    }}
-                    renderInput={(params) => <TextField {...params} />}
-                />
-                </MuiPickersUtilsProvider>
-            </div> */}
 
             <div className="d-flex flex-column">
                 <div className='d-flex justify-content-end px-5' style={{marginLeft: '97px'}}>
@@ -160,7 +128,13 @@ function DropBox({data,key}) {
            
             {session && session.map((item, index) => {
                 if (item== "break") {
-                    return <div key={index} className="break-box my-2" > <div className="fw-bold" style={{color: 'white'}}> <p className='BreakcloseBtn' onClick={()=>deleteBreak(index)}> <CancelIcon /> </p> Break +</div> </div>
+                    return <div key={index} className="break-box my-2" >
+                         <div className="fw-bold" style={{color: 'white'}}> 
+                                <p className='BreakcloseBtn' onClick={()=>deleteBreak(index)}> <CancelIcon />  </p> 
+                                 {indexs===index && <BreakTimeModel open={BreakModel} onClose={() => setBreakModel(false)} data={data} index={index} />}  
+                                <div onClick={()=>  {OpenBreak(index); console.log("heloooooooo")}}>Break +</div>
+                         </div> 
+                     </div>
                 }
                 return <>
                     {indexs== index && openEditor &&
@@ -184,10 +158,10 @@ function DropBox({data,key}) {
                      <div style={{background: '#DFEEDB', width: '333px', color: '#28A745'}} className=' m-1 d-flex flex-column justify-content-center'>
                          <p><QueryBuilderIcon />Click to add time</p>
                          <p><TimerIcon /></p>
-            {indexs===index && <Modal open={openModal} onClose={() => setOpenModal(false)} data={data} />}                     </div>
+            {indexs===index && <Modal open={openModal} onClose={() => setOpenModal(false)} data={data} index={index} />}                     </div>
                      <div style={{background: '#17A2B8', width: '787px', color: '#FFFFFF'}} className='m-1 p-4'>
                          What’s Covered:
-                         <p>{data.session[0].topicsCovered}</p>
+                         <p>{data.session[index] && data.session[index].topicsCovered}</p>
                      </div>
                  </div>
               </div>

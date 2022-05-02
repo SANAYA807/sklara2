@@ -5,40 +5,9 @@ import { RiArrowUpSLine, RiArrowDownSLine } from 'react-icons/ri';
 import DropBox from './DropBox.js';
 
 
-function Step3({numOfSessions,sessionDetails,setSessionDetails,setProceed}) {
+function Step3({numOfSessions,sessionDetails,setSessionDetails,setProceed, data}) {
     const [clicked, setClicked] = useState(false);
-    //const [data, setData] = useState([])
-  let data = [];
-  for(let i = 1; i<= numOfSessions; i++){
-    // setData([...data,{question:`Session ${i}`,
-    // answer: `Answer ${i}`}])
-
-    // {session:`Session ${i}`,
-    // date:Date.now(),
-    // startTime:'',
-    // endTime:'',
-    // topicsCovered:'',
-    // answer: `Answer ${i}`}
-
-    data.push(
-      {sessionNum:i,
-        session:[
-            {
-                sessionName:'',
-                topicsCovered:'',
-                learningObjective:'',
-                hours:'',
-                minutes:'',
-                break:'',
-            }
-        ],
-    date:Date.now(),
-    startTime:'',
-    endTime:''
-      }
-    )
-    console.log(i)
-  }
+  
   
   useEffect(()=>{
     if(sessionDetails.length > 0){
@@ -46,9 +15,12 @@ function Step3({numOfSessions,sessionDetails,setSessionDetails,setProceed}) {
     }else{
       setProceed(false)
     }
+    console.log(sessionDetails, "yyyyyyyy")
   },[sessionDetails])
 
-    const toggle = index => {
+    const toggle = index => { 
+      console.log(data, "dddddddddds")
+      setSessionDetails([ data])
       if (clicked === index) {
         //if clicked question is already active, then close it
         return setClicked(null);
@@ -56,6 +28,7 @@ function Step3({numOfSessions,sessionDetails,setSessionDetails,setProceed}) {
   
       setClicked(index);
     };
+   
 
   return (
     <div className='step3' style={{paddingLeft: '32px'}}>
