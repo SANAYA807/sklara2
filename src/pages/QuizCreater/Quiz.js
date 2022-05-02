@@ -13,7 +13,10 @@ const Quiz = (userdata) => {
                     <div className='row justify-content-center'>
                         <div className="row">
                             <SideNav />
-
+                            <div
+                  style={{  textAlign: "left" }}
+                  className="col-md-10"
+                >
 
                             <div className='Manage-right' >
                                 <div className="col-md-12 py-2 ps-2">
@@ -54,6 +57,7 @@ const Quiz = (userdata) => {
 
                                                 <span style={{ marginLeft: '150px', }} className="text-muted  ">Text...</span>
                                                 <span style={{ marginLeft: '520px', }} className='my-1 text-muted'>1.00</span>
+                                                <i className="fa fa-ellipsis-v ellipsis-icon-font" aria-hidden="true"></i>
 
                                             </div>
                                             <span style={{ marginLeft: '-850px' }} className="text-muted small ">
@@ -61,10 +65,16 @@ const Quiz = (userdata) => {
                                             </span>
                                             <hr />
                                             <div className='d-flex flex-row '>
+                                            <input className=' ' style={{
+                                                    width: "20px",
+                                                    height: "30px"
+                                                    , left: "10px",
+                                                }} type="checkbox" name="" id="" />
 
-                                                <span style={{ marginLeft: '40px', }}>15,May 2021</span>
+                                                <span style={{ marginLeft: '15px', }}>15,May 2021</span>
                                                 <span style={{ marginLeft: '150px', }} className="text-muted  ">Text...</span>
                                                 <span style={{ marginLeft: '520px', }} className='my-1 text-muted'>1.00</span>
+                                                <i className="fa fa-ellipsis-v ellipsis-icon-font" aria-hidden="true"></i>
 
                                             </div>
                                             <span style={{ marginLeft: '-850px' }} className="text-muted small ">
@@ -72,10 +82,16 @@ const Quiz = (userdata) => {
                                             </span>
                                             <hr />
                                             <div className='d-flex flex-row '>
+                                            <input className=' ' style={{
+                                                    width: "20px",
+                                                    height: "30px"
+                                                    , left: "10px",
+                                                }} type="checkbox" name="" id="" />
 
-                                                <span style={{ marginLeft: '40px', }}>15,May 2021</span>
+                                                <span style={{ marginLeft: '15px', }}>15,May 2021</span>
                                                 <span style={{ marginLeft: '150px', }} className="text-muted  ">Text...</span>
                                                 <span style={{ marginLeft: '520px', }} className='my-1 text-muted'>1.00</span>
+                                                <i className="fa fa-ellipsis-v ellipsis-icon-font" aria-hidden="true"></i>
 
                                             </div>
                                             <span style={{ marginLeft: '-850px' }} className="text-muted small ">
@@ -83,16 +99,23 @@ const Quiz = (userdata) => {
                                             </span>
                                             <hr />
                                             <div className='d-flex flex-row '>
+                                            <input className=' ' style={{
+                                                    width: "20px",
+                                                    height: "30px"
+                                                    , left: "10px",
+                                                }} type="checkbox" name="" id="" />
 
-                                                <span style={{ marginLeft: '40px', }}>15,May 2021</span>
+                                                <span style={{ marginLeft: '15px', }}>15,May 2021</span>
                                                 <span style={{ marginLeft: '150px', }} className="text-muted  ">Text...</span>
                                                 <span style={{ marginLeft: '520px', }} className='my-1 text-muted'>1.00</span>
+                                                <i className="fa fa-ellipsis-v ellipsis-icon-font" aria-hidden="true"></i>
 
                                             </div>
                                             <span style={{ marginLeft: '-850px' }} className="text-muted small ">
                                                 ET01987
                                             </span>
 
+                                            <hr />
 
                                         </div>
 
@@ -101,6 +124,7 @@ const Quiz = (userdata) => {
                                 </div>
                             </div>
                         </div>
+                       </div> 
                     </div>
                 </div>
             </div>
