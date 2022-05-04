@@ -13,7 +13,7 @@ import moment from 'moment';
 
 
 
-const ModalTime = ({show, onClose,data }) => {
+const ModalTime = ({show, onClose,data, startSession, endSession }) => {
   const [selectedDate, setSelectedDate] = useState(new Date())
   const [value, setValue] = useState(0);
 

@@ -24,7 +24,7 @@ const BreakTimeModel = ({open, onClose,data, index }) => {
 
   const saveData = () => {
     const obj = {BreakStart: startTime, BreakEnd:endTime};
-    data.session.splice(index, 0, obj)
+    data.session.splice(index, 1, obj)
     onClose()
   }
 
@@ -49,15 +49,15 @@ const BreakTimeModel = ({open, onClose,data, index }) => {
         onClick={(e) => {
           e.stopPropagation();
         }}
-        style={{height: '150px', top: '60%'}}
+        style={{height: '117px', top: '60%'}}
         className='modalContainer modalTime'
       >
-        <div className='modalRight' style={{padding: '1rem'}}>
-           <p onClick={()=>saveData()}>
+        <div className='modalRight' style={{padding: '10px'}}>
+           <p style={{paddingBottom: '0px', textAlign: 'end'}} onClick={()=>saveData()}>
             <SaveIcon style={{fontSize: '37px', color: 'black'}} />
           </p>
           
-        <div className="d-flex justify-content-between my-4">
+        <div className="d-flex justify-content-between mt-3">
 
                <div style={{ marginRight: "10px" , width: '210px'}} className="d-flex Timer">
                <TimePicker onChange={onChangeStart} value={startTime} format="HH:mm a" use12Hours="true" bordered="false" placeholder="Break Start with" defaultOpenValue={moment('00:00', 'HH:mm')} />

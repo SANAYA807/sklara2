@@ -7,7 +7,9 @@ import DropBox from './DropBox.js';
 
 function Step3({numOfSessions,sessionDetails,setSessionDetails,setProceed, data}) {
     const [clicked, setClicked] = useState(false);
-  
+    const [task, setTask] = useState();
+    let tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+    console.log(tasks, "task")
   
   useEffect(()=>{
     if(sessionDetails.length > 0){
@@ -15,11 +17,18 @@ function Step3({numOfSessions,sessionDetails,setSessionDetails,setProceed, data}
     }else{
       setProceed(false)
     }
-    console.log(sessionDetails, "yyyyyyyy")
+    console.log(sessionDetails, "opennn")
+    sessionDetails.length>0 && sessionDetails[0].map(function(data, i) {
+      console.log(data.sessionNum, "vfvf")
+        if(data.startTime != '' || data.endTime != '' ){
+          tasks.splice(data.sessionNum-1, 1, {data})
+          localStorage.setItem("tasks", JSON.stringify(tasks));
+          console.log(tasks, "locall")
+        }
+    })
   },[sessionDetails])
 
     const toggle = index => { 
-      console.log(data, "dddddddddds")
       setSessionDetails([ data])
       if (clicked === index) {
         //if clicked question is already active, then close it
@@ -50,7 +59,7 @@ function Step3({numOfSessions,sessionDetails,setSessionDetails,setProceed, data}
                             </div>
                             {clicked === index ? (
                             <div className='Dropdown'>
-                                <DropBox data={item} key={index} />
+                                <DropBox data={item} key={index} sessionData={tasks[index]? tasks[index]: ''} />
                             </div>
                             ) : null}
                         </>

@@ -33,7 +33,7 @@
     justify-content: center;
     align-items: center;
     height: auto;
-    min-height: 700px;
+    min-height: 300px;
   
 }
 .step3 .break-box{
@@ -93,7 +93,7 @@ display: flex;
 
   .Dropdown .BreakcloseBtn{
    position: relative;
-    top: -23px;
+    top: -20px;
     right: -583px;
  } 
 

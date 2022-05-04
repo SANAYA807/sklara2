@@ -9,7 +9,7 @@ import Step2 from "./Step2";
 import Step3 from "./Step3";
 import Step4 from "./Step4";
 
-function ManageForm({ userdata }) {
+const ManageForm = React.memo(function ({userdata}) {
 
   let data = [];
   const [eventType, setEventType] = useState('')
@@ -44,7 +44,6 @@ function ManageForm({ userdata }) {
   const getStep = (item) => {
     setstep(item);
   };
-
   if(numOfSessions){for(let i = 1; i<= numOfSessions; i++){
    
 
@@ -59,6 +58,8 @@ function ManageForm({ userdata }) {
     console.log(i)
   }
 }
+
+  
   console.log(step);
 
   return (
@@ -104,5 +105,6 @@ function ManageForm({ userdata }) {
     </>
   );
 }
+)
 
 export default ManageForm;
