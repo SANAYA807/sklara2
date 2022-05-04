@@ -40,6 +40,7 @@ import Assignment from './pages/Manage/Assignment';
 import OpenRequest from './pages/YourRequest/OpenRequest';
 import BookingRequest from './pages/YourRequest/BookingRequest';
 import TrainerForm from './pages/TrainingRequest/TrainerForm';
+import Test from './pages/test/Test';
 
 function App() {
   const [userdata, setUserData] = useState(null)
@@ -128,6 +129,10 @@ function App() {
         <Route exact path="/employee_list" element={userdata && userdata._id && userdata.userType === 'hr' ? <EmployeeList userdata={userdata} /> : <Login />}></Route>
         <Route exact path="/employee_list/Add" element={userdata && userdata._id && userdata.userType === 'hr' ? <AddUser userdata={userdata} /> : <Login />}></Route>
         <Route exact path='*' element={<NotFound userdata={userdata} />} />
+      
+      {/* Test */}
+      <Route exact path="/test" element={userdata && userdata._id ? <Test userdata={userdata} /> : <Login />}></Route>
+
       </Routes>
     </Router>
 
