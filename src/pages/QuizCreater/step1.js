@@ -1,101 +1,182 @@
-import { React, useState } from 'react'
+import React, { useState } from 'react'
 import Navbar from "../../components/navbar/Navbar"
 import SideNav from '../../components/SideNav/SideNav'
 
 import "./step1.css";
 
-const step1 = (userdata) => {
+function Step1(userdata) {
 
-
+    const [numOfSessions, setNumOfSessions] = useState(0);
     return (
         <>
-            <Navbar userdata={userdata} />
-
-            <div className=''>
-                <div className="row container-fluid ">
-
-                    <SideNav />
-                </div>
-                <div>
-                    <h6 className="Quiz_create" >Quiz Creator</h6>
-                    <div className='your-event' >
-                        <label class="col-md-4 control-label fw">Create a quiz for your event</label>
-                        <p className="text-muted small">
-                            After saving the quiz will be saved to your event, but only visible the stated time frame.
-                        </p>
+        <Navbar userdata={userdata} />
+        <div>
+          <div className="container-fluid px-1 Manage">
+            <div className="row justify-content-center">
+              <div className="row">
+                <SideNav />
+                <div
+                  style={{  textAlign: "left" }}
+                  className="col-md-10"
+                >
+                  <div style={{ paddingLeft: "32px" }}>
+                    <p className="quiz-heading">Quiz Creator</p>
+  
+                    <p style={{ marginBottom: "0px" }} className="fw-bold">
+                    Create a quiz for your event
+                    </p>
+                    <p className="text-muted">
+                    After saving the quiz will be saved to your event, but only visible the stated time frame.
+                    </p>
+  
+                    <p className="fw-bold select-qtype">Select type of Quiz</p>
+                    <div style={{ margin: "10px 8px" }} className="border_input">
+                      <select style={{ borderBottom: "none" }}>
+                        <option></option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </select>
                     </div>
-                    <div className="mx-4  ">
-                        <p className='Select_type fw-bold'>Select type of Quiz</p>
-                        {/* <label htmlFor="">Company Size</label> */}
-
-                        <select style={{ width: '19vw' }} className='select_option'  >
-                            <option></option>
-                            <option>1</option>
+  
+                    <p className="fw-bold name-quiz">Name of Quiz</p>
+                    <form style={{ width: "28vh" }} class="d-flex search_bar">
+                      <input
+                        style={{ boxShadow: "0px 0px 4px rgb(0 0 0 / 25%)" }}
+                        class="form-control search-input"
+                        type="search"
+                        aria-label="Search"
+                      />
+                    </form>
+  
+                    <div className="form-group">
+                      <p className="fw-bold">Description</p>
+                      <textarea  className="description-text" style={{ width: "1079px", height: "259px" }} />
+                    </div>
+  
+                    <div className="form-group" style={{ marginTop: "22px" }}>
+                      <label class="col-md-4 control-label fw-bold">
+                        Timing
+                      </label>
+                      <p className="text-muted small"> Activation Date</p>
+  
+                      <div
+                         
+                        className="d-flex align-items-center flex-wrap my-0"
+                      >
+                        <div
+                          style={{ margin: "10px 8px" }}
+                          className="border_input"
+                        >
+                          <select style={{ borderBottom: "none" }}>
+                            <option>DD/MM/YY</option>
                             <option>2</option>
                             <option>3</option>
                             <option>4</option>
-                        </select>
-                    </div>
-
-
-                    <div className=" mx-4 ">
-
-                        <label class=" Name_quiz fw-bold">Select type of Quiz</label>
-                        <input className=" Name_box  shadow-sm" style={{ width: '35vw' }}
-                            type="text"
-
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label class="Discrip  fw-bold">Description</label>
-                        <input className=" Discrip_box  shadow-sm" style={{ width: '70vw', }}
-                            type="text"
-
-                        />
-
-
-
-                    </div>
-
-                    <p className="timing  fw-bold">Timing</p>
-                    <div className="timing-box "  >
-
-                        <div className=" d-flex flex-row flex-wrap my-1 ">
-                            <label className="text-muted small" for="birthday">Activation Date</label>
-                            <div className="d-flex align-items-center flex-wrap my-1 "> <input type="date" name="birthday" />
-                                <input className="select d-flex " type="number" name="points" ></input>
-                            </div>
-
+                            <option>5</option>
+                          </select>
                         </div>
-
-                        <div><label className="text-muted small  my-1" for="birthday">Due  Date</label>
-                            <input type="date" />
-                            <input type="number" name="points" step="0" ></input></div>
-
-                        <div>
-                            <label className="text-muted small  my-1" for="birthday">Time limit</label>
-                            <input type="number" />
-                            <input type="number" name="points" placeholder='Minutes' ></input>
-                            <input type="checkbox" name="checkbox" />
+  
+                        <input
+                          style={{ width: "70px" }}
+                          type="number"
+                          value={numOfSessions}
+                          onChange={(e) => setNumOfSessions(e.target.value)}
+                          className="form-control"
+                        />
+  
+                        <input
+                          style={{ width: "70px" }}
+                          type="number"
+                          value={numOfSessions}
+                          onChange={(e) => setNumOfSessions(e.target.value)}
+                          className="form-control"
+                        />
+                      </div>
+  
+                      <p className="text-muted small"> Due Date</p>
+  
+                      <div
+                        className="d-flex align-items-center flex-wrap my-0"
+                      >
+                        <div
+                          style={{ margin: "10px 8px" }}
+                          className="border_input"
+                        >
+                          <select style={{ borderBottom: "none" }}>
+                            <option>DD/MM/YY</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
                         </div>
+  
+                        <input
+                          style={{ width: "70px" }}
+                          type="number"
+                          value={numOfSessions}
+                          onChange={(e) => setNumOfSessions(e.target.value)}
+                          className="form-control"
+                        />
+  
+                        <input
+                          style={{ width: "70px" }}
+                          type="number"
+                          value={numOfSessions}
+                          onChange={(e) => setNumOfSessions(e.target.value)}
+                          className="form-control"
+                        />
+                      </div>
+                    </div>
+  
+  
+                    <div className="form-group" style={{ marginTop: "22px" }}>
+  
+                      <p className="text-muted small">Time Limit</p>
+                      <div
+                        className="d-flex align-items-center flex-wrap my-0"
+                      >
+                        <div
+                          style={{ margin: "10px 8px" }}
+                          className="border_input new-time-select-last"
+                        >
+                          <select style={{ borderBottom: "none" }}>
+                            <option>0</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                        </div>
+  
+                        <input
+                          style={{ width: "280px" }}
+                          type="number"
+                          placeholder="Minutes"
+                          value={numOfSessions==0 ? "Minutes" : numOfSessions}
+                          onChange={(e) => setNumOfSessions(e.target.value)}
+                          className="form-control"
+                        />
+  
+                       <div><input type="checkbox" className=''/> Enable</div>
+                      </div>
+                      <button className='btn px-3 py-2 btn-primary round_btn' style={{ "padding": "0 20px", fontWeight: '600', float: 'right' }}>Continue</button>
 
                     </div>
-
-
-
-
+  
+                  </div>
                 </div>
-
-
+              </div>
             </div>
-
-
-        </>
+          </div>
+        </div>
+      </>
 
     )
 }
-export default step1
-
+export default Step1
 
 
 

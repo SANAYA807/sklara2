@@ -13,18 +13,33 @@ import moment from 'moment';
 
 
 
-const ModalTime = ({show, onClose }) => {
+const ModalTime = ({show, onClose,data, startSession, endSession }) => {
+  console.log(startSession, endSession, "haiiiii")
   const [selectedDate, setSelectedDate] = useState(new Date())
   const [value, setValue] = useState(0);
 
+  const [startTime, setStartTime] = useState('')
+  const [endTime, setEndtime] = useState('')
+
   const handleChange = (date) => {
     setSelectedDate(date)
+    data.date = date
+    // console.log(data)
   }
-  function onChange(time, timeString) {
-    console.log(time, timeString);
+  function onChangeStart(time, timeString) {
+    console.log(time.format("HH:mm"));
+    data.startTime = time.format("HH:mm");
+    setStartTime(time)
+  }
+  function onChangeEnd(time, timeString) {
+    //console.log(time, timeString);
+    data.endTime = time.format("HH:mm")
+    console.log(data.endTime)
+    setEndtime(time)
   }
 
   if (!show) return null;
+
   return (
     <div onClick={onClose} className='overlay Modal-box'>
       <div
@@ -57,16 +72,19 @@ const ModalTime = ({show, onClose }) => {
                 </MuiPickersUtilsProvider>
               </div>
           
-              <div className="d-flex justify-content-between my-4">
+             {!startSession ?  <div className="d-flex justify-content-between my-4">
 
                <div style={{ marginRight: "10px" , width: '210px'}} className="d-flex Timer">
-               <TimePicker onChange={onChange} format="HH:mm a" use12Hours="true" bordered="false" placeholder="Start with" defaultOpenValue={moment('00:00', 'HH:mm')} />
+               <TimePicker onChange={onChangeStart} value={startTime} format="HH:mm a" use12Hours="true" bordered="false" placeholder="Start with" defaultOpenValue={moment('00:00', 'HH:mm')} />
             </div>
 
             <div style={{width: '210px'}} className="d-flex Timer">
-               <TimePicker onChange={onChange} format="HH:mm a" use12Hours="true" bordered="false" placeholder="End with" defaultOpenValue={moment('00:00', 'HH:mm')} />
-            </div>
-          </div>
+               <TimePicker onChange={onChangeEnd} value={endTime} format="HH:mm a" use12Hours="true" bordered="false" placeholder="End with" defaultOpenValue={moment('00:00', 'HH:mm')} />
+            </div></div>
+            :
+            <><p style={{marginTop: '10px'}}>start = {startSession}, End = {endSession}</p></>
+            }
+          
           </div>
         
         </div>

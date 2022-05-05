@@ -9,8 +9,9 @@ import Step2 from "./Step2";
 import Step3 from "./Step3";
 import Step4 from "./Step4";
 
-function ManageForm({ userdata }) {
+const ManageForm = React.memo(function ({userdata}) {
 
+  let data = [];
   const [eventType, setEventType] = useState('')
   const [eventTitle, setEventTitle] = useState('')
   const [focusSkill, setFocusSkill] = useState([])
@@ -43,6 +44,23 @@ function ManageForm({ userdata }) {
   const getStep = (item) => {
     setstep(item);
   };
+  if(numOfSessions){for(let i = 1; i<= numOfSessions; i++){
+   
+
+    data.push(
+      {sessionNum:i,
+        session:[],
+    date:Date.now(),
+    startTime:'',
+    endTime:'',
+    Update: false
+      }
+    )
+    console.log(i)
+  }
+}
+
+  
   console.log(step);
 
   return (
@@ -64,8 +82,8 @@ function ManageForm({ userdata }) {
                 numOfSessions={numOfSessions} setNumOfSessions={setNumOfSessions} maxParticipants={maxParticipants}
                 setMaxParticipants={setMaxParticipants} language={language} setLanguage={setLanguage}
                 />}
-                {step === 3 && <Step3 setProceed={setProceed} numOfSessions={numOfSessions} sessionDetails={setSessionDetails} setSessionDetails={setSessionDetails}/>}
-                {step === 4 && <Step4 setFeesPerParticipants={setFeesPerParticipants} setPaymentMode={setPaymentMode} setAmount={setAmount} />}
+                {step === 3 && <Step3 setProceed={setProceed} numOfSessions={numOfSessions} sessionDetails={sessionDetails} setSessionDetails={setSessionDetails} data={data}/>}
+                {step === 4 && <Step4 paymentOption={userdata && userdata.paymentMode} feesPerParticipants={feesPerParticipants} setFeesPerParticipants={setFeesPerParticipants} paymentMode={paymentMode}  setPaymentMode={setPaymentMode} amount={amount} setAmount={setAmount} />}
                             
 
                {step!==4 && <div className='d-flex justify-content-end my-2 pt-2 px-5'>
@@ -88,5 +106,6 @@ function ManageForm({ userdata }) {
     </>
   );
 }
+)
 
 export default ManageForm;

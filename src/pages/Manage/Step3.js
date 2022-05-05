@@ -5,38 +5,11 @@ import { RiArrowUpSLine, RiArrowDownSLine } from 'react-icons/ri';
 import DropBox from './DropBox.js';
 
 
-function Step3({numOfSessions,sessionDetails,setSessionDetails,setProceed}) {
+function Step3({numOfSessions,sessionDetails,setSessionDetails,setProceed, data}) {
     const [clicked, setClicked] = useState(false);
-    //const [data, setData] = useState([])
-  let data = [];
-  for(let i = 1; i<= numOfSessions; i++){
-    // setData([...data,{question:`Session ${i}`,
-    // answer: `Answer ${i}`}])
-
-    // {session:`Session ${i}`,
-    // date:Date.now(),
-    // startTime:'',
-    // endTime:'',
-    // topicsCovered:'',
-    // answer: `Answer ${i}`}
-
-    data.push(
-      {sessionNum:i,
-        session:[
-            {
-                sessionName:'',
-                topicsCovered:'',
-                learningObjective:'',
-                startTime:'',
-                endTime:'',
-                break:'',
-            }
-        ],
-    date:Date.now(),
-      }
-    )
-    console.log(i)
-  }
+    const [task, setTask] = useState();
+    let tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+    console.log(tasks, "task")
   
   useEffect(()=>{
     if(sessionDetails.length > 0){
@@ -44,9 +17,19 @@ function Step3({numOfSessions,sessionDetails,setSessionDetails,setProceed}) {
     }else{
       setProceed(false)
     }
+    console.log(sessionDetails, "opennn")
+    sessionDetails.length>0 && sessionDetails[0].map(function(data, i) {
+      console.log(data.sessionNum, "vfvf")
+        if(data.startTime != '' ){
+          tasks.splice(data.sessionNum-1, 1, {data})
+          localStorage.setItem("tasks", JSON.stringify(tasks));
+          console.log(tasks, "locall")
+        }
+    })
   },[sessionDetails])
 
-    const toggle = index => {
+    const toggle = index => { 
+      setSessionDetails([ data])
       if (clicked === index) {
         //if clicked question is already active, then close it
         return setClicked(null);
@@ -54,6 +37,7 @@ function Step3({numOfSessions,sessionDetails,setSessionDetails,setProceed}) {
   
       setClicked(index);
     };
+   
 
   return (
     <div className='step3' style={{paddingLeft: '32px'}}>
@@ -75,7 +59,7 @@ function Step3({numOfSessions,sessionDetails,setSessionDetails,setProceed}) {
                             </div>
                             {clicked === index ? (
                             <div className='Dropdown'>
-                                <DropBox data={item} key={index} />
+                                <DropBox data={item} key={index} sessionData={tasks[index]? tasks[index]: ''} />
                             </div>
                             ) : null}
                         </>

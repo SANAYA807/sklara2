@@ -4,6 +4,22 @@ import SideNav from "../../components/SideNav/SideNav";
 
 function Assignment({ userdata }) {
   const [numOfSessions, setNumOfSessions] = useState(0);
+  const [assignmentType,setAssignmentType] = useState('')
+  const [assignmentName,setAssignmentName] = useState('')
+  const [assignmentDescription,setAssignmentDescription] = useState('')
+  const [uploadedDocs,setUploadedDocs] = useState('')
+  const [uploadedDocsId,setUploadedDocsId] = useState('')
+  const [activationDate,setActivationDate] = useState('')
+  const [activationHour,setActivationHour] = useState('')
+  const [activationMinute,setActivationMinute] = useState('')
+  const [dueDate,setDueDate] = useState('')
+  const [dueHour, setDueHour] = useState('')
+  const [dueMinute,setDueMinute] = useState('')
+const [activationTimeStart,setActivationTimeStart] = useState('')
+const [activationTimeEnd,setActivationTimeEnd] = useState('')
+const [durationHour,setDurationHour] = useState('')
+const [durationMinute,setDurationMinute] = useState('')
+const [assignmentStatus,setAssignmentStatus] = useState(false)
 
   return (
     <>
@@ -30,12 +46,10 @@ function Assignment({ userdata }) {
 
                   <p className="fw-bold">Select type of Assignment</p>
                   <div style={{ margin: "10px 8px" }} className="border_input">
-                    <select style={{ borderBottom: "none" }}>
-                      <option></option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
+                    <select style={{ borderBottom: "none" }} value={assignmentType} onChange={(e)=>setAssignmentType(e.target.value)}>
+                      <option selected disabled></option>
+                      <option>Type One</option>
+                      <option>Type Two</option>
                     </select>
                   </div>
 
@@ -53,14 +67,18 @@ function Assignment({ userdata }) {
                     <input
                       style={{ boxShadow: "0px 0px 4px rgb(0 0 0 / 25%)" }}
                       class="form-control search-input"
-                      type="search"
-                      aria-label="Search"
+                      type="text"
+                      value={assignmentName}
+                      onChange={(e)=>setAssignmentName(e.target.value)}
                     />
                   </form>
 
                   <div className="form-group">
                     <p className="fw-bold">Description</p>
-                    <textarea style={{ width: "1079px", height: "259px" }} />
+                    <textarea style={{ width: "1079px", height: "259px" }} 
+                    value={assignmentDescription}
+                    onChange={(e)=>setAssignmentDescription(e.target.value)}
+                    />
                   </div>
                   <div className="d-flex">
                     <button
@@ -236,7 +254,7 @@ function Assignment({ userdata }) {
                         className="form-control"
                       />
 
-                     <div><input type="checkbox" className='largeCheck'/> Enable</div>
+                     <div><input type="checkbox" checked={()=>setAssignmentStatus(true)} className='largeCheck'/> Enable</div>
                     </div>
                    
                   </div>
