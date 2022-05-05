@@ -64,7 +64,7 @@ const CalendarPage = () => {
                             )}
 
                         </div>
-                        <div className="col-md-8 py-5 ps-5">
+                        <div className="col-md-8 py-5 paddingStart">
                             <div className="row">
                                 <div className="d-flex align-items-center justify-content-between col-md-2" ><div className="shadow_new p-2 d-flex align-items-center justify-content-center text-muted"><CalendarTodayIcon fontSize='small' /></div><h4 style={{ marginLeft: '10px' }}>Calendar</h4></div>
                                 <div className="d-flex align-items-center justify-content-end col-md-10" >

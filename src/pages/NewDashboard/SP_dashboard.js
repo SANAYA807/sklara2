@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { ProgressBar } from 'react-bootstrap';
 import { Line } from 'react-chartjs-2';
 import BarChart from './BarChart';
@@ -19,6 +19,7 @@ import "react-circular-progressbar/dist/styles.css";
 
 const SpDashboard = ({ userdata }) => {
     const labels = [1, 2, 3, 4, 5, 6]
+    const [value, onChange] = useState(new Date());
     const arrayEvents = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
     const ref = useRef(null);
@@ -133,8 +134,8 @@ const SpDashboard = ({ userdata }) => {
                         <div className="row gx-0">
                             <div className="shadow p-4 profD-rad pt-4 col-md-6 green">
                                 <h3>Statistics</h3>
-                                <div className="col-md-11 mt-0">
-                                    <div className='center' style={{ width: 225, height: 225 }}>
+                                <div className="col-md-12 mt-0">
+                                    <div className='center m-auto progressBar' style={{ width: 280, height: 280 }}>
                                         <CircularProgressbarWithChildren
                                             value={75}
                                             strokeWidth={15}
@@ -210,12 +211,12 @@ const SpDashboard = ({ userdata }) => {
                             </div>
 
                         </div>
-                        <div className="shadow p-4 mt-5 row gx-1 profD-rad pt-4 " style={{ backgroundColor: '#F6EEFB' }}>
-                            <h3>Satisfaction and Feedback</h3>
+                        <div className="shadow py-4 mt-5 row gx-1 profD-rad pt-4 satisfaction" style={{ backgroundColor: '#F6EEFB' }}>
+                            <h3 className='px-4 mb-0'>Satisfaction and Feedback</h3>
                             <div className="col-md-6">
-                                <h5>Average Session Rating</h5>
-                                <p className="text-muted">Based on 36 ratings</p>
-                                <div style={{ width: 250, height: 250 }}>
+                                {/* <h5 className='bold'>Average Session Rating</h5> */}
+                                <p className="text-muted px-4">Based on 36 ratings</p>
+                                <div style={{ width: 280, height: 280, display: 'grid', placeItems: 'center', margin: 'auto' }}>
                                     <CircularProgressbar
                                         text="3.7/5"
                                         value={66}
@@ -241,38 +242,38 @@ const SpDashboard = ({ userdata }) => {
                                     {/* <CircularProgressbar value={66} /> */}
                                 </div>
                             </div>
-                            <div className="col-md-6">
-                                <h5>Questions on individual Level</h5>
+                            <div className="col-md-6 px-4">
+                                <h5 className='bold' >Questions on individual Level</h5>
 
-                                <div className='mt-3 mb-4'>
-                                    <h5>I felt heard, understood & respected</h5>
+                                <div className='mt-3 mb-4' >
+                                    <h5 style={{ fontSize: '16px' }}>I felt heard, understood & respected</h5>
                                     <ProgressBar variant="success" now={3.5} max={5} />
                                 </div>
                                 <div className='mb-4'>
-                                    <h5>My trainer/coach brought me closer to my goal</h5>
+                                    <h5 style={{ fontSize: '16px' }}>My trainer/coach brought me closer to my goal</h5>
                                     <ProgressBar variant="primary" now={3} max={5} />
                                 </div>
                                 <div className='mb-4'>
-                                    <h5>I will recommend the trainer/coach to my colleagues</h5>
+                                    <h5 style={{ fontSize: '16px' }}>I will recommend the trainer/coach to my colleagues</h5>
                                     <ProgressBar variant="warning" now={4} max={5} />
                                 </div>
                                 <div className='mb-4'>
-                                    <h5>The technical quality of the video was good</h5>
+                                    <h5 style={{ fontSize: '16px' }}>The technical quality of the video was good</h5>
                                     <ProgressBar variant="danger" now={4.5} max={5} />
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className="col-md-4">
-                        <div className="right_card mt-5 ml-5">
-                            <h1>Action Recomended</h1>
-                            <p className="text-muted"><AssignmentOutlined style={{ marginRight: '5px' }} />3 assignment submission pending</p>
-                            <p className="text-muted"><ErrorOutlineRounded style={{ marginRight: '5px' }} />2 skills needs to be added</p>
+                        <div className="right_card  ml-5" >
+                            <h1 className='mb-4'>Action Recomended</h1>
+                            <p className="text-muted action"><AssignmentOutlined style={{ marginRight: '5px' }} />3 assignment submission pending</p>
+                            <p className="text-muted action"><ErrorOutlineRounded style={{ marginRight: '5px' }} />2 skills needs to be added</p>
 
-                            <p className="text-muted"><PersonAddAlt1Rounded style={{ marginRight: '5px' }} />2 skills needs to be added</p>
+                            <p className="text-muted action"><PersonAddAlt1Rounded style={{ marginRight: '5px' }} />2 skills needs to be added</p>
                         </div>
-                        <div className="right_card mt-5 d-flex flex-column justify-content-center" style={{ marginTop: '68px !important' }}>
-                            <Calendar prev2Label={null} next2Label={null} nextLabel={null} prevLabel={null} />
+                        <div className="right_card  d-flex flex-column justify-content-center"  >
+                            <Calendar prev2Label={null} next2Label={null} nextLabel={null} prevLabel={null} onChange={onChange} value={value} />
                             <div className='px-4'>
                                 <p style={{ color: '#F37658', fontSize: '20px', marginBottom: '-2px' }} >Today</p>
                                 <h2 className='heading'>Basic Marketing</h2>
@@ -305,10 +306,10 @@ const SpDashboard = ({ userdata }) => {
                                         <p className='text-muted' style={{ fontSize: '15px' }}>Course Online</p>
                                     </div>
                                 </div>
-                                <hr className='text-muted' />
-                                <div className='d-flex justify-content-between'>
-                                    <button className='btn py-3 btn-primary round_btn' style={{ "padding": "0 10%" }}>Join</button>
-                                    <button className='btn px-4 py-3 btn-light round_btn' style={{ backgroundColor: '#fff', border: '1px solid grey' }}>Reschedule</button>
+                                <hr className='text-muted mb-4' />
+                                <div className='d-flex padding justify-content-between'>
+                                    <button className='btn py-2 btn-primary round_btn' style={{ "padding": "0 10%", fontWeight: '600' }}>Join</button>
+                                    <button className='btn px-4 py-2 btn-light round_btn' style={{ backgroundColor: '#fff', border: '1px solid grey', fontWeight: '600' }}>Reschedule</button>
                                 </div>
 
                             </div>

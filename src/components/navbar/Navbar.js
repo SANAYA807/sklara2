@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import SearchIcon from '@mui/icons-material/Search';
 import Search from '@mui/icons-material/Search';
@@ -8,6 +8,7 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
 import Flags from 'country-flag-icons/react/3x2'
+import Select, { components } from "react-select";
 import PersonIcon from '@mui/icons-material/Person';
 import SwitchAccountIcon from '@mui/icons-material/SwitchAccount';
 import ReactCountryFlag from "react-country-flag"
@@ -34,11 +35,31 @@ import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownR
 
 import './navbar.css'
 import { FolderCopyOutlined, ManageAccounts, Password, People } from '@mui/icons-material';
+import ReactFlagsSelect from 'react-flags-select';
 
 
 const Navbar = ({ userdata }) => {
+  const [selected, setSelected] = useState("US");
   const navigate = useNavigate()
   let location = useLocation();
+  const userFlag = useRef()
+  const options = [
+    { value: "England", label: "English", icon: "assets/britishflag.png" },
+    // { value: "Germany", label: "Germany", icon: "germany.svg" }
+  ];
+
+  const { Option } = components;
+  const IconOption = props => (
+    <Option {...props}>
+      <img
+        src={require('./' + props.data.icon)}
+        style={{ width: 36 }}
+        alt={props.data.label}
+      />
+      {props.data.label}
+    </Option>
+  );
+
   const ActiveClr = (curr) => {
     if (location.pathname === curr) {
       return "active";
@@ -61,6 +82,11 @@ const Navbar = ({ userdata }) => {
     swal('Success', 'Mode changed successfully', 'success').then(() => {
       window.location.reload()
     })
+  }
+  const onSelectFlag = (countryCode) => {
+    console.log(userFlag);
+
+    // userFlag.current.updateSelected(countryCode)
   }
 
   return (
@@ -111,14 +137,21 @@ const Navbar = ({ userdata }) => {
                       <SwitchAccountIcon style={{ color: '#0062e3' }} /> {userdata.mode === 'training' ? 'Switch to Training' : 'Switch to Coaching'}
                     </Link></li>
                     <li><Link className="nav-link" to="/"><ContentCopyOutlinedIcon style={{ color: '#28a745' }} /> Booking Requests</Link></li>
-                    <li><hr class="dropdown-divider" /></li>
+                    {/* <li><hr class="dropdown-divider" /></li> */}
                     {/* <li><Link className="nav-link" to="/"><TranslateOutlinedIcon /> Change Language</Link></li> */}
-                    <li> <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                      <option value="english">English</option>
-                      <option value="german">German</option>
-                    </select>
-                    </li>
+                    <li onClick={(e) => e.stopPropagation()}>
+                      <ReactFlagsSelect
+                        optionsSize={13}
+                        onSelect={(code) => setSelected(code)}
+                        selected={selected}
 
+                        showOptionLabel={true}
+                        ref={userFlag}
+                        showSelectedLabel={true}
+                        countries={["US", "FR", "IN", "IT"]}
+                        customLabels={{ "US": "English", "FR": "French", "IN": "Hindi", 'IT': 'Italian' }}
+                      />
+                    </li>
                     {userdata && userdata.userType === 'hr' &&
                       <li><Link className="nav-link" to="/employee_list"><People /> Your Employees</Link></li>
                     }

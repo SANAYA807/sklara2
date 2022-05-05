@@ -333,9 +333,9 @@ const NewDashboard = ({ userdata }) => {
                                         </div>
                                     </div>
                                     <hr className='text-muted mb-4' />
-                                    <div className='d-flex justify-content-between pb-5'>
-                                        <button className='btn py-3 btn-primary round_btn' style={{ "padding": "0 10%", fontWeight: '600' }}>Join</button>
-                                        <button className='btn px-4 py-3 btn-light round_btn' style={{ backgroundColor: '#fff', border: '1px solid grey', fontWeight: '600' }}>Reschedule</button>
+                                    <div className='d-flex padding justify-content-between '>
+                                        <button className='btn py-2 btn-primary round_btn' style={{ "padding": "0 10%", fontWeight: '600' }}>Join</button>
+                                        <button className='btn px-4 py-2 btn-light round_btn' style={{ backgroundColor: '#fff', border: '1px solid grey', fontWeight: '600' }}>Reschedule</button>
                                     </div>
 
                                 </div>

@@ -29,6 +29,7 @@ const Skill = ({ userdata }) => {
   const [searchTerm, setSearchTerm] = useState('')
   const [searchData, setSearchData] = useState([])
   const [blank, setBlank] = useState(false)
+  const [selected, setSelected] = useState(false)
   const [rating, setRating] = useState(5)
   const [step, setStep] = useState(1)
   const [skill, setSkill] = useState('')
@@ -100,7 +101,7 @@ const Skill = ({ userdata }) => {
     //seting variables
     setSkill(skill)
     setColor(color)
-    setStep(2)
+
   }
   //confirm Selection
   const confirmSelection = async () => {
@@ -300,12 +301,12 @@ const Skill = ({ userdata }) => {
     </div> */}
 
                 </div>
-                <div className='row justify-content-center my-3'>
+                <div className='d-flex flex-wrap justify-content-center my-3'>
                   {searchData.length > 0 ? searchData.map((item, i) => (
                     <>
                       {item.skills && item.skills.map((itm) => (
-                        <div className='m-2' style={{ width: 'auto' }}>
-                          <button className='btn btn-rounded btn-outline-info' onClick={() => handleSelect(itm.skill, itm.color)}>{itm.skill}</button>
+                        <div className='m-1' style={{ width: 'auto' }}>
+                          <button className={skill !== itm.skill ? 'btn btn-rounded btn-outline-info' : 'btn btn-rounded btn-info'} onClick={() => handleSelect(itm.skill, itm.color)}>{itm.skill}</button>
                         </div>
                       ))}
                     </>
@@ -345,9 +346,10 @@ const Skill = ({ userdata }) => {
                   }
                   {searchData.length === 0 && searchTerm.length !== 0 && <h3 className='text-center text-danger my-5'>No matching value found</h3>}
 
-                  <div className='d-flex justify-content-end'>
-                    <button className='btn btn-primary' disabled={!skill && !color} onClick={() => setStep(2)}>Next</button>
-                  </div>
+
+                </div>
+                <div className='d-flex justify-content-end'>
+                  <button className='btn btn-primary' disabled={!skill && !color} onClick={() => setStep(2)}>Next</button>
                 </div>
               </>
             }

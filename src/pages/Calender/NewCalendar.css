@@ -12,6 +12,10 @@
     overflow-y: hidden;
 }
 
+.paddingStart {
+    padding-left: 3rem !important;
+}
+
 .fc-daygrid-event {
     /* background: rgba(28, 216, 201, 0.1) !important; */
     border-radius: 5px;
@@ -301,4 +305,15 @@ button[title='Next day'] :hover {
         left: 45.4rem; */
     /* right: 19.6em; */
     /* } */
+}
+
+@media (max-width:750px) {
+    .cal_title {
+        position: absolute;
+        top: 63rem;
+    }
+
+    .paddingStart {
+        padding: 3rem 0 !important;
+    }
 }
