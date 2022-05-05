@@ -16,7 +16,7 @@ import { PolarAreaChart } from '../../components/Charts/PolarAreaChart';
 import DevProgress from '../profileDashboard/DevProgress';
 import CircleIcon from '@mui/icons-material/Circle';
 import Modal from '@mui/material/Modal';
-import { CircularProgressbar } from 'react-circular-progressbar'
+import { CircularProgressbar, CircularProgressbarWithChildren } from 'react-circular-progressbar'
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import './skill.css'
 
@@ -100,10 +100,7 @@ const Skill = ({ userdata }) => {
     //seting variables
     setSkill(skill)
     setColor(color)
-
     setStep(2)
-
-
   }
   //confirm Selection
   const confirmSelection = async () => {
@@ -440,8 +437,8 @@ const Skill = ({ userdata }) => {
                 }
                 {/* <DonutChart value={item.skillValue} color={item.color} rate={item.skillValue}/> */}
                 <div style={{ width: 200, height: 200 }} className="center">
-                  <CircularProgressbar
-                    text={`${item.skillValue}/10`}
+                  <CircularProgressbarWithChildren
+                    // text={`${item.skillValue}/10`}
                     value={item.skillValue * 10}
                     strokeWidth={15}
                     styles={{
@@ -461,7 +458,9 @@ const Skill = ({ userdata }) => {
                         fontWeight: "800"
                       },
                     }}
-                  />
+                  >
+                    <div className='d-flex align-items-baseline'><h1 className='mb-0' style={{ color: item.color, lineHeight: '1' }}>{item.skillValue}</h1><h4 style={{ color: item.color }}>/10</h4></div>
+                  </CircularProgressbarWithChildren>
                   {/* <CircularProgressbar value={66} /> */}
                 </div>
               </div>

@@ -161,7 +161,7 @@ const NewDashboard = ({ userdata }) => {
                                 <div className="shadow p-4 profD-rad pt-4 col-md-6 green">
                                     <h3>Statistics</h3>
                                     <div className="col-md-12 mt-0">
-                                        <div className='center m-auto progress_bar' style={{ width: 280, height: 280 }}>
+                                        <div className='center m-auto progressBar' style={{ width: 280, height: 280 }}>
                                             <CircularProgressbarWithChildren
                                                 value={75}
                                                 strokeWidth={15}

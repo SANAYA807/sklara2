@@ -1,8 +1,17 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import CreateIcon from '@mui/icons-material/Create';
 
 
-function Step1({eventType, setEventType, eventTitle, setEventTitle}) {
+function Step1({eventType, setEventType, eventTitle, setEventTitle,setProceed}) {
+
+  useEffect(()=>{
+    if(eventType.length > 0 && eventTitle.length > 0){
+      setProceed(true)
+    }else{
+      setProceed(false)
+    }
+  },[eventType,eventTitle])
+
   return (
     <div style={{paddingLeft: '32px'}}>
         <p style={{marginBottom: '0px'}} className='fw-bold'>Design your off-sheld offering or personalized trainning or coaching series. </p>
@@ -10,12 +19,11 @@ function Step1({eventType, setEventType, eventTitle, setEventTitle}) {
     
         <p className='fw-bold'>What do you want to design?</p>
         <div style={{margin: '10px 8px'}} className="border_input">
-                <select style={{borderBottom: 'none'}} >
+                <select style={{borderBottom: 'none'}} onChange={(e)=>setEventType(e.target.value)}>
                     <option>A off-the-shelf trainning</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option>Personal Corporate Training</option>
+                    <option>Group Corporate Training</option>
+                    <option>Business Coaching</option>
                 </select>
         </div>
 
@@ -29,7 +37,7 @@ function Step1({eventType, setEventType, eventTitle, setEventTitle}) {
     
         <p className='fw-bold'>What do you want to name this event?</p>
         <form style={{width:'28vh'}} class="d-flex search_bar">
-              <input style={{boxShadow: '0px 0px 4px rgb(0 0 0 / 25%)'}} class="form-control search-input" type="search" placeholder="Creative Thinking for Beginers" aria-label="Search" />
+              <input style={{boxShadow: '0px 0px 4px rgb(0 0 0 / 25%)'}} class="form-control search-input" type="search" placeholder="Creative Thinking for Beginers" aria-label="Search" onChange={(e)=>setEventTitle(e.target.value)} />
               <CreateIcon />
         </form> 
     </div>

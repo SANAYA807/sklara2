@@ -194,9 +194,31 @@
 }
 
 @media (max-width:1000px) {
-    .progress_bar {
+    .progressBar {
         height: 180px !important;
         width: 180px !important;
     }
-    
+
+    .progressBar {
+        height: 180px !important;
+        width: 180px !important;
+    }
+
+    .green {
+        height: auto;
+    }
+
+    .short_div1>div {
+        justify-content: baseline !important;
+    }
+}
+
+@media (max-width:500px) {
+    .right_card {
+        padding: 20px;
+    }
+
+    .react-calendar__tile {
+        padding: 7px;
+    }
 }

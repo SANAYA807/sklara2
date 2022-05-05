@@ -1,0 +1,48 @@
+.LinearStep .MuiStepConnector-root{
+  display: none;
+}
+
+/* .MuiTypography-alignCenter{
+    display: none !important;
+  } */
+
+.LinearStep .MuiStepLabel-horizontal{
+    width: 350px;
+    border: 1px solid;
+}
+.LinearStep .MuiTypography-caption{
+    display: block;
+    position: absolute;
+    top: 2px;
+    font-size: 20px !important;
+    left: 105px;
+}
+
+.LinearStep .MuiStepLabel-labelContainer {
+    width: 100%;
+    background: white !important;
+}
+
+.LinearStep .MuiStepLabel-horizontal{
+    background: #8441AF;
+}
+
+.LinearStep .MuiStepIcon-root{
+    background: white !important;
+}
+
+.LinearStep .MuiStepIcon-completed {
+    background: white !important;
+}
+
+.LinearStep .MuiStepLabel-labelContainer{
+    height: 51px;
+    display: flex;
+    padding-left: 10px;
+}
+
+.LinearStep .MuiStepLabel-iconContainer{
+    height: 41px;
+    display: flex;
+    align-items: center;
+}
