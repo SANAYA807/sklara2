@@ -15,7 +15,8 @@ import SaveIcon from '@mui/icons-material/Save';
 
 
 
-const BreakTimeModel = ({open, onClose,data, index }) => {
+const BreakTimeModel = ({open, onClose,data, index, start, end }) => {
+  console.log(start, end, "huhu")
   const [selectedDate, setSelectedDate] = useState(new Date())
   const [value, setValue] = useState(0);
 
@@ -30,13 +31,13 @@ const BreakTimeModel = ({open, onClose,data, index }) => {
 
   function onChangeStart(time, timeString) {
     console.log(time, timeString);
-    const startTime = new Date(time).toUTCString()
+    const startTime = time.format("HH:mm")
     // console.log(startTime)
     setStartTime(time)
   }
   function onChangeEnd(time, timeString) {
     console.log(time, timeString);
-    const startTime = new Date(time).toUTCString()
+    const startTime = time.format("HH:mm")
     // console.log(startTime)
     setEndtime(time)
   }

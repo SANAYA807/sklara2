@@ -14,6 +14,7 @@ import moment from 'moment';
 
 
 const ModalTime = ({show, onClose,data, startSession, endSession }) => {
+  console.log(startSession, endSession, "haiiiii")
   const [selectedDate, setSelectedDate] = useState(new Date())
   const [value, setValue] = useState(0);
 
@@ -26,14 +27,13 @@ const ModalTime = ({show, onClose,data, startSession, endSession }) => {
     // console.log(data)
   }
   function onChangeStart(time, timeString) {
-    //console.log(time, timeString);
-    data.startTime = new Date(time).toUTCString()
-    console.log(data.startTime)
+    console.log(time.format("HH:mm"));
+    data.startTime = time.format("HH:mm");
     setStartTime(time)
   }
   function onChangeEnd(time, timeString) {
     //console.log(time, timeString);
-    data.endTime = new Date(time).toUTCString()
+    data.endTime = time.format("HH:mm")
     console.log(data.endTime)
     setEndtime(time)
   }
@@ -72,7 +72,7 @@ const ModalTime = ({show, onClose,data, startSession, endSession }) => {
                 </MuiPickersUtilsProvider>
               </div>
           
-              <div className="d-flex justify-content-between my-4">
+             {!startSession ?  <div className="d-flex justify-content-between my-4">
 
                <div style={{ marginRight: "10px" , width: '210px'}} className="d-flex Timer">
                <TimePicker onChange={onChangeStart} value={startTime} format="HH:mm a" use12Hours="true" bordered="false" placeholder="Start with" defaultOpenValue={moment('00:00', 'HH:mm')} />
@@ -80,8 +80,11 @@ const ModalTime = ({show, onClose,data, startSession, endSession }) => {
 
             <div style={{width: '210px'}} className="d-flex Timer">
                <TimePicker onChange={onChangeEnd} value={endTime} format="HH:mm a" use12Hours="true" bordered="false" placeholder="End with" defaultOpenValue={moment('00:00', 'HH:mm')} />
-            </div>
-          </div>
+            </div></div>
+            :
+            <><p style={{marginTop: '10px'}}>start = {startSession}, End = {endSession}</p></>
+            }
+          
           </div>
         
         </div>

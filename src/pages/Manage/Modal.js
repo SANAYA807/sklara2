@@ -5,6 +5,7 @@ import SaveIcon from '@mui/icons-material/Save';
 
 
 const Modal = ({ open, onClose,data , index, items}) => {
+  // console.log(items, data, "ddddddddddd")
   const [topic, setTopic] = useState(items ? items.sessionName : '')
   const [hours, setHours] = useState(items ? items.hours : '')
   const [minutes,setMinutes] = useState(items ? items.minutes : '')
@@ -16,6 +17,8 @@ const saveData = () => {
   data.session.splice(index, 1, obj)
   onClose()
 }
+
+
 
   const handleTopic = (value) =>{
     setTopic(value)

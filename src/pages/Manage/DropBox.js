@@ -8,11 +8,11 @@ import "./Step3.css"
 import Modal from './Modal.js';
 import ModalTime from "./ModelTime";
 import BreakTimeModel from "./BreakTimeModel";
+import ToggleSwitch from "../MarketPlace/ToggleSwitch"
 
 
-
-function DropBox({data, key, sessionData}) {
-    console.log(sessionData, "session")
+function DropBox({data, key, sessionData, mainSession}) {
+    console.log(sessionData, mainSession, "session")
   
     const [session , setSession] = useState(["row", "break", "row"])
     const [openPointer, setopenPointer] = useState(-1);
@@ -23,7 +23,7 @@ function DropBox({data, key, sessionData}) {
     const [BreakModel, setBreakModel] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date())
     const [show, setShow] = useState(false);
-
+    const [update, setUpdate] = useState(false);
 
     const handleModelEvent = (index) => {
         setIndexs(index)
@@ -98,7 +98,7 @@ function DropBox({data, key, sessionData}) {
                 <ModalTime data={data} show={show} onClose={() => setShow(false)} />
             </div>
 
-
+            {/* <div onClick={()=> {data.Update = true} }>Updated <ToggleSwitch label="Notifications" /></div> */}
 
             <div className="d-flex flex-column">
                 <div className='d-flex justify-content-end px-5' style={{marginLeft: '97px'}}>
@@ -141,7 +141,7 @@ function DropBox({data, key, sessionData}) {
                  <div className={`row ${openPointer==index ? "hover-indicate" : ""} modalButton p-0`} style={{width: '71rem'}} onClick={()=>  handleModelEvent(index)}>
                      <div style={{background: '#DFEEDB', width: '333px', color: '#28A745'}} className=' m-1 d-flex flex-column justify-content-center'>
                          <p><QueryBuilderIcon />Click to add time</p>
-                         <p><TimerIcon /></p>
+                         <p><TimerIcon />  </p>
             {indexs===index && <Modal open={openModal} onClose={() => setOpenModal(false)} data={data} index={index} />}                     </div>
                      <div style={{background: '#17A2B8', width: '787px', color: '#FFFFFF'}} className='m-1 p-4'>
                          What’s Covered:
@@ -166,7 +166,7 @@ function DropBox({data, key, sessionData}) {
                 <ModalTime data={data} show={show} onClose={() => setShow(false)} startSession = {sessionData.data.startTime} endSession = {sessionData.data.endTime} />
             </div>
 
-
+            {/* <div onClick={()=> {data.Update = true} }>Updated <ToggleSwitch label="Notifications" /></div> */}
 
             <div className="d-flex flex-column">
                 <div className='d-flex justify-content-end px-5' style={{marginLeft: '97px'}}>
@@ -175,15 +175,13 @@ function DropBox({data, key, sessionData}) {
             </div>
         </div>
 
-            
-            
-           
+              
             {sessionData.data.session && sessionData.data.session.map((item, index) => {
                 if(item.BreakStart) {
                     return <div key={index} className="break-box my-2" >
                          <div className="fw-bold" style={{color: 'white'}}> 
                                 <p className='BreakcloseBtn' onClick={()=>deleteBreak(index)}> <CancelIcon />  </p> 
-                                 {indexs===index && <BreakTimeModel open={BreakModel} onClose={() => setBreakModel(false)} data={data} index={index} />}  
+                                 {indexs===index && <BreakTimeModel open={BreakModel} onClose={() => setBreakModel(false)} data={data} index={index} start={item.BreakStart} end={item.BreakEnd} />}  
                                 <div style={{cursor: 'pointer'}} onClick={()=>  {OpenBreak(index) }}>Break +</div>
                          </div> 
                      </div>
@@ -194,7 +192,7 @@ function DropBox({data, key, sessionData}) {
                  <div className={`row ${openPointer==index ? "hover-indicate" : ""} modalButton p-0`} style={{width: '71rem'}} onClick={()=>  handleModelEvent(index)}>
                      <div style={{background: '#DFEEDB', width: '333px', color: '#28A745'}} className=' m-1 d-flex flex-column justify-content-center'>
                          <p><QueryBuilderIcon />Click to add time</p>
-                         <p><TimerIcon /></p>
+                         <p><TimerIcon /> {item.hours } hours : {item.minutes } minutes</p>
             {indexs===index && <Modal open={openModal} onClose={() => setOpenModal(false)} data={data} index={index} items={item} />}                     </div>
                      <div style={{background: '#17A2B8', width: '787px', color: '#FFFFFF'}} className='m-1 p-4'>
                          What’s Covered:

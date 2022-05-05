@@ -20,7 +20,7 @@ function Step3({numOfSessions,sessionDetails,setSessionDetails,setProceed, data}
     console.log(sessionDetails, "opennn")
     sessionDetails.length>0 && sessionDetails[0].map(function(data, i) {
       console.log(data.sessionNum, "vfvf")
-        if(data.startTime != '' || data.endTime != '' ){
+        if(data.startTime != '' ){
           tasks.splice(data.sessionNum-1, 1, {data})
           localStorage.setItem("tasks", JSON.stringify(tasks));
           console.log(tasks, "locall")
