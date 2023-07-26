@@ -22,7 +22,7 @@ function FullCalendarApp() {
         {
             id: 1,
             title: 'Visit Course',
-            start: '2022-04-14T10:00:00',
+            start: '2023-04-14T10:00:00',
             end: '2022-04-14T12:00:00',
             backgroundColor: ' rgba(28, 216, 201, 0.1)'
             , textColor: '#1CD8C9',
@@ -32,7 +32,7 @@ function FullCalendarApp() {
         {
             id: 2,
             title: 'Design New Pages',
-            start: '2022-04-01T13:00:00',
+            start: '2023-04-01T13:00:00',
             end: '2022-04-01T18:00:00',
             borderColor: "transparent",
             backgroundColor: "rgba(254, 163, 30, 0.1)",
