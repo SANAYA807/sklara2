@@ -1,8 +1,8 @@
 {
   "name": "sklara",
   "version": "0.1.0",
-  "private": true,
-  "homepage": "http://SANAYA807.github.io/Sklara",
+  "private": false,
+  "homepage": "http://SANAYA807.github.io/sklara2",
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^34.0.0",
     "@ckeditor/ckeditor5-react": "^5.0.0",
